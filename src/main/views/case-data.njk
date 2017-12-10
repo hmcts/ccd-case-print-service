@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <h1>Case Data Printout</h1>
+    <p>
+      <strong>Case Number:</strong> {{ caseData.id }}<br>
+      <strong>Jurisdiction:</strong> {{ caseData.jurisdiction }}<br>
+      <strong>Case Type:</strong> {{ caseData.case_type_id }}<br>
+      <strong>Printed by:</strong> {{ user.forename }} {{ user.surname }} ({{ user.email }})
+    </p>
+    <p>
+      <strong>Printed on:</strong> {{ generatedDateTime }}
+    </p>
+    <pre>
+= START =
+{{ caseData | dump(2) }}
+= END =
+    </pre>
+  </body>
+</html>
