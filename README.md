@@ -34,3 +34,17 @@ Start the application by executing the following command:
 ```bash
 npm start
 ```
+
+### Accessing the service
+
+The application is running on HTTPS, port 3100 by default.
+
+Access to any case data requires an authorised user that is already authenticated via IdAM (and thus, has been granted a Java Web Token (JWT) for the session).
+
+Point your browser at https://localhost:3100/caseworkers/{uid}/jurisdictions/{jid}/case-types/{ctid}/cases/{cid}?jwt={token}, where:
+
+- `{uid}` is the User ID, for example, `123`
+- `{jid}` is the Jurisdiction ID, for example, `PROBATE`
+- `{ctid}` is the Case Type ID, for example, `GrantOfRepresentation`
+- `{cid}` is the Case ID, for example, `1111222233334444`
+- `{token}` is the user's JWT, which is already stored as a browser cookie for an authenticated user
