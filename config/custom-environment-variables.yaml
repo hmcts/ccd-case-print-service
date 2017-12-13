@@ -1,0 +1,12 @@
+useCSRFProtection: USE_CSRF_PROTECTION
+security:
+  referrerPolicy: SECURITY_REFERRER_POLICY
+  hpkp:
+    maxAge: HPKP_MAX_AGE
+    sha256s: HPKP_SHA256S
+idam:
+  base_url: IDAM_BASE_URL
+  s2s_url: IDAM_S2S_URL
+  service_key: IDAM_SERVICE_KEY
+  service_name: IDAM_SERVICE_NAME
+case_data_store_url: CASE_DATA_STORE_URL

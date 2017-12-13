@@ -9,6 +9,9 @@ import { Helmet, IConfig as HelmetConfig } from "modules/helmet";
 import * as path from "path";
 import { RouterFinder } from "router/routerFinder";
 import * as favicon from "serve-favicon";
+import { setJwtCookieAndRedirect } from "./util/set-jwt-cookie-and-redirect";
+import { authCheckerUserOnlyFilter} from "./user/auth-checker-user-only-filter";
+import { serviceFilter } from "./service/service-filter";
 
 const env = process.env.NODE_ENV || "development";
 export const app: express.Express = express();
@@ -38,7 +41,6 @@ app.use(favicon(path.join(__dirname, "/public/img/favicon.ico")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
 
 expressNunjucks(app);
 
@@ -57,6 +59,9 @@ if (config.useCSRFProtection === true) {
   });
 }
 
+app.use("/", setJwtCookieAndRedirect);
+app.use("/", authCheckerUserOnlyFilter);
+app.use("/", serviceFilter);
 app.use("/", RouterFinder.findAll(path.join(__dirname, "routes")));
 
 // returning "not found" page for requests with paths not resolved by the router

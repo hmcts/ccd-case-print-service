@@ -12,12 +12,13 @@
     "test": "NODE_ENV=mocha LOG_LEVEL=OFF mocha --compilers ts:ts-node/register -r tsconfig-paths/register $(find src/test \\( -name '*.ts' -or -name '*.js' \\) ! -path '*a11y*' ! -path '*/routes/*') --reporter mochawesome --reporter-options reportFilename=unit,inlineAssets=true,reportTitle=expressjs-template-unit",
     "test:routes": "NODE_ENV=mocha LOG_LEVEL=OFF mocha --compilers ts:ts-node/register -r tsconfig-paths/register $(find src/test \\( -name '*.ts' -or -name '*.js' \\) -path '*/routes/*') --reporter mochawesome --reporter-options reportFilename=routes,inlineAssets=true,reportTitle=expressjs-template-routes",
     "test:a11y": "NODE_ENV=mocha LOG_LEVEL=ERROR mocha --compilers ts:ts-node/register -r tsconfig-paths/register src/test/a11y --timeout 60000 --reporter mochawesome --reporter-options reportFilename=a11y,inlineAssets=true,reportTitle=expressjs-template-a11y",
-    "test:nsp": "nsp check"
+    "test:nsp": "nsp check",
+    "setup": "echo 'No setup required'"
   },
   "dependencies": {
-    "@hmcts/nodejs-healthcheck": "^1.4.3",
-    "@hmcts/nodejs-logging": "^1.2.3",
-    "@types/node": "^8.0.28",
+    "@hmcts/nodejs-healthcheck": "^1.4.5",
+    "@hmcts/nodejs-logging": "^1.4.3",
+    "@types/node": "^8.0.57",
     "body-parser": "^1.18.1",
     "config": "^1.26.2",
     "cookie-parser": "^1.4.3",
@@ -28,12 +29,14 @@
     "govuk_template_jinja": "^0.23.0",
     "helmet": "^3.8.1",
     "jquery": "^3.2.1",
+    "jwt-decode": "^2.2.0",
     "nunjucks": "^3.0.1",
+    "otp": "^0.1.3",
     "require-directory": "^2.1.1",
     "serve-favicon": "^2.4.4",
     "ts-node": "^3.3.0",
-    "tsconfig-paths": "^2.3.0",
-    "typescript": "^2.5.2"
+    "tsconfig-paths": "^2.6.0",
+    "typescript": "^2.6.2"
   },
   "devDependencies": {
     "@types/chai-as-promised": "^7.1.0",
@@ -49,9 +52,11 @@
     "gulp-sass": "^3.1.0",
     "mocha": "^3.5.3",
     "mochawesome": "^2.3.1",
-    "nock": "^9.0.16",
+    "nock": "^9.1.4",
+    "node-mocks-http": "^1.6.5",
     "nsp": "^2.8.0",
-    "pa11y": "^4.13.0",
+    "pa11y": "^4.13.2",
+    "proxyquire": "^1.8.0",
     "sass-lint": "^1.11.1",
     "sinon": "^3.3.0",
     "sinon-chai": "^2.13.0",
