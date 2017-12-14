@@ -5,4 +5,8 @@ security:
     maxAge: 2592000
     "sha256s": ["TODO", "Set proper SHA256s"]
 idam:
-  service_name: ccd_gw
+  base_url: http://localhost:4501
+  s2s_url: http://localhost:4502
+  service_key:
+  service_name: ccd_ps
+case_data_store_url: http://localhost:4452
