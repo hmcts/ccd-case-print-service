@@ -1,7 +1,4 @@
-import { parse as urlParse } from "url";
-import { format } from "url";
-import { parse as querystringParse } from "querystring";
-import { stringify } from "querystring";
+import { parse, format } from "url";
 
 export function setJwtCookieAndRedirect(req, res, next) {
   let token = req.query.jwt;
@@ -12,10 +9,8 @@ export function setJwtCookieAndRedirect(req, res, next) {
       secure: true
     });
 
-    let parsedUrl = urlParse(req.originalUrl);
-    let parsedQueryString = querystringParse(stringify(parsedUrl.query));
-    delete parsedQueryString.jwt;
-    parsedUrl.query = parsedQueryString;
+    let parsedUrl = parse(req.originalUrl, true);
+    delete parsedUrl.query['jwt'];
     // Delete `search` to force the use of `query` in the result string
     delete parsedUrl.search;
     res.redirect(303, format(parsedUrl));
