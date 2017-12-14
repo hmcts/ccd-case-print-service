@@ -20,8 +20,8 @@ app.locals.ENV = env;
 // TODO: adjust these values to your application
 logging.config({
   environment: process.env.NODE_ENV,
-  microservice: "expressjs-template",
-  team: "platform-engineering",
+  microservice: "ccd-case-print-service",
+  team: "ccd",
 });
 
 // setup logging of HTTP requests
