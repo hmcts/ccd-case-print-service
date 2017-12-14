@@ -13,6 +13,8 @@ import uk.gov.hmcts.RPMTagger
 ansible = new Ansible(this, 'ccdata')
 packager = new Packager(this, 'ccdata')
 
+String channel = '#ccd-notifications'
+
 milestone()
 lock(resource: "ccd-case-print-service-${env.BRANCH_NAME}", inversePrecedence: true) {
   node {
@@ -28,7 +30,15 @@ lock(resource: "ccd-case-print-service-${env.BRANCH_NAME}", inversePrecedence: t
         }
 
         stage('Node security check') {
-          sh "yarn test:nsp"
+          try {
+            sh "yarn test:nsp 2> nsp-report.txt"
+          } catch (ignore) {
+            sh "cat nsp-report.txt"
+            archiveArtifacts 'nsp-report.txt'
+            notifyBuildResult channel: channel, color: 'warning',
+              message: 'Node security check failed see the report for the errors'
+          }
+          sh "rm nsp-report.txt"
         }
 
         stage('Test') {
@@ -46,7 +56,7 @@ lock(resource: "ccd-case-print-service-${env.BRANCH_NAME}", inversePrecedence: t
         milestone()
       }
     } catch (err) {
-      notifyBuildFailure channel: '#ccd-notifications'
+      notifyBuildFailure channel: channel
       throw err
     }
   }
