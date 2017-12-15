@@ -10,7 +10,7 @@ const logger = Logger.getLogger("server");
 // TODO: set the right port for your application
 const port: number = parseInt(process.env.PORT, 10) || 3100;
 
-if (app.locals.ENV === "development") {
+if (app.locals.ENV === "dev") {
   const sslDirectory = path.join(__dirname, "resources", "localhost-ssl");
   const sslOptions = {
     cert: fs.readFileSync(path.join(sslDirectory, "localhost.crt")),

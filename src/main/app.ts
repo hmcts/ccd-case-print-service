@@ -14,7 +14,7 @@ import { setJwtCookieAndRedirect } from "./util/set-jwt-cookie-and-redirect";
 import { authCheckerUserOnlyFilter} from "./user/auth-checker-user-only-filter";
 import { serviceFilter } from "./service/service-filter";
 
-const env = process.env.NODE_ENV || "development";
+const env = process.env.NODE_ENV || "dev";
 export const app: express.Express = express();
 app.locals.ENV = env;
 
