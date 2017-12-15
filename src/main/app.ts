@@ -1,4 +1,4 @@
-import * as logging from "@hmcts/nodejs-logging";
+import { Express, Logger } from "@hmcts/nodejs-logging";
 import * as bodyParser from "body-parser";
 import * as config from "config";
 import * as cookieParser from "cookie-parser";
@@ -18,16 +18,16 @@ export const app: express.Express = express();
 app.locals.ENV = env;
 
 // TODO: adjust these values to your application
-logging.config({
+Logger.config({
   environment: process.env.NODE_ENV,
   microservice: "expressjs-template",
   team: "platform-engineering",
 });
 
 // setup logging of HTTP requests
-app.use(logging.express.accessLogger());
+app.use(Express.accessLogger());
 
-const logger = logging.getLogger("app");
+const logger = Logger.getLogger("app");
 
 // secure the application by adding various HTTP headers to its responses
 new Helmet(config.get<HelmetConfig>("security")).enableFor(app);
