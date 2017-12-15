@@ -1,4 +1,5 @@
 import { Express, Logger } from "@hmcts/nodejs-logging";
+import * as healthcheck from "@hmcts/nodejs-healthcheck";
 import * as bodyParser from "body-parser";
 import * as config from "config";
 import * as cookieParser from "cookie-parser";
@@ -35,6 +36,10 @@ new Helmet(config.get<HelmetConfig>("security")).enableFor(app);
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "njk");
+
+app.get('/health', healthcheck.configure({
+  checks: {}
+}));
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "/public/img/favicon.ico")));

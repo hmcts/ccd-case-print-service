@@ -1,6 +1,6 @@
 {
-  "name": "expressjs-template",
-  "version": "0.0.1",
+  "name": "ccd-case-print-service",
+  "version": "1.2.0",
   "private": true,
   "engines": {
     "node": ">=7.10.1"
