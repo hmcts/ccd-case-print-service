@@ -66,7 +66,7 @@ lock(resource: "ccd-case-print-service-${env.BRANCH_NAME}", inversePrecedence: t
           def version = "{ccd_case_print_service_version: ${rpmVersion}}"
 
           deploy('develop', 'dev', version, rpmTagger)
-          // deploy('master', 'test', version, rpmTagger)
+          deploy('master', 'test', version, rpmTagger)
         }
 
         milestone()
