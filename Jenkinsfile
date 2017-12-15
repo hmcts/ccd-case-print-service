@@ -45,12 +45,28 @@ lock(resource: "ccd-case-print-service-${env.BRANCH_NAME}", inversePrecedence: t
           sh "yarn test"
         }
 
-        onDevelop {
-          publishAndDeploy('develop', 'dev')
-        }
-
         onMaster {
-          publishAndDeploy('master', 'test')
+          def rpmVersion
+
+          stage('Package application (RPM)') {
+            rpmVersion = packager.nodeRPM('ccd-case-print-service')
+          }
+
+          stage('Publish RPM') {
+            packager.publishNodeRPM('ccd-case-print-service')
+          }
+
+          def rpmTagger = new RPMTagger(
+            this,
+            'ccd-case-print-service',
+            packager.rpmName('ccd-case-print-service', rpmVersion),
+            'ccdata-local'
+          )
+
+          def version = "{ccd_case_print_service_version: ${rpmVersion}}"
+
+          deploy('develop', 'dev', version, rpmTagger)
+          // deploy('master', 'test', version, rpmTagger)
         }
 
         milestone()
@@ -62,27 +78,8 @@ lock(resource: "ccd-case-print-service-${env.BRANCH_NAME}", inversePrecedence: t
   }
 }
 
-def publishAndDeploy(branch, env) {
-  def rpmVersion
-  def version
-
-  stage('Package application (RPM)') {
-    rpmVersion = packager.nodeRPM('ccd-case-print-service')
-  }
-
-  stage('Publish RPM') {
-    packager.publishNodeRPM('ccd-case-print-service')
-  }
-
-  def rpmTagger = new RPMTagger(
-    this,
-    'ccd-case-print-service',
-    packager.rpmName('ccd-case-print-service', rpmVersion),
-    'ccdata-local'
-  )
-
+def deploy(branch, env, version, rpmTagger) {
   stage('Deploy: ' + env) {
-    version = "{ccd_case_print_service_version: ${rpmVersion}}"
     ansible.runDeployPlaybook(version, env, branch)
     rpmTagger.tagDeploymentSuccessfulOn(env)
   }
