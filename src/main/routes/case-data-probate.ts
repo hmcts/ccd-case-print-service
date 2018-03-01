@@ -19,11 +19,8 @@ router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid/probate", (req, res,
         getProbateCaseDetailsTemplate(req, req.params.jid, req.params.ctid, req.params.cid)
         .then(template =>
         {
-          //console.log(env);
-          //console.log(caseData.case_data.solsAdditionalExecutorList[0].value.additionalApplying);
           nunjucks.compile(template, env)
           var response = nunjucks.renderString(template, caseData);
-          //console.log(response);
           res.send(response);
         })
         .catch(error => {
