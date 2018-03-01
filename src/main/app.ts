@@ -5,6 +5,7 @@ import * as config from "config";
 import * as cookieParser from "cookie-parser";
 import * as csrf from "csurf";
 import * as express from "express";
+import * as expressNunjucks from "express-nunjucks";
 import { Helmet, IConfig as HelmetConfig } from "modules/helmet";
 import * as path from "path";
 import { RouterFinder } from "router/routerFinder";
@@ -45,6 +46,8 @@ app.use(favicon(path.join(__dirname, "/public/img/favicon.ico")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
+
+expressNunjucks(app);
 
 if (config.useCSRFProtection === true) {
   const csrfOptions = {
