@@ -37,7 +37,9 @@
     "serve-favicon": "^2.4.4",
     "ts-node": "^3.3.0",
     "tsconfig-paths": "^2.6.0",
-    "typescript": "^2.6.2"
+    "typescript": "^2.6.2",
+    "nunjucks-date-filter": "^0.1.1",
+    "nunjucks-numeral-filter": "^0.0.2"
   },
   "devDependencies": {
     "@types/chai-as-promised": "^7.1.0",
