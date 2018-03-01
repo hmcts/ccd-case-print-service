@@ -7,6 +7,7 @@ security:
 idam:
   base_url: http://localhost:4501
   s2s_url: http://localhost:4502
-  service_key:
+  service_key: AAAAAAAAAAAAAAAA
   service_name: ccd_ps
 case_data_store_url: http://localhost:4452
+case_data_probate_template_url: http://localhost:4104
