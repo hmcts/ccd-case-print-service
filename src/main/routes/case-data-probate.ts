@@ -13,10 +13,10 @@ var env = nunjucks.configure({ autoescape: true });
 env.addFilter('date', dateFilter);
 env.addFilter('money', numeralFilter);
 
-router.get("/jurisdictions/PROBATE/case-types/GrantOfRepresentation/cases/:cid", (req, res, next) => {
-  getCase(req, 'PROBATE', 'GrantOfRepresentation', req.params.cid)
+router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid/probate/:tid", (req, res, next) => {
+  getCase(req, req.params.jid, req.params.ctid, req.params.cid)
     .then(caseData => {
-        getProbateCaseDetailsTemplate(req, 'PROBATE', 'GrantOfRepresentation', req.params.cid, caseData)
+        getProbateCaseDetailsTemplate(req, req.params.jid, req.params.ctid, req.params.cid, req.params.tid)
         .then(template =>
         {
           nunjucks.compile(template, env)
