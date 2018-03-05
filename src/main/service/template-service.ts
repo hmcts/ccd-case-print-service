@@ -1,8 +1,8 @@
 import { get } from "config";
 import { fetch } from "../util/fetch";
 
-export function getProbateCaseDetailsTemplate(req, jid, ctid, cid) {
-  let url = get("case_data_probate_template_url") + '/template/case-details';
+export function getProbateCaseDetailsTemplate(req, jid, ctid, cid, templateType) {
+  let url = get("case_data_probate_template_url") + '/template/case-details/'+templateType;
   return fetch(url, { method: 'GET',
                       headers: {
                         'Authorization': 'Bearer ' + req.cookies['jwt'],
