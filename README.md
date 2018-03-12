@@ -4,6 +4,8 @@ Implementation of a default print service for case data.
 ## Overview
 [Express](http://expressjs.com) application that allows an authorised user to retrieve case data in a printable format.
 
+The output comprises a summary, with some key information such as Case Number and user requesting the printout, followed by a dump of the case details in JSON format.
+
 ## Getting started
 
 ### Prerequisites
@@ -17,7 +19,7 @@ The following environment variables are required:
 |------|---------|-------------|
 | IDAM_BASE_URL | - | Base URL for IdAM's User API service (idam-app). `http://localhost:4501` for the dockerised local instance or tunnelled `dev` instance. |
 | IDAM_S2S_URL | - | Base URL for IdAM's S2S API service (service-auth-provider). `http://localhost:4502` for the dockerised local instance or tunnelled `dev` instance. |
-| IDAM_SERVICE_KEY | - | Print Service's IdAM S2S micro-service secret key. This must match the IdAM instance it's being run against. |
+| IDAM_PRINT_SERVICE_KEY | - | Print Service's IdAM S2S micro-service secret key. This must match the IdAM instance it's being run against. |
 | CASE_DATA_STORE_URL | - | Base URL for the Case Data Store service. `http://localhost:4452` for the dockerised local instance. |
 
 ### Building
@@ -35,15 +37,22 @@ Start the application by executing the following command:
 npm start
 ```
 
+**Note:** You can also use [yarn](https://yarnpkg.com/lang/en/) in place of npm, in both commands above.
+
 ### Accessing the service
 
-The application is running on HTTPS, port 3100 by default.
+The application uses HTTP, port 3100 by default.
 
 Access to any case data requires an authorised user that is already authenticated via IdAM (and thus, has been granted a Java Web Token (JWT) for the session).
 
-Point your browser at https://localhost:3100/jurisdictions/{jid}/case-types/{ctid}/cases/{cid}?jwt={token}, where:
+Point your browser at http://localhost:3100/jurisdictions/{jid}/case-types/{ctid}/cases/{cid}?jwt={token}, where:
 
 - `{jid}` is the Jurisdiction ID, for example, `PROBATE`
 - `{ctid}` is the Case Type ID, for example, `GrantOfRepresentation`
 - `{cid}` is the Case ID, for example, `1111222233334444`
 - `{token}` is the user's JWT, which is already stored as a browser cookie for an authenticated user
+
+Alternatively, you can mimic the result of the OAuth 2.0 "lite" authentication flow, by omitting the `jwt` query parameter from the URL above, and setting the JWT as a cookie instead:
+
+1. Open your browser's Developer Tools window (typically by pressing F12).
+2. In the console, enter the JavaScript command: `document.cookie="accessToken={token}"` where `{token}` is the user's JWT.
