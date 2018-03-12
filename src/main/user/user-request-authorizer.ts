@@ -17,7 +17,7 @@ export const ERROR_UNAUTHORISED_USER_ID = {
 };
 
 export const COOKIE_ACCESS_TOKEN = 'accessToken';
-export const AUTHORIZATION = 'Authorization';
+export const AUTHORIZATION = 'authorization';
 
 export const authorise = (request) => {
   let user;
