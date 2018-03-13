@@ -6,7 +6,7 @@ export function getCase(req, jid, ctid, cid) {
   let userId = req.authentication.user.id;
   let url = get("case_data_store_url") + '/caseworkers/' + userId + '/jurisdictions/' + jid + '/case-types/' + ctid +
     '/cases/' + cid;
-  let authorization = req.cookies['jwt'] ? `Bearer ${req.cookies['jwt']}` : req.headers[userReqAuth.AUTHORIZATION];
+  let authorization = req.cookies['jwt'] ? `Bearer ${req.cookies['jwt']}` : req.get(userReqAuth.AUTHORIZATION);
   return fetch(url, { method: 'GET',
                       headers: {
                         'Authorization': authorization,
