@@ -39,6 +39,17 @@
   version "8.5.1"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.5.1.tgz#4ec3020bcdfe2abffeef9ba3fbf26fca097514b5"
 
+"@types/sinon-chai@^2.7.29":
+  version "2.7.29"
+  resolved "https://registry.yarnpkg.com/@types/sinon-chai/-/sinon-chai-2.7.29.tgz#4db01497e2dd1908b2bd30d1782f456353f5f723"
+  dependencies:
+    "@types/chai" "*"
+    "@types/sinon" "*"
+
+"@types/sinon@*":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-4.3.0.tgz#7f53915994a00ccea24f4e0c24709822ed11a3b1"
+
 a-sync-waterfall@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/a-sync-waterfall/-/a-sync-waterfall-1.0.0.tgz#38e8319d79379e24628845b53b96722b29e0e47c"
@@ -3408,6 +3419,10 @@ moment@^2.19.3:
   version "2.19.4"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.19.4.tgz#17e5e2c6ead8819c8ecfad83a0acccb312e94682"
 
+moment@^2.9.0:
+  version "2.21.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.21.0.tgz#2a114b51d2a6ec9e6d83cf803f838a878d8a023a"
+
 moo-server@*, moo-server@1.3.x:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/moo-server/-/moo-server-1.3.0.tgz#5dc79569565a10d6efed5439491e69d2392e58f1"
@@ -3713,6 +3728,10 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
+numeral@^2.0.4:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/numeral/-/numeral-2.0.6.tgz#4ad080936d443c2561aed9f2197efffe25f4e506"
+
 nunjucks-async-loader@^1.1.1:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/nunjucks-async-loader/-/nunjucks-async-loader-1.1.4.tgz#bc460f4e790bb39d8dac9c07528da16ed83f707c"
@@ -3720,6 +3739,18 @@ nunjucks-async-loader@^1.1.1:
     chokidar "^1.4.3"
     co "^4.6.0"
     es6-promisify "^4.0.0"
+
+nunjucks-date-filter@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/nunjucks-date-filter/-/nunjucks-date-filter-0.1.1.tgz#a936d44d2cc9898d95c6ab7b2aba7084fa60aba6"
+  dependencies:
+    moment "^2.9.0"
+
+nunjucks-numeral-filter@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/nunjucks-numeral-filter/-/nunjucks-numeral-filter-0.0.2.tgz#6ef52fa6870bca7bdb83d210056c81d20628a346"
+  dependencies:
+    numeral "^2.0.4"
 
 nunjucks@^3.0.1:
   version "3.0.1"

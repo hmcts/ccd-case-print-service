@@ -7,7 +7,7 @@ security:
 idam:
   base_url: IDAM_BASE_URL
   s2s_url: IDAM_S2S_URL
-  service_key: IDAM_SERVICE_KEY
+  print_service_key: IDAM_PRINT_SERVICE_KEY
   service_name: IDAM_SERVICE_NAME
 case_data_store_url: CASE_DATA_STORE_URL
 case_data_probate_template_url: CASE_DATA_PROBATE_TEMPLATE_URL

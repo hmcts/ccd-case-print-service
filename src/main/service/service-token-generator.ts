@@ -6,7 +6,7 @@ import { fetch } from "../util/fetch";
 
 const idamS2SUrl = get("idam.s2s_url");
 const serviceName = get("idam.service_name");
-const secret = get("idam.service_key");
+const secret = get("idam.print_service_key");
 
 // TODO Caching should be handled by a singleton service
 const cache = {};
