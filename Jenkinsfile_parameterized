@@ -1,33 +1,18 @@
 #!groovy
-//noinspection GroovyUnusedAssignment
 @Library("Infrastructure") _
 
-//noinspection GroovyAssignabilityCheck
 properties([
-		parameters([
-			choice(name: 'ENVIRONMENT', choices: 'saat\nsprod', description: 'Environment where code should be build and deployed')
-		])
+  parameters([
+    string(name: 'PRODUCT_NAME', defaultValue: 'ccd', description: ''),
+    string(name: 'APP', defaultValue: 'ccd-case-print-service', description: ''),
+    string(name: 'TYPE', defaultValue: 'nodejs', description: ''),
+    string(name: 'ENVIRONMENT', defaultValue: 'sandbox', description: 'Environment where code should be build and deployed'),
+    choice(name: 'SUBSCRIPTION', choices: 'sandbox', description: 'Azure subscriptions available to build in')
+  ]),
+  [$class: 'GithubProjectProperty', projectUrlStr: 'https://github.com/hmcts/ccd-case-print-service'],
+  pipelineTriggers([[$class: 'GitHubPushTrigger']])
 ])
 
-List<LinkedHashMap<String, Object>> secrets = [
-  secret('AatTestUserUsername', 'SMOKE_TEST_PRINT_SERVICE_USERNAME'),
-  secret('AatTestUserPassword', 'SMOKE_TEST_USER_PASSWORD')
-]
+withParameterizedPipeline(params.TYPE, params.PRODUCT_NAME, params.APP, params.ENVIRONMENT, params.SUBSCRIPTION) {
 
-static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
-  [ $class: 'AzureKeyVaultSecret',
-    secretType: 'Secret',
-    name: secretName,
-    version: '',
-    envVariable: envVar
-  ]
-}
-
-
-withParameterizedPipeline('nodejs', 'cmc', 'citizen-frontend', params.ENVIRONMENT, 'sandbox') {
-  after('build') {
-    sh 'yarn setup'
-  }
-
-  loadVaultSecrets(secrets)
 }
