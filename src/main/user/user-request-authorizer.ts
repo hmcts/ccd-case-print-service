@@ -1,27 +1,27 @@
 import { getTokenDetails } from "./user-resolver";
 
 export const ERROR_TOKEN_MISSING = {
-  error: 'Bearer token missing',
+  error: "Bearer token missing",
+  message: "You are not authorized to access this resource",
   status: 401,
-  message: 'You are not authorized to access this resource'
 };
 export const ERROR_UNAUTHORISED_ROLE = {
-  error: 'Unauthorised role',
+  error: "Unauthorised role",
+  message: "You are nox authorized to access this resource",
   status: 403,
-  message: 'You are not authorized to access this resource'
 };
 export const ERROR_UNAUTHORISED_USER_ID = {
-  error: 'Unauthorised user',
+  error: "Unauthorised user",
+  message: "You are not authorized to access this resource",
   status: 403,
-  message: 'You are not authorized to access this resource'
 };
 
-export const COOKIE_ACCESS_TOKEN = 'accessToken';
-export const AUTHORIZATION = 'Authorization';
+export const COOKIE_ACCESS_TOKEN = "accessToken";
+export const AUTHORIZATION = "Authorization";
 
 export const authorise = (request) => {
   let user;
-  let bearerToken = request.get(AUTHORIZATION) || (request.cookies ? request.cookies[COOKIE_ACCESS_TOKEN] : null);
+  const bearerToken = request.get(AUTHORIZATION) || (request.cookies ? request.cookies[COOKIE_ACCESS_TOKEN] : null);
 
   if (!bearerToken) {
     return Promise.reject(ERROR_TOKEN_MISSING);
@@ -37,6 +37,6 @@ export const authorise = (request) => {
   }
 
   return getTokenDetails(bearerToken)
-    .then(tokenDetails => user = tokenDetails)
+    .then((tokenDetails) => user = tokenDetails)
     .then(() => user);
 };

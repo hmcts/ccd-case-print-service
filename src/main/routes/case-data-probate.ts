@@ -1,36 +1,35 @@
 import * as express from "express";
-import { getCase } from "../service/case-service";
-import { getProbateCaseDetailsTemplate } from "../service/template-service";
 import * as dateFilter from "nunjucks-date-filter";
 import * as numeralFilter from "nunjucks-numeral-filter";
+import { getCase } from "../service/case-service";
+import { getProbateCaseDetailsTemplate } from "../service/template-service";
 
-const nunjucks = require('nunjucks');
+import nunjucks from "nunjucks";
 
 const router = express.Router();
 
-dateFilter.setDefaultFormat('YYYY-MM-DD');
-var env = nunjucks.configure({ autoescape: true });
-env.addFilter('date', dateFilter);
-env.addFilter('money', numeralFilter);
+dateFilter.setDefaultFormat("YYYY-MM-DD");
+const env = nunjucks.configure({ autoescape: true });
+env.addFilter("date", dateFilter);
+env.addFilter("money", numeralFilter);
 
-router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid/probate/:tid", (req, res, next) => {
+router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid/probate/:tid", (req, res) => {
   getCase(req, req.params.jid, req.params.ctid, req.params.cid)
-    .then(caseData => {
+    .then((caseData) => {
         getProbateCaseDetailsTemplate(req, req.params.jid, req.params.ctid, req.params.cid, req.params.tid)
-        .then(template =>
-        {
-          nunjucks.compile(template, env)
-          var response = nunjucks.renderString(template, caseData);
+        .then((template) => {
+          nunjucks.compile(template, env);
+          const response = nunjucks.renderString(template, caseData);
           res.send(response);
         })
-        .catch(error => {
-          console.error('Case data response failed', error);
+        .catch((error) => {
+          // console.error("Case data response failed", error);
           res.status(error.status).send(error);
         });
 
       })
-    .catch(error => {
-      console.error('Case data retrieval failed', error);
+    .catch((error) => {
+      // console.error("Case data retrieval failed", error);
       res.status(error.status).send(error);
     });
 });

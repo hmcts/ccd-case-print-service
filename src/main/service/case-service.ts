@@ -3,16 +3,17 @@ import { fetch } from "../util/fetch";
 import * as userReqAuth from "../user/user-request-authorizer";
 
 export function getCase(req, jid, ctid, cid) {
-  let userId = req.authentication.user.id;
-  let url = get("case_data_store_url") + '/caseworkers/' + userId + '/jurisdictions/' + jid + '/case-types/' + ctid +
-    '/cases/' + cid;
-  let authorization = req.cookies['jwt'] ? `Bearer ${req.cookies['jwt']}` : req.get(userReqAuth.AUTHORIZATION);
-  return fetch(url, { method: 'GET',
+  const userId = req.authentication.user.id;
+  const url = get("case_data_store_url") + "/caseworkers/" + userId + "/jurisdictions/" + jid + "/case-types/" + ctid +
+    "/cases/" + cid;
+  const authorization = req.cookies.jwt ? `Bearer ${req.cookies.jwt}` : req.get(userReqAuth.AUTHORIZATION);
+  return fetch(url, {
                       headers: {
-                        'Authorization': authorization,
-                        'ServiceAuthorization': req.headers.ServiceAuthorization,
-                        'Content-Type': 'application/json'
-                      }
+                        "Authorization": authorization,
+                        "Content-Type": "application/json",
+                        "ServiceAuthorization": req.headers.ServiceAuthorization,
+                      },
+                      method: "GET",
                     })
-    .then(res => res.json());
+    .then((res) => res.json());
 }
