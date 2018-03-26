@@ -7,7 +7,7 @@ locals {
 }
 
 module "ccd-case-print-service" {
-  source = "git@github.com:hmcts/ccd-case-print-service.git"
+  source = "https://github.com/hmcts/ccd-case-print-service.git"
   product = "${var.product}-${var.microservice}"
   location = "${var.location}"
   env = "${var.env}"
