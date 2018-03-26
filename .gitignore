@@ -22,3 +22,5 @@ npm-debug.log.*
 .settings/
 
 package-lock.json
+
+coverage/
