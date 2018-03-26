@@ -13,7 +13,7 @@
     "test:routes": "NODE_ENV=mocha LOG_LEVEL=OFF mocha --compilers ts:ts-node/register -r tsconfig-paths/register $(find src/test \\( -name '*.ts' -or -name '*.js' \\) -path '*/routes/*') --reporter mochawesome --reporter-options reportFilename=routes,inlineAssets=true,reportTitle=expressjs-template-routes",
     "test:a11y": "NODE_ENV=mocha LOG_LEVEL=ERROR mocha --compilers ts:ts-node/register -r tsconfig-paths/register src/test/a11y --timeout 60000 --reporter mochawesome --reporter-options reportFilename=a11y,inlineAssets=true,reportTitle=expressjs-template-a11y",
     "test:unit": "NODE_ENV=test NODE_PATH=. mocha 'test/**/*.spec.js' --reporter spec --recursive",
-    "test:coverage": "NODE_ENV=test NODE_PATH=. istanbul cover _mocha 'test/**/*.spec.js'",
+    "test:coverage": "NODE_ENV=test NODE_PATH=. istanbul cover _mocha 'src/**/*.spec.ts'",
     "test:acceptance": "echo 'TODO - CALL JAVA INTEGRATION TEST'",
     "test:nsp": "NODE_PATH=. nsp check",
     "test:smoke": "echo SMOKE TESTS NOT CONFIGURED",
