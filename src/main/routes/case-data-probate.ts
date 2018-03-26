@@ -4,7 +4,7 @@ import * as numeralFilter from "nunjucks-numeral-filter";
 import { getCase } from "../service/case-service";
 import { getProbateCaseDetailsTemplate } from "../service/template-service";
 
-const nunjucks = require('nunjucks');
+const nunjucks = require("nunjucks");
 
 const router = express.Router();
 
