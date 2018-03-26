@@ -22,7 +22,7 @@ module "ccd-case-print-service" {
     HPKP_MAX_AGE = "${var.hpkp_max_age}"
     HPKP_SHA256S = "${var.hpkp_sha256s}"
     NODE_ENV = "${var.node_env}"
-    IDAM_PRINT_SERVICE_KEY = ${var.idam_print_service_key}
+    IDAM_PRINT_SERVICE_KEY = "${var.idam_print_service_key}"
     UV_THREADPOOL_SIZE = "64"
     NODE_CONFIG_DIR = "D:\\home\\site\\wwwroot\\config"
     TS_BASE_URL = "./src/main"
