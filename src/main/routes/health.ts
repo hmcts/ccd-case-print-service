@@ -1,6 +1,5 @@
 import * as healthcheck from "@hmcts/nodejs-healthcheck";
 import * as express from "express";
-import * as os from "os";
 
 const router = express.Router();
 
