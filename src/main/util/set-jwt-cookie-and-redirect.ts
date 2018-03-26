@@ -10,7 +10,8 @@ export function setJwtCookieAndRedirect(req, res, next) {
     });
 
     const parsedUrl = parse(req.originalUrl, true);
-    delete parsedUrl.query["jwt"];
+    const jwt = "jwt";
+    delete parsedUrl.query[jwt];
     // Delete `search` to force the use of `query` in the result string
     delete parsedUrl.search;
     res.redirect(303, format(parsedUrl));

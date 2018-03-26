@@ -2,7 +2,7 @@ import { expect } from "chai";
 import { EventEmitter } from "events";
 import { setJwtCookieAndRedirect } from "../../main/util/set-jwt-cookie-and-redirect";
 
-import httpMocks = require("node-mocks-http");
+const httpMocks = require("node-mocks-http");
 
 const jwt = "jwt";
 

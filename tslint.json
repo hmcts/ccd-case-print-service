@@ -1,7 +1,8 @@
 {
   "extends": "tslint:recommended",
-  "ordered-imports": [true, {
-    "import-sources-order": "any",
-    "named-imports-order": "case-insensitive"
-  }]
+  "rules": {
+    "no-unused-expression": false,
+    "ordered-imports": false,
+    "no-var-requires": false
+  }
 }
