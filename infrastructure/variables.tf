@@ -4,7 +4,7 @@ variable "product" {
 }
 
 variable "microservice" {
-  default = "ccd-case-print-service"
+  default = "case-print-service"
 }
 
 variable "location" {
