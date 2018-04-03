@@ -4,7 +4,7 @@
 properties([
   parameters([
     string(name: 'PRODUCT_NAME', defaultValue: 'ccd', description: ''),
-    string(name: 'APP', defaultValue: 'ccd-case-print-service', description: ''),
+    string(name: 'APP', defaultValue: 'case-print-service', description: ''),
     string(name: 'TYPE', defaultValue: 'nodejs', description: ''),
     string(name: 'ENVIRONMENT', defaultValue: 'sandbox', description: 'Environment where code should be build and deployed'),
     choice(name: 'SUBSCRIPTION', choices: 'sandbox', description: 'Azure subscriptions available to build in')
