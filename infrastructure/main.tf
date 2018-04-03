@@ -13,9 +13,8 @@ module "ccd-case-print-service" {
   location = "${var.location}"
   env = "${var.env}"
   ilbIp = "${var.ilbIp}"
-  is_frontend  = true
+  is_frontend  = false
   subscription = "${var.subscription}"
-  additional_host_name = "debugparam"
 
   app_settings = {
     // Node specific vars
