@@ -1,4 +1,4 @@
-# Case Data Print Service
+# Case Data Print Service [![Build Status](https://travis-ci.org/hmcts/ccd-case-print-service.svg?branch=master)](https://travis-ci.org/hmcts/ccd-case-print-service)
 Implementation of a default print service for case data.
 
 ## Overview
