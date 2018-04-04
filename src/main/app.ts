@@ -9,8 +9,8 @@ import * as healthcheck from "@hmcts/nodejs-healthcheck";
 import * as path from "path";
 import { authCheckerUserOnlyFilter } from "./user/auth-checker-user-only-filter";
 import { Express, Logger } from "@hmcts/nodejs-logging";
-import { Helmet, IConfig as HelmetConfig } from "modules/helmet";
-import { RouterFinder } from "router/routerFinder";
+import { Helmet, IConfig as HelmetConfig } from "./modules/helmet";
+import { RouterFinder } from "./router/routerFinder";
 import { serviceFilter } from "./service/service-filter";
 import { setJwtCookieAndRedirect } from "./util/set-jwt-cookie-and-redirect";
 
