@@ -27,7 +27,7 @@ export class Helmet {
 
     this.setContentSecurityPolicy(app);
     this.setReferrerPolicy(app, this.config.referrerPolicy);
-    this.setHttpPublicKeyPinning(app, this.config.hpkp);
+    // this.setHttpPublicKeyPinning(app, this.config.hpkp);
   }
 
   private setContentSecurityPolicy(app) {
@@ -54,10 +54,15 @@ export class Helmet {
     app.use(helmet.referrerPolicy({policy}));
   }
 
-  private setHttpPublicKeyPinning(app, hpkpConfig) {
-    app.use(helmet.hpkp({
-      maxAge: hpkpConfig.maxAge,
-      sha256s: hpkpConfig.sha256s,
-    }));
-  }
+  // TODO could have used the Expect-CT header, including its reporting function.
+  // Expect-CT is safer than HPKP due to the flexibility it gives site operators to
+  // recover from any configuration errors, and due to the built-in support offered by a number of CAs
+  // @See Azure TLS Certificates changes
+  // https://blogs.technet.microsoft.com/kv/2017/04/20/azure-tls-certificates-changes/?WT.mc_id=azurebg_email_Trans_33716_1407_SSL_Intermediate_Cert_Change
+  // private setHttpPublicKeyPinning(app, hpkpConfig) {
+  //   app.use(helmet.hpkp({
+  //     maxAge: hpkpConfig.maxAge,
+  //     sha256s: hpkpConfig.sha256s,
+  //   }));
+  // }
 }
