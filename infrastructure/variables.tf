@@ -68,3 +68,7 @@ variable "case_data_probate_template_url" {
 variable "case_data_store_url" {
   default = "http://localhost:4452"
 }
+
+variable "external_host_name" {
+  default = "ccd-case-print-service.sandbox.platform.hmcts.net"
+}
