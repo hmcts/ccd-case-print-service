@@ -36,6 +36,8 @@ new Helmet(config.get<HelmetConfig>("security")).enableFor(app);
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "njk");
+logger.info("****************");
+logger.info("**************** " + JSON.stringify(config.get<HelmetConfig>("security")));
 
 app.get("/health", healthcheck.configure({
   checks: {},
