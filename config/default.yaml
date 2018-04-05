@@ -5,7 +5,7 @@ security:
     maxAge: 2592000
     sha256s:
       - TODO
-      - Set proper SHA256s
+      - Set-proper-SHA256s
 idam:
   base_url: http://localhost:4501
   s2s_url: http://localhost:4502
