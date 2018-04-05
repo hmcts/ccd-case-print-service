@@ -46,7 +46,7 @@ variable "hpkp_max_age" {
 }
 
 variable "hpkp_sha256s" {
-  default = "[\"replace me\", \"Set proper SHA256s\"]"
+  default = "Set-proper-SHA256s"
 }
 
 variable "idam_print_service_key" {
