@@ -3,7 +3,9 @@ security:
   referrerPolicy: origin
   hpkp:
     maxAge: 2592000
-    "sha256s": ["TODO", "Set proper SHA256s"]
+    "sha256s":
+      - "TODO"
+      - "Set proper SHA256s"
 idam:
   base_url: http://localhost:4501
   s2s_url: http://localhost:4502
