@@ -8,6 +8,7 @@ script:
   - yarn check
   - yarn lint
   - yarn test
+  - yarn test:nsp
   - yarn test:routes
   - yarn test:a11y
 # needed for newer yarn for a little bit: https://github.com/travis-ci/travis-ci/issues/7566#issuecomment-324138144
