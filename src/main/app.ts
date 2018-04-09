@@ -1,18 +1,18 @@
-import { Express, Logger } from "@hmcts/nodejs-logging";
-import * as healthcheck from "@hmcts/nodejs-healthcheck";
 import * as bodyParser from "body-parser";
 import * as config from "config";
 import * as cookieParser from "cookie-parser";
 import * as csrf from "csurf";
 import * as express from "express";
 import * as expressNunjucks from "express-nunjucks";
-import { Helmet, IConfig as HelmetConfig } from "modules/helmet";
-import * as path from "path";
-import { RouterFinder } from "router/routerFinder";
 import * as favicon from "serve-favicon";
-import { setJwtCookieAndRedirect } from "./util/set-jwt-cookie-and-redirect";
-import { authCheckerUserOnlyFilter} from "./user/auth-checker-user-only-filter";
+import * as healthcheck from "@hmcts/nodejs-healthcheck";
+import * as path from "path";
+import { authCheckerUserOnlyFilter } from "./user/auth-checker-user-only-filter";
+import { Express, Logger } from "@hmcts/nodejs-logging";
+import { Helmet, IConfig as HelmetConfig } from "./modules/helmet";
+import { RouterFinder } from "./router/routerFinder";
 import { serviceFilter } from "./service/service-filter";
+import { setJwtCookieAndRedirect } from "./util/set-jwt-cookie-and-redirect";
 
 const env = process.env.NODE_ENV || "dev";
 export const app: express.Express = express();
@@ -36,9 +36,11 @@ new Helmet(config.get<HelmetConfig>("security")).enableFor(app);
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "njk");
+logger.info("****************");
+logger.info("**************** " + JSON.stringify(config.get<HelmetConfig>("security")));
 
-app.get('/health', healthcheck.configure({
-  checks: {}
+app.get("/health", healthcheck.configure({
+  checks: {},
 }));
 
 app.use(express.static(path.join(__dirname, "public")));

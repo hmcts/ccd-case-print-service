@@ -1,16 +1,17 @@
-import { parse, format } from "url";
+import { format, parse } from "url";
 
 export function setJwtCookieAndRedirect(req, res, next) {
-  let token = req.query.jwt;
+  const token = req.query.jwt;
 
   if (token) {
-    res.cookie('jwt', token, {
+    res.cookie("jwt", token, {
       httpOnly: true,
-      secure: true
+      secure: true,
     });
 
-    let parsedUrl = parse(req.originalUrl, true);
-    delete parsedUrl.query['jwt'];
+    const parsedUrl = parse(req.originalUrl, true);
+    const JWT = "jwt";
+    delete parsedUrl.query[JWT];
     // Delete `search` to force the use of `query` in the result string
     delete parsedUrl.search;
     res.redirect(303, format(parsedUrl));
