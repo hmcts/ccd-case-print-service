@@ -9,7 +9,7 @@ properties(
 String product = "ccd"
 String component = "case-print-service"
 
-String app = "ccd-case-print-service"
+String app = "case-print-service"
 
 withPipeline("nodejs", product, app) {
 
