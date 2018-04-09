@@ -4,7 +4,7 @@ import { setJwtCookieAndRedirect } from "../../main/util/set-jwt-cookie-and-redi
 
 const httpMocks = require("node-mocks-http");
 
-const jwt = "jwt";
+const JWT = "jwt";
 
 function buildResponse() {
   return httpMocks.createResponse({ eventEmitter: EventEmitter });
@@ -24,8 +24,8 @@ describe("set JWT from request URL as cookie and perform redirect", () => {
     };
 
     res.on("end", () => {
-      expect(res.cookies).to.have.property(jwt);
-      const cookie = res.cookies[jwt];
+      expect(res.cookies).to.have.property(JWT);
+      const cookie = res.cookies[JWT];
       expect(cookie.value).to.equal(token);
       expect(cookie.options.httpOnly).to.equal(true);
       expect(cookie.options.secure).to.equal(true);
@@ -50,8 +50,8 @@ describe("set JWT from request URL as cookie and perform redirect", () => {
     };
 
     res.on("end", () => {
-      expect(res.cookies).to.have.property(jwt);
-      const cookie = res.cookies[jwt];
+      expect(res.cookies).to.have.property(JWT);
+      const cookie = res.cookies[JWT];
       expect(cookie.value).to.equal(token);
       expect(cookie.options.httpOnly).to.equal(true);
       expect(cookie.options.secure).to.equal(true);
@@ -76,8 +76,8 @@ describe("set JWT from request URL as cookie and perform redirect", () => {
     };
 
     res.on("end", () => {
-      expect(res.cookies).to.have.property(jwt);
-      const cookie = res.cookies[jwt];
+      expect(res.cookies).to.have.property(JWT);
+      const cookie = res.cookies[JWT];
       expect(cookie.value).to.equal(token);
       expect(cookie.options.httpOnly).to.equal(true);
       expect(cookie.options.secure).to.equal(true);
@@ -102,8 +102,8 @@ describe("set JWT from request URL as cookie and perform redirect", () => {
     };
 
     res.on("end", () => {
-      expect(res.cookies).to.have.property(jwt);
-      const cookie = res.cookies[jwt];
+      expect(res.cookies).to.have.property(JWT);
+      const cookie = res.cookies[JWT];
       expect(cookie.value).to.equal(token);
       expect(cookie.options.httpOnly).to.equal(true);
       expect(cookie.options.secure).to.equal(true);

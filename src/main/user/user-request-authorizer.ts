@@ -7,7 +7,7 @@ export const ERROR_TOKEN_MISSING = {
 };
 export const ERROR_UNAUTHORISED_ROLE = {
   error: "Unauthorised role",
-  message: "You are nox authorized to access this resource",
+  message: "You are not authorized to access this resource",
   status: 403,
 };
 export const ERROR_UNAUTHORISED_USER_ID = {
