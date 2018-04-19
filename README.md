@@ -21,6 +21,7 @@ The following environment variables are required:
 | IDAM_S2S_URL | - | Base URL for IdAM's S2S API service (service-auth-provider). `http://localhost:4502` for the dockerised local instance or tunnelled `dev` instance. |
 | IDAM_PRINT_SERVICE_KEY | - | Print Service's IdAM S2S micro-service secret key. This must match the IdAM instance it's being run against. |
 | CASE_DATA_STORE_URL | - | Base URL for the Case Data Store service. `http://localhost:4452` for the dockerised local instance. |
+| APPINSIGHTS_INSTRUMENTATIONKEY | - | Secret for Microsoft Insights logging, can be a dummy string in local. |
 
 ### Building
 

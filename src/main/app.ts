@@ -14,6 +14,10 @@ import { RouterFinder } from "./router/routerFinder";
 import { serviceFilter } from "./service/service-filter";
 import { setJwtCookieAndRedirect } from "./util/set-jwt-cookie-and-redirect";
 
+const enableAppInsights = require("./app-insights/app-insights");
+
+enableAppInsights();
+
 const env = process.env.NODE_ENV || "dev";
 export const app: express.Express = express();
 app.locals.ENV = env;
