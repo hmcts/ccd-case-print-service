@@ -40,7 +40,7 @@ module "ccd-case-print-service" {
 
     // Logging vars
     REFORM_TEAM = "${var.product}"
-    REFORM_SERVICE_NAME = "${var.microservice}"
+    REFORM_SERVICE_NAME = "${var.component}"
     REFORM_ENVIRONMENT = "${var.env}"
 
     // Application vars
