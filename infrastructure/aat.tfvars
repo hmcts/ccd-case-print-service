@@ -1,6 +1,6 @@
-feature_fine_print = "true"
-feature_full_admission = "true"
-feature_offer = "true"
-feature_partial_admission = "true"
-feature_statement_of_means = "true"
-feature_return_error_to_user = "true"
+vault_section = "preprod"
+idam_api_url = "https://preprod-idamapi.reform.hmcts.net:3511"
+s2s_url = "https://preprod-s2s-api.reform.hmcts.net:3511"
+authentication_web_url = "https://idam.preprod.ccidam.reform.hmcts.net"
+probate_template_url=
+external_host_name="return-case-doc-ccd.nonprod.platform.hmcts.net"
