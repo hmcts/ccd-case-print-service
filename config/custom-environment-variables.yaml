@@ -11,3 +11,5 @@ idam:
   service_name: IDAM_SERVICE_NAME
 case_data_store_url: CASE_DATA_STORE_URL
 case_data_probate_template_url: CASE_DATA_PROBATE_TEMPLATE_URL
+appInsights:
+  instrumentationKey: APPINSIGHTS_INSTRUMENTATIONKEY
