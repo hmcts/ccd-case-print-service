@@ -1,19 +1,33 @@
 // Infrastructural variables
 variable "product" {
-  default = "ccd"
+  type = "string"
 }
 
-variable "microservice" {
-  default = "case-print-service"
+variable "component" {
+  type = "string"
 }
 
 variable "location" {
   default = "UK South"
 }
 
-variable "env" { }
+variable "env" {
+  type = "string"
+  description = "(Required) The environment in which to deploy the application infrastructure."
+}
 
-variable "ilbIp" { }
+variable "ilbIp" {}
+
+variable "subscription" {}
+
+variable "vault_section" {
+  default = "test"
+}
+
+variable "external_host_name" {
+  type = "string"
+  default = ""
+}
 
 variable "idam_api_url" {
   default = "http://betaDevBccidamAppLB.reform.hmcts.net"
@@ -23,14 +37,22 @@ variable "s2s_url" {
   default = "http://betaDevBccidamS2SLB.reform.hmcts.net"
 }
 
+variable "idam_service_name" {
+  default = "ccd_ps"
+}
+
 variable "authentication_web_url" {
   default = "https://idam-test.dev.ccidam.reform.hmcts.net"
 }
 
-variable "subscription" {}
+variable "probate_template_url" {
+  type = "string"
+  description = "URL of microservice providing Probate template. Defaults to tactical `test`"
+  default = ""
+}
 
-variable "vault_section" {
-  default = "test"
+variable "node_env" {
+  default = "production"
 }
 
 variable "use_csrf_protection" {
@@ -47,28 +69,4 @@ variable "hpkp_max_age" {
 
 variable "hpkp_sha256s" {
   default = "Set-proper-SHA256s"
-}
-
-variable "idam_print_service_key" {
-  default = "AAAAAAAAAAAAAAAA"
-}
-
-variable "idam_service_name" {
-  default = "ccd_ps"
-}
-
-variable "node_env" {
-  default = "production"
-}
-
-variable "case_data_probate_template_url" {
-  default = "http://localhost:4104"
-}
-
-variable "case_data_store_url" {
-  default = "http://localhost:4452"
-}
-
-variable "external_host_name" {
-  default = "ccd-case-print-service.sandbox.platform.hmcts.net"
 }
