@@ -6,9 +6,9 @@ properties(
 
 @Library("Infrastructure")
 
-String product = "ccd"
-String component = "case-print-service"
+def product = "ccd"
+def app = "case-print-service"
 
-withPipeline("nodejs", product, component) {
+withPipeline("nodejs", product, app) {
 
 }
