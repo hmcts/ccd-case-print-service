@@ -49,9 +49,6 @@ module "ccd-case-print-service" {
     IDAM_AUTHENTICATION_WEB_URL = "${var.authentication_web_url}"
     IDAM_S2S_AUTH = "${var.s2s_url}"
 
-    IDAM_OAUTH2_TOKEN_ENDPOINT = "${var.idam_api_url}/oauth2/token"
-    IDAM_OAUTH2_CLIENT_ID = "ccd_gateway"
-
     IDAM_BASE_URL = "${var.idam_api_url}"
     IDAM_S2S_URL = "${var.s2s_url}"
     IDAM_SERVICE_NAME = "${var.idam_service_name}"
