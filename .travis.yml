@@ -6,7 +6,6 @@ install:
   - npm install -g codecov
 script:
   - yarn --version
-  - yarn sass
   - yarn check
   - yarn lint
   - yarn test
