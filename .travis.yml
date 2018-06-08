@@ -4,8 +4,10 @@ node_js:
 cache: yarn
 install:
   - npm install -g codecov
+  - yarn install
 script:
   - yarn --version
+  - yarn sass
   - yarn check
   - yarn lint
   - yarn test
@@ -13,5 +15,3 @@ script:
   - yarn test:routes
   - yarn test:a11y
   - yarn test:coverage
-group: edge
-sudo: required
