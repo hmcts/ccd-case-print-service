@@ -15,3 +15,4 @@ script:
   - yarn test:routes
   - yarn test:a11y
   - yarn test:coverage
+  - codecov
