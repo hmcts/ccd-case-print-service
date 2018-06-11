@@ -18,7 +18,7 @@
     "test:nsp": "nsp check",
     "test:smoke": "echo SMOKE TESTS NOT CONFIGURED",
     "test:functional": "echo 'TODO - FUNCTIONAL TEST'",
-    "sonar-scan": "NODE_PATH=. sonar-scanner -X -Dsonar.projectKey='ccd-case-print-service' -Dsonar.sources=src/main/ -Dsonar.tests=src/test/ -Dsonar.exclusions=node_modules/**,coverage/**,src/main/server.ts -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info",
+    "sonar-scan": "NODE_PATH=. sonar-scanner -X -Dsonar.projectKey='ccd-case-print-service' -Dsonar.sources=src/main/ -Dsonar.tests=src/test/ -Dsonar.exclusions=node_modules/**,coverage/**,src/main/modules/**,src/main/router/**,src/main/util/**,src/main/app.ts,src/main/server.ts -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info",
     "setup": "echo 'No setup required'"
   },
   "dependencies": {
@@ -91,5 +91,28 @@
     "sonar-scanner": "^3.0.3",
     "supertest": "^3.0.0",
     "tslint": "^5.7.0"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/main"
+    ],
+    "exclude": [
+      "**/*.d.ts",
+      "src/main/public",
+      "src/main/modules",
+      "src/main/router",
+      "src/main/util",
+      "src/main/app.ts",
+      "src/main/server.ts"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "report-dir": "coverage",
+    "all": true
   }
 }
