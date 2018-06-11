@@ -1,6 +1,7 @@
 # ccd-case-print-service
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/hmcts/ccd-case-print-service.svg?branch=master)](https://travis-ci.org/hmcts/ccd-case-print-service)
+[![codecov](https://codecov.io/gh/hmcts/ccd-case-print-service/branch/master/graph/badge.svg)](https://codecov.io/gh/hmcts/ccd-case-print-service)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/37ac45c07384494885609297b8708717)](https://www.codacy.com/app/adr1ancho/ccd-case-print-service?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hmcts/ccd-case-print-service&amp;utm_campaign=Badge_Grade)
 [![HitCount](http://hits.dwyl.io/hmcts/ccd-case-print-service.svg)](#ccd-case-print-service)
 [![Issue Stats](http://issuestats.com/github/hmcts/ccd-case-print-service/badge/pr)](http://issuestats.com/github/hmcts/ccd-case-print-service)
