@@ -1,5 +1,5 @@
 FROM node:8.1.4
-MAINTAINER hmcts
+MAINTAINER https://github.com/hmcts/ccd-docker
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
