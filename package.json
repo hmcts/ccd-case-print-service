@@ -18,7 +18,7 @@
     "test:nsp": "nsp check",
     "test:smoke": "echo SMOKE TESTS NOT CONFIGURED",
     "test:functional": "echo 'TODO - FUNCTIONAL TEST'",
-    "sonar-scan": "NODE_PATH=. sonar-scanner -X",
+    "sonar-scan": "NODE_PATH=. sonar-scanner -X -Dsonar.projectKey='ccd-case-print-service' -Dsonar.sources=src/main/ -Dsonar.tests=src/test/ -Dsonar.exclusions=node_modules/**,coverage/** -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info -Dsonar.language=js -Dsonar.profile=node",
     "setup": "echo 'No setup required'"
   },
   "dependencies": {
