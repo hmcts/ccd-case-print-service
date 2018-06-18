@@ -1,17 +1,17 @@
-let gulp = require('gulp')
-let nodemon = require('gulp-nodemon')
-let plumber = require('gulp-plumber')
-let livereload = require('gulp-livereload')
-let sass = require('gulp-sass')
-let path = require('path')
-let replace = require('gulp-replace')
+let gulp = require('gulp');
+let nodemon = require('gulp-nodemon');
+let plumber = require('gulp-plumber');
+let livereload = require('gulp-livereload');
+let sass = require('gulp-sass');
+let path = require('path');
+let replace = require('gulp-replace');
 
-const repoRoot = path.join(__dirname, '/')
-const govUkFrontendToolkitRoot = path.join(repoRoot, 'node_modules/govuk_frontend_toolkit/stylesheets')
-const govUkElementRoot = path.join(repoRoot, 'node_modules/govuk-elements-sass/public/sass')
+const repoRoot = path.join(__dirname, '/');
+const govUkFrontendToolkitRoot = path.join(repoRoot, 'node_modules/govuk_frontend_toolkit/stylesheets');
+const govUkElementRoot = path.join(repoRoot, 'node_modules/govuk-elements-sass/public/sass');
 
-const assetsDirectory = './src/main/public'
-const stylesheetsDirectory = `${assetsDirectory}/stylesheets`
+const assetsDirectory = './src/main/public';
+const stylesheetsDirectory = `${assetsDirectory}/stylesheets`;
 
 // compile scss files
 gulp.task('sass', () => {
@@ -26,7 +26,7 @@ gulp.task('sass', () => {
     .pipe(sass())
     .pipe(gulp.dest(stylesheetsDirectory))
     .pipe(livereload())
-})
+});
 
 // copy js, stylesheets and images from dependencies to frontend's public directory
 gulp.task('copy-files', () => {
@@ -48,17 +48,17 @@ gulp.task('copy-files', () => {
   ])
   .pipe(replace('images/', '/stylesheets/lib/images/', { skipBinary: true }))
   .pipe(gulp.dest(`${assetsDirectory}/stylesheets/lib/`))
-})
+});
 
 // compile scss files whenever they're changed
 gulp.task('watch', () => {
   gulp.watch(stylesheetsDirectory + '/**/*.scss', [ 'sass' ])
-})
+});
 
 // start the application and watch for file changes (in which case it will be restarted)
 gulp.task('develop', () => {
   setTimeout(() => {
-    livereload.listen()
+    livereload.listen();
 
     nodemon({
       ext: 'ts js njk po',
@@ -67,11 +67,11 @@ gulp.task('develop', () => {
         livereload.changed(__dirname)
     })
   }, 500)
-})
+});
 
 gulp.task('default', [
   'sass',
   'copy-files',
   'develop',
   'watch'
-])
+]);

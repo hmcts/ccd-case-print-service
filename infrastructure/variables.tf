@@ -20,6 +20,10 @@ variable "ilbIp" {}
 
 variable "subscription" {}
 
+variable "capacity" {
+  default = "1"
+}
+
 variable "vault_section" {
   default = "test"
 }
@@ -31,10 +35,6 @@ variable "external_host_name" {
 
 variable "idam_api_url" {
   default = "http://betaDevBccidamAppLB.reform.hmcts.net"
-}
-
-variable "s2s_url" {
-  default = "http://betaDevBccidamS2SLB.reform.hmcts.net"
 }
 
 variable "idam_service_name" {
