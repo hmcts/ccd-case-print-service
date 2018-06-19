@@ -15,4 +15,3 @@ case_data_store_url: http://localhost:4452
 case_data_probate_template_url: http://localhost:4104
 appInsights:
   instrumentationKey: "some-key"
-  enabled: true
