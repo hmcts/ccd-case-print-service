@@ -1,3 +1,4 @@
+import * as FormData from "form-data";
 import * as jwtDecode from "jwt-decode";
 import * as otp from "otp";
 import { fetch } from "../util/fetch";
@@ -18,15 +19,11 @@ export const serviceTokenGenerator = () => {
       return Promise.resolve(cache[serviceName].token);
     } else {
       const oneTimePassword = otp({secret}).totp();
-      const form = {
-        microservice: serviceName,
-        oneTimePassword,
-      };
-      const headers = {
-        "Content-Type": "application/json",
-      };
+      const form = new FormData();
+      form.append("microservice", serviceName);
+      form.append("oneTimePassword", oneTimePassword);
 
-      return fetch(`${idamS2SUrl}/lease`, { body: JSON.stringify(form), headers, method: "POST" })
+      return fetch(`${idamS2SUrl}/lease`, {body: form, method: "POST"})
           .then((res) => res.text())
           .then((token) => {
             const tokenData = jwtDecode(token);

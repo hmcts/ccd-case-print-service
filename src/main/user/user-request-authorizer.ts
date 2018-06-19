@@ -29,8 +29,11 @@ export const authorise = (request) => {
 
   // Use AccessToken cookie as Authorization header
   if (!request.get(AUTHORIZATION) && bearerToken) {
-    request.headers = request.headers || {};
-    request.headers[AUTHORIZATION] = `Bearer ${bearerToken}`;
+    if (!request.headers) {
+      request.headers = {[AUTHORIZATION]: `Bearer ${bearerToken}`};
+    } else {
+      request.headers[AUTHORIZATION] = `Bearer ${bearerToken}`;
+    }
   }
 
   return getTokenDetails(bearerToken)
