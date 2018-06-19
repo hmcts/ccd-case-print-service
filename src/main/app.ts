@@ -76,13 +76,13 @@ app.use("/", serviceFilter);
 app.use("/", RouterFinder.findAll(path.join(__dirname, "routes")));
 
 // returning "not found" page for requests with paths not resolved by the router
-app.use((req, res) => {
+app.use((req, res, next) => {
   res.status(404);
   res.render("not-found");
 });
 
 // error handler
-app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
+app.use((err, req, res, next) => {
   logger.error(`${err.stack || err}`);
 
   // set locals, only providing error in development
