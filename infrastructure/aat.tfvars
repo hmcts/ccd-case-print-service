@@ -1,6 +1,5 @@
 vault_section = "preprod"
 idam_api_url = "https://preprod-idamapi.reform.hmcts.net:3511"
-s2s_url = "https://preprod-s2s-api.reform.hmcts.net:3511"
 authentication_web_url = "https://idam.preprod.ccidam.reform.hmcts.net"
 probate_template_url = "http://probate-sol-ccd-service-aat.service.core-compute-aat.internal"
 external_host_name = "return-case-doc-ccd.nonprod.platform.hmcts.net"
