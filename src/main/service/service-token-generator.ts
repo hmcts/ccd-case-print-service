@@ -23,7 +23,7 @@ export const serviceTokenGenerator = () => {
       form.append("microservice", serviceName);
       form.append("oneTimePassword", oneTimePassword);
 
-      return fetch(`${idamS2SUrl}/lease`, {method: "POST", body: form})
+      return fetch(`${idamS2SUrl}/lease`, {body: form, method: "POST"})
           .then((res) => res.text())
           .then((token) => {
             const tokenData = jwtDecode(token);
