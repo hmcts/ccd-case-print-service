@@ -48,7 +48,7 @@ variable "authentication_web_url" {
 variable "probate_template_url" {
   type = "string"
   description = "URL of microservice providing Probate template. Defaults to tactical `test`"
-  default = "http://betaDevBprobateApp01.reform.hmcts.net:4104"
+  default = "http://probate-back-office-saat.service.core-compute-saat.internal"
 }
 
 variable "node_env" {
