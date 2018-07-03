@@ -29,6 +29,7 @@ module "ccd-case-print-service" {
   subscription = "${var.subscription}"
   is_frontend = "${local.is_frontend}"
   additional_host_name = "${local.external_host_name}"
+  common_tags  = "${var.common_tags}"
 
   app_settings = {
     // Node specific vars
