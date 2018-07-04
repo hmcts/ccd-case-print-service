@@ -21,19 +21,10 @@ export const AUTHORIZATION = "Authorization";
 
 export const authorise = (request) => {
   let user;
-  const bearerToken = request.get(AUTHORIZATION) || (request.cookies ? request.cookies[COOKIE_ACCESS_TOKEN] : null);
+  const bearerToken = request.get(AUTHORIZATION);
 
   if (!bearerToken) {
     return Promise.reject(ERROR_TOKEN_MISSING);
-  }
-
-  // Use AccessToken cookie as Authorization header
-  if (!request.get(AUTHORIZATION) && bearerToken) {
-    if (!request.headers) {
-      request.headers = {[AUTHORIZATION]: `Bearer ${bearerToken}`};
-    } else {
-      request.headers[AUTHORIZATION] = `Bearer ${bearerToken}`;
-    }
   }
 
   return getTokenDetails(bearerToken)
