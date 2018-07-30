@@ -1,4 +1,4 @@
-# Case Data Print Service [![Build Status](https://travis-ci.org/hmcts/ccd-case-print-service.svg?branch=master)](https://travis-ci.org/hmcts/ccd-case-print-service)
+# Case Data Print Service [![Build Status](https://travis-ci.org/hmcts/ccd-case-print-service.svg?branch=master)](https://travis-ci.org/hmcts/ccd-case-print-service) [![Greenkeeper badge](https://badges.greenkeeper.io/hmcts/ccd-case-print-service.svg)](https://greenkeeper.io/)
 Implementation of a default print service for case data.
 
 ## Overview
