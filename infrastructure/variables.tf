@@ -3,6 +3,10 @@ variable "product" {
   type = "string"
 }
 
+variable "raw_product" {
+  default = "ccd" // jenkins-library overrides product for PRs and adds e.g. pr-118-ccd
+}
+
 variable "component" {
   type = "string"
 }
@@ -69,4 +73,8 @@ variable "hpkp_max_age" {
 
 variable "hpkp_sha256s" {
   default = "Set-proper-SHA256s"
+}
+
+variable "common_tags" {
+  type = "map"
 }

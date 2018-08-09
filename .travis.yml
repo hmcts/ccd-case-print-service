@@ -2,14 +2,17 @@ language: node_js
 node_js:
   - "8.4"
 cache: yarn
+install:
+  - npm install -g codecov
+  - yarn install
 script:
   - yarn --version
   - yarn sass
-  - yarn check
+  - yarn check || echo 'yarn check failed'
   - yarn lint
   - yarn test
   - yarn test:nsp
   - yarn test:routes
   - yarn test:a11y
-group: edge
-sudo: required
+  - yarn test:coverage
+  - codecov

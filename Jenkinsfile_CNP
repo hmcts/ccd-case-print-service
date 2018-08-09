@@ -10,5 +10,7 @@ def product = "ccd"
 def component = "case-print-service"
 
 withPipeline("nodejs", product, component) {
-
+  afterCheckout {
+    sh "yarn cache clean"
+  }
 }

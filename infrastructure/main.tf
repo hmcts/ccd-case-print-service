@@ -14,6 +14,16 @@ locals {
   env_ase_url = "${local.local_env}.service.${local.local_ase}.internal"
 
   s2s_url = "http://rpe-service-auth-provider-${local.env_ase_url}"
+
+  // Vault name
+  previewVaultName = "${var.raw_product}-shared-aat"
+  nonPreviewVaultName = "${var.raw_product}-shared-${var.env}"
+  vaultName = "${(var.env == "preview" || var.env == "spreview") ? local.previewVaultName : local.nonPreviewVaultName}"
+}
+
+data "azurerm_key_vault" "ccd_shared_key_vault" {
+  name = "${local.vaultName}"
+  resource_group_name = "${local.vaultName}"
 }
 
 data "vault_generic_secret" "idam_service_key" {
@@ -29,6 +39,7 @@ module "ccd-case-print-service" {
   subscription = "${var.subscription}"
   is_frontend = "${local.is_frontend}"
   additional_host_name = "${local.external_host_name}"
+  common_tags  = "${var.common_tags}"
 
   app_settings = {
     // Node specific vars
@@ -60,4 +71,12 @@ module "ccd-case-print-service" {
     IDAM_S2S_URL = "${local.s2s_url}"
     IDAM_SERVICE_NAME = "${var.idam_service_name}"
   }
+}
+
+// Copy into Azure Key Vault
+
+resource "azurerm_key_vault_secret" "idam_service_key" {
+  name = "ccd-case-print-service-idam-service-key"
+  value = "${data.vault_generic_secret.idam_service_key.data["value"]}"
+  vault_uri = "${data.azurerm_key_vault.ccd_shared_key_vault.vault_uri}"
 }
