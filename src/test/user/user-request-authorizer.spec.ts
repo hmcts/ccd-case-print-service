@@ -2,7 +2,7 @@ import * as chai from "chai";
 import * as proxyquire from "proxyquire";
 import * as sinon from "sinon";
 import * as sinonChai from "sinon-chai";
-import * as userReqAuth from "./user-request-authorizer";
+import * as userReqAuth from "../../main/user/user-request-authorizer";
 
 const expect = chai.expect;
 chai.use(sinonChai);

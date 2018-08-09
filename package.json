@@ -13,12 +13,12 @@
     "test:routes": "NODE_ENV=mocha LOG_LEVEL=OFF mocha --compilers ts:ts-node/register -r tsconfig-paths/register $(find src/test \\( -name '*.ts' -or -name '*.js' \\) -path '*/routes/*') --reporter mochawesome --reporter-options reportFilename=routes,inlineAssets=true,reportTitle=expressjs-template-routes",
     "test:a11y": "NODE_ENV=mocha LOG_LEVEL=ERROR mocha --compilers ts:ts-node/register -r tsconfig-paths/register src/test/a11y --timeout 60000 --reporter mochawesome --reporter-options reportFilename=a11y,inlineAssets=true,reportTitle=expressjs-template-a11y",
     "test:unit": "NODE_ENV=test NODE_PATH=. mocha 'test/**/*.spec.js' --reporter spec --recursive",
-    "test:coverage": "remap-istanbul -i coverage/json/coverage-final.json -o coverage/html -t html",
+    "test:coverage": "NODE_ENV=mocha LOG_LEVEL=OFF nyc mocha --compilers ts:ts-node/register -r tsconfig-paths/register $(find src/test \\( -name '*.ts' -or -name '*.js' \\) ! -path '*a11y*' ! -path '*/routes/*')",
     "test:acceptance": "echo 'TODO - CALL JAVA INTEGRATION TEST'",
     "test:nsp": "nsp check",
     "test:smoke": "echo SMOKE TESTS NOT CONFIGURED",
     "test:functional": "echo 'TODO - FUNCTIONAL TEST'",
-    "sonar-scan": "NODE_PATH=. sonar-scanner -X -Dsonar.projectKey='ccd-case-print-service' -Dsonar.sources=src/main/ -Dsonar.tests=src/test/ -Dsonar.exclusions=node_modules/**,coverage/** -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info -Dsonar.language=js -Dsonar.profile=node",
+    "sonar-scan": "NODE_PATH=. sonar-scanner -X -Dsonar.projectKey='ccd-case-print-service' -Dsonar.sources=src/main/ -Dsonar.tests=src/test/ -Dsonar.exclusions=node_modules/**,coverage/**,src/main/modules/**,src/main/router/**,src/main/util/**,src/main/app.ts,src/main/server.ts -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info",
     "setup": "echo 'No setup required'"
   },
   "dependencies": {
@@ -83,6 +83,7 @@
     "nock": "^9.1.4",
     "node-mocks-http": "^1.6.5",
     "nsp": "^2.8.0",
+    "nyc": "^12.0.2",
     "pa11y": "^4.13.2",
     "proxyquire": "^1.8.0",
     "remap-istanbul": "^0.9.6",
@@ -92,5 +93,28 @@
     "sonar-scanner": "^3.0.3",
     "supertest": "^3.0.0",
     "tslint": "^5.7.0"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/main"
+    ],
+    "exclude": [
+      "**/*.d.ts",
+      "src/main/public",
+      "src/main/modules",
+      "src/main/router",
+      "src/main/util",
+      "src/main/app.ts",
+      "src/main/server.ts"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "report-dir": "coverage",
+    "all": true
   }
 }
