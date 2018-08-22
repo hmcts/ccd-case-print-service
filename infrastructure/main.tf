@@ -72,11 +72,3 @@ module "ccd-case-print-service" {
     IDAM_SERVICE_NAME = "${var.idam_service_name}"
   }
 }
-
-// Copy into Azure Key Vault
-
-resource "azurerm_key_vault_secret" "idam_service_key" {
-  name = "ccd-case-print-service-idam-service-key"
-  value = "${data.vault_generic_secret.idam_service_key.data["value"]}"
-  vault_uri = "${data.azurerm_key_vault.ccd_shared_key_vault.vault_uri}"
-}
