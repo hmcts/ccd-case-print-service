@@ -6342,6 +6342,17 @@ registry-url@^3.0.3:
   dependencies:
     rc "^1.0.1"
 
+remap-istanbul@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/remap-istanbul/-/remap-istanbul-0.11.1.tgz#4ad9a06450d3556559bef6195418e05bd4ef6d61"
+  dependencies:
+    amdefine "^1.0.0"
+    istanbul "0.4.5"
+    minimatch "^3.0.3"
+    plugin-error "^0.1.2"
+    source-map "^0.6.1"
+    through2 "2.0.1"
+
 remap-istanbul@^0.6.4:
   version "0.6.4"
   resolved "https://registry.yarnpkg.com/remap-istanbul/-/remap-istanbul-0.6.4.tgz#ac551eff1aa641504b4f318d0303dda61e3bb695"
@@ -6350,17 +6361,6 @@ remap-istanbul@^0.6.4:
     gulp-util "3.0.7"
     istanbul "0.4.3"
     source-map ">=0.5.6"
-    through2 "2.0.1"
-
-remap-istanbul@^0.9.6:
-  version "0.9.6"
-  resolved "https://registry.yarnpkg.com/remap-istanbul/-/remap-istanbul-0.9.6.tgz#bbd5a688fe265192f067a0ca5b2b0d7f746c5f4b"
-  dependencies:
-    amdefine "^1.0.0"
-    gulp-util "3.0.7"
-    istanbul "0.4.5"
-    minimatch "^3.0.3"
-    source-map "^0.6.1"
     through2 "2.0.1"
 
 remove-trailing-separator@^1.0.1:
