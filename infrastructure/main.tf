@@ -16,18 +16,24 @@ locals {
   s2s_url = "http://rpe-service-auth-provider-${local.env_ase_url}"
 
   // Vault name
-  previewVaultName = "${var.raw_product}-shared-aat"
-  nonPreviewVaultName = "${var.raw_product}-shared-${var.env}"
+  previewVaultName = "${var.raw_product}-aat"
+  nonPreviewVaultName = "${var.raw_product}-${var.env}"
   vaultName = "${(var.env == "preview" || var.env == "spreview") ? local.previewVaultName : local.nonPreviewVaultName}"
+
+  // Shared Resource Group
+  previewResourceGroup = "${var.raw_product}-shared-aat"
+  nonPreviewResourceGroup = "${var.raw_product}-shared-${var.env}"
+  sharedResourceGroup = "${(var.env == "preview" || var.env == "spreview") ? local.previewResourceGroup : local.nonPreviewResourceGroup}"
 }
 
 data "azurerm_key_vault" "ccd_shared_key_vault" {
   name = "${local.vaultName}"
-  resource_group_name = "${local.vaultName}"
+  resource_group_name = "${local.sharedResourceGroup}"
 }
 
-data "vault_generic_secret" "idam_service_key" {
-  path = "secret/${var.vault_section}/ccidam/service-auth-provider/api/microservice-keys/ccd-ps"
+data "azurerm_key_vault_secret" "idam_service_key" {
+  name = "ccd-case-print-service-s2s-secret"
+  vault_uri = "${data.azurerm_key_vault.ccd_shared_key_vault.vault_uri}"
 }
 
 module "ccd-case-print-service" {
@@ -48,7 +54,7 @@ module "ccd-case-print-service" {
     HPKP_MAX_AGE = "${var.hpkp_max_age}"
     HPKP_SHA256S = "${var.hpkp_sha256s}"
     NODE_ENV = "${var.node_env}"
-    IDAM_PRINT_SERVICE_KEY = "${data.vault_generic_secret.idam_service_key.data["value"]}"
+    IDAM_PRINT_SERVICE_KEY = "${data.azurerm_key_vault_secret.idam_service_key.value}"
     UV_THREADPOOL_SIZE = "64"
     NODE_CONFIG_DIR = "D:\\home\\site\\wwwroot\\config"
     TS_BASE_URL = "./src/main"
