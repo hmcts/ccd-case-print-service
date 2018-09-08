@@ -19,9 +19,7 @@
     "test:smoke": "echo SMOKE TESTS NOT CONFIGURED",
     "test:functional": "echo 'TODO - FUNCTIONAL TEST'",
     "sonar-scan": "NODE_PATH=. sonar-scanner -X -Dsonar.projectKey='ccd-case-print-service' -Dsonar.sources=src/main/ -Dsonar.tests=src/test/ -Dsonar.exclusions=node_modules/**,coverage/** -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info -Dsonar.language=js -Dsonar.profile=node",
-    "setup": "echo 'No setup required'",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "setup": "echo 'No setup required'"
   },
   "dependencies": {
     "@hmcts/nodejs-healthcheck": "^1.4.5",
@@ -47,7 +45,6 @@
     "otp": "^0.1.3",
     "require-directory": "^2.1.1",
     "serve-favicon": "^2.4.4",
-    "snyk": "^1.85.0",
     "ts-node": "^3.3.0",
     "tsconfig-paths": "^2.6.0",
     "typescript": "^2.6.2"
@@ -98,7 +95,6 @@
     "supertest": "^3.0.0",
     "tslint": "^5.7.0"
   },
-  "snyk": true,
   "nyc": {
     "extension": [
       ".ts"
