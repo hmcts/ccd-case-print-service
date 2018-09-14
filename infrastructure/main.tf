@@ -42,6 +42,8 @@ module "ccd-case-print-service" {
   is_frontend = "${local.is_frontend}"
   additional_host_name = "${local.external_host_name}"
   common_tags  = "${var.common_tags}"
+  asp_name = "${var.asp_name}"
+  asp_rg = "${var.asp_rg}"
 
   app_settings = {
     // Node specific vars

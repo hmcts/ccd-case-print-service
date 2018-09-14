@@ -74,3 +74,11 @@ variable "hpkp_sha256s" {
 variable "common_tags" {
   type = "map"
 }
+
+variable "asp_name" {
+  type = "string"
+}
+
+variable "asp_rg" {
+  type = "string"
+}
