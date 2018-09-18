@@ -20,7 +20,7 @@ router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid/probate/:tid", (req,
         .then((template) => {
           nunjucks.compile(template, env);
           const response = nunjucks.renderString(template, caseData);
-          res.set('charset', 'utf-8');
+          res.set("charset", "utf-8");
           res.send(response);
         })
         .catch((error) => {
