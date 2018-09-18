@@ -20,6 +20,8 @@ locals {
   previewResourceGroup = "${var.raw_product}-shared-aat"
   nonPreviewResourceGroup = "${var.raw_product}-shared-${var.env}"
   sharedResourceGroup = "${(var.env == "preview" || var.env == "spreview") ? local.previewResourceGroup : local.nonPreviewResourceGroup}"
+
+  sharedAppServicePlan = "${var.raw_product}-${var.env}"
 }
 
 data "azurerm_key_vault" "ccd_shared_key_vault" {
@@ -33,7 +35,7 @@ data "azurerm_key_vault_secret" "idam_service_key" {
 }
 
 module "ccd-case-print-service" {
-  source = "git@github.com:hmcts/moj-module-webapp?ref=master"
+  source = "git@github.com:hmcts/cnp-module-webapp?ref=master"
   product = "${var.product}-${var.component}"
   location = "${var.location}"
   env = "${var.env}"
@@ -42,6 +44,8 @@ module "ccd-case-print-service" {
   is_frontend = "${local.is_frontend}"
   additional_host_name = "${local.external_host_name}"
   common_tags  = "${var.common_tags}"
+  asp_name = "${(var.asp_name == "use_shared") ? local.sharedAppServicePlan : var.asp_name}"
+  asp_rg = "${(var.asp_rg == "use_shared") ? local.sharedResourceGroup : var.asp_rg}"
 
   app_settings = {
     // Node specific vars
