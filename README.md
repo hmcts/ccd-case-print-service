@@ -65,3 +65,21 @@ Alternatively, you can mimic the result of the OAuth 2.0 "lite" authentication f
 
 1. Open your browser's Developer Tools window (typically by pressing F12).
 2. In the console, enter the JavaScript command: `document.cookie="accessToken={token}"` where `{token}` is the user's JWT.
+
+### Custom Routes
+
+These can be used to render output using external Nunjucks templates. Routes should be added to the `src/main/routes` directory.
+
+#### A note on Character Encoding and Displaying "Special" Characters
+
+All routes should ensure the Case Print Service returns the correct character encoding (character set) in the HTTP response headers. It should be UTF-8. This is done by calling the following on the response object (`res` in this case):
+
+```
+res.set("charset", "utf-8");
+```
+
+This must be done prior to a final call on the response, such as `res.send(...)`.
+
+In addition, if the Nunjucks template to be rendered contains any "special" characters, such as currency symbols or "curly" versions of quote marks, then the template should be edited and encoded as UTF-8.
+
+If, for whatever reason, this is not possible then these characters must be replaced with the regular ASCII versions where appropriate (e.g. straight quote marks), or (ideally) the corresponding HTML entities (e.g. `&pound;`, `&lsquo;`, `&rsquo;`).
