@@ -80,4 +80,6 @@ res.set("charset", "utf-8");
 
 This must be done prior to a final call on the response, such as `res.send(...)`.
 
-In addition, if the Nunjucks template to be rendered contains any "special" characters, such as currency symbols or "curly" versions of quote marks, these must be replaced with the regular ASCII version where appropriate (e.g. straight quote marks), or (ideally) the corresponding HTML entity (e.g. `&pound;`, `&lsquo;`, `&rsquo;`).
+In addition, if the Nunjucks template to be rendered contains any "special" characters, such as currency symbols or "curly" versions of quote marks, then the template should be edited and encoded as UTF-8.
+
+If, for whatever reason, this is not possible then these characters must be replaced with the regular ASCII versions where appropriate (e.g. straight quote marks), or (ideally) the corresponding HTML entities (e.g. `&pound;`, `&lsquo;`, `&rsquo;`).
