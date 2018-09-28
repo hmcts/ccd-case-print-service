@@ -1,4 +1,4 @@
-FROM node:8.1.4
+FROM node:8-alpine
 MAINTAINER https://github.com/hmcts/ccd-docker
 
 RUN mkdir -p /usr/src/app

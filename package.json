@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "private": true,
   "engines": {
-    "node": ">=7.10.1"
+    "node": "^8.9.4"
   },
   "scripts": {
     "start": "./node_modules/.bin/ts-node -r tsconfig-paths/register src/main/server.ts",
@@ -96,7 +96,8 @@
     "sinon-chai": "^2.13.0",
     "sonar-scanner": "^3.0.3",
     "supertest": "^3.0.0",
-    "tslint": "^5.7.0"
+    "tslint": "^5.7.0",
+    "webpack": "^2"
   },
   "snyk": true,
   "nyc": {
