@@ -96,7 +96,8 @@
     "sinon-chai": "^2.13.0",
     "sonar-scanner": "^3.0.3",
     "supertest": "^3.0.0",
-    "tslint": "^5.7.0"
+    "tslint": "^5.7.0",
+    "webpack": "^2"
   },
   "snyk": true,
   "nyc": {
