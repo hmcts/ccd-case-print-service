@@ -14,6 +14,7 @@ locals {
   env_ase_url = "${local.local_env}.service.${local.local_ase}.internal"
 
   s2s_url = "http://rpe-service-auth-provider-${local.env_ase_url}"
+  s2s_vault_url = "https://s2s-${local.local_env}.vault.azure.net/"
 
   // Vault name
   previewVaultName = "${var.raw_product}-aat"
@@ -35,8 +36,8 @@ data "azurerm_key_vault" "ccd_shared_key_vault" {
 }
 
 data "azurerm_key_vault_secret" "idam_service_key" {
-  name = "ccd-case-print-service-s2s-secret"
-  vault_uri = "${data.azurerm_key_vault.ccd_shared_key_vault.vault_uri}"
+  name = "microservicekey-ccd-ps"
+  vault_uri = "${local.s2s_vault_url}"
 }
 
 module "ccd-case-print-service" {
