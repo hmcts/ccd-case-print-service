@@ -12,7 +12,7 @@ script:
   - yarn check || echo 'yarn check failed'
   - yarn lint
   - yarn test
-  - yarn test:nsp
+  #- yarn test:nsp - reenable when we have solved RDM-2508
   - yarn test:routes
   - yarn test:a11y
   - yarn test:coverage
