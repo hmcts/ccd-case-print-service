@@ -139,10 +139,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.5.7.tgz#960d9feb3ade2233bcc9843c918d740b4f78a7cf"
   integrity sha512-VkKcfuitP+Nc/TaTFH0B8qNmn+6NbI6crLkQonbedViVz7O2w8QV/GERPlkJ4bg42VGHiEWa31CoTOPs1q6z1w==
 
-"@types/sinon-chai@^2.7.29":
-  version "2.7.33"
-  resolved "https://registry.yarnpkg.com/@types/sinon-chai/-/sinon-chai-2.7.33.tgz#28899cee7246755cdb3a4371af9f5b7e9774edd0"
-  integrity sha512-NiLSxS6KXOO4jwUhgF9aaXFAn7MsVTEgA0oj0xE/m/eZaHZC6hgrCrW6VeWfDYjRt6XfQxwS4DY4R6oI5MukmQ==
+"@types/sinon-chai@^3.2.2":
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/@types/sinon-chai/-/sinon-chai-3.2.2.tgz#5cfdbda70bae30f79a9423334af9e490e4cce793"
+  integrity sha512-5zSs2AslzyPZdOsbm2NRtuSNAI2aTWzNKOHa/GRecKo7a5efYD7qGcPxMZXQDayVXT2Vnd5waXxBvV31eCZqiA==
   dependencies:
     "@types/chai" "*"
     "@types/sinon" "*"
