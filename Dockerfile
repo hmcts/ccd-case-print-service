@@ -9,6 +9,8 @@ ARG BUILD_DEPS='bzip2 patch'
 COPY package.json yarn.lock .snyk ./
 RUN apt-get update && apt-get install -y $BUILD_DEPS --no-install-recommends \
     && rm -rf /var/lib/apt/lists/* \
+    && curl -o- -L https://yarnpkg.com/install.sh | bash -s \
+    && export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH" \
     && yarn install 
 
 # ---- Base Image ----
@@ -18,7 +20,8 @@ COPY config ./config
 
 COPY gulpfile.js tsconfig.json ./
 
-RUN yarn sass \
+RUN export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH" \
+    && yarn sass \
     && rm -rf node_modules \
     && yarn install --production \
     && apt-get purge -y --auto-remove $BUILD_DEPS
