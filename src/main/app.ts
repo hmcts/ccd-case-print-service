@@ -22,13 +22,6 @@ const env = process.env.NODE_ENV || "dev";
 export const app: express.Express = express();
 app.locals.ENV = env;
 
-// TODO: adjust these values to your application
-Logger.config({
-  environment: process.env.NODE_ENV,
-  microservice: "expressjs-template",
-  team: "platform-engineering",
-});
-
 // setup logging of HTTP requests
 app.use(Express.accessLogger());
 
