@@ -16,3 +16,4 @@ case_data_probate_template_url: http://localhost:4104
 appInsights:
   instrumentationKey: "some-key"
   enabled: true
+  roleName: "ccd-case-print-service"

@@ -3,11 +3,12 @@
   "version": "1.2.0",
   "private": true,
   "engines": {
-    "node": "^8.11.1"
+    "node": "^8.11.1",
+    "yarn": "^1.12.3"
   },
   "scripts": {
     "start": "./node_modules/.bin/ts-node -r tsconfig-paths/register src/main/server.ts",
-    "lint": "tslint --project tsconfig.json --type-check && sass-lint -v -q",
+    "lint": "tslint --project tsconfig.json && sass-lint -v -q",
     "sass": "gulp sass copy-files",
     "test": "NODE_ENV=mocha LOG_LEVEL=OFF mocha --compilers ts:ts-node/register -r tsconfig-paths/register $(find src/test \\( -name '*.ts' -or -name '*.js' \\) ! -path '*a11y*' ! -path '*/routes/*') --reporter mochawesome --reporter-options reportFilename=unit,inlineAssets=true,reportTitle=expressjs-template-unit",
     "test:routes": "NODE_ENV=mocha LOG_LEVEL=OFF mocha --compilers ts:ts-node/register -r tsconfig-paths/register $(find src/test \\( -name '*.ts' -or -name '*.js' \\) -path '*/routes/*') --reporter mochawesome --reporter-options reportFilename=routes,inlineAssets=true,reportTitle=expressjs-template-routes",
@@ -25,9 +26,9 @@
   },
   "dependencies": {
     "@hmcts/nodejs-healthcheck": "^1.4.5",
-    "@hmcts/nodejs-logging": "^2.0.0",
+    "@hmcts/nodejs-logging": "^3.0.0",
     "@types/node": "^10.5.4",
-    "applicationinsights": "^1.0.2",
+    "applicationinsights": "^1.0.8",
     "body-parser": "^1.18.1",
     "config": "^1.26.2",
     "cookie-parser": "^1.4.3",
