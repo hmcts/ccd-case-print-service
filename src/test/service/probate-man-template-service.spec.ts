@@ -32,7 +32,6 @@ describe("probate man template service", () => {
       nock("http://localhost:4104")
         .get("/template/probateManLegacyCase")
         .reply(200, expectedResult);
-
       const result = await getProbateManLegacyCaseTemplate(req);
       expect(result).to.deep.equal(expectedResult);
     });
