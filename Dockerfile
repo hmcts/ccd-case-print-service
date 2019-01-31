@@ -1,6 +1,6 @@
 # ---- Base Image ----
 FROM node:8.12.0-slim as base
-MAINTAINER https://github.com/hmcts/ccd-docker
+MAINTAINER https://github.com/hmcts/ccd-case-print-service
 
 WORKDIR /usr/src/app
 
