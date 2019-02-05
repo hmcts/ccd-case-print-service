@@ -9,6 +9,26 @@ properties(
 def product = "ccd"
 def component = "case-print-service"
 
+def secrets = [
+    's2s-${env}': [
+        secret('microservicekey-ccd-ps', 'IDAM_SERVICE_KEY'),
+    ]
+]
+
+def vaultOverrides = [
+    'preview': 'aat',
+    'spreview': 'saat'
+]
+
+static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
+    [ $class: 'AzureKeyVaultSecret',
+      secretType: 'Secret',
+      name: secretName,
+      version: '',
+      envVariable: envVar
+    ]
+}
+
 withPipeline("nodejs", product, component) {
     onMaster {
         enableSlackNotifications('#ccd-master-builds')
@@ -20,7 +40,11 @@ withPipeline("nodejs", product, component) {
         enableSlackNotifications('#ccd-pr-builds')
     }
 
+    overrideVaultEnvironments(vaultOverrides)
+    loadVaultSecrets(secrets)
+
     enableDockerBuild()
+    installCharts()
 
     afterCheckout {
         sh "yarn cache clean"
