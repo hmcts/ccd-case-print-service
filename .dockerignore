@@ -14,3 +14,4 @@
 !src/main/**
 !config/**
 !acb.yaml
+!Dockerfile
