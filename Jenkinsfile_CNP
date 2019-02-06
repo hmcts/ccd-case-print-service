@@ -4,7 +4,7 @@ properties(
          pipelineTriggers([[$class: 'GitHubPushTrigger']])]
 )
 
-@Library("Infrastructure@debug-mode-acr")
+@Library("Infrastructure")
 
 def product = "ccd"
 def component = "case-print-service"
