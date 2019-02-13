@@ -91,7 +91,7 @@
     "nyc": "13.0.0",
     "pa11y": "^4.13.2",
     "proxyquire": "^1.8.0",
-    "remap-istanbul": "^0.9.6",
+    "remap-istanbul": "^0.13.0",
     "sass-lint": "^1.11.1",
     "sinon": "^3.3.0",
     "sinon-chai": "^2.13.0",
