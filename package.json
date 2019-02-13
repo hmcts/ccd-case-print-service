@@ -79,7 +79,7 @@
     "karma-jasmine": "^1.0.2",
     "karma-mocha-reporter": "^2.0.3",
     "karma-phantomjs-launcher": "^1.0.4",
-    "karma-remap-istanbul": "0.2.1",
+    "karma-remap-istanbul": "0.6.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "2.0.2",
     "mocha": "^3.5.3",
