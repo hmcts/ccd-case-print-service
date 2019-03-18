@@ -1,5 +1,5 @@
-idam_api_url = "https://preprod-idamapi.reform.hmcts.net:3511"
-#idam_api_url = "https://idam-api.aat.platform.hmcts.net"
+#idam_api_url = "https://preprod-idamapi.reform.hmcts.net:3511"
+idam_api_url = "https://idam-api.aat.platform.hmcts.net"
 authentication_web_url = "https://idam.preprod.ccidam.reform.hmcts.net"
 probate_template_url = "http://probate-back-office-aat.service.core-compute-aat.internal"
 external_host_name = "return-case-doc-ccd.nonprod.platform.hmcts.net"
