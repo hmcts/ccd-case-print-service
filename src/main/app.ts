@@ -36,7 +36,7 @@ app.set("view engine", "njk");
 logger.info("****************");
 logger.info("**************** " + JSON.stringify(config.get<HelmetConfig>("security")));
 
-app.get("/health", healthcheck.configure({
+app.get(["/health", "/health/liveness"], healthcheck.configure({
   checks: {},
 }));
 

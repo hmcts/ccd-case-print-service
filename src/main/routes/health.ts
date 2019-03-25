@@ -4,7 +4,7 @@ import * as os from "os";
 
 const router = express.Router();
 
-router.get("/health", healthcheck.configure({
+router.get(["/health", "/health/liveness"], healthcheck.configure({
   buildInfo: {
     host: os.hostname(),
     name: "ccd-case-print-service",
