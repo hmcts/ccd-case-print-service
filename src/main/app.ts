@@ -5,7 +5,7 @@ import * as csrf from "csurf";
 import * as express from "express";
 import * as expressNunjucks from "express-nunjucks";
 import * as favicon from "serve-favicon";
-import * as healthcheck from "@hmcts/nodejs-healthcheck";
+//import * as healthcheck from "@hmcts/nodejs-healthcheck";
 import * as path from "path";
 import { authCheckerUserOnlyFilter } from "./user/auth-checker-user-only-filter";
 import { Express, Logger } from "@hmcts/nodejs-logging";
@@ -36,9 +36,9 @@ app.set("view engine", "njk");
 logger.info("****************");
 logger.info("**************** " + JSON.stringify(config.get<HelmetConfig>("security")));
 
-app.get(["/health", "/health/liveness"], healthcheck.configure({
-  checks: {},
-}));
+//app.get(["/health", "/health/liveness"], healthcheck.configure({
+//  checks: {},
+//}));
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "/public/img/favicon.ico")));
