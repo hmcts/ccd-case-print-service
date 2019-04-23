@@ -38,7 +38,7 @@
     "govuk-elements-sass": "^3.1.1",
     "govuk_template_jinja": "^0.23.0",
     "helmet": "^3.8.1",
-    "jquery": "^3.2.1",
+    "jquery": "^3.4.0",
     "jwt-decode": "^2.2.0",
     "mime": "^1.4.0",
     "node-fetch": "^1.7.3",
