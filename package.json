@@ -60,7 +60,7 @@
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "debug": "^3.1.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-livereload": "^3.8.1",
     "gulp-nodemon": "^2.2.1",
     "gulp-plumber": "^1.1.0",
