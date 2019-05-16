@@ -5,7 +5,7 @@ import * as csrf from "csurf";
 import * as express from "express";
 import * as expressNunjucks from "express-nunjucks";
 import * as favicon from "serve-favicon";
-//import * as healthcheck from "@hmcts/nodejs-healthcheck";
+import * as healthcheck from "@hmcts/nodejs-healthcheck";
 import * as path from "path";
 import { authCheckerUserOnlyFilter } from "./user/auth-checker-user-only-filter";
 import { Express, Logger } from "@hmcts/nodejs-logging";
@@ -20,6 +20,7 @@ enableAppInsights();
 
 const env = process.env.NODE_ENV || "dev";
 export const app: express.Express = express();
+export const appHealth: express.Express = express();
 app.locals.ENV = env;
 
 // setup logging of HTTP requests
@@ -36,9 +37,11 @@ app.set("view engine", "njk");
 logger.info("****************");
 logger.info("**************** " + JSON.stringify(config.get<HelmetConfig>("security")));
 
-//app.get(["/health", "/health/liveness"], healthcheck.configure({
-//  checks: {},
-//}));
+const healthConfig = {
+  checks: {},
+};
+healthcheck.addTo(appHealth, healthConfig);
+app.use(appHealth);
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "/public/img/favicon.ico")));
