@@ -20,7 +20,7 @@ enableAppInsights();
 
 const env = process.env.NODE_ENV || "dev";
 export const app: express.Express = express();
-export const appHealth: express.Express = express();
+const appHealth: express.Express = express();
 app.locals.ENV = env;
 
 // setup logging of HTTP requests
