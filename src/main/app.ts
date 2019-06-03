@@ -20,6 +20,7 @@ enableAppInsights();
 
 const env = process.env.NODE_ENV || "dev";
 export const app: express.Express = express();
+const appHealth: express.Express = express();
 app.locals.ENV = env;
 
 // setup logging of HTTP requests
@@ -36,9 +37,11 @@ app.set("view engine", "njk");
 logger.info("****************");
 logger.info("**************** " + JSON.stringify(config.get<HelmetConfig>("security")));
 
-app.get("/health", healthcheck.configure({
+const healthConfig = {
   checks: {},
-}));
+};
+healthcheck.addTo(appHealth, healthConfig);
+app.use(appHealth);
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "/public/img/favicon.ico")));
