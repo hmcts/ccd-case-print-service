@@ -4,8 +4,9 @@ nodejs:
   image: ${IMAGE_NAME}
   environment:
     IDAM_PRINT_SERVICE_KEY: ${IDAM_SERVICE_KEY}
-    IDAM_API_URL: http://betaDevBccidamAppLB.reform.hmcts.net
-    IDAM_AUTHENTICATION_WEB_URL: https://idam-test.dev.ccidam.reform.hmcts.net
+    IDAM_API_URL: https://idam-api.aat.platform.hmcts.net
+    IDAM_AUTHENTICATION_WEB_URL: https://idam-web-public.aat.platform.hmcts.net
     IDAM_S2S_AUTH: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
-    IDAM_BASE_URL: http://betaDevBccidamAppLB.reform.hmcts.net
+    IDAM_BASE_URL: https://idam-api.aat.platform.hmcts.net
+    IDAM_S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
  
