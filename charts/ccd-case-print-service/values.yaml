@@ -1,11 +1,6 @@
 nodejs:
-  releaseNameOverride: ${SERVICE_NAME}-nodejs
-  ingressHost: ${SERVICE_FQDN}
-  image: ${IMAGE_NAME}
+  image: 'hmctspublic.azurecr.io/ccd/case-print-service:latest'
   applicationPort: 3100
-  memoryRequests: 256Mi
-  cpuRequests: 0.2
-  memoryLimits: 512Mi
   cpuLimits: 1
   environment:
     # Node specific vars
@@ -14,7 +9,6 @@ nodejs:
     HPKP_MAX_AGE: 2592000
     HPKP_SHA256S: Set-proper-SHA256s
     NODE_ENV: production
-    IDAM_PRINT_SERVICE_KEY: ${IDAM_SERVICE_KEY}
     UV_THREADPOOL_SIZE: 64
     NODE_CONFIG_DIR: ./config
     TS_BASE_URL: ./src/main
@@ -25,12 +19,4 @@ nodejs:
     REFORM_TEAM: ccd
     REFORM_SERVICE_NAME: case-print-service
     REFORM_ENVIRONMENT: aat
-
-    # Application vars
-    # IDAM
-    IDAM_API_URL: http://betaDevBccidamAppLB.reform.hmcts.net
-    IDAM_AUTHENTICATION_WEB_URL: https://idam-test.dev.ccidam.reform.hmcts.net
-    IDAM_S2S_AUTH: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
-
-    IDAM_BASE_URL: http://betaDevBccidamAppLB.reform.hmcts.net
     IDAM_SERVICE_NAME: ccd_ps
