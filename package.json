@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "private": true,
   "engines": {
-    "node": "^8.11.1",
+    "node": "^12.14.1",
     "yarn": "^1.12.3"
   },
   "scripts": {
@@ -42,7 +42,7 @@
     "jwt-decode": "^2.2.0",
     "mime": "^1.4.0",
     "node-fetch": "^1.7.3",
-    "nunjucks": "^3.0.1",
+    "nunjucks": "^3.2.0",
     "nunjucks-date-filter": "^0.1.1",
     "nunjucks-numeral-filter": "^0.0.2",
     "otp": "^0.1.3",
