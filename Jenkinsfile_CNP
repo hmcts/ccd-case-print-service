@@ -77,10 +77,6 @@ withPipeline("nodejs", product, component) {
         sh "yarn cache clean"
     }
 
-    after('build') {
-      sh "yarn check"
-    }
-
     after('functionalTest:preview') {
       steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/target/cucumber/**/*'
     }
