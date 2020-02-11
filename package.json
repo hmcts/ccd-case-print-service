@@ -89,7 +89,7 @@
     "nock": "^9.1.4",
     "node-mocks-http": "^1.6.5",
     "nsp": "^3.2.1",
-    "nyc": "13.0.0",
+    "nyc": "15.0.0",
     "pa11y": "^4.13.2",
     "proxyquire": "^1.8.0",
     "remap-istanbul": "^0.9.6",
