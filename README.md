@@ -17,7 +17,7 @@ The output comprises a summary, with some key information such as Case Number an
 ## Getting started
 
 ### Prerequisites
-- [Node.js](https://nodejs.org/en) version 8.8.0
+- [Node.js](https://nodejs.org/en) version >= 12.0.0
 
 ### Environment variables
 
