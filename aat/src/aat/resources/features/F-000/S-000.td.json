@@ -26,7 +26,6 @@
     "responseCode" : 200,
     "responseMessage" : "OK",
     "headers" : {
-      "Connection" : "[[ANYTHING_PRESENT]]",
       "Content-Security-Policy" : "[[ANYTHING_PRESENT]]",
       "Referrer-Policy" : "[[ANYTHING_PRESENT]]",
       "Strict-Transport-Security" : "[[ANYTHING_PRESENT]]",
@@ -34,6 +33,7 @@
       "Content-Type" : "application/json; charset=utf-8",
       "Date" : "[[ANYTHING_PRESENT]]",
       "Etag" : "[[ANYTHING_PRESENT]]",
+      "Vary" : "Accept-Encoding",
       "Request-Context" : "appId=cid-v1:",
       "X-Content-Security-Policy" : "[[ANYTHING_PRESENT]]",
       "X-Content-Type-Options" : "[[ANYTHING_PRESENT]]",
