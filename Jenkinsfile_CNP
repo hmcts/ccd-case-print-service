@@ -43,7 +43,6 @@ withPipeline("nodejs", product, component) {
     overrideVaultEnvironments(vaultOverrides)
     loadVaultSecrets(secrets)
 
-    enableDockerBuild()
     installCharts()
 
     afterCheckout {
