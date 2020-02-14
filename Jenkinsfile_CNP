@@ -43,11 +43,13 @@ withPipeline("nodejs", product, component) {
     overrideVaultEnvironments(vaultOverrides)
     loadVaultSecrets(secrets)
 
-    enableDockerBuild()
     installCharts()
 
     afterCheckout {
         sh "yarn cache clean"
     }
 
+    after('build') {
+        sh "yarn check"
+    }
 }
