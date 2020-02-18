@@ -18,7 +18,7 @@
     "test:acceptance": "echo 'TODO - CALL JAVA INTEGRATION TEST'",
     "test:nsp": "nsp check",
     "test:smoke": "echo SMOKE TESTS NOT CONFIGURED",
-    "test:functional": "echo 'TODO - FUNCTIONAL TEST'",
+    "test:functional": "./aat/gradlew -p aat functional",
     "sonar-scan": "NODE_PATH=. sonar-scanner -X",
     "setup": "echo 'No setup required'",
     "snyk-protect": "snyk protect",
