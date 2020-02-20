@@ -1,10 +1,5 @@
 nodejs:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
   environment:
-    CASE_DATA_STORE_URL: http://ccd-data-store-api-aat.service.core-compute-aat.internal
-    CASE_DATA_PROBATE_TEMPLATE_URL: http://probate-back-office-aat.service.core-compute-aat.internal
-
-    IDAM_API_URL: https://preprod-idamapi.reform.hmcts.net:3511
     IDAM_AUTHENTICATION_WEB_URL: https://idam.preprod.ccidam.reform.hmcts.net
-
-    IDAM_BASE_URL: https://preprod-idamapi.reform.hmcts.net:3511
-    IDAM_S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal

@@ -1,5 +1,7 @@
 nodejs:
+  aadIdentityName: ccd
   image: 'hmctspublic.azurecr.io/ccd/case-print-service:latest'
+  ingressHost: return-case-doc-ccd.{{ .Values.global.environment }}.platform.hmcts.net
   applicationPort: 3100
   cpuLimits: 1
   environment:
@@ -12,11 +14,21 @@ nodejs:
     UV_THREADPOOL_SIZE: 64
     NODE_CONFIG_DIR: ./config
     TS_BASE_URL: ./src/main
-
-    CASE_DATA_PROBATE_TEMPLATE_URL: http://betaDevBprobateApp01.reform.hmcts.net:4104
+    CASE_DATA_STORE_URL: http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    CASE_DATA_PROBATE_TEMPLATE_URL: http://probate-back-office-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
 
     # Logging vars
     REFORM_TEAM: ccd
     REFORM_SERVICE_NAME: case-print-service
     REFORM_ENVIRONMENT: aat
+    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    IDAM_BASE_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    IDAM_AUTHENTICATION_WEB_URL: 'https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/'
+    IDAM_S2S_AUTH: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     IDAM_SERVICE_NAME: ccd_ps
+  keyVaults:
+    ccd:
+      secrets:
+        - microservicekey-ccd-ps
+        - AppInsightsInstrumentationKey
