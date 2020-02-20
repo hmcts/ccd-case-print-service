@@ -15,7 +15,8 @@ COPY src/main ./src/main
 COPY config ./config
 COPY gulpfile.js tsconfig.json ./
 RUN yarn sass \
-  && yarn install --production
+  && yarn install --production \
+  && yarn cache clean
 
 # ---- Runtime Image ----
 FROM ${base} as runtime
