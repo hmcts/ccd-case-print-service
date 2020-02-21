@@ -1,11 +1,11 @@
 # ---- Base Image ----
-ARG base=hmctspublic.azurecr.io/base/node:12-stretch-slim
+ARG base=hmctspublic.azurecr.io/base/node:12-alpine
 
 FROM ${base} as base
 USER root
-RUN apt-get update \
-  && apt-get install -y bzip2 patch --no-install-recommends \
-  && rm -rf /var/lib/apt/lists/*
+RUN apk update \
+  && apk add bzip2 patch \
+  && rm -rf /var/lib/ /lists/*
 COPY package.json yarn.lock .snyk ./
 RUN yarn install --ignore-optional
 
