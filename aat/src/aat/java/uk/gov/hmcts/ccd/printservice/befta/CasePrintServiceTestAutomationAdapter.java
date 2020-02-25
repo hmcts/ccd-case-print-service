@@ -14,8 +14,7 @@ import uk.gov.hmcts.befta.BeftaMain;
 import uk.gov.hmcts.befta.DefaultTestAutomationAdapter;
 import uk.gov.hmcts.befta.data.UserData;
 import uk.gov.hmcts.befta.exception.FunctionalTestException;
-import uk.gov.hmcts.ccd.datastore.befta.TestDataLoaderToDefinitionStore;
-
+import uk.gov.hmcts.befta.dse.ccd.TestDataLoaderToDefinitionStore;
 public class CasePrintServiceTestAutomationAdapter extends DefaultTestAutomationAdapter {
 
     private TestDataLoaderToDefinitionStore loader = new TestDataLoaderToDefinitionStore(this);
