@@ -1,9 +1,7 @@
 nodejs:
-  releaseNameOverride: ${SERVICE_NAME}-nodejs
-  ingressHost: ${SERVICE_FQDN}
   image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
   environment:
-    IDAM_PRINT_SERVICE_KEY: ${IDAM_SERVICE_KEY}
     IDAM_API_URL: https://idam-api.aat.platform.hmcts.net
     IDAM_AUTHENTICATION_WEB_URL: https://idam-web-public.aat.platform.hmcts.net
     IDAM_S2S_AUTH: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
