@@ -16,7 +16,6 @@
     "test:unit": "NODE_ENV=test NODE_PATH=. mocha 'test/**/*.spec.js' --reporter spec --recursive",
     "test:coverage": "NODE_ENV=mocha LOG_LEVEL=OFF nyc mocha --compilers ts:ts-node/register -r tsconfig-paths/register $(find src/test \\( -name '*.ts' -or -name '*.js' \\) ! -path '*a11y*' ! -path '*/routes/*')",
     "test:acceptance": "echo 'TODO - CALL JAVA INTEGRATION TEST'",
-    "test:nsp": "nsp check",
     "test:smoke": "echo SMOKE TESTS NOT CONFIGURED",
     "test:functional": "./aat/gradlew -p aat functional",
     "sonar-scan": "NODE_PATH=. sonar-scanner -X",
@@ -29,6 +28,7 @@
     "@hmcts/nodejs-logging": "^3.0.0",
     "@types/node": "^10.5.4",
     "applicationinsights": "^1.0.8",
+    "assign-deep": "^1.0.1",
     "body-parser": "^1.18.1",
     "config": "^1.26.2",
     "cookie-parser": "^1.4.3",
@@ -52,7 +52,7 @@
     "snyk": "^1.126.0",
     "ts-node": "^3.3.0",
     "tsconfig-paths": "^2.6.0",
-    "typescript": "^2.6.2"
+    "typescript": "^3.2.1"
   },
   "devDependencies": {
     "@types/chai-as-promised": "^7.1.0",
@@ -88,7 +88,6 @@
     "moment": "^2.22.2",
     "nock": "^9.1.4",
     "node-mocks-http": "^1.6.5",
-    "nsp": "^3.2.1",
     "nyc": "15.0.0",
     "pa11y": "^4.13.2",
     "proxyquire": "^1.8.0",

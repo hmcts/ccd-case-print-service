@@ -44,6 +44,13 @@ data "azurerm_key_vault_secret" "idam_service_key" {
   key_vault_id = "${data.azurerm_key_vault.s2s_vault.id}"
 }
 
+resource azurerm_key_vault_secret "idam_service_secret" {
+  name = "microservicekey-ccd-ps"
+  value = "${data.azurerm_key_vault_secret.idam_service_key.value}"
+  key_vault_id = "${data.azurerm_key_vault.ccd_shared_key_vault.id}"
+}
+
+
 module "ccd-case-print-service" {
   source = "git@github.com:hmcts/cnp-module-webapp?ref=master"
   product = "${var.product}-${var.component}"
