@@ -44,6 +44,7 @@ withPipeline("nodejs", product, component) {
     loadVaultSecrets(secrets)
 
     installCharts()
+    enableAksStagingDeployment()
 
     afterCheckout {
         sh "yarn cache clean"
