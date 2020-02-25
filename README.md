@@ -83,3 +83,36 @@ This must be done prior to a final call on the response, such as `res.send(...)`
 In addition, if the Nunjucks template to be rendered contains any "special" characters, such as currency symbols or "curly" versions of quote marks, then the template should be edited and encoded as UTF-8.
 
 If, for whatever reason, this is not possible then these characters must be replaced with the regular ASCII versions where appropriate (e.g. straight quote marks), or (ideally) the corresponding HTML entities (e.g. `&pound;`, `&lsquo;`, `&rsquo;`).
+
+## Functional tests
+
+The functional tests are located in `aat` folder. These are the tests run against an environment. For example if you would
+like to test your local environment you'll need to export the following variables on your `.bash_profile` script.
+
+```bash
+#Functional Tests
+export TEST_URL=http://localhost:3100
+export S2S_URL=http://localhost:4502
+export IDAM_URL=http://localhost:5000
+export BEFTA_S2S_CLIENT_ID=ccd_gw
+export BEFTA_S2S_CLIENT_SECRET=AAAAAAAAAAAAAAAC
+export CCD_CASEWORKER_AUTOTEST_EMAIL=someemail@blob.com
+export CCD_CASEWORKER_AUTOTEST_PASSWORD=XYZT
+export CCD_IMPORT_AUTOTEST_EMAIL=someemail@blob.com
+export CCD_IMPORT_AUTOTEST_PASSWORD=XYZT
+```
+
+> Note: For details of the emails and passwords to use in a local environment see the [Create users and roles](https://github.com/hmcts/ccd-docker#3-create-users-and-roles) steps in [ccd-docker](https://github.com/hmcts/ccd-docker) project.
+
+The tests can be run using:
+
+```
+$ yarn test:functional
+```
+
+or to run using gradle directly:
+
+```
+$ cd ./aat/
+$ ./gradlew functional
+```
