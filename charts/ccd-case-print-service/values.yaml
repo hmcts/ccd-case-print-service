@@ -4,6 +4,9 @@ nodejs:
   ingressHost: return-case-doc-ccd.{{ .Values.global.environment }}.platform.hmcts.net
   applicationPort: 3100
   cpuLimits: 1
+  memoryRequests: '512Mi'
+  cpuRequests: '250m'
+  memoryLimits: '2048Mi'
   environment:
     # Node specific vars
     USE_CSRF_PROTECTION: true
