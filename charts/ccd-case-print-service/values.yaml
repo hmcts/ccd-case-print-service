@@ -23,7 +23,7 @@ nodejs:
     # Logging vars
     REFORM_TEAM: ccd
     REFORM_SERVICE_NAME: case-print-service
-    REFORM_ENVIRONMENT: aat
+    REFORM_ENVIRONMENT: "{{ .Values.global.environment }}"
     IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
     IDAM_BASE_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
     IDAM_AUTHENTICATION_WEB_URL: 'https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/'
