@@ -1,7 +1,7 @@
 nodejs:
   aadIdentityName: ccd
   image: 'hmctspublic.azurecr.io/ccd/case-print-service:latest'
-  ingressHost: ccd-case-print-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  ingressHost: return-case-doc-ccd.{{ .Values.global.environment }}.platform.hmcts.net
   applicationPort: 3100
   cpuLimits: 1
   memoryRequests: '512Mi'
