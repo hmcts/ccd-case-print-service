@@ -2,7 +2,7 @@ description: Helm chart for the HMCTS CCD Case Print Service
 apiVersion: v1
 name: ccd-case-print-service
 home: https://github.com/hmcts/ccd-case-print-service
-version: 1.0.8
+version: 1.0.9
 maintainers:
   - name: HMCTS CCD Dev Team
     email: ccd-devops@HMCTS.NET
