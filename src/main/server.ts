@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+require("@hmcts/properties-volume").addTo(require("config"));
 import { Logger } from "@hmcts/nodejs-logging";
 import { app } from "./app";
 
