@@ -7,6 +7,7 @@ export function getCase(req, jid, ctid, cid) {
   const url = get("case_data_store_url") + "/caseworkers/" + userId + "/jurisdictions/" + jid + "/case-types/" + ctid +
     "/cases/" + cid;
   const authorization = req.get(userReqAuth.AUTHORIZATION);
+  console.log("userId:", userId);
   return fetch(url, {
                       headers: {
                         "Authorization": authorization,

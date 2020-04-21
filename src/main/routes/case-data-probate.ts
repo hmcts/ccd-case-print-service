@@ -26,13 +26,13 @@ router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid/probate/:tid", (req,
           res.send(response);
         })
         .catch((error) => {
-          // console.error("Case data response failed", error);
+          console.error("Case data response failed", error);
           res.status(error.status).send(error);
         });
 
       })
     .catch((error) => {
-      // console.error("Case data retrieval failed", error);
+      console.error("Case data retrieval failed", error);
       res.status(error.status).send(error);
     });
 });
