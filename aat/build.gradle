@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-  testCompile group: 'uk.gov.hmcts', name: 'befta-fw', version: '2.7.0-RDM-7650-prerelease-2'
+  testCompile group: 'uk.gov.hmcts', name: 'befta-fw', version: '2.7.0'
 }
 
 sourceSets {
