@@ -24,7 +24,7 @@
     "prepare": "npm run snyk-protect"
   },
   "dependencies": {
-    "@hmcts/nodejs-healthcheck": "^1.5.1",
+    "@hmcts/nodejs-healthcheck": "^1.6.0",
     "@hmcts/nodejs-logging": "^3.0.0",
     "@types/node": "^10.5.4",
     "applicationinsights": "^1.0.8",
