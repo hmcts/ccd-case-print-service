@@ -1,5 +1,0 @@
-idam_api_url = "https://idam-api.demo.platform.hmcts.net/"
-authentication_web_url = "https://idam-web-public.demo.platform.hmcts.net/"
-probate_template_url = "http://probate-sol-ccd-service-demo.service.core-compute-demo.internal"
-external_host_name = "return-case-doc.ccd.demo.platform.hmcts.net"
-capacity = "2"
