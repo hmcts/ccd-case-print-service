@@ -14,8 +14,8 @@ describe("UserRequestAuthorizer", () => {
     const USER_ID = "1";
     const ROLE_1 = "role1";
     const DETAILS = {
-      id: USER_ID,
       roles: [ROLE_1],
+      uid: USER_ID,
     };
     const COOKIES = {
       [userReqAuth.COOKIE_ACCESS_TOKEN]: "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxNW91NWFi",

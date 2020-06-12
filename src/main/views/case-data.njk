@@ -9,7 +9,7 @@
       <strong>Case Number:</strong> {{ caseData.id }}<br>
       <strong>Jurisdiction:</strong> {{ caseData.jurisdiction }}<br>
       <strong>Case Type:</strong> {{ caseData.case_type_id }}<br>
-      <strong>Printed by:</strong> {{ user.forename }} {{ user.surname }} ({{ user.email }})
+      <strong>Printed by:</strong> {{ user.given_name }} {{ user.family_name }} ({{ user.sub }})
     </p>
     <p>
       <strong>Printed on:</strong> {{ generatedDateTime }}

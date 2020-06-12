@@ -3,7 +3,7 @@ import { fetch } from "../util/fetch";
 import * as userReqAuth from "../user/user-request-authorizer";
 
 export function getCase(req, jid, ctid, cid) {
-  const userId = req.authentication.user.id;
+  const userId = req.authentication.user.uid;
   const url = get("case_data_store_url") + "/caseworkers/" + userId + "/jurisdictions/" + jid + "/case-types/" + ctid +
     "/cases/" + cid;
   const authorization = req.get(userReqAuth.AUTHORIZATION);
