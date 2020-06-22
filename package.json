@@ -16,7 +16,7 @@
     "test:unit": "NODE_ENV=test NODE_PATH=. mocha 'test/**/*.spec.js' --reporter spec --recursive",
     "test:coverage": "NODE_ENV=mocha LOG_LEVEL=OFF nyc mocha --compilers ts:ts-node/register -r tsconfig-paths/register $(find src/test \\( -name '*.ts' -or -name '*.js' \\) ! -path '*a11y*' ! -path '*/routes/*')",
     "test:acceptance": "echo 'TODO - CALL JAVA INTEGRATION TEST'",
-    "test:smoke": "echo SMOKE TESTS NOT CONFIGURED",
+    "test:smoke": "./aat/gradlew -p aat smoke",
     "test:functional": "./aat/gradlew -p aat functional",
     "sonar-scan": "NODE_PATH=. sonar-scanner -X",
     "setup": "echo 'No setup required'",

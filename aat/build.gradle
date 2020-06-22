@@ -39,10 +39,12 @@ configurations {
 }
 
 task smoke(type: Test) {
-  setTestClassesDirs(sourceSets.aat.output.classesDirs)
-  useJUnitPlatform {
-    includeTags 'smoke'
-  }
+    setTestClassesDirs(sourceSets.aat.output.classesDirs)
+    setClasspath(sourceSets.aat.runtimeClasspath)
+    include "uk/gov/hmcts/ccd/printservice/befta/**"
+    useJUnitPlatform {
+        includeTags 'smoke'
+    }
   doLast {
     generateCucumberReports.enabled = true
     javaexec {
