@@ -40,8 +40,7 @@ configurations {
 }
 
 task smoke(type: Test) {
-  group = 'Delivery pipeline'
-  description = 'Executes functional tests against an AAT CCD Case Print Service API instance'
+  description = 'Executes smoke tests against an the CCD Case Print Service API instance just deployed'
   setTestClassesDirs(sourceSets.aat.output.classesDirs)
 
   doFirst {
@@ -57,13 +56,7 @@ task smoke(type: Test) {
 }
 
 task functional(type: Test) {
-  systemProperty "http.proxyHost", System.getProperty('http.proxyHost')
-  systemProperty "http.proxyPort", System.getProperty('http.proxyPort')
-  systemProperty "https.proxyHost", System.getProperty('https.proxyHost')
-  systemProperty "https.proxyPort", System.getProperty('https.proxyPort')
-
-  group = 'Delivery pipeline'
-  description = 'Executes functional tests against an AAT CCD Case Print Service API instance'
+  description = 'Executes functional tests against an the CCD Case Print Service API instance just deployed'
   setTestClassesDirs(sourceSets.aat.output.classesDirs)
 
   doFirst {
