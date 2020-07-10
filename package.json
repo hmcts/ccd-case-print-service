@@ -109,7 +109,9 @@
     "gulp-livereload": "^4.0.2",
     "assign-deep":"^1.0.1",
     "qs": "^6.3.2",
-    "http-proxy": "^1.18.1"
+    "http-proxy": "^1.18.1",
+    "acorn": "^7.1.1",
+    "jquery": "^3.5.0"
   },
   "snyk": true,
   "nyc": {
