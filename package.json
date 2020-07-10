@@ -108,7 +108,8 @@
     "growl": "^1.10.2",
     "gulp-livereload": "^4.0.2",
     "assign-deep":"^1.0.1",
-    "qs": "^6.3.2"
+    "qs": "^6.3.2",
+    "http-proxy": "^1.18.1"
   },
   "snyk": true,
   "nyc": {
