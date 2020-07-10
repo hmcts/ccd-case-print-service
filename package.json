@@ -102,6 +102,9 @@
     "tslint": "^5.7.0",
     "webpack": "^2"
   },
+  "resolutions": {
+    "js-yaml": "3.13.1"
+  },
   "snyk": true,
   "nyc": {
     "extension": [
