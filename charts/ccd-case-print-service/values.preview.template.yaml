@@ -7,4 +7,4 @@ nodejs:
     IDAM_S2S_AUTH: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
     IDAM_BASE_URL: https://idam-api.aat.platform.hmcts.net
     IDAM_S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
- 
+    CASE_DATA_STORE_URL: http://ccd-data-store-api-pr-922.service.core-compute-preview.internal
