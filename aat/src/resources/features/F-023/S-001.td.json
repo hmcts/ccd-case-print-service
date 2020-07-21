@@ -1,0 +1,22 @@
+{
+  "title": "Must return a list of documents that can be printed",
+  "_guid_": "S-001",
+  "_extends_": "F-023_Test_Data_Base",
+  "specs": [
+    "an active profile in CCD - wants to see a list of valid documents they can print",
+    "contains a valid print URL configured in the definition file with a valid Jurisdiction and Case Type",
+    "contains a list of documents with the following attributes for each document: Name, Document Type and Document Generation URL"
+  ],
+
+
+  "expectedResponse": {
+    "_extends_": "Common_201_Response",
+    "body": {
+      "case": "${[scenarioContext][testData][request][pathVariables][cid]}",
+      "user": "${[scenarioContext][theInvokingUser][id]}",
+      "activity": "edit"
+    }
+  }
+}
+
+

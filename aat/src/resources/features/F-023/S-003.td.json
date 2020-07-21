@@ -1,0 +1,22 @@
+{
+  "title": "Must return a negative response when invalid URL defined in definition file",
+  "_guid_": "S-002",
+  "_extends_": "F-023_Test_Data_Base",
+  "specs": [
+    "an active profile in CCD - wants to see a list of valid documents they can print",
+    "contains contains a callback which encounters a timeout error"
+  ],
+
+  "request": {
+    "pathVariables": {
+      "ctid": "UN_KNOWN"
+    }
+  },
+
+  "expectedResponse": {
+    "_extends_": "Common_404_Response"
+  }
+}
+
+
+
