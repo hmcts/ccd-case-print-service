@@ -1,6 +1,6 @@
 {
   "title": "Must return a negative response when invalid URL defined in definition file",
-  "_guid_": "S-002",
+  "_guid_": "S-003",
   "_extends_": "F-023_Test_Data_Base",
   "specs": [
     "an active profile in CCD - wants to see a list of valid documents they can print",
