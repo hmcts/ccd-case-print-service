@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 set +e
-yarn audit
+yarn audit --groups dependencies
 result=$?
 set -e
 
 if [[ "$result" != 0 ]]; then
   if [[ -f yarn-audit-known-issues ]]; then
     set +e
-    yarn audit --json | grep auditAdvisory > yarn-audit-issues
+    yarn audit --groups dependencies --json | grep auditAdvisory > yarn-audit-issues
     set -e
     new_vulnerabilities=false
     while read -r line; do
