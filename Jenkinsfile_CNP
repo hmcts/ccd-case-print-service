@@ -48,6 +48,7 @@ env.CCD_CASEWORKER_AUTOTEST_EMAIL = "auto.test.cnp@gmail.com"
 env.CCD_IMPORT_AUTOTEST_EMAIL = "ccd.docker.default@hmcts.net"
 env.BEFTA_RESPONSE_HEADER_CHECK_POLICY = "JUST_WARN"
 env.CCD_DATA_STORE_API_BASE_URL = "http://ccd-data-store-api-pr-601.service.core-compute-preview.internal"
+env.DM_STORE_BASE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
 
 
 withPipeline("nodejs", product, component) {
