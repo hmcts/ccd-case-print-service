@@ -14,9 +14,8 @@ def secrets = [
         secret('ccd-caseworker-autotest-password', 'CCD_CASEWORKER_AUTOTEST_PASSWORD'),
         secret('ccd-importer-autotest-password', 'CCD_IMPORT_AUTOTEST_PASSWORD'),
         secret('ccd-api-gateway-oauth2-client-secret', 'OAUTH2_CLIENT_SECRET'),
-        secret('ccd-private-caseworker-email', 'CCD_PRIVATE_CASEWORKER_EMAIL'),
-        secret('ccd-private-caseworker-password', 'CCD_PRIVATE_CASEWORKER_PASSWORD'),
-
+        secret('ccd-caseworker-autotest-email', 'CCD_CASEWORKER_AUTOTEST_EMAIL'),
+        secret('ccd-caseworker-autotest-password', 'CCD_CASEWORKER_AUTOTEST_PASSWORD'),
     ],
     's2s-${env}': [
         secret('microservicekey-ccd-ps', 'IDAM_SERVICE_KEY'),

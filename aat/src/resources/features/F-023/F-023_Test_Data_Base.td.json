@@ -6,8 +6,8 @@
   "uri": "/jurisdictions/{jid}/case-types/{ctid}/cases/{cid}",
   "users": {
     "invokingUser": {
-      "username":"[[$CCD_PRIVATE_CASEWORKER_EMAIL]]",
-      "password":"[[$CCD_PRIVATE_CASEWORKER_PASSWORD]]"
+      "username":"[[$CCD_CASEWORKER_AUTOTEST_EMAIL]]",
+      "password":"[[$CCD_CASEWORKER_AUTOTEST_PASSWORD]]"
     }
   },
   "request": {
