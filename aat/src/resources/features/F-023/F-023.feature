@@ -15,7 +15,7 @@ Feature: F-023: Print List Of Documents
   And the response has all the details as expected,
   And the response [contains a list of documents with the following attributes for each document: Name, Document Type and Document Generation URL].
 
-  @S-002
+  @S-002 @Ignore
   Scenario: Must return a negative response when invalid URL defined in definition file
   Given a user with [an active profile in CCD - wants to see a list of valid documents they can print],
   And a case that has just been created as in [F-023_Case_Creation_Data_With_Document],

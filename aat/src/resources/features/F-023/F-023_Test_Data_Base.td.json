@@ -6,8 +6,8 @@
   "uri": "/jurisdictions/{jid}/case-types/{ctid}/cases/{cid}",
   "users": {
     "invokingUser": {
-        "username": "befta.caseworker.3@gmail.com",
-        "password": "[[$CCD_BEFTA_CASEWORKER_3_PWD]]"
+      "username": "[[$CCD_CASEWORKER_AUTOTEST_EMAIL]]",
+      "password": "[[$CCD_CASEWORKER_AUTOTEST_PASSWORD]]"
       }
   },
   "request": {
