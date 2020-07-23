@@ -6,9 +6,9 @@
   "uri": "/jurisdictions/{jid}/case-types/{ctid}/cases/{cid}",
   "users": {
     "invokingUser": {
-        "username": "befta.caseworker.3@gmail.com",
-        "password": "[[$CCD_BEFTA_CASEWORKER_3_PWD]]"
-      }
+      "username":"[[$CCD_PRIVATE_CASEWORKER_EMAIL]]",
+      "password":"[[$CCD_PRIVATE_CASEWORKER_PASSWORD]]"
+    }
   },
   "request": {
     "headers": {
@@ -16,8 +16,8 @@
       "Content-Type": "application/json"
     },
     "pathVariables": {
-      "jid": "BEFTA_JURISDICTION_3",
-      "ctid": "BEFTA_CASETYPE_3_4",
+      "jid": "AUTOTEST1",
+      "ctid": "AAT_AUTH_15",
       "cid": "${[scenarioContext][childContexts][F-023_Case_Creation_Data_With_Document][testData][actualResponse][body][id]}"
     }
   },
