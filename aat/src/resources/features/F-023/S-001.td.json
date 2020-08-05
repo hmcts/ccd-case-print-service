@@ -11,14 +11,13 @@
 
 	"expectedResponse": {
 		"_extends_": "Common_200_Response",
-    "headers":
-    {
-      "Content-Type": "text/html; charset=utf-8"
-    },
+		"headers": {
+			"Content-Type": "text/html; charset=utf-8"
+		},
 		"body": {
 			"__fileInBody__": {
 				"fullPath": "file",
-				"size": "6278",
+				"size": "${[scenarioContext][customValues][approximately 6278]}",
 				"contentHash": "hash"
 			}
 		}
