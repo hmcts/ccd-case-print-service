@@ -10,7 +10,7 @@
 	],
 
 	"expectedResponse": {
-		"_extends_": "Common_201_Response",
+		"_extends_": "Common_200_Response",
 		"body": {
 			"__fileInBody__": {
 				"fullPath": "file",
