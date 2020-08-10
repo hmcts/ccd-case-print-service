@@ -35,4 +35,22 @@ Feature: F-023: Print List Of Documents
   Then a negative response is received,
   And the response has all the details as expected.
 
+  @S-004
+  Scenario: Must return a negative response on malformed Case ID
+    Given a user with [an active profile in CCD - wants to see a list of valid documents they can print],
+    When a request is prepared with appropriate values,
+    And the request [contains a malformed caseID],
+    And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
+    Then a negative response is received,
+    And the response has all the details as expected.
+
+  @S-005
+  Scenario: Must return a negative response on non existent Case ID
+    Given a user with [an active profile in CCD - wants to see a list of valid documents they can print],
+    When a request is prepared with appropriate values,
+    And the request [contains a non existent caseID],
+    And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
+    Then a negative response is received,
+    And the response has all the details as expected.
+
 

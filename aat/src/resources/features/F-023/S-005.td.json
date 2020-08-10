@@ -1,0 +1,35 @@
+{
+  "title": "Must return a negative response on non existent Case ID",
+  "_guid_": "S-005",
+  "_extends_": "F-023_Test_Data_Base",
+  "specs": [
+    "an active profile in CCD - wants to see a list of valid documents they can print",
+    "contains a non existent caseID"
+  ],
+
+  "request": {
+    "pathVariables": {
+      "cid": "1111222233334444"
+    }
+    },
+
+
+
+  "expectedResponse": {
+    "responseCode": 404,
+    "responseMessage": "Not Found",
+
+    "headers": {
+      "_extends_": "Common_404_Response_Headers"
+    },
+
+    "body": {
+      "size" : 0,
+      "timeout" : 0
+
+    }
+  }
+}
+
+
+

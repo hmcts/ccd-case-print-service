@@ -8,13 +8,27 @@
   ],
 
   "request": {
-    "pathVariables": {
-      "ctid": "UN_KNOWN"
+    "body":
+    {
+      "data": {
+        "_extends_": "Standard_Full_Case_Data_With_Document",
+        "DocumentField": {
+          "document_url": "{{DM_STORE_BASE_URL}}/documents/$er%£^H",
+          "document_binary_url": "{{DM_STORE_BASE_URL}}/documents/$er%£^H",
+          "document_filename": "Screenshot 2019-09-26 at 13.06.47.png"
+        }
+      }
     }
-  },
-
+    },
   "expectedResponse": {
-    "_extends_": "Common_404_Response"
+    "_extends_": "Common_404_Response",
+    "body": {
+      "__fileInBody__": {
+        "fullPath": "file",
+        "size": "${[scenarioContext][customValues][approximately 6278]}",
+        "contentHash": "hash"
+      }
+    }
   }
 }
 
