@@ -1,24 +1,25 @@
 {
-  "title": "Must return a negative response on malformed Case ID",
-  "_guid_": "S-004",
+  "title": "Must return a negative response on non existent Case Type ID",
+  "_guid_": "S-007",
   "_extends_": "F-023_Test_Data_Base",
   "specs": [
     "an active profile in CCD - wants to see a list of valid documents they can print",
-    "contains a malformed caseID"
+    "contains a non existent caseTypeID"
   ],
 
   "request": {
     "pathVariables": {
-      "cid": "$%£@^&*()_+"
+      "ctid": "AAT_AUTH_00",
+      "cid": "1111222233334444"
     }
     },
 
   "expectedResponse": {
-    "responseCode": 400,
-    "responseMessage": "Bad Request",
+    "responseCode": 404,
+    "responseMessage": "Not Found",
 
     "headers": {
-      "_extends_": "Common_400_Response_Headers"
+      "_extends_": "Common_404_Response_Headers"
     },
 
     "body": {

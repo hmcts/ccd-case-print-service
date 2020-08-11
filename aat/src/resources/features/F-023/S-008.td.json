@@ -1,15 +1,15 @@
 {
-  "title": "Must return a negative response on malformed Case ID",
-  "_guid_": "S-004",
+  "title": "Must return a negative response on malformed jurisdiction ID",
+  "_guid_": "S-008",
   "_extends_": "F-023_Test_Data_Base",
   "specs": [
     "an active profile in CCD - wants to see a list of valid documents they can print",
-    "contains a malformed caseID"
+    "contains a malformed jurisdictionID"
   ],
 
   "request": {
     "pathVariables": {
-      "cid": "$%£@^&*()_+"
+      "jid": "$%£@^&*()_+"
     }
     },
 

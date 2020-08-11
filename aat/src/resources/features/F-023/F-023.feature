@@ -53,4 +53,40 @@ Feature: F-023: Print List Of Documents
     Then a negative response is received,
     And the response has all the details as expected.
 
+  @S-006
+  Scenario: Must return a negative response on malformed Case Type ID
+    Given a user with [an active profile in CCD - wants to see a list of valid documents they can print],
+    When a request is prepared with appropriate values,
+    And the request [contains a malformed caseTypeID],
+    And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
+    Then a negative response is received,
+    And the response has all the details as expected.
+
+  @S-007
+  Scenario: Must return a negative response on non existent Case Type ID
+    Given a user with [an active profile in CCD - wants to see a list of valid documents they can print],
+    When a request is prepared with appropriate values,
+    And the request [contains a non existent caseTypeID],
+    And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
+    Then a negative response is received,
+    And the response has all the details as expected.
+
+  @S-008
+  Scenario: Must return a negative response on malformed jurisdiction ID
+    Given a user with [an active profile in CCD - wants to see a list of valid documents they can print],
+    When a request is prepared with appropriate values,
+    And the request [contains a malformed jurisdictionID],
+    And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
+    Then a negative response is received,
+    And the response has all the details as expected.
+
+  @S-009
+  Scenario: Must return a negative response on non existent jurisdiction ID
+    Given a user with [an active profile in CCD - wants to see a list of valid documents they can print],
+    When a request is prepared with appropriate values,
+    And the request [contains a non existent jurisdictionID],
+    And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
+    Then a negative response is received,
+    And the response has all the details as expected.
+
 

@@ -13,8 +13,6 @@
     }
     },
 
-
-
   "expectedResponse": {
     "responseCode": 404,
     "responseMessage": "Not Found",
@@ -26,7 +24,6 @@
     "body": {
       "size" : 0,
       "timeout" : 0
-
     }
   }
 }

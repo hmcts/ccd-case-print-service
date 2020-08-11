@@ -1,24 +1,24 @@
 {
-  "title": "Must return a negative response on malformed Case ID",
-  "_guid_": "S-004",
+  "title": "Must return a negative response on non existent jurisdiction ID",
+  "_guid_": "S-009",
   "_extends_": "F-023_Test_Data_Base",
   "specs": [
     "an active profile in CCD - wants to see a list of valid documents they can print",
-    "contains a malformed caseID"
+    "contains a non existent jurisdictionID"
   ],
 
   "request": {
     "pathVariables": {
-      "cid": "$%£@^&*()_+"
-    }
+      "jid": "ABCDEFGH"
+     }
     },
 
   "expectedResponse": {
-    "responseCode": 400,
-    "responseMessage": "Bad Request",
+    "responseCode": 403,
+    "responseMessage": "Forbidden",
 
     "headers": {
-      "_extends_": "Common_400_Response_Headers"
+      "_extends_": "Common_403_Response_Headers"
     },
 
     "body": {
