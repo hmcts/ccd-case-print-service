@@ -40,10 +40,10 @@
       "token": "[[ANY_STRING_NOT_NULLABLE]]",
       "case_details": {
         "id": null,
-        "jurisdiction": "BEFTA_MASTER",
+        "jurisdiction": "[[ANYTHING_PRESENT]]",
         "state": null,
         "version": null,
-        "case_type_id": "FT_MasterCaseType",
+        "case_type_id": "[[ANYTHING_PRESENT]]",
         "created_date": null,
         "last_modified": null,
         "last_state_modified_date": null,
