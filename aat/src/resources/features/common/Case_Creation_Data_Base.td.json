@@ -10,7 +10,6 @@
     "to create a full case"
   ],
 
-
   "request": {
     "headers": {
       "_extends_": "Common_Request_Headers"
