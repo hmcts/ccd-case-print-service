@@ -27,7 +27,7 @@
     },
     "body": {
       "event": {
-        "id": "createEvent",
+        "id": "CREATE",
         "summary": "",
         "description": ""
       },
