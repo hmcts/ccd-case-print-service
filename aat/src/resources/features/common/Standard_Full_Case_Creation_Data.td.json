@@ -29,8 +29,6 @@
         "_extends_": "Standard_Full_Case_Data"
       },
       "data_classification": {
-        "MoneyGBPField": "PUBLIC",
-        "FixedListField": "PUBLIC",
         "AddressUKField": {
           "classification": "PUBLIC",
           "value": {
@@ -42,34 +40,11 @@
             "PostCode": "PUBLIC",
             "Country": "PUBLIC"
           }
-        },
-        "DateTimeField": "PUBLIC",
-        "PhoneUKField": "PUBLIC",
-        "NumberField": "PUBLIC",
-        "MultiSelectListField": "PUBLIC",
-        "YesOrNoField": "PUBLIC",
-        "EmailField": "PUBLIC",
-        "TextField": "PUBLIC",
-        "DateField": "PUBLIC",
-        "TextAreaField": "PUBLIC",
-        "CollectionField": {
-          "classification": "PUBLIC",
-          "value": [
-            {
-              "id": "CollectionField1",
-              "classification": "PUBLIC"
-            },
-            {
-              "id": "CollectionField2",
-              "classification": "PUBLIC"
-            }
-          ]
         }
       },
+
       "security_classifications": {
-        "MoneyGBPField": "PUBLIC",
-        "FixedListField": "PUBLIC",
-        "AddressUKField": {
+         "AddressUKField": {
           "classification": "PUBLIC",
           "value": {
             "AddressLine1": "PUBLIC",
@@ -80,29 +55,8 @@
             "PostCode": "PUBLIC",
             "Country": "PUBLIC"
           }
-        },
-        "DateTimeField": "PUBLIC",
-        "PhoneUKField": "PUBLIC",
-        "NumberField": "PUBLIC",
-        "MultiSelectListField": "PUBLIC",
-        "YesOrNoField": "PUBLIC",
-        "EmailField": "PUBLIC",
-        "TextField": "PUBLIC",
-        "DateField": "PUBLIC",
-        "TextAreaField": "PUBLIC",
-        "CollectionField": {
-          "classification": "PUBLIC",
-          "value": [
-            {
-              "id": "CollectionField1",
-              "classification": "PUBLIC"
-            },
-            {
-              "id": "CollectionField2",
-              "classification": "PUBLIC"
-            }
-          ]
         }
+
       }
     }
   }
