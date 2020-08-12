@@ -17,7 +17,7 @@
 		"body": {
 			"__fileInBody__": {
 				"fullPath": "file",
-				"size": "${[scenarioContext][customValues][approximately 6278]}",
+				"size": "${[scenarioContext][customValues][approximately 6142]}",
 				"contentHash": "hash"
 			}
 		}
