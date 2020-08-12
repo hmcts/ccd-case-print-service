@@ -9,20 +9,26 @@
   "specs": [
     "to create a token for case creation"
   ],
+
   "users": {
     "invokingUser": {
       "username": "master.caseworker@gmail.com",
       "password": "[[$CCD_BEFTA_MASTER_CASEWORKER_PWD]]"
     }
   },
+
   "request": {
+    "headers":{
+      "_extends_": "Common_Request_Headers"
+    },
     "pathVariables": {
       "uid": "[[DEFAULT_AUTO_VALUE]]",
       "jid": "BEFTA_MASTER",
       "ctid": "FT_MasterCaseType",
-      "etid": "CREATE"
+      "etid": "createCase"
     }
   },
+
   "expectedResponse": {
     "_extends_": "Common_200_Response",
     "headers" : {
@@ -50,7 +56,8 @@
         "delete_draft_response_status": null,
         "security_classifications": {}
       },
-      "event_id" : "CREATE"
+      "event_id" : "createCase"
     }
   }
+
 }
