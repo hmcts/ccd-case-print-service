@@ -30,33 +30,75 @@
   },
 
   "expectedResponse": {
-    "_extends_": "Common_200_Response",
-    "headers" : {
-      "Content-Encoding" : "gzip",
+    "responseCode": 200,
+
+    "headers": {
+      "Content-Encoding": "gzip",
       "Content-Length": "[[ANY_INTEGER_NOT_NULLABLE]]"
     },
-    "body" : {
-      "token" : "[[ANY_STRING_NOT_NULLABLE]]",
-      "case_details" : {
+    "body": {
+      "token": "[[ANY_STRING_NOT_NULLABLE]]",
+      "case_details": {
         "id": null,
-        "jurisdiction": "[[ANYTHING_PRESENT]]",
+        "jurisdiction": "BEFTA_MASTER",
         "state": null,
         "version": null,
-        "case_type_id": "[[ANYTHING_PRESENT]]",
+        "case_type_id": "FT_MasterCaseType",
         "created_date": null,
         "last_modified": null,
         "last_state_modified_date": null,
         "security_classification": null,
-        "case_data": {},
-        "data_classification": {},
+        "case_data": {
+          "DynamicList": {
+            "value": {
+              "code": "List1",
+              "label": " List 1"
+            },
+            "list_items": [
+              {
+                "code": "List1",
+                "label": " List 1"
+              },
+              {
+                "code": "List2",
+                "label": " List 2"
+              },
+              {
+                "code": "List3",
+                "label": " List 3"
+              },
+              {
+                "code": "List4",
+                "label": " List 4"
+              },
+              {
+                "code": "List5",
+                "label": " List 5"
+              },
+              {
+                "code": "List6",
+                "label": " List 6"
+              },
+              {
+                "code": "List7",
+                "label": " List 7"
+              }
+            ]
+          }
+        },
+        "data_classification": {
+          "DynamicList": "PUBLIC"
+        },
         "after_submit_callback_response": null,
         "callback_response_status_code": null,
         "callback_response_status": null,
         "delete_draft_response_status_code": null,
         "delete_draft_response_status": null,
-        "security_classifications": {}
+        "security_classifications": {
+          "DynamicList": "PUBLIC"
+        }
       },
-      "event_id" : "createCase"
+      "event_id": "createCase"
     }
   }
 

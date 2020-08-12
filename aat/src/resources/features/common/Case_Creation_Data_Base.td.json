@@ -10,12 +10,15 @@
     "to create a full case"
   ],
 
+
   "request": {
     "headers": {
       "_extends_": "Common_Request_Headers"
     },
     "pathVariables": {
-      "uid": "[[DEFAULT_AUTO_VALUE]]"
+      "uid": "[[DEFAULT_AUTO_VALUE]]",
+      "jid": "BEFTA_MASTER",
+      "ctid": "FT_MasterCaseType"
     },
     "body": {
       "event": {
