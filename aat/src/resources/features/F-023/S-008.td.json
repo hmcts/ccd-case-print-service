@@ -9,7 +9,9 @@
 
   "request": {
     "pathVariables": {
-      "jid": "$%£@^&*()_+"
+      "jid": "$%£@^&*()_+",
+      "ctid": "FT_MasterCaseType",
+      "cid": "1111222233334444"
     }
     },
 
