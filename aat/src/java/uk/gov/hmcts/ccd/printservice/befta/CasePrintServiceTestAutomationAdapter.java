@@ -10,6 +10,7 @@ public class CasePrintServiceTestAutomationAdapter extends DefaultTestAutomation
     @Override
     public void doLoadTestData() {
         loader.addCcdRoles();
+        loader.importDefinitions();
     }
 
 }
