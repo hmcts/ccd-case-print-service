@@ -3,7 +3,7 @@
   "_guid_": "S-005",
   "_extends_": "F-023_Test_Data_Base",
   "specs": [
-    "an active profile in CCD - wants to see a list of valid documents they can print",
+    "an active profile in CCD - who wants to see the content of a case as a printable document",
     "contains a non existent case ID"
   ],
 

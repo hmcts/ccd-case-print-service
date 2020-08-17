@@ -6,7 +6,7 @@ Feature: F-023: Get Case as Printable Document
 
   @S-001
   Scenario: Must return a list of documents that can be printed
-  Given a user with [an active profile in CCD - wants to see a list of valid documents they can print],
+  Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
   And a case that has just been created as in [F-023_Case_Creation_Data_With_Document],
   When a request is prepared with appropriate values,
   And the request [contains a valid print URL configured in the definition file with a valid Jurisdiction and Case Type],
@@ -17,7 +17,7 @@ Feature: F-023: Get Case as Printable Document
 
   @S-002 @Ignore
   Scenario: Must return a negative response when invalid URL defined in definition file
-  Given a user with [an active profile in CCD - wants to see a list of valid documents they can print],
+  Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
   And a case that has just been created as in [F-023_Case_Creation_Data_With_Document],
   When a request is prepared with appropriate values,
   And the request [contains an invalid URL configured in the definition file],
@@ -27,7 +27,7 @@ Feature: F-023: Get Case as Printable Document
 
   @S-003 @Ignore
   Scenario: Must return a negative response on callback failure
-  Given a user with [an active profile in CCD - wants to see a list of valid documents they can print],
+  Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
   And a case that has just been created as in [F-023_Case_Creation_Data_With_Document],
   When a request is prepared with appropriate values,
   And the request [contains a callback which encounters a timeout error],
@@ -37,7 +37,7 @@ Feature: F-023: Get Case as Printable Document
 
   @S-004
   Scenario: Must return a negative response on malformed Case ID
-    Given a user with [an active profile in CCD - wants to see a list of valid documents they can print],
+    Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
     When a request is prepared with appropriate values,
     And the request [contains a malformed case ID],
     And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
@@ -46,7 +46,7 @@ Feature: F-023: Get Case as Printable Document
 
   @S-005
   Scenario: Must return a negative response on non existent Case ID
-    Given a user with [an active profile in CCD - wants to see a list of valid documents they can print],
+    Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
     When a request is prepared with appropriate values,
     And the request [contains a non existent case ID],
     And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
@@ -55,7 +55,7 @@ Feature: F-023: Get Case as Printable Document
 
   @S-006
   Scenario: Must return a negative response on malformed Case Type ID
-    Given a user with [an active profile in CCD - wants to see a list of valid documents they can print],
+    Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
     When a request is prepared with appropriate values,
     And the request [contains a malformed caseType ID],
     And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
@@ -64,7 +64,7 @@ Feature: F-023: Get Case as Printable Document
 
   @S-007
   Scenario: Must return a negative response on non existent Case Type ID
-    Given a user with [an active profile in CCD - wants to see a list of valid documents they can print],
+    Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
     When a request is prepared with appropriate values,
     And the request [contains a non existent caseType ID],
     And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
@@ -73,7 +73,7 @@ Feature: F-023: Get Case as Printable Document
 
   @S-008
   Scenario: Must return a negative response on malformed jurisdiction ID
-    Given a user with [an active profile in CCD - wants to see a list of valid documents they can print],
+    Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
     When a request is prepared with appropriate values,
     And the request [contains a malformed jurisdiction ID],
     And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
@@ -82,7 +82,7 @@ Feature: F-023: Get Case as Printable Document
 
   @S-009
   Scenario: Must return a negative response on non existent jurisdiction ID
-    Given a user with [an active profile in CCD - wants to see a list of valid documents they can print],
+    Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
     When a request is prepared with appropriate values,
     And the request [contains a non existent jurisdiction ID],
     And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
