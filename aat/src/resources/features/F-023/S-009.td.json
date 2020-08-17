@@ -4,7 +4,7 @@
   "_extends_": "F-023_Test_Data_Base",
   "specs": [
     "an active profile in CCD - wants to see a list of valid documents they can print",
-    "contains a non existent jurisdictionID"
+    "contains a non existent jurisdiction ID"
   ],
 
   "request": {
@@ -16,14 +16,13 @@
     },
 
   "expectedResponse": {
-    "responseCode": 403,
-    "responseMessage": "Forbidden",
-
-    "headers": {
-      "_extends_": "Common_403_Response_Headers"
-    },
+    "_extends_": "Common_403_Response",
 
     "body": {
+      "status": "[[ANY_NULLABLE]]",
+      "error": "[[ANY_NULLABLE]]",
+      "timestamp": "[[ANY_NULLABLE]]",
+      "path":"[[ANY_NULLABLE]]",
       "size" : 0,
       "timeout" : 0
     }
