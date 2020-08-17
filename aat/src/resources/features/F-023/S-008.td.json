@@ -1,0 +1,33 @@
+{
+  "title": "Must return a negative response on malformed jurisdiction ID",
+  "_guid_": "S-008",
+  "_extends_": "F-023_Test_Data_Base",
+  "specs": [
+    "an active profile in CCD - who wants to see the content of a case as a printable document",
+    "contains a malformed jurisdiction ID"
+  ],
+
+  "request": {
+    "pathVariables": {
+      "jid": "$%£@^&*()_+",
+      "ctid": "FT_MasterCaseType",
+      "cid": "1111222233334444"
+    }
+    },
+
+  "expectedResponse": {
+    "_extends_": "Common_400_Response",
+
+    "body": {
+      "status": "[[ANY_NULLABLE]]",
+      "error": "[[ANY_NULLABLE]]",
+      "timestamp": "[[ANY_NULLABLE]]",
+      "path":"[[ANY_NULLABLE]]",
+      "size" : 0,
+      "timeout" : 0
+    }
+  }
+}
+
+
+

@@ -15,6 +15,8 @@ def secrets = [
         secret('ccd-importer-autotest-email', 'CCD_IMPORT_AUTOTEST_EMAIL'),
         secret('ccd-importer-autotest-password', 'CCD_IMPORT_AUTOTEST_PASSWORD'),
         secret('ccd-api-gateway-oauth2-client-secret', 'OAUTH2_CLIENT_SECRET'),
+        secret('ccd-befta-caseworker-3-pwd', 'CCD_BEFTA_CASEWORKER_3_PWD'),
+        secret('ccd-befta-master-caseworker-pwd', 'CCD_BEFTA_MASTER_CASEWORKER_PWD'),
     ],
     's2s-${env}': [
         secret('microservicekey-ccd-ps', 'IDAM_SERVICE_KEY'),
@@ -46,6 +48,9 @@ env.DEFINITION_STORE_HOST = "http://ccd-definition-store-api-aat.service.core-co
 env.CCD_CASEWORKER_AUTOTEST_EMAIL = "auto.test.cnp@gmail.com"
 env.CCD_IMPORT_AUTOTEST_EMAIL = "ccd.docker.default@hmcts.net"
 env.BEFTA_RESPONSE_HEADER_CHECK_POLICY = "JUST_WARN"
+env.CCD_DATA_STORE_API_BASE_URL = "http://ccd-data-store-api-pr-601.service.core-compute-preview.internal"
+env.DM_STORE_BASE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
+
 
 withPipeline("nodejs", product, component) {
     onMaster {

@@ -1,0 +1,27 @@
+{
+	"title": "Must return a list of documents that can be printed",
+	"_guid_": "S-001",
+	"_extends_": "F-023_Test_Data_Base",
+
+	"specs": [
+		"an active profile in CCD - who wants to see the content of a case as a printable document",
+		"contains a valid print URL configured in the definition file with a valid Jurisdiction and Case Type",
+		"contains a list of documents with the following attributes for each document: Name, Document Type and Document Generation URL"
+	],
+
+	"expectedResponse": {
+		"_extends_": "Common_200_Response",
+		"headers": {
+			"Content-Type": "text/html; charset=utf-8"
+		},
+		"body": {
+			"__fileInBody__": {
+				"fullPath": "file",
+				"size": "${[scenarioContext][customValues][approximately 6142]}",
+				"contentHash": "hash"
+			}
+		}
+	}
+}
+
+
