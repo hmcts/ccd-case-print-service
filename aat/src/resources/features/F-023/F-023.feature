@@ -10,7 +10,7 @@ Feature: F-023: Get Case as Printable Document
   And a case that has just been created as in [F-023_Case_Creation_Data_With_Document],
   When a request is prepared with appropriate values,
   And the request [contains a valid print URL configured in the definition file with a valid Jurisdiction and Case Type],
-  And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
+  And it is submitted to call the [Get Case as Printable Document] operation of [CCD Case Print Service API],
   Then a positive response is received,
   And the response has all the details as expected.
   #And the response [contains a list of documents with the following attributes for each document: Name, Document Type and Document Generation URL]. //we are not yet verifying the content of the returned document.
@@ -21,7 +21,7 @@ Feature: F-023: Get Case as Printable Document
   And a case that has just been created as in [F-023_Case_Creation_Data_With_Document],
   When a request is prepared with appropriate values,
   And the request [contains an invalid URL configured in the definition file],
-  And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
+  And it is submitted to call the [Get Case as Printable Document] operation of [CCD Case Print Service API],
   Then a negative response is received,
   And the response has all the details as expected.
 
@@ -31,7 +31,7 @@ Feature: F-023: Get Case as Printable Document
   And a case that has just been created as in [F-023_Case_Creation_Data_With_Document],
   When a request is prepared with appropriate values,
   And the request [contains a callback which encounters a timeout error],
-  And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
+  And it is submitted to call the [Get Case as Printable Document] operation of [CCD Case Print Service API],
   Then a negative response is received,
   And the response has all the details as expected.
 
@@ -40,7 +40,7 @@ Feature: F-023: Get Case as Printable Document
     Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
     When a request is prepared with appropriate values,
     And the request [contains a malformed case ID],
-    And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
+    And it is submitted to call the [Get Case as Printable Document] operation of [CCD Case Print Service API],
     Then a negative response is received,
     And the response has all the details as expected.
 
@@ -49,7 +49,7 @@ Feature: F-023: Get Case as Printable Document
     Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
     When a request is prepared with appropriate values,
     And the request [contains a non existent case ID],
-    And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
+    And it is submitted to call the [Get Case as Printable Document] operation of [CCD Case Print Service API],
     Then a negative response is received,
     And the response has all the details as expected.
 
@@ -58,7 +58,7 @@ Feature: F-023: Get Case as Printable Document
     Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
     When a request is prepared with appropriate values,
     And the request [contains a malformed caseType ID],
-    And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
+    And it is submitted to call the [Get Case as Printable Document] operation of [CCD Case Print Service API],
     Then a negative response is received,
     And the response has all the details as expected.
 
@@ -67,7 +67,7 @@ Feature: F-023: Get Case as Printable Document
     Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
     When a request is prepared with appropriate values,
     And the request [contains a non existent caseType ID],
-    And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
+    And it is submitted to call the [Get Case as Printable Document] operation of [CCD Case Print Service API],
     Then a negative response is received,
     And the response has all the details as expected.
 
@@ -76,7 +76,7 @@ Feature: F-023: Get Case as Printable Document
     Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
     When a request is prepared with appropriate values,
     And the request [contains a malformed jurisdiction ID],
-    And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
+    And it is submitted to call the [Get Case as Printable Document] operation of [CCD Case Print Service API],
     Then a negative response is received,
     And the response has all the details as expected.
 
@@ -85,7 +85,7 @@ Feature: F-023: Get Case as Printable Document
     Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
     When a request is prepared with appropriate values,
     And the request [contains a non existent jurisdiction ID],
-    And it is submitted to call the [Print Documents] operation of [CCD Case Print Service API],
+    And it is submitted to call the [Get Case as Printable Document] operation of [CCD Case Print Service API],
     Then a negative response is received,
     And the response has all the details as expected.
 

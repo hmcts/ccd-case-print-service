@@ -1,7 +1,7 @@
 {
   "_guid_": "F-023_Test_Data_Base",
   "productName": "CCD Case Print Service API",
-  "operationName": "Print Documents",
+  "operationName": "Get Case as Printable Document",
   "method": "GET",
   "uri": "/jurisdictions/{jid}/case-types/{ctid}/cases/{cid}",
   "users": {
