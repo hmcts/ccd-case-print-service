@@ -42,9 +42,8 @@
           }
         }
       },
-
       "security_classifications": {
-         "AddressUKField": {
+        "AddressUKField": {
           "classification": "PUBLIC",
           "value": {
             "AddressLine1": "PUBLIC",
