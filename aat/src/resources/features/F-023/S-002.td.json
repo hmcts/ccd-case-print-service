@@ -9,8 +9,7 @@
   ],
 
   "request": {
-    "body":
-    {
+    "body": {
       "data": {
         "_extends_": "Standard_Full_Case_Data_With_Document",
         "DocumentField": {
@@ -20,7 +19,7 @@
         }
       }
     }
-    },
+  },
 
   "expectedResponse": {
     "_extends_": "Common_404_Response",

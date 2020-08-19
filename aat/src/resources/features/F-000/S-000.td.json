@@ -3,7 +3,7 @@
 	"title": "must return a successful response when hitting Case Print Service health endpoint",
 
 	"productName": "CCD Case Print Service API",
-	"operationName": "Health Endpoint",
+	"operationName": "Healthcheck Operation",
 
 	"method": "GET",
 	"uri": "/health/liveness",
