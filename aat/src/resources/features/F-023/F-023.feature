@@ -135,6 +135,7 @@ Scenario: Must return a negative response on non existent jurisdiction ID
 
      Then a negative response is received,
       And the response has all the details as expected.
+
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
