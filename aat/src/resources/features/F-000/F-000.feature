@@ -7,7 +7,7 @@ Background:
     Given an appropriate test context as detailed in the test data source
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-@S-000
+@S-000 @Smoke
 Scenario: [SAMPLE] must return a successful response from the health endpoint
 
      When a request is prepared with appropriate values
