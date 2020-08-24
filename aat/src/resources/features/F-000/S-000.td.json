@@ -28,7 +28,7 @@
 		}
 	},
 
-  "expectedResponse": {
+	"expectedResponse": {
 		"responseCode": 200,
 		"responseMessage": "OK",
 		"headers": {
