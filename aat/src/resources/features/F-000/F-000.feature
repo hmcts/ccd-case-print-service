@@ -8,7 +8,7 @@ Background:
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 @S-000 @Smoke
-Scenario: must return a successful response from the health endpoint
+Scenario: must return a successful response from the Healthcheck Operation
 
      When a request is prepared with appropriate values
       And it is submitted to call the [Healthcheck] operation of [CCD Case Print Service API]
