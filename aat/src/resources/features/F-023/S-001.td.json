@@ -1,7 +1,7 @@
 {
-	"title": "Must return a list of documents that can be printed",
 	"_guid_": "S-001",
 	"_extends_": "F-023_Test_Data_Base",
+	"title": "Must return a list of documents that can be printed",
 
 	"specs": [
 		"an active profile in CCD - who wants to see the content of a case as a printable document",
