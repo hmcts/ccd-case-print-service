@@ -119,7 +119,8 @@
     "timespan": "^2.3.0",
     "lodash.template": "^4.5.0",
     "eslint": "^4.18.2",
-    "bl": "^4.0.3"
+    "bl": "^4.0.3",
+    "node-fetch": "^2.6.1"
 
   },
   "snyk": true,
