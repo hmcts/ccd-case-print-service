@@ -1,0 +1,35 @@
+{
+	"_guid_": "F-023_Test_Data_Base",
+
+	"productName": "CCD Case Print Service API",
+	"operationName": "Get Case as Printable Document",
+
+	"method": "GET",
+	"uri": "/jurisdictions/{jid}/case-types/{ctid}/cases/{cid}",
+
+	"users": {
+		"invokingUser": {
+			"username": "master.caseworker@gmail.com",
+			"password": "[[$CCD_BEFTA_MASTER_CASEWORKER_PWD]]"
+		}
+	},
+
+	"request": {
+		"headers": {
+			"_extends_": "Common_Request_Headers",
+			"Content-Type": "application/json"
+		},
+		"pathVariables": {
+			"jid": "BEFTA_MASTER",
+			"ctid": "FT_MasterCaseType",
+			"cid": "${[scenarioContext][childContexts][F-023_Case_Creation_Data_With_Document][testData][actualResponse][body][id]}"
+		}
+	},
+
+	"expectedResponse": {
+		"headers": {
+			"Content-Type": "application/json",
+			"Content-Length": "[[ANYTHING_PRESENT]]"
+		}
+	}
+}
