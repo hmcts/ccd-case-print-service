@@ -24,7 +24,7 @@
     "prepare": "npm run snyk-protect"
   },
   "dependencies": {
-    "@hmcts/nodejs-healthcheck": "^1.6.0",
+    "@hmcts/nodejs-healthcheck": "1.7.0",
     "@hmcts/nodejs-logging": "^3.0.0",
     "@hmcts/properties-volume": "^0.0.9",
     "@types/node": "^10.5.4",
@@ -106,7 +106,7 @@
     "lodash": "^4.17.19",
     "growl": "^1.10.2",
     "gulp-livereload": "^4.0.2",
-    "assign-deep":"^1.0.1",
+    "assign-deep": "^1.0.1",
     "qs": "^6.3.2",
     "http-proxy": "^1.18.1",
     "acorn": "^7.1.1",
