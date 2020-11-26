@@ -8,7 +8,7 @@ Background: Load test data for the scenario
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # RDM-7436 / AC-1
-@S-001
+@S-001 @Smoke
 Scenario: Must return a list of documents that can be printed
 
     Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
