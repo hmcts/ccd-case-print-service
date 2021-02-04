@@ -28,7 +28,7 @@
     "@hmcts/nodejs-logging": "^3.0.0",
     "@hmcts/properties-volume": "^0.0.9",
     "@types/node": "^10.5.4",
-    "applicationinsights": "^1.0.8",
+    "applicationinsights": "^1.8.8",
     "assign-deep": "^1.0.1",
     "body-parser": "^1.18.1",
     "config": "^1.26.2",
