@@ -103,7 +103,7 @@
   },
   "resolutions": {
     "js-yaml": "3.13.1",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "growl": "^1.10.2",
     "gulp-livereload": "^4.0.2",
     "assign-deep": "^1.0.1",
@@ -126,7 +126,8 @@
     "diff": "^3.5.0",
     "elliptic": "^6.5.4",
     "netmask": "^2.0.1",
-    "y18n": "^5.0.5"
+    "y18n": "^5.0.5",
+    "hosted-git-info": "^3.0.8"
   },
   "snyk": true,
   "nyc": {
