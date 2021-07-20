@@ -41,6 +41,7 @@
     "helmet": "^3.8.1",
     "jquery": "^3.5.1",
     "jwt-decode": "^2.2.0",
+    "luhn": "^2.4.1",
     "mime": "^1.4.0",
     "node-fetch": "^2.6.1",
     "node-sass": "^4.12.0",
@@ -134,7 +135,8 @@
     "merge": "^2.1.1",
     "glob-parent": "~5.1.2",
     "trim-newlines": "^3.0.1",
-    "normalize-url": "^4.5.1"
+    "normalize-url": "^4.5.1",
+    "@snyk/cli-interface": "2.9.0"
   },
   "snyk": true,
   "nyc": {
