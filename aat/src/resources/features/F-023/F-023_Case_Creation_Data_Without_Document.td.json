@@ -1,11 +1,11 @@
 {
-	"_guid_": "F-023_Case_Creation_Data_With_Document",
+	"_guid_": "F-023_Case_Creation_Data_Without_Document",
 	"_extends_": "Standard_Full_Case_Creation_Data",
 
 	"request": {
 		"body": {
 			"data": {
-				"_extends_": "Standard_Full_Case_Data_With_Document"
+				"_extends_": "Standard_Full_Case_Data_Without_Document"
 			}
 		}
 	},
@@ -39,11 +39,6 @@
 						"PostCode": "SW1H 9AJ",
 						"Country": "UK"
 					},
-					"DocumentField": {
-						"document_url": "[[ANYTHING_PRESENT]]",
-						"document_binary_url": "[[ANYTHING_PRESENT]]",
-						"document_filename": "Screenshot 2019-09-26 at 13.06.47.png"
-					},
 					"OrganisationPolicyField2": {
 						"OrgPolicyCaseAssignedRole": "[Defendant]",
 						"OrgPolicyReference": "ref",
@@ -74,7 +69,6 @@
 							"Country": "PUBLIC"
 						}
 					},
-					"DocumentField": "PUBLIC",
 					"OrganisationPolicyField2": {
 						"classification": "PUBLIC",
 						"value": {
@@ -123,7 +117,6 @@
 							"Country": "PUBLIC"
 						}
 					},
-					"DocumentField": "PUBLIC",
 					"OrganisationPolicyField2": {
 						"classification": "PUBLIC",
 						"value": {
