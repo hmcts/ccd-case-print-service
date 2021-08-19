@@ -5,7 +5,7 @@
 
 	"specs": [
 		"an active profile in CCD - who wants to see the content of a case as a printable document",
-		"contains a malformed case ID"
+		"contains a malformed Case Reference with arbitrary chars"
 	],
 
 	"request": {
@@ -17,12 +17,12 @@
 	"expectedResponse": {
 		"_extends_": "Common_400_Response",
 		"body": {
-			"status": "[[ANY_NULLABLE]]",
-			"error": "[[ANY_NULLABLE]]",
+			"code" : "INVALID_CASE_ID",
+			"message" : "Case ID must be a valid number",
+			"status" : 400,
+			"error": "Bad Request",
 			"timestamp": "[[ANY_NULLABLE]]",
-			"path":"[[ANY_NULLABLE]]",
-			"size" : 0,
-			"timeout" : 0
+			"path":"[[ANY_NULLABLE]]"
 		}
 	}
 }

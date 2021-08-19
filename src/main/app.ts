@@ -86,5 +86,9 @@ app.use((err, req, res, next) => {
   res.locals.error = env === "development" ? err : {};
 
   res.status(err.status || 500);
-  res.render("error");
+  if (err.code === "INVALID_CASE_ID") {
+    res.send(err);
+  } else {
+    res.render("error");
+  }
 });

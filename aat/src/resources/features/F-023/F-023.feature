@@ -53,14 +53,13 @@ Scenario: Must return a negative response on callback failure
       And the response has all the details as expected.
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# RDM-7436 / AC-4
 @S-004
 Scenario: Must return a negative response on malformed Case ID
 
     Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
 
      When a request is prepared with appropriate values,
-      And the request [contains a malformed case ID],
+      And the request [contains a malformed Case Reference with arbitrary chars],
       And it is submitted to call the [Get Case as Printable Document] operation of [CCD Case Print Service API],
 
      Then a negative response is received,
