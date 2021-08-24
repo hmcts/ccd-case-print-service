@@ -12,7 +12,7 @@ Background: Load test data for the scenario
 Scenario: Must return a list of documents that can be printed
 
     Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
-      And a case that has just been created as in [F-023_Case_Creation_Data_With_Document],
+      And a case that has just been created as in [F-023_Case_Creation_Data_Without_Document],
 
      When a request is prepared with appropriate values,
       And the request [contains a valid print URL configured in the definition file with a valid Jurisdiction and Case Type],
@@ -28,7 +28,7 @@ Scenario: Must return a list of documents that can be printed
 Scenario: Must return a negative response when invalid URL defined in definition file
 
     Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
-      And a case that has just been created as in [F-023_Case_Creation_Data_With_Document],
+      And a case that has just been created as in [F-023_Case_Creation_Data_Without_Document],
 
      When a request is prepared with appropriate values,
       And the request [contains an invalid URL configured in the definition file],
@@ -43,7 +43,7 @@ Scenario: Must return a negative response when invalid URL defined in definition
 Scenario: Must return a negative response on callback failure
 
     Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
-      And a case that has just been created as in [F-023_Case_Creation_Data_With_Document],
+      And a case that has just been created as in [F-023_Case_Creation_Data_Without_Document],
 
      When a request is prepared with appropriate values,
       And the request [contains a callback which encounters a timeout error],
@@ -53,14 +53,13 @@ Scenario: Must return a negative response on callback failure
       And the response has all the details as expected.
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# RDM-7436 / AC-4
 @S-004
 Scenario: Must return a negative response on malformed Case ID
 
     Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
 
      When a request is prepared with appropriate values,
-      And the request [contains a malformed case ID],
+      And the request [contains a malformed Case Reference with arbitrary chars],
       And it is submitted to call the [Get Case as Printable Document] operation of [CCD Case Print Service API],
 
      Then a negative response is received,

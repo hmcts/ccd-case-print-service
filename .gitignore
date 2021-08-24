@@ -5,6 +5,8 @@ node_modules/
 
 .idea/
 *.iml
+*.iws
+*.ipr
 
 *swp
 *log
@@ -18,8 +20,10 @@ node-rpm-packaging/
 mochawesome-report/
 npm-debug.log.*
 
-.project
+/.classpath
+/.project
 .settings/
+target/
 
 package-lock.json
 
@@ -28,3 +32,9 @@ coverage/
 
 /BEFTA Report for Smoke Tests/
 /BEFTA Report for Functional Tests/
+
+# Gradle
+.gradle/
+out/
+bin/
+build/
