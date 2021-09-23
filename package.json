@@ -139,7 +139,8 @@
     "@snyk/cli-interface": "2.9.0",
     "tar": "^6.1.9",
     "jszip": "^3.7.0",
-    "path-parse": "^1.0.7"
+    "path-parse": "^1.0.7",
+    "pac-resolver": "^5.0.0"
   },
   "snyk": true,
   "nyc": {
