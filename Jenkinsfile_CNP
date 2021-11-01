@@ -8,6 +8,7 @@ properties(
 
 def product = "ccd"
 def component = "case-print-service"
+def branchesToSync = ['demo', 'ithc', 'perftest']
 
 // Variables to switch pipeline logic and wiring per type of build
 def dataStoreDevelopPr       = "PR-1260" // This doesn't change frequently, but when it does, only change this value.
@@ -73,7 +74,9 @@ withPipeline("nodejs", product, component) {
     onPR {
         enableSlackNotifications('#ccd-pr-builds')
     }
-
+  
+    syncBranchesWithMaster(branchesToSync)
+  
     // Check if the build should be wired to an environment higher than 'preview'.
     if (env.BRANCH_NAME == 'master' || env.BRANCH_NAME == 'demo' || env.BRANCH_NAME == 'perftest' || env.BRANCH_NAME == 'ithc' || prsToUseAat.toLowerCase().contains(env.BRANCH_NAME.toLowerCase())) {
       environmentOfDependencies = env.BRANCH_NAME
