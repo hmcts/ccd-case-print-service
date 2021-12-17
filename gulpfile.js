@@ -2,7 +2,7 @@ let gulp = require('gulp');
 let nodemon = require('gulp-nodemon');
 let plumber = require('gulp-plumber');
 let livereload = require('gulp-livereload');
-let sass = require('gulp-sass');
+let sass = require('gulp-sass')(require('sass'));
 let path = require('path');
 let replace = require('gulp-replace');
 
