@@ -39,6 +39,12 @@ configurations {
   cucumberRuntime.extendsFrom(functionalRuntime)
 }
 
+task highLevelDataSetup(type: JavaExec) {
+  main = "uk.gov.hmcts.ccd.printservice.befta.HighLevelDataSetupApp"
+  classpath += configurations.cucumberRuntime + sourceSets.aat.runtimeClasspath
+  jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
+}
+
 task smoke(type: Test) {
   description = 'Executes smoke tests against an the CCD Case Print Service API instance just deployed'
   setTestClassesDirs(sourceSets.aat.output.classesDirs)
