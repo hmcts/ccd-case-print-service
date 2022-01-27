@@ -14,11 +14,10 @@ def component = "case-print-service"
 withNightlyPipeline(type, product, component) {
     enableSlackNotifications('#ccd-nightly-builds')
 
-    // Temporarily disable fortify scan stage until fortify access re-enabled
-    //enableFortifyScan()
-    //after('fortify-scan') {
-    //  steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/Fortify Scan/**/*'
-    //}
+    enableFortifyScan()
+    after('fortify-scan') {
+        steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/Fortify Scan/**/*'
+    }
 
     afterCheckout {
         sh "yarn cache clean"
