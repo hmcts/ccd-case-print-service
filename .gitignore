@@ -33,6 +33,9 @@ coverage/
 /BEFTA Report for Smoke Tests/
 /BEFTA Report for Functional Tests/
 
+# High level data setup temporary file
+temp.sh
+
 # Gradle
 .gradle/
 out/
