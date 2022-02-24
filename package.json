@@ -78,7 +78,7 @@
     "json-loader": "^0.5.3",
     "json-server": "^0.9.6",
     "jsonwebtoken": "^8.2.2",
-    "karma": "^4.1.0",
+    "karma": "^6.3.14",
     "karma-chrome-launcher": "^2.0.0",
     "karma-coverage": "^1.0.0",
     "karma-jasmine": "^1.0.2",
