@@ -1,33 +1,22 @@
 package uk.gov.hmcts.ccd.printservice.befta;
 
-import uk.gov.hmcts.befta.BeftaMain;
 import uk.gov.hmcts.befta.BeftaTestDataLoader;
 import uk.gov.hmcts.befta.DefaultBeftaTestDataLoader;
 import uk.gov.hmcts.befta.DefaultTestAutomationAdapter;
-import uk.gov.hmcts.befta.dse.ccd.TestDataLoaderToDefinitionStore;
-import uk.gov.hmcts.befta.util.ReflectionUtils;
-import uk.gov.hmcts.befta.exception.FunctionalTestException;
+import uk.gov.hmcts.befta.dse.ccd.CcdEnvironment;
 import uk.gov.hmcts.befta.exception.FunctionalTestException;
 import uk.gov.hmcts.befta.player.BackEndFunctionalTestScenarioContext;
+import uk.gov.hmcts.befta.util.ReflectionUtils;
 
 public class CasePrintServiceTestAutomationAdapter extends DefaultTestAutomationAdapter {
 
-    private TestDataLoaderToDefinitionStore loader = new TestDataLoaderToDefinitionStore(this,
-            "uk/gov/hmcts/ccd/test_definitions/valid", BeftaMain.getConfig().getDefinitionStoreUrl());
-
     @Override
     protected BeftaTestDataLoader buildTestDataLoader() {
-        return new DefaultBeftaTestDataLoader() {
-            @Override
-            public void doLoadTestData() {
-                CasePrintServiceTestAutomationAdapter.this.loader.addCcdRoles();
-                CasePrintServiceTestAutomationAdapter.this.loader.importDefinitions();
-            }
-        };
+        return new DefaultBeftaTestDataLoader(CcdEnvironment.AAT);
     }
 
     @Override
-    public Object calculateCustomValue(BackEndFunctionalTestScenarioContext scenarioContext, Object key) {
+    public synchronized Object calculateCustomValue(BackEndFunctionalTestScenarioContext scenarioContext, Object key) {
         if (key.toString().startsWith("approximately ")) {
             try {
                 String actualSize = (String) ReflectionUtils.deepGetFieldInObject(scenarioContext,

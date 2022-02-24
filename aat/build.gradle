@@ -10,7 +10,6 @@ targetCompatibility = 1.8
 repositories {
   mavenLocal()
   mavenCentral()
-  jcenter()
   maven {
     url 'https://jitpack.io'
   }
@@ -18,6 +17,7 @@ repositories {
 
 dependencies {
   testCompile group: 'com.github.hmcts', name: 'ccd-test-definitions', version: '7.0.0'
+  testCompile group: 'com.github.hmcts', name: 'befta-fw', version: '8.7.1'
   testCompile 'com.github.hmcts:fortify-client:1.2.0:all'
 }
 
@@ -37,6 +37,12 @@ sourceSets {
 configurations {
   aatCompile.extendsFrom(testCompile)
   cucumberRuntime.extendsFrom(functionalRuntime)
+}
+
+task highLevelDataSetup(type: JavaExec) {
+  main = "uk.gov.hmcts.ccd.printservice.befta.HighLevelDataSetupApp"
+  classpath += configurations.cucumberRuntime + sourceSets.aat.runtimeClasspath
+  jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
 }
 
 task smoke(type: Test) {
@@ -95,6 +101,8 @@ task fortifyScan(type: JavaExec)  {
   main = "uk.gov.hmcts.fortifyclient.FortifyClientMainApp"
   classpath += sourceSets.test.runtimeClasspath
   jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
+  // The line below prevents the build from failing if the Fortify scan detects issues
+  ignoreExitValue = true
 }
 
 cucumberReports {

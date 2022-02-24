@@ -19,9 +19,9 @@ def prsToUseAat              = "PR-258"  // Set this value to a PR number, or ad
 def secrets = [
     'ccd-${env}': [
         secret('ccd-caseworker-autotest-password', 'CCD_CASEWORKER_AUTOTEST_PASSWORD'),
-        secret('ccd-importer-autotest-email', 'CCD_IMPORT_AUTOTEST_EMAIL'),
-        secret('ccd-importer-autotest-password', 'CCD_IMPORT_AUTOTEST_PASSWORD'),
-        secret('ccd-api-gateway-oauth2-client-secret', 'OAUTH2_CLIENT_SECRET'),
+        secret('ccd-api-gateway-oauth2-client-secret', 'CCD_API_GATEWAY_OAUTH2_CLIENT_SECRET'),
+        secret('definition-importer-username', 'DEFINITION_IMPORTER_USERNAME'),
+        secret('definition-importer-password', 'DEFINITION_IMPORTER_PASSWORD'),
         secret('ccd-befta-caseworker-3-pwd', 'CCD_BEFTA_CASEWORKER_3_PWD'),
         secret('ccd-befta-master-caseworker-pwd', 'CCD_BEFTA_MASTER_CASEWORKER_PWD'),
     ],
@@ -47,15 +47,15 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
 
 // vars needed for functional tests
 // Assume a feature build branched off 'develop', with dependencies develop-to-develop.
-env.DEFINITION_STORE_HOST = "http://ccd-definition-store-api-${definitionStoreDevelopPr}.service.core-compute-preview.internal".toLowerCase()
+env.DEFINITION_STORE_URL_BASE = "http://ccd-definition-store-api-${definitionStoreDevelopPr}.service.core-compute-preview.internal".toLowerCase()
 env.CCD_DATA_STORE_API_BASE_URL = "http://ccd-data-store-api-${dataStoreDevelopPr}.service.core-compute-preview.internal".toLowerCase()
 
 // Other env variables needed for BEFTA.
-env.IDAM_URL = "https://idam-api.aat.platform.hmcts.net"
-env.S2S_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
+env.IDAM_API_URL_BASE = "https://idam-api.aat.platform.hmcts.net"
+env.S2S_URL_BASE = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
 env.BEFTA_S2S_CLIENT_ID = "ccd_gw"
-env.OAUTH2_CLIENT_ID = "ccd_gateway"
-env.OAUTH2_REDIRECT_URI = "https://www-ccd.aat.platform.hmcts.net/oauth2redirect"
+env.CCD_API_GATEWAY_OAUTH2_CLIENT_ID = "ccd_gateway"
+env.CCD_API_GATEWAY_OAUTH2_REDIRECT_URL = "https://www-ccd.aat.platform.hmcts.net/oauth2redirect"
 env.DM_STORE_BASE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
 env.CCD_CASEWORKER_AUTOTEST_EMAIL = "auto.test.cnp@gmail.com"
 env.CCD_IMPORT_AUTOTEST_EMAIL = "ccd.docker.default@hmcts.net"
@@ -74,9 +74,9 @@ withPipeline("nodejs", product, component) {
     onPR {
         enableSlackNotifications('#ccd-pr-builds')
     }
-  
+
     syncBranchesWithMaster(branchesToSync)
-  
+
     // Check if the build should be wired to an environment higher than 'preview'.
     if (env.BRANCH_NAME == 'master' || env.BRANCH_NAME == 'demo' || env.BRANCH_NAME == 'perftest' || env.BRANCH_NAME == 'ithc' || prsToUseAat.toLowerCase().contains(env.BRANCH_NAME.toLowerCase())) {
       environmentOfDependencies = env.BRANCH_NAME
@@ -84,10 +84,10 @@ withPipeline("nodejs", product, component) {
       if (env.BRANCH_NAME.startsWith("PR") || env.BRANCH_NAME == 'master') {
         environmentOfDependencies = "aat"
       }
-      env.DEFINITION_STORE_HOST       = "http://ccd-definition-store-api-${environmentOfDependencies}.service.core-compute-${environmentOfDependencies}.internal"
+      env.DEFINITION_STORE_URL_BASE   = "http://ccd-definition-store-api-${environmentOfDependencies}.service.core-compute-${environmentOfDependencies}.internal"
       env.CCD_DATA_STORE_API_BASE_URL = "http://ccd-data-store-api-${environmentOfDependencies}.service.core-compute-${environmentOfDependencies}.internal"
     }
-    echo "FTA will use Definition Store: ${env.DEFINITION_STORE_HOST}"
+    echo "FTA will use Definition Store: ${env.DEFINITION_STORE_URL_BASE}"
     echo "FTA will use Data Store: ${env.CCD_DATA_STORE_API_BASE_URL}"
 
     overrideVaultEnvironments(vaultOverrides)
@@ -95,6 +95,7 @@ withPipeline("nodejs", product, component) {
 
     enableAksStagingDeployment()
     disableLegacyDeployment()
+    enableHighLevelDataSetup()
 
     afterCheckout {
         sh "yarn cache clean"
