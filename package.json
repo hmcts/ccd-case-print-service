@@ -54,8 +54,8 @@
     "require-directory": "^2.1.1",
     "serve-favicon": "^2.4.4",
     "snyk": "^1.396.0",
-    "ts-node": "^3.3.0",
-    "tsconfig-paths": "^2.6.0",
+    "ts-node": "^10.7.0",
+    "tsconfig-paths": "^3.14.1",
     "typescript": "^3.2.1"
   },
   "devDependencies": {
@@ -115,7 +115,7 @@
     "acorn": "^7.1.1",
     "uglify-js": "^2.6.0",
     "debug": "^3.1.0",
-    "minimist": "^1.2.3",
+    "minimist": "^1.2.6",
     "yargs-parser": "^18.1.2",
     "braces": "^2.3.1",
     "timespan": "^2.3.0",
