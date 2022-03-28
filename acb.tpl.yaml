@@ -1,53 +1,98 @@
 version: 1.0-preview-1
 steps:
-  - id: pull-base
-    cmd: docker pull {{.Run.Registry}}/ccd/ccd-case-print-service/base:latest || true
+  - id: pull-base-image-amd64
+    cmd: docker pull --platform linux/amd64 hmctspublic.azurecr.io/base/node:14-alpine && docker tag hmctspublic.azurecr.io/base/node:14-alpine hmctspublic.azurecr.io/base/node/linux/amd64:12-alpine
     when: ["-"]
     keep: true
 
-  - id: pull-build
-    cmd: docker pull {{.Run.Registry}}/ccd/ccd-case-print-service/build:latest || true
-    when: ["-"]
+  - id: pull-base-amd64
+    cmd: docker pull {{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64 || true
+    when:
+      - pull-base-image-amd64
     keep: true
 
-  - id: base
+  - id: base-amd64
     build: >
-      -t {{.Run.Registry}}/ccd/ccd-case-print-service/base
-      --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/base:latest
+      -t {{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64
+      --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64
+      --build-arg REGISTRY_NAME={{REGISTRY_NAME}}
+      --build-arg PLATFORM=/linux/amd64
+      --platform linux/amd64
       --target base
       .
     when:
-      - pull-base
+      - pull-base-amd64
     keep: true
 
-  - id: build
+  - id: runtime-amd64
     build: >
-      -t {{.Run.Registry}}/ccd/ccd-case-print-service/build
-      --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/base:latest
-      --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/build:latest
-      --target build
-      .
-    when:
-      - pull-base
-      - pull-build
-    keep: true
-
-  - id: runtime
-    build: >
-      -t {{.Run.Registry}}/{{CI_IMAGE_TAG}}
-      --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/base:latest
-      --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/build:latest
+      -t {{.Run.Registry}}/{{CI_IMAGE_TAG}}-amd64
+      --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64
+      --build-arg REGISTRY_NAME={{REGISTRY_NAME}}
+      --build-arg PLATFORM=/linux/amd64
+      --platform linux/amd64
       --target runtime
       .
     when:
-      - base
-      - build
+      - base-amd64
+    keep: true
+
+  - id: pull-base-image-arm64
+    cmd: docker pull --platform linux/arm64 hmctspublic.azurecr.io/base/node:14-alpine && docker tag hmctspublic.azurecr.io/base/node:14-alpine hmctspublic.azurecr.io/base/node/linux/arm64:12-alpine
+    when:
+      - pull-base-image-amd64
+    keep: true
+
+  - id: pull-base-arm64
+    cmd: docker pull {{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64 || true
+    when:
+      - pull-base-image-arm64
+    keep: true
+
+  - id: base-arm64
+    build: >
+      -t {{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64
+      --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64
+      --build-arg REGISTRY_NAME={{REGISTRY_NAME}}
+      --build-arg PLATFORM=/linux/arm64
+      --platform linux/arm64/v8
+      --target base
+      .
+    when:
+      - pull-base-arm64
+    keep: true
+
+  - id: runtime-arm64
+    build: >
+      -t {{.Run.Registry}}/{{CI_IMAGE_TAG}}-arm64
+      --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64
+      --build-arg REGISTRY_NAME={{REGISTRY_NAME}}
+      --build-arg PLATFORM=/linux/arm64
+      --platform linux/arm64/v8
+      --target runtime
+      .
+    when:
+      - base-arm64
     keep: true
 
   - id: push-images
     push:
-      - "{{.Run.Registry}}/ccd/ccd-case-print-service/base:latest"
-      - "{{.Run.Registry}}/ccd/ccd-case-print-service/build:latest"
-      - "{{.Run.Registry}}/{{CI_IMAGE_TAG}}"
+      - "{{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64"
+      - "{{.Run.Registry}}/{{CI_IMAGE_TAG}}-amd64"
+      - "{{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64"
+      - "{{.Run.Registry}}/{{CI_IMAGE_TAG}}-arm64"
     when:
-      - runtime
+      - runtime-amd64
+      - runtime-arm64
+
+  - id: manifest-create
+    cmd: docker manifest create {{.Run.Registry}}/{{CI_IMAGE_TAG}} {{.Run.Registry}}/{{CI_IMAGE_TAG}}-amd64 {{.Run.Registry}}/{{CI_IMAGE_TAG}}-arm64
+    when:
+      - push-images
+    keep: true
+
+  - id: manifest-push
+    cmd: docker manifest push --purge {{.Run.Registry}}/{{CI_IMAGE_TAG}}
+    when:
+      - manifest-create
+    keep: true
