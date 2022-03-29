@@ -1,5 +1,8 @@
 version: 1.0-preview-1
 steps:
+  - cmd: multiarch/qemu-user-static --reset -p yes
+    privileged: true
+
   - id: pull-base-image-amd64
     cmd: docker pull --platform linux/amd64 hmctspublic.azurecr.io/base/node:14-alpine && docker tag hmctspublic.azurecr.io/base/node:14-alpine hmctspublic.azurecr.io/base/node/linux/amd64:14-alpine
     when: ["-"]
@@ -17,7 +20,7 @@ steps:
       --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64
       --build-arg REGISTRY_NAME={{REGISTRY_NAME}}
       --build-arg PLATFORM=/linux/amd64
-      --platform linux/amd64
+      --platform Linux/amd64
       --target base
       .
     when:
@@ -30,7 +33,7 @@ steps:
       --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64
       --build-arg REGISTRY_NAME={{REGISTRY_NAME}}
       --build-arg PLATFORM=/linux/amd64
-      --platform linux/amd64
+      --platform Linux/amd64
       --target runtime
       .
     when:
@@ -44,7 +47,7 @@ steps:
     keep: true
 
   - id: pull-base-arm64
-    cmd: docker pull {{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64 || true
+    cmd: docker pull {{.Run.Registry}}/ccd/ccd-case-print-service/base-arm64:latest || true
     when:
       - pull-base-image-arm64
     keep: true
@@ -55,7 +58,7 @@ steps:
       --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64
       --build-arg REGISTRY_NAME={{REGISTRY_NAME}}
       --build-arg PLATFORM=/linux/arm64
-      --platform linux/arm64/v8
+      --platform Linux/arm64/v8
       --target base
       .
     when:
@@ -68,7 +71,7 @@ steps:
       --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64
       --build-arg REGISTRY_NAME={{REGISTRY_NAME}}
       --build-arg PLATFORM=/linux/arm64
-      --platform linux/arm64/v8
+      --platform Linux/arm64/v8
       --target runtime
       .
     when:
