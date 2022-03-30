@@ -3,99 +3,175 @@ steps:
   - cmd: multiarch/qemu-user-static --reset -p yes
     privileged: true
 
-  - id: pull-base-image-amd64
+  - id: pull-hmcts-base-amd64
     cmd: docker pull --platform linux/amd64 hmctspublic.azurecr.io/base/node:14-alpine && docker tag hmctspublic.azurecr.io/base/node:14-alpine hmctspublic.azurecr.io/base/node/linux/amd64:14-alpine
     when: ["-"]
     keep: true
 
   - id: pull-base-amd64
-    cmd: docker pull {{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64 || true
-    when:
-      - pull-base-image-amd64
+    cmd: docker pull --platform linux/amd64 {{.Run.Registry}}/ccd/ccd-case-print-service/base:latest && docker tag {{.Run.Registry}}/ccd/ccd-case-print-service/base:latest {{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64
+    when: ["-"]
+    keep: true
+
+  - id: pull-build-amd64
+    cmd: docker pull --platform linux/amd64 {{.Run.Registry}}/ccd/ccd-case-print-service/build:latest && docker tag {{.Run.Registry}}/ccd/ccd-case-print-service/build:latest {{.Run.Registry}}/ccd/ccd-case-print-service/build:amd64
+    when: ["-"]
     keep: true
 
   - id: base-amd64
     build: >
       -t {{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64
       --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64
-      --build-arg REGISTRY_NAME={{REGISTRY_NAME}}
       --build-arg PLATFORM=/linux/amd64
-      --platform Linux/amd64
+      --platform linux/amd64
       --target base
       .
     when:
       - pull-base-amd64
     keep: true
+    timeout: 3000
+
+  - id: build-amd64
+    build: >
+      -t {{.Run.Registry}}/ccd/ccd-case-print-service/build:amd64
+      --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64
+      --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/build:amd64
+      --build-arg PLATFORM=/linux/amd64
+      --platform linux/amd64
+      --target build
+      .
+    when:
+      - pull-base-amd64
+      - pull-build-amd64
+    keep: true
+    timeout: 3000
 
   - id: runtime-amd64
     build: >
-      -t {{.Run.Registry}}/{{CI_IMAGE_TAG}}-amd64
+      -t {{.Run.Registry}}/{{CI_IMAGE_TAG}}:amd64
       --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64
-      --build-arg REGISTRY_NAME={{REGISTRY_NAME}}
+      --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/build:amd64
       --build-arg PLATFORM=/linux/amd64
-      --platform Linux/amd64
+      --platform linux/amd64
       --target runtime
       .
     when:
       - base-amd64
+      - build-amd64
     keep: true
+    timeout: 3000
 
-  - id: pull-base-image-arm64
+  - id: pull-hmcts-base-arm64
     cmd: docker pull --platform linux/arm64 hmctspublic.azurecr.io/base/node:14-alpine && docker tag hmctspublic.azurecr.io/base/node:14-alpine hmctspublic.azurecr.io/base/node/linux/arm64:14-alpine
     when:
-      - pull-base-image-amd64
+      - pull-hmcts-base-amd64
     keep: true
 
   - id: pull-base-arm64
-    cmd: docker pull {{.Run.Registry}}/ccd/ccd-case-print-service/base-arm64:latest || true
+    cmd: docker pull --platform linux/arm64 {{.Run.Registry}}/ccd/ccd-case-print-service/base:latest && docker tag {{.Run.Registry}}/ccd/ccd-case-print-service/base:latest {{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64
     when:
-      - pull-base-image-arm64
+      - pull-base-amd64
     keep: true
+
+  - id: pull-build-arm64
+    cmd: docker pull --platform linux/arm64 {{.Run.Registry}}/ccd/ccd-case-print-service/build:latest && docker tag {{.Run.Registry}}/ccd/ccd-case-print-service/build:latest {{.Run.Registry}}/ccd/ccd-case-print-service/build:arm64
+    when:
+      - pull-build-amd64
+    keep: true
+
+  - id: reset-qemu
+    cmd: multiarch/qemu-user-static --reset -p yes
+    when:
+      - pull-build-arm64
+    privileged: true
 
   - id: base-arm64
     build: >
       -t {{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64
       --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64
-      --build-arg REGISTRY_NAME={{REGISTRY_NAME}}
       --build-arg PLATFORM=/linux/arm64
-      --platform Linux/arm64/v8
+      --platform linux/arm64/v8
       --target base
       .
     when:
-      - pull-base-arm64
+      - reset-qemu
     keep: true
+    timeout: 3000
+
+  - id: build-arm64
+    build: >
+      -t {{.Run.Registry}}/ccd/ccd-case-print-service/build:arm64
+      --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64
+      --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/build:arm64
+      --build-arg PLATFORM=/linux/arm64
+      --platform linux/arm64/v8
+      --target build
+      .
+    when:
+      - pull-base-arm64
+      - pull-build-arm64
+    keep: true
+    timeout: 3000
 
   - id: runtime-arm64
     build: >
-      -t {{.Run.Registry}}/{{CI_IMAGE_TAG}}-arm64
+      -t {{.Run.Registry}}/{{CI_IMAGE_TAG}}:arm64
       --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64
-      --build-arg REGISTRY_NAME={{REGISTRY_NAME}}
+      --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/build:arm64
       --build-arg PLATFORM=/linux/arm64
-      --platform Linux/arm64/v8
+      --platform linux/arm64/v8
       --target runtime
       .
     when:
       - base-arm64
+      - build-arm64
     keep: true
+    timeout: 3000
 
   - id: push-images
     push:
       - "{{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64"
-      - "{{.Run.Registry}}/{{CI_IMAGE_TAG}}-amd64"
+      - "{{.Run.Registry}}/ccd/ccd-case-print-service/build:amd64"
+      - "{{.Run.Registry}}/{{CI_IMAGE_TAG}}:amd64"
       - "{{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64"
-      - "{{.Run.Registry}}/{{CI_IMAGE_TAG}}-arm64"
+      - "{{.Run.Registry}}/ccd/ccd-case-print-service/build:arm64"
+      - "{{.Run.Registry}}/{{CI_IMAGE_TAG}}:arm64"
     when:
       - runtime-amd64
       - runtime-arm64
 
-  - id: manifest-create
-    cmd: docker manifest create {{.Run.Registry}}/{{CI_IMAGE_TAG}} {{.Run.Registry}}/{{CI_IMAGE_TAG}}-amd64 {{.Run.Registry}}/{{CI_IMAGE_TAG}}-arm64
+  - id: manifest-create-base
+    cmd: docker manifest create {{.Run.Registry}}/ccd/ccd-case-print-service/base {{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64 {{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64
     when:
       - push-images
     keep: true
 
-  - id: manifest-push
+  - id: manifest-push-base
+    cmd: docker manifest push --purge {{.Run.Registry}}/ccd/ccd-case-print-service/base
+    when:
+      - manifest-create-base
+    keep: true
+
+  - id: manifest-create-build
+    cmd: docker manifest create {{.Run.Registry}}/ccd/ccd-case-print-service/build {{.Run.Registry}}/ccd/ccd-case-print-service/build:amd64 {{.Run.Registry}}/ccd/ccd-case-print-service/build:arm64
+    when:
+      - push-images
+    keep: true
+
+  - id: manifest-push-build
+    cmd: docker manifest push --purge {{.Run.Registry}}/ccd/ccd-case-print-service/build
+    when:
+      - manifest-create-build
+    keep: true
+
+  - id: manifest-create-runtime
+    cmd: docker manifest create {{.Run.Registry}}/{{CI_IMAGE_TAG}} {{.Run.Registry}}/{{CI_IMAGE_TAG}}:amd64 {{.Run.Registry}}/{{CI_IMAGE_TAG}}:arm64
+    when:
+      - push-images
+    keep: true
+
+  - id: manifest-push-runtime
     cmd: docker manifest push --purge {{.Run.Registry}}/{{CI_IMAGE_TAG}}
     when:
-      - manifest-create
+      - manifest-create-runtime
     keep: true

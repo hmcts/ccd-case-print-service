@@ -1,15 +1,14 @@
 # ---- Base Image ----
 ARG PLATFORM=""
-
-ARG base=hmctspublic.azurecr.io/base/node${PLATFORM}:14-alpine
-
-FROM ${base} as base
+FROM hmctspublic.azurecr.io/base/node${PLATFORM}:14-alpine as base
+ENV PUPPETEER_SKIP_DOWNLOAD=true
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 USER root
 RUN apk update \
-  && apk add bzip2 patch \
+  && apk add bzip2 patch python3 py3-pip make gcc g++ \
   && rm -rf /var/lib/ /lists/*
 COPY package.json yarn.lock .snyk ./
-RUN yarn install --ignore-optional
+RUN yarn install --ignore-optional --verbose
 
 # ---- Build Image ----
 FROM base as build
@@ -17,10 +16,10 @@ COPY src/main ./src/main
 COPY config ./config
 COPY gulpfile.js tsconfig.json ./
 RUN yarn sass \
-  && yarn install --ignore-optional --production \
+  && yarn install --ignore-optional --production --verbose \
   && yarn cache clean
 
 # ---- Runtime Image ----
-FROM ${base} as runtime
+FROM hmctspublic.azurecr.io/base/node${PLATFORM}:14-alpine as runtime
 COPY --from=build $WORKDIR .
 EXPOSE 3100
