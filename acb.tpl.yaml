@@ -48,7 +48,7 @@ steps:
 
   - id: runtime-amd64
     build: >
-      -t {{.Run.Registry}}/{{CI_IMAGE_TAG}}:amd64
+      -t {{.Run.Registry}}/{{CI_IMAGE_TAG}}-amd64
       --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64
       --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/build:amd64
       --build-arg PLATFORM=/linux/amd64
@@ -115,7 +115,7 @@ steps:
 
   - id: runtime-arm64
     build: >
-      -t {{.Run.Registry}}/{{CI_IMAGE_TAG}}:arm64
+      -t {{.Run.Registry}}/{{CI_IMAGE_TAG}}-arm64
       --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64
       --cache-from {{.Run.Registry}}/ccd/ccd-case-print-service/build:arm64
       --build-arg PLATFORM=/linux/arm64
@@ -132,10 +132,10 @@ steps:
     push:
       - "{{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64"
       - "{{.Run.Registry}}/ccd/ccd-case-print-service/build:amd64"
-      - "{{.Run.Registry}}/{{CI_IMAGE_TAG}}:amd64"
+      - "{{.Run.Registry}}/{{CI_IMAGE_TAG}}-amd64"
       - "{{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64"
       - "{{.Run.Registry}}/ccd/ccd-case-print-service/build:arm64"
-      - "{{.Run.Registry}}/{{CI_IMAGE_TAG}}:arm64"
+      - "{{.Run.Registry}}/{{CI_IMAGE_TAG}}-arm64"
     when:
       - runtime-amd64
       - runtime-arm64
@@ -165,7 +165,7 @@ steps:
     keep: true
 
   - id: manifest-create-runtime
-    cmd: docker manifest create {{.Run.Registry}}/{{CI_IMAGE_TAG}} {{.Run.Registry}}/{{CI_IMAGE_TAG}}:amd64 {{.Run.Registry}}/{{CI_IMAGE_TAG}}:arm64
+    cmd: docker manifest create {{.Run.Registry}}/{{CI_IMAGE_TAG}} {{.Run.Registry}}/{{CI_IMAGE_TAG}}-amd64 {{.Run.Registry}}/{{CI_IMAGE_TAG}}-arm64
     when:
       - push-images
     keep: true
