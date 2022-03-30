@@ -29,7 +29,7 @@ steps:
     when:
       - pull-base-amd64
     keep: true
-    timeout: 3000
+    timeout: 3600
 
   - id: build-amd64
     build: >
@@ -44,7 +44,7 @@ steps:
       - pull-base-amd64
       - pull-build-amd64
     keep: true
-    timeout: 3000
+    timeout: 3600
 
   - id: runtime-amd64
     build: >
@@ -59,7 +59,7 @@ steps:
       - base-amd64
       - build-amd64
     keep: true
-    timeout: 3000
+    timeout: 3600
 
   - id: pull-hmcts-base-arm64
     cmd: docker pull --platform linux/arm64 hmctspublic.azurecr.io/base/node:14-alpine && docker tag hmctspublic.azurecr.io/base/node:14-alpine hmctspublic.azurecr.io/base/node/linux/arm64:14-alpine
@@ -96,7 +96,7 @@ steps:
     when:
       - reset-qemu
     keep: true
-    timeout: 3000
+    timeout: 3600
 
   - id: build-arm64
     build: >
@@ -111,7 +111,7 @@ steps:
       - pull-base-arm64
       - pull-build-arm64
     keep: true
-    timeout: 3000
+    timeout: 3600
 
   - id: runtime-arm64
     build: >
@@ -126,7 +126,7 @@ steps:
       - base-arm64
       - build-arm64
     keep: true
-    timeout: 3000
+    timeout: 3600
 
   - id: push-images
     push:
