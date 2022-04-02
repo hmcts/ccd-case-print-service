@@ -3,17 +3,16 @@ steps:
   - id: pull-hmcts-base-amd64
     cmd: docker pull --platform linux/amd64 hmctspublic.azurecr.io/base/node:14-alpine && docker tag hmctspublic.azurecr.io/base/node:14-alpine hmctspublic.azurecr.io/base/node/linux/amd64:14-alpine
     when: ["-"]
-    keep: true
 
   - id: pull-base-amd64
     cmd: docker pull --platform linux/amd64 {{.Run.Registry}}/ccd/ccd-case-print-service/base:latest && docker tag {{.Run.Registry}}/ccd/ccd-case-print-service/base:latest {{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64
     when: ["-"]
-    keep: true
+    ignoreErrors: true
 
   - id: pull-build-amd64
     cmd: docker pull --platform linux/amd64 {{.Run.Registry}}/ccd/ccd-case-print-service/build:latest && docker tag {{.Run.Registry}}/ccd/ccd-case-print-service/build:latest {{.Run.Registry}}/ccd/ccd-case-print-service/build:amd64
     when: ["-"]
-    keep: true
+    ignoreErrors: true
 
   - id: base-amd64
     build: >
@@ -25,8 +24,7 @@ steps:
       .
     when:
       - pull-base-amd64
-    keep: true
-    timeout: 3600
+    timeout: 7200
 
   - id: build-amd64
     build: >
@@ -40,8 +38,7 @@ steps:
     when:
       - pull-base-amd64
       - pull-build-amd64
-    keep: true
-    timeout: 3600
+    timeout: 7200
 
   - id: runtime-amd64
     build: >
@@ -55,26 +52,24 @@ steps:
     when:
       - base-amd64
       - build-amd64
-    keep: true
-    timeout: 3600
+    timeout: 7200
 
   - id: pull-hmcts-base-arm64
     cmd: docker pull --platform linux/arm64 hmctspublic.azurecr.io/base/node:14-alpine && docker tag hmctspublic.azurecr.io/base/node:14-alpine hmctspublic.azurecr.io/base/node/linux/arm64:14-alpine
     when:
       - pull-hmcts-base-amd64
-    keep: true
 
   - id: pull-base-arm64
     cmd: docker pull --platform linux/arm64 {{.Run.Registry}}/ccd/ccd-case-print-service/base:latest && docker tag {{.Run.Registry}}/ccd/ccd-case-print-service/base:latest {{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64
     when:
       - pull-base-amd64
-    keep: true
+    ignoreErrors: true
 
   - id: pull-build-arm64
     cmd: docker pull --platform linux/arm64 {{.Run.Registry}}/ccd/ccd-case-print-service/build:latest && docker tag {{.Run.Registry}}/ccd/ccd-case-print-service/build:latest {{.Run.Registry}}/ccd/ccd-case-print-service/build:arm64
     when:
       - pull-build-amd64
-    keep: true
+    ignoreErrors: true
 
   - id: reset-qemu
     cmd: multiarch/qemu-user-static --reset -p yes
@@ -92,8 +87,7 @@ steps:
       .
     when:
       - reset-qemu
-    keep: true
-    timeout: 3600
+    timeout: 7200
 
   - id: build-arm64
     build: >
@@ -107,8 +101,7 @@ steps:
     when:
       - pull-base-arm64
       - pull-build-arm64
-    keep: true
-    timeout: 3600
+    timeout: 7200
 
   - id: runtime-arm64
     build: >
@@ -122,53 +115,46 @@ steps:
     when:
       - base-arm64
       - build-arm64
-    keep: true
-    timeout: 3600
+    timeout: 7200
 
   - id: push-images
     push:
-      - "{{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64"
-      - "{{.Run.Registry}}/ccd/ccd-case-print-service/build:amd64"
+      - "hmctspublic.azurecr.io/ccd/ccd-case-print-service/base:amd64"
+      - "hmctspublic.azurecr.io/ccd/ccd-case-print-service/build:amd64"
       - "{{.Run.Registry}}/{{CI_IMAGE_TAG}}-amd64"
-      - "{{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64"
-      - "{{.Run.Registry}}/ccd/ccd-case-print-service/build:arm64"
+      - "hmctspublic.azurecr.io/ccd/ccd-case-print-service/base:arm64"
+      - "hmctspublic.azurecr.io/ccd/ccd-case-print-service/build:arm64"
       - "{{.Run.Registry}}/{{CI_IMAGE_TAG}}-arm64"
     when:
       - runtime-amd64
       - runtime-arm64
 
   - id: manifest-create-base
-    cmd: docker manifest create {{.Run.Registry}}/ccd/ccd-case-print-service/base {{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64 {{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64
+    cmd: docker manifest create hmctspublic.azurecr.io/ccd/ccd-case-print-service/base hmctspublic.azurecr.io/ccd/ccd-case-print-service/base:amd64 hmctspublic.azurecr.io/ccd/ccd-case-print-service/base:arm64
     when:
       - push-images
-    keep: true
 
   - id: manifest-push-base
-    cmd: docker manifest push --purge {{.Run.Registry}}/ccd/ccd-case-print-service/base
+    cmd: docker manifest push --purge hmctspublic.azurecr.io/ccd/ccd-case-print-service/base
     when:
       - manifest-create-base
-    keep: true
 
   - id: manifest-create-build
-    cmd: docker manifest create {{.Run.Registry}}/ccd/ccd-case-print-service/build {{.Run.Registry}}/ccd/ccd-case-print-service/build:amd64 {{.Run.Registry}}/ccd/ccd-case-print-service/build:arm64
+    cmd: docker manifest create hmctspublic.azurecr.io/ccd/ccd-case-print-service/build hmctspublic.azurecr.io/ccd/ccd-case-print-service/build:amd64 hmctspublic.azurecr.io/ccd/ccd-case-print-service/build:arm64
     when:
       - push-images
-    keep: true
 
   - id: manifest-push-build
-    cmd: docker manifest push --purge {{.Run.Registry}}/ccd/ccd-case-print-service/build
+    cmd: docker manifest push --purge hmctspublic.azurecr.io/ccd/ccd-case-print-service/build
     when:
       - manifest-create-build
-    keep: true
 
   - id: manifest-create-runtime
     cmd: docker manifest create {{.Run.Registry}}/{{CI_IMAGE_TAG}} {{.Run.Registry}}/{{CI_IMAGE_TAG}}-amd64 {{.Run.Registry}}/{{CI_IMAGE_TAG}}-arm64
     when:
       - push-images
-    keep: true
 
   - id: manifest-push-runtime
     cmd: docker manifest push --purge {{.Run.Registry}}/{{CI_IMAGE_TAG}}
     when:
       - manifest-create-runtime
-    keep: true

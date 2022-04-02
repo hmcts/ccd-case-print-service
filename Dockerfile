@@ -8,7 +8,7 @@ RUN apk update \
   && apk add bzip2 patch python3 py3-pip make gcc g++ \
   && rm -rf /var/lib/ /lists/*
 COPY package.json yarn.lock .snyk ./
-RUN yarn install --ignore-optional --network-timeout 600000 --verbose
+RUN yarn install --ignore-optional --network-timeout 1200000
 
 # ---- Build Image ----
 FROM base as build
@@ -16,7 +16,7 @@ COPY src/main ./src/main
 COPY config ./config
 COPY gulpfile.js tsconfig.json ./
 RUN yarn sass \
-  && yarn install --ignore-optional --production --network-timeout 600000 --verbose \
+  && yarn install --ignore-optional --production --network-timeout 1200000 \
   && yarn cache clean
 
 # ---- Runtime Image ----
