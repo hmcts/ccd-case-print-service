@@ -36,7 +36,7 @@ steps:
       --target build
       .
     when:
-      - pull-base-amd64
+      - base-amd64
       - pull-build-amd64
     timeout: 7200
 
@@ -99,7 +99,7 @@ steps:
       --target build
       .
     when:
-      - pull-base-arm64
+      - base-arm64
       - pull-build-arm64
     timeout: 7200
 
