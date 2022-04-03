@@ -60,13 +60,13 @@ steps:
       - pull-hmcts-base-amd64
 
   - id: pull-base-arm64
-    cmd: docker pull --platform linux/arm64 {{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64 && docker tag {{.Run.Registry}}/ccd/ccd-case-print-service/base:amd64 {{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64
+    cmd: docker pull --platform linux/arm64 {{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64 && docker tag {{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64 {{.Run.Registry}}/ccd/ccd-case-print-service/base:arm64
     when:
       - pull-base-amd64
     ignoreErrors: true
 
   - id: pull-build-arm64
-    cmd: docker pull --platform linux/arm64 {{.Run.Registry}}/ccd/ccd-case-print-service/build:amd64 && docker tag {{.Run.Registry}}/ccd/ccd-case-print-service/build:amd64 {{.Run.Registry}}/ccd/ccd-case-print-service/build:arm64
+    cmd: docker pull --platform linux/arm64 {{.Run.Registry}}/ccd/ccd-case-print-service/build:arm64 && docker tag {{.Run.Registry}}/ccd/ccd-case-print-service/build:arm64 {{.Run.Registry}}/ccd/ccd-case-print-service/build:arm64
     when:
       - pull-build-amd64
     ignoreErrors: true
