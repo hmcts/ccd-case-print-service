@@ -105,6 +105,9 @@
     "webpack": "^4"
   },
   "resolutions": {
+    "es6-promisify" : "5.0.0",
+    "nconf" : "0.11.4",
+    "async" : "3.2.2",
     "js-yaml": "3.13.1",
     "lodash": "^4.17.21",
     "growl": "^1.10.2",
