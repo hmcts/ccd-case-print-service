@@ -65,6 +65,7 @@
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "debug": "^3.1.0",
+    "es6-promisify": "^5.0.0",
     "gulp": "^4.0.2",
     "gulp-livereload": "^3.8.1",
     "gulp-nodemon": "^2.4.2",
@@ -105,9 +106,8 @@
     "webpack": "^4"
   },
   "resolutions": {
-    "es6-promisify" : "5.0.0",
-    "nconf" : "0.11.4",
-    "async" : "3.2.2",
+    "nconf" : "^0.11.4",
+    "async" : "^2.6.4",
     "js-yaml": "3.13.1",
     "lodash": "^4.17.21",
     "growl": "^1.10.2",
