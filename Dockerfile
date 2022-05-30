@@ -13,6 +13,7 @@ FROM base as build
 COPY src/main ./src/main
 COPY config ./config
 COPY gulpfile.js tsconfig.json ./
+USER root
 RUN yarn sass \
   && yarn install --ignore-optional --production \
   && yarn cache clean
