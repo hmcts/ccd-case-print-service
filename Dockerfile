@@ -17,6 +17,7 @@ USER root
 RUN yarn sass \
   && yarn install --ignore-optional --production \
   && yarn cache clean
+USER hmcts
 
 # ---- Runtime Image ----
 FROM hmctspublic.azurecr.io/base/node:14-alpine as runtime
