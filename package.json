@@ -21,9 +21,7 @@
     "fortifyScan": "./aat/gradlew -p aat fortifyScan",
     "sonar-scan": "NODE_PATH=. sonar-scanner -X",
     "highLevelDataSetup": "echo './aat/gradlew -p aat highLevelDataSetup --args=$1' > ./temp.sh && sh ./temp.sh",
-    "setup": "echo 'No setup required'",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "setup": "echo 'No setup required'"
   },
   "dependencies": {
     "@hmcts/nodejs-healthcheck": "1.7.0",
