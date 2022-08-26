@@ -8,7 +8,7 @@ RUN apk update \
   && apk add bzip2 patch python3 py3-pip make gcc g++ \
   && rm -rf /var/lib/ /lists/*
 USER hmcts
-COPY package.json yarn.lock .snyk ./
+COPY package.json yarn.lock ./
 RUN yarn install --ignore-optional --network-timeout 1200000
 
 # ---- Build Image ----
