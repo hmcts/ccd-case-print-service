@@ -12,7 +12,7 @@ COPY package.json yarn.lock .snyk ./
 
 RUN yarn config set yarn-offline-mirror ~/npm-packages-offline-cache && \
   yarn config set yarn-offline-mirror-pruning true && \
-  yarn install --frozen-lockfile --verbose
+  yarn install --prefer-offline --verbose
 
 # ---- Build Image ----
 FROM base as build
