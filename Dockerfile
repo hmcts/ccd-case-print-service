@@ -9,10 +9,7 @@ RUN apk update \
   && rm -rf /var/lib/ /lists/*
 USER hmcts
 COPY package.json yarn.lock .snyk ./
-
-RUN yarn config set yarn-offline-mirror ~/npm-packages-offline-cache && \
-  yarn config set yarn-offline-mirror-pruning true && \
-  yarn install --prefer-offline
+RUN yarn install --ignore-optional --network-timeout 1200000
 
 # ---- Build Image ----
 FROM base as build
