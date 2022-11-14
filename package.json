@@ -155,7 +155,8 @@
     "pathval": "^1.1.1",
     "table": "^5.0.0",
     "moment": "^2.29.4",
-    "got": "^11.8.5"
+    "got": "^11.8.5",
+    "minimatch": "3.0.5"
   },
   "snyk": true,
   "nyc": {
