@@ -159,7 +159,8 @@
     "loader-utils": "^1.4.2",
     "engine.io": "^6.2.1",
     "minimatch": "^3.0.5",
-    "socket.io-parser": "^4.0.5"
+    "socket.io-parser": "^4.0.5",
+    "json5": "^2.2.2"
   },
   "snyk": true,
   "nyc": {
