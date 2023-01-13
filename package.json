@@ -22,7 +22,7 @@
     "sonar-scan": "NODE_PATH=. sonar-scanner -X",
     "highLevelDataSetup": "echo './aat/gradlew -p aat highLevelDataSetup --args=$1' > ./temp.sh && sh ./temp.sh",
     "setup": "echo 'No setup required'",
-    "snyk-protect": "snyk protect",
+    "snyk-protect": "snyk-protect",
     "prepare": "npm run snyk-protect"
   },
   "dependencies": {
@@ -52,7 +52,7 @@
     "require-directory": "^2.1.1",
     "sass": "^1.45.0",
     "serve-favicon": "^2.4.4",
-    "snyk": "^1.996.0",
+    "@snyk/protect": "^1.1081.0",
     "ts-node": "^10.7.0",
     "tsconfig-paths": "^3.14.1",
     "typescript": "^3.2.1"
