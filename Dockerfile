@@ -1,6 +1,6 @@
 # ---- Base Image ----
 ARG PLATFORM=""
-FROM hmctspublic.azurecr.io/base/node${PLATFORM}:14-alpine as base
+FROM hmctspublic.azurecr.io/base/node${PLATFORM}:16-alpine as base
 ENV PUPPETEER_SKIP_DOWNLOAD=true
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 USER root
@@ -26,6 +26,6 @@ RUN yarn sass \
 USER hmcts
 
 # ---- Runtime Image ----
-FROM hmctspublic.azurecr.io/base/node${PLATFORM}:14-alpine as runtime
+FROM hmctspublic.azurecr.io/base/node${PLATFORM}:16-alpine as runtime
 COPY --from=build $WORKDIR .
 EXPOSE 3100
