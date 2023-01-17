@@ -20,7 +20,7 @@ withNightlyPipeline(type, product, component) {
         steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/Fortify Scan/**/*'
     }
 
-    afterCheckout {
+    afterAlways('checkout') {
         sh "yarn cache clean"
     }
 
