@@ -110,7 +110,7 @@ withPipeline("nodejs", product, component) {
     }
 
     afterAlways('build') {
-        sh "yarn check"
+        sh "yarn --check-cache"
     }
 
     afterAlways('smoketest:preview') {

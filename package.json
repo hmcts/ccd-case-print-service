@@ -3,8 +3,7 @@
   "version": "1.2.0",
   "private": true,
   "engines": {
-    "node": "^16.15.0",
-    "yarn": "^1.12.3"
+    "node": "^16.15.0"
   },
   "scripts": {
     "start": "./node_modules/.bin/ts-node -r tsconfig-paths/register src/main/server.ts",
@@ -26,9 +25,10 @@
     "prepare": "npm run snyk-protect"
   },
   "dependencies": {
-    "@hmcts/nodejs-healthcheck": "1.7.0",
-    "@hmcts/nodejs-logging": "^3.0.0",
-    "@hmcts/properties-volume": "^0.0.13",
+    "@hmcts/nodejs-healthcheck": "1.8.0",
+    "@hmcts/nodejs-logging": "^4.0.4",
+    "@hmcts/properties-volume": "^0.0.14",
+    "@snyk/protect": "^1.1081.0",
     "@types/node": "^10.5.4",
     "applicationinsights": "^1.0.8",
     "assign-deep": "^1.0.1",
@@ -52,7 +52,6 @@
     "require-directory": "^2.1.1",
     "sass": "^1.45.0",
     "serve-favicon": "^2.4.4",
-    "@snyk/protect": "^1.1081.0",
     "ts-node": "^10.7.0",
     "tsconfig-paths": "^3.14.1",
     "typescript": "^3.2.1"
@@ -98,7 +97,7 @@
     "sass-lint": "^1.11.1",
     "sinon": "^4.0.0",
     "sinon-chai": "^2.13.0",
-    "sonar-scanner": "^3.0.3",
+    "sonar-scanner": "^3.1.0",
     "supertest": "^3.0.0",
     "tslint": "^5.7.0",
     "webpack": "^4"
@@ -190,5 +189,6 @@
     "instrument": true,
     "report-dir": "coverage",
     "all": true
-  }
+  },
+  "packageManager": "yarn@3.4.1"
 }
