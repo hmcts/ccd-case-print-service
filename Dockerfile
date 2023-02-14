@@ -7,8 +7,10 @@ USER root
 RUN apk update \
   && apk add bzip2 patch python3 py3-pip make gcc g++ \
   && rm -rf /var/lib/ /lists/*
+
+COPY --chown=hmcts:hmcts package.json yarn.lock .snyk ./
+
 USER hmcts
-COPY package.json yarn.lock .snyk ./
 
 RUN yarn config set yarn-offline-mirror ~/npm-packages-offline-cache && \
   yarn config set yarn-offline-mirror-pruning true && \
