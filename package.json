@@ -162,7 +162,6 @@
     "json5": "^2.2.2",
     "decode-uri-component": "^0.2.1",
     "cookiejar": "^2.1.4",
-    "http-cache-semantics@npm": "4.1.1",
     "http-cache-semantics": "4.1.1"
   },
   "snyk": true,
