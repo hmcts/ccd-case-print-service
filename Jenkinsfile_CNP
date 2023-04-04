@@ -50,16 +50,16 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
 
 // vars needed for functional tests
 // Assume a feature build branched off 'develop', with dependencies develop-to-develop.
-env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-api-${definitionStoreDevelopPr}.preview.platform.hmcts.net".toLowerCase()
-env.CCD_DATA_STORE_API_BASE_URL = "https://ccd-data-store-api-${dataStoreDevelopPr}.preview.platform.hmcts.net".toLowerCase()
+env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-api-${definitionStoreDevelopPr}.service.core-compute-preview.internal".toLowerCase()
+env.CCD_DATA_STORE_API_BASE_URL = "https://ccd-data-store-api-${dataStoreDevelopPr}.service.core-compute-preview.internal".toLowerCase()
 
 // Other env variables needed for BEFTA.
 env.IDAM_API_URL_BASE = "https://idam-api.aat.platform.hmcts.net"
-env.S2S_URL_BASE = "http://rpe-service-auth-provider-aat.preview.platform.hmcts.net"
+env.S2S_URL_BASE = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
 env.BEFTA_S2S_CLIENT_ID = "ccd_gw"
 env.CCD_API_GATEWAY_OAUTH2_CLIENT_ID = "ccd_gateway"
 env.CCD_API_GATEWAY_OAUTH2_REDIRECT_URL = "https://www-ccd.aat.platform.hmcts.net/oauth2redirect"
-env.DM_STORE_BASE_URL = "http://dm-store-aat.preview.platform.hmcts.net"
+env.DM_STORE_BASE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
 env.CCD_CASEWORKER_AUTOTEST_EMAIL = "auto.test.cnp@gmail.com"
 env.CCD_IMPORT_AUTOTEST_EMAIL = "ccd.docker.default@hmcts.net"
 env.BEFTA_RESPONSE_HEADER_CHECK_POLICY = "JUST_WARN" // Temporary workaround for platform changes: turn BEFTA header checks to warning mode
@@ -92,8 +92,8 @@ withPipeline("nodejs", product, component) {
       if (env.BRANCH_NAME.startsWith("PR") || env.BRANCH_NAME == 'master') {
         environmentOfDependencies = "aat"
       }
-      env.DEFINITION_STORE_URL_BASE   = "http://ccd-definition-store-api-${environmentOfDependencies}.preview.platform.hmcts.net"
-      env.CCD_DATA_STORE_API_BASE_URL = "http://ccd-data-store-api-${environmentOfDependencies}.preview.platform.hmcts.net"
+      env.DEFINITION_STORE_URL_BASE   = "http://ccd-definition-store-api-${environmentOfDependencies}.service.core-compute-${environmentOfDependencies}.internal"
+      env.CCD_DATA_STORE_API_BASE_URL = "http://ccd-data-store-api-${environmentOfDependencies}.service.core-compute-${environmentOfDependencies}.internal"
     }
     echo "FTA will use Definition Store: ${env.DEFINITION_STORE_URL_BASE}"
     echo "FTA will use Data Store: ${env.CCD_DATA_STORE_API_BASE_URL}"
