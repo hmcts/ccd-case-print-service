@@ -45,7 +45,7 @@
     "jwt-decode": "^2.2.0",
     "mime": "^1.4.0",
     "node-fetch": "^2.6.7",
-    "nunjucks": "^3.2.0",
+    "nunjucks": "^3.2.4",
     "nunjucks-date-filter": "^0.1.1",
     "nunjucks-numeral-filter": "^0.0.2",
     "otp": "^0.1.3",
