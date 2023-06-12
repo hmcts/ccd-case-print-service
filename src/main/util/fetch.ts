@@ -1,6 +1,6 @@
 import _fetch from "node-fetch";
 
-export const fetch = (...args) => { //comment
+export const fetch = (...args) => { // comment
   return _fetch(...args) // comment
     .then((res) => {
 
