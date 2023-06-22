@@ -16,6 +16,7 @@ export const fetch = (url, options) => {
   domainsList.push(url4);
 
   console.log("domain list is: " + domainsList);
+  console.log("calling url: " + url);
 
   const theUrl = (new URL(url));
 
