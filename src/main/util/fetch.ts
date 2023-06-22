@@ -14,6 +14,7 @@ export const fetch = (url, options) => {
   domainsList.push(url2);
   domainsList.push(url3);
   domainsList.push(url4);
+  domainsList.push("http://localhost:9999");
 
   console.log("domain list is: " + domainsList);
   console.log("calling url: " + url);
