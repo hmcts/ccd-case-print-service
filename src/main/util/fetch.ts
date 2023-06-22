@@ -1,11 +1,12 @@
 import _fetch from "node-fetch";
+import { get } from "config";
 
-export const fetch = (...args) => {
+export const fetch = (url,options) => {
   const schemesList = ["http:", "https:"];
-  const url = (new URL(args[0]));
-  const options = args[1];
-  if (schemesList.includes(url.protocol)) {
-    return _fetch(url, options)
+  const domainsList = [get("idam.s2s_url"), get("idam.base_url"), get("case_data_store_url"), get("case_data_probate_template_url"), ];
+  const theUrl = (new URL(url));
+  if (schemesList.includes(theUrl.protocol) && domainsList.includes(theUrl.hostname)) {
+    return _fetch(theUrl, options)
       .then((res) => {
 
         if (res.status >= 200 && res.status < 300) {
