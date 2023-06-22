@@ -3,6 +3,7 @@ import { get } from "config";
 
 export const fetch = (url, options) => {
   const schemesList = ["http:", "https:"];
+  const domainListNew = ["localhost"];
 
   const url1 = get("idam.s2s_url");
   const url2 = get("idam.base_url");
@@ -23,7 +24,7 @@ export const fetch = (url, options) => {
   console.log("calling url: " + url);
   console.log("calling url hostname : " + theUrl.hostname);
 
-  if (schemesList.includes(theUrl.protocol) && domainsList.includes(theUrl.hostname)) {
+  if (schemesList.includes(theUrl.protocol) && domainListNew.includes(theUrl.hostname)) {
     return _fetch(theUrl, options)
       .then((res) => {
 
