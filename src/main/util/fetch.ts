@@ -9,7 +9,13 @@ export const fetch = (url, options) => {
   const url3 = get("case_data_store_url");
   const url4 = get("case_data_probate_template_url");
 
-  const domainsList = [`${url1}`, `${url2}`, `${url3}`, `${url4}`];
+  var domainsList = [];
+  domainsList.push(url1);
+  domainsList.push(url2);
+  domainsList.push(url3);
+  domainsList.push(url4);
+
+  console.log('domain list is: ' + domainsList);
 
   const theUrl = (new URL(url));
 
