@@ -17,9 +17,11 @@ export const fetch = (url, options) => {
   domainsList.push("http://localhost:9999");
 
   console.log("domain list is: " + domainsList);
-  console.log("calling url: " + url);
 
   const theUrl = (new URL(url));
+
+  console.log("calling url: " + url);
+  console.log("calling url hostname : " + theUrl.hostname);
 
   if (schemesList.includes(theUrl.protocol) && domainsList.includes(theUrl.hostname)) {
     return _fetch(theUrl, options)
