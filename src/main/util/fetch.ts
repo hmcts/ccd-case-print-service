@@ -1,27 +1,15 @@
-import _fetch from "node-fetch";
+const _fetch = require('node-fetch');
 
-export const fetch = (url, options) => {
-  (async () => {
-    try {
-      const schemesList = ["http:", "https:"];
-      const domainList = ["localhost"];
+const fetch = (...args) => {
+  return _fetch(...args)
+    .then(res => {
 
-      console.log("domain list is: " + domainList);
-
-      const theUrl = (new URL(url));
-
-      console.log("calling url: " + url);
-      console.log("calling url hostname : " + theUrl.hostname);
-
-      if (schemesList.includes(theUrl.protocol) && domainList.includes(theUrl.hostname)) {
-        const response = await _fetch(theUrl, options);
-        if (response.status >= 200 && response.status < 300) {
-          return response;
-        }
-        return Promise.reject(response);
+      if (res.status >= 200 && res.status < 300) {
+          return res;
       }
-    } catch (error) {
-      console.log(error.response.body);
-    }
-  })();
+
+      return Promise.reject(res);
+    });
 };
+
+module.exports = fetch;
