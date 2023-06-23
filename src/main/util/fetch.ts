@@ -21,6 +21,6 @@ export const fetch = (url, options) => {
     }
   } catch (error) {
     // TypeError: Failed to fetch
-    console.log('There was an error', error);
+    //console.log(' There was an error ', error);
   }
 };
