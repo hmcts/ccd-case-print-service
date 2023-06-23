@@ -18,6 +18,7 @@ export const fetch = (url, options) => {
   domainsList.push("http://localhost:9999");
 
   console.log("domain list is: " + domainsList);
+  console.log("domain list new is: " + domainListNew);
 
   const theUrl = (new URL(url));
 
@@ -27,9 +28,10 @@ export const fetch = (url, options) => {
   if (schemesList.includes(theUrl.protocol) && domainListNew.includes(theUrl.hostname)) {
     return _fetch(theUrl, options)
       .then((res) => {
-
-        if (res.status >= 200 && res.status < 300) {
+        if (schemesList.includes(theUrl.protocol) && domainListNew.includes(theUrl.hostname)) {
+          if (res.status >= 200 && res.status < 300) {
             return res;
+          }
         }
 
         return Promise.reject(res);
