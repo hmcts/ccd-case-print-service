@@ -1,8 +1,8 @@
-const _fetch = require('node-fetch');
+import _fetch from "node-fetch";
 
-const fetch = (...args) => {
+export const fetch = (...args) => {
   return _fetch(...args)
-    .then(res => {
+    .then((res) => {
 
       if (res.status >= 200 && res.status < 300) {
           return res;
@@ -11,5 +11,3 @@ const fetch = (...args) => {
       return Promise.reject(res);
     });
 };
-
-module.exports = fetch;
