@@ -16,9 +16,6 @@ export const fetch = (url, options) => {
       if (schemesList.includes(theUrl.protocol) && domainList.includes(theUrl.hostname)) {
         const response = await _fetch(theUrl, options);
         if (response.status >= 200 && response.status < 300) {
-          const json = await response.json();
-          console.log(json.url);
-          console.log(json.explanation);
           return response;
         }
         return Promise.reject(response);
