@@ -1,13 +1,11 @@
-import _fetch from "node-fetch";
+const _fetch = require('node-fetch');
 
-export const fetch = (...args) => {
-  return _fetch(...args)
-    .then((res) => {
-
-      if (res.status >= 200 && res.status < 300) {
-          return res;
-      }
-
-      return Promise.reject(res);
-    });
-};
+export async function fetch(...args){
+  const url = args[0];
+  const options = args[1];
+  const res = await _fetch(url, options);
+  if (res.status >= 200 && res.status < 300) {
+    return res;
+  }
+  return Promise.reject(res);
+}
