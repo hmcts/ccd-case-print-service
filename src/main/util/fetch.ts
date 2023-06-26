@@ -1,6 +1,6 @@
-const _fetch = require('node-fetch');
+import _fetch from "node-fetch";
 
-export async function fetch(...args){
+export async function fetch(...args) {
   const url = args[0];
   const options = args[1];
   const res = await _fetch(url, options);
