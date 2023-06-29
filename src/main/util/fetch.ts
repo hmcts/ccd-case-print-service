@@ -1,10 +1,7 @@
 import _fetch from "node-fetch";
 
-export const fetch = (url, options) => {
-  const schemesList = ["http:", "https:"];
-  const constUrl = (new URL(url));
-  if (schemesList.includes(constUrl.protocol)) {
-    return _fetch(url.replace("\n", "").replace("\r", ""), options)
+export const fetch = (...args) => {
+  return _fetch(...args)
     .then((res) => {
 
       if (res.status >= 200 && res.status < 300) {
@@ -13,5 +10,4 @@ export const fetch = (url, options) => {
 
       return Promise.reject(res);
     });
-  }
 };
