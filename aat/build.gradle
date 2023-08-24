@@ -77,13 +77,13 @@ task smoke(type: Test) {
 task functional(type: Test) {
   description = 'Executes functional tests against an the CCD Case Print Service API instance just deployed'
   setTestClassesDirs(sourceSets.aat.output.classesDirs)
-  jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
 
   doFirst {
     generateCucumberReports.enabled = true
     javaexec {
       main = "uk.gov.hmcts.ccd.printservice.befta.CasePrintServiceBeftaMain"
       classpath += configurations.cucumberRuntime + sourceSets.aat.runtimeClasspath + sourceSets.main.output + sourceSets.test.output
+      jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
       args = ['--plugin', "json:${rootDir}/target/cucumber.json", '--tags', 'not @Ignore', '--glue',
               'uk.gov.hmcts.befta.player', 'src/resources/features']
     }
