@@ -50,8 +50,8 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
 
 // vars needed for functional tests
 // Assume a feature build branched off 'develop', with dependencies develop-to-develop.
-env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-api-${definitionStoreDevelopPr}.service.core-compute-preview.internal".toLowerCase()
-env.CCD_DATA_STORE_API_BASE_URL = "https://ccd-data-store-api-${dataStoreDevelopPr}.service.core-compute-preview.internal".toLowerCase()
+env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-api-${definitionStoreDevelopPr}.preview.platform.hmcts.net".toLowerCase()
+env.CCD_DATA_STORE_API_BASE_URL = "https://ccd-data-store-api-${dataStoreDevelopPr}.preview.platform.hmcts.net".toLowerCase()
 
 // Other env variables needed for BEFTA.
 env.IDAM_API_URL_BASE = "https://idam-api.aat.platform.hmcts.net"
