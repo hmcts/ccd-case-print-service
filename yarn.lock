@@ -455,11 +455,11 @@ __metadata:
   linkType: hard
 
 "@snyk/protect@npm:^1.1081.0":
-  version: 1.1207.0
-  resolution: "@snyk/protect@npm:1.1207.0"
+  version: 1.1208.0
+  resolution: "@snyk/protect@npm:1.1208.0"
   bin:
     snyk-protect: bin/snyk-protect
-  checksum: f5b5a294281af926cb328a896ff0b9b8834ce2948b458e1303a5eee1d1f79b84b6d27b806b298615378cdfcde4c1a90d2279241fd989fe2a5719fd593da0dd7b
+  checksum: 971d77e9a9d11c6d0711f7b14fc5aae01a525a2eaf88d4f8b21e62e1efcb4732e2b467e856bf7fbdcc83d29efbb7b05fe7084c90a3062daf0debd5abbb533b45
   languageName: node
   linkType: hard
 
@@ -2195,7 +2195,7 @@ __metadata:
     mocha: ^5.2.0
     mochawesome: ^4.1.0
     moment: ^2.29.4
-    nock: ^13.3.2
+    nock: ^13.3.3
     node-fetch: ^2.6.7
     node-mocks-http: ^1.6.5
     nunjucks: ^3.2.0
@@ -2219,7 +2219,6 @@ __metadata:
     tslint: ^5.7.0
     typescript: ^3.2.1
     webpack: ^4
-    yargs-parser: ^21.1.1
   languageName: unknown
   linkType: soft
 
@@ -7965,7 +7964,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nock@npm:^13.3.2":
+"nock@npm:^13.3.3":
   version: 13.3.3
   resolution: "nock@npm:13.3.3"
   dependencies:
