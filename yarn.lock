@@ -2195,7 +2195,7 @@ __metadata:
     mocha: ^5.2.0
     mochawesome: ^4.1.0
     moment: ^2.29.4
-    nock: ^13.3.2
+    nock: ^13.3.3
     node-fetch: ^2.6.7
     node-mocks-http: ^1.6.5
     nunjucks: ^3.2.0
@@ -7964,7 +7964,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nock@npm:^13.3.2":
+"nock@npm:^13.3.3":
   version: 13.3.3
   resolution: "nock@npm:13.3.3"
   dependencies:
