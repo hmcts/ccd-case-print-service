@@ -16,8 +16,10 @@ env.addFilter("date", dateFilter);
 env.addFilter("money", numeralFilter);
 
 router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid/probate/:tid", (req, res) => {
+  console.warn("GETTING CASE");
   getCase(req, req.params.jid, req.params.ctid, req.params.cid)
     .then((caseData) => {
+        console.warn("GETTING CASE DETAILS TEMPLATE");
         getProbateCaseDetailsTemplate(req, req.params.jid, req.params.ctid, req.params.cid, req.params.tid)
         .then((template) => {
           nunjucks.compile(template, env);
@@ -26,13 +28,13 @@ router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid/probate/:tid", (req,
           res.send(response);
         })
         .catch((error) => {
-          // console.error("Case data response failed", error);
+          console.error("Case data response failed", error);
           res.status(error.status).send(error);
         });
 
       })
     .catch((error) => {
-      // console.error("Case data retrieval failed", error);
+      console.error("Case data retrieval failed", error);
       res.status(error.status).send(error);
     });
 });
