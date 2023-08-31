@@ -2219,7 +2219,6 @@ __metadata:
     tslint: ^5.7.0
     typescript: ^3.2.1
     webpack: ^4
-    yargs-parser: ^21.1.1
   languageName: unknown
   linkType: soft
 
