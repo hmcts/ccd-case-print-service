@@ -37,8 +37,7 @@ describe("case service", () => {
   });
 
   describe("getCase()", () => {
-    // tslint:disable-next-line:max-line-length
-    it("should return a case", async (replyFnWithCallback: (this: nock.ReplyFnContext, uri: string, body: nock.Body, callback: (err: (NodeJS.ErrnoException | null), result: nock.ReplyFnResult) => void) => void) => {
+    it("should return a case", async () => {
 
       const jid = "jurisdiction";
       const ctid = "caseTemplateId";
@@ -48,7 +47,7 @@ describe("case service", () => {
 
       nock("http://localhost:4104")
         .get("/caseworkers/1234/jurisdictions/" + jid + "/case-types/" + ctid +
-          "/cases/" + cid)
+        "/cases/" + cid)
         .reply(200, expectedResult);
       const result = await getCase(req, jid, ctid, cid);
       expect(result).to.deep.equal(expectedResult);
