@@ -37,6 +37,7 @@ describe("case service", () => {
   });
 
   describe("getCase()", () => {
+    // tslint:disable-next-line:max-line-length
     it("should return a case", async (replyFnWithCallback: (this: nock.ReplyFnContext, uri: string, body: nock.Body, callback: (err: (NodeJS.ErrnoException | null), result: nock.ReplyFnResult) => void) => void) => {
 
       const jid = "jurisdiction";
