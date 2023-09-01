@@ -455,11 +455,11 @@ __metadata:
   linkType: hard
 
 "@snyk/protect@npm:^1.1081.0":
-  version: 1.1208.0
-  resolution: "@snyk/protect@npm:1.1208.0"
+  version: 1.1209.0
+  resolution: "@snyk/protect@npm:1.1209.0"
   bin:
     snyk-protect: bin/snyk-protect
-  checksum: 971d77e9a9d11c6d0711f7b14fc5aae01a525a2eaf88d4f8b21e62e1efcb4732e2b467e856bf7fbdcc83d29efbb7b05fe7084c90a3062daf0debd5abbb533b45
+  checksum: 5421ecef4a92b8fc9cbd6269b42830207be943a9e28613842c9c15c2fcf3f2095d1b0178ee1c7463ddb96275b21cd50a4677994aab2febc7ee9571c81190b786
   languageName: node
   linkType: hard
 
@@ -3518,9 +3518,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.477":
-  version: 1.4.506
-  resolution: "electron-to-chromium@npm:1.4.506"
-  checksum: 449966efca7ab56a308726eec952d0e5a673c12de23921da5336698adb49bfcc1e4e04f3e24c144db9ba8d40023c95bbe8a44a50eb709ddf55984884539eea91
+  version: 1.4.508
+  resolution: "electron-to-chromium@npm:1.4.508"
+  checksum: 4475eb18f5805d43f84d9542364045a39b183a14cd9f4626e0951ea61d0fa4f84a5ed579c2c32189f9af4a27a31041d09fed78f60930ac36b3baa08547dd3aa6
   languageName: node
   linkType: hard
 
