@@ -596,9 +596,9 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*, @types/node@npm:>=10.0.0":
-  version: 20.5.9
-  resolution: "@types/node@npm:20.5.9"
-  checksum: 717490e94131722144878b4ca1a963ede1673bb8f2ef78c2f5b50b918df6dc9b35e7f8283e5c2a7a9f137730f7c08dc6228e53d4494a94c9ee16881e6ce6caed
+  version: 20.5.7
+  resolution: "@types/node@npm:20.5.7"
+  checksum: fc284c8e16ddc04569730d58e87eae349eb1c3dd9020cb79a1862d9d9add6f04e7367a236f3252db8db2572f90278e250f4cd43d27d264972b54394eaba1ed76
   languageName: node
   linkType: hard
 
@@ -2164,15 +2164,15 @@ __metadata:
     debug: ^3.1.0
     es6-promisify: ^5.0.0
     express: ^4.15.4
-    express-nunjucks: ^3.1.1
-    govuk-elements-sass: ^3.1.3
+    express-nunjucks: ^2.2.3
+    govuk-elements-sass: ^3.1.1
     govuk_template_jinja: ^0.23.0
     gulp: ^4.0.2
-    gulp-livereload: ^4.0.2
+    gulp-livereload: ^3.8.1
     gulp-nodemon: ^2.5.0
     gulp-plumber: ^1.2.1
-    gulp-replace: ^1.1.4
-    gulp-sass: ^5.1.0
+    gulp-replace: ^1.0.0
+    gulp-sass: ^5.0.0
     helmet: ^3.8.1
     istanbul: ^0.4.5
     istanbul-instrumenter-loader: ^0.2.0
@@ -2207,8 +2207,8 @@ __metadata:
     proxyquire: ^1.8.0
     remap-istanbul: ^0.9.6
     require-directory: ^2.1.1
-    sass: ^1.66.1
-    sass-lint: ^1.13.1
+    sass: ^1.45.0
+    sass-lint: ^1.11.1
     serve-favicon: ^2.4.4
     sinon: ^4.0.0
     sinon-chai: ^2.13.0
@@ -2566,6 +2566,13 @@ __metadata:
     emitter-listener: ^1.0.1
     semver: ^5.4.1
   checksum: 3a8a4e30b03a81ec275eb9c079c49d4497013e7fa36259e86c9b6aff7990e85eebbc97552ed8a035c19403f0b825000df9bada5c1c0ac7cf1b2506c3a903df60
+  languageName: node
+  linkType: hard
+
+"co@npm:4.6.0":
+  version: 4.6.0
+  resolution: "co@npm:4.6.0"
+  checksum: 5210d9223010eb95b29df06a91116f2cf7c8e0748a9013ed853b53f362ea0e822f1e5bb054fb3cefc645239a4cf966af1f6133a3b43f40d591f3b68ed6cf0510
   languageName: node
   linkType: hard
 
@@ -3735,6 +3742,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"es6-promisify@npm:6.1.0":
+  version: 6.1.0
+  resolution: "es6-promisify@npm:6.1.0"
+  checksum: 6d3a4366f0e43d954a34ef7ef06eda43c447d4c0cf5e2331bc55eb0cc110239ce192c6682c6653865d7a980ca04adf1b7f376930397e22d1113fb5e0a4906387
+  languageName: node
+  linkType: hard
+
 "es6-promisify@npm:^5.0.0":
   version: 5.0.0
   resolution: "es6-promisify@npm:5.0.0"
@@ -4018,15 +4032,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express-nunjucks@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "express-nunjucks@npm:3.1.1"
+"express-nunjucks@npm:^2.2.3":
+  version: 2.2.5
+  resolution: "express-nunjucks@npm:2.2.5"
   dependencies:
-    nunjucks-async-loader: ^2.1.2
-  peerDependencies:
-    express: ^4.18.2
-    nunjucks: ^3.2.4
-  checksum: f41928106dda3afcd8daae8a18753f110072bcc4d9db406f0f72c12943945636532eb8d0841385705c87f843607d606d80dd7b7d5e5a6a0bf248b1d187b0cce3
+    assign-deep: 1.0.1
+    nunjucks-async-loader: 1.1.5
+  checksum: 43725f84dbe2875c79e0205425f35d5ed0c54396482a2e10df12559e2b6397b3cde7f024d7288eb3d90fb60dcb884f7525b9bdf3e18d5f26363ed1d449ac5e47
   languageName: node
   linkType: hard
 
@@ -5089,7 +5101,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"govuk-elements-sass@npm:^3.1.3":
+"govuk-elements-sass@npm:^3.1.1":
   version: 3.1.3
   resolution: "govuk-elements-sass@npm:3.1.3"
   dependencies:
@@ -5192,7 +5204,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gulp-replace@npm:^1.1.4":
+"gulp-replace@npm:^1.0.0":
   version: 1.1.4
   resolution: "gulp-replace@npm:1.1.4"
   dependencies:
@@ -5205,7 +5217,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gulp-sass@npm:^5.1.0":
+"gulp-sass@npm:^5.0.0":
   version: 5.1.0
   resolution: "gulp-sass@npm:5.1.0"
   dependencies:
@@ -6366,15 +6378,15 @@ __metadata:
   linkType: hard
 
 "jackspeak@npm:^2.0.3":
-  version: 2.3.3
-  resolution: "jackspeak@npm:2.3.3"
+  version: 2.3.1
+  resolution: "jackspeak@npm:2.3.1"
   dependencies:
     "@isaacs/cliui": ^8.0.2
     "@pkgjs/parseargs": ^0.11.0
   dependenciesMeta:
     "@pkgjs/parseargs":
       optional: true
-  checksum: 4313a7c0cc44c7753c4cb9869935f0b06f4cf96827515f63f58ff46b3d2f6e29aba6b3b5151778397c3f5ae67ef8bfc48871967bd10343c27e90cff198ec7808
+  checksum: 34ea4d618d8d36ac104fe1053c85dfb6a63306cfe87e157ef42f18a7aa30027887370a4e163dd4993e45c6bf8a8ae003bf8476fdb8538e8ee5cd1938c27b15d0
   languageName: node
   linkType: hard
 
@@ -8204,14 +8216,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nunjucks-async-loader@npm:^2.1.2":
-  version: 2.1.2
-  resolution: "nunjucks-async-loader@npm:2.1.2"
+"nunjucks-async-loader@npm:1.1.5":
+  version: 1.1.5
+  resolution: "nunjucks-async-loader@npm:1.1.5"
   dependencies:
     chokidar: 3.3.1
-  peerDependencies:
-    nunjucks: ^3.2.4
-  checksum: 6a681533521d0e0a97cf6926dac52dc5e70ed64c3d7b9df89b2fc12e12dc61764b26d5e633adac7ecadecd7b448161817c91ddd3685455a58f4f349d13f877f4
+    co: 4.6.0
+    es6-promisify: 6.1.0
+  checksum: 84818c33b1692f17be3f41f2521d1931c5eab495b20998b9c41fa1c531ba3e8570ef42397a116e6e689113d8bad03504e8a6a8e16879ed4b19d1c818a35d6109
   languageName: node
   linkType: hard
 
@@ -9948,7 +9960,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass-lint@npm:^1.13.1":
+"sass-lint@npm:^1.11.1":
   version: 1.13.1
   resolution: "sass-lint@npm:1.13.1"
   dependencies:
@@ -9972,7 +9984,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.66.1":
+"sass@npm:^1.45.0":
   version: 1.66.1
   resolution: "sass@npm:1.66.1"
   dependencies:
