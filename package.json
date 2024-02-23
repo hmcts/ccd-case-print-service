@@ -150,7 +150,7 @@
     "json-schema": "0.4.0",
     "@snyk/snyk-docker-pull": "^3.7.2",
     "copy-props": "^2.0.5",
-    "follow-redirects": "^1.14.8",
+    "follow-redirects": "^1.15.5",
     "pathval": "^1.1.1",
     "table": "^5.0.0",
     "moment": "^2.29.4",
