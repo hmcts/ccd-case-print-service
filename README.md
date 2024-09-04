@@ -17,7 +17,7 @@ The output comprises a summary, with some key information such as Case Number an
 ## Getting started
 
 ### Prerequisites
-- [Node.js](https://nodejs.org/en) version >= 16.15.0
+- [Node.js](https://nodejs.org/en) version >= 18.17.0
 
 ### Environment variables
 
@@ -86,7 +86,7 @@ If, for whatever reason, this is not possible then these characters must be repl
 
 
 ## Functional Tests
-The functional tests are located in `aat` folder. The tests are written using 
+The functional tests are located in `aat` folder. The tests are written using
 befta-fw library. To find out more about BEFTA Framework, see the repository and its README [here](https://github.com/hmcts/befta-fw).
 
 The tests can be run using:

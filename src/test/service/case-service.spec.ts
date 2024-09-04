@@ -42,7 +42,7 @@ describe("case service", () => {
       const jid = "jurisdiction";
       const ctid = "caseTemplateId";
       const cid = "1234";
-      const expectedResult = 1234;
+      const expectedResult = {id: 1234};
       req.get.withArgs("Authorization").returns(serviceAuthorization);
 
       nock("http://localhost:4104")
