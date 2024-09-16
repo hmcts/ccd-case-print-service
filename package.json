@@ -41,6 +41,7 @@
     "govuk-elements-sass": "^3.1.1",
     "govuk_template_jinja": "^0.23.0",
     "helmet": "^3.8.1",
+    "ip": "^2.0.1",
     "jquery": "^3.5.1",
     "jwt-decode": "^2.2.0",
     "mime": "^1.4.0",
@@ -64,7 +65,7 @@
     "chai-as-promised": "^7.1.1",
     "debug": "^3.1.0",
     "es6-promisify": "^5.0.0",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.0",
     "gulp-livereload": "^3.8.1",
     "gulp-nodemon": "^2.5.0",
     "gulp-plumber": "^1.2.1",
@@ -100,7 +101,7 @@
     "sonar-scanner": "^3.1.0",
     "supertest": "^3.0.0",
     "tslint": "^5.7.0",
-    "webpack": "^4"
+    "webpack": "^5.94.0"
   },
   "resolutions": {
     "nconf": "^0.11.4",
