@@ -14,10 +14,10 @@ data "azurerm_key_vault" "s2s_vault" {
 
 data "azurerm_key_vault_secret" "idam_service_key" {
   name         = "microservicekey-ccd-ps"
-  key_vault_id = "${data.azurerm_key_vault.s2s_vault.id}"
+  key_vault_id = data.azurerm_key_vault.s2s_vault.id
 }
 
-resource azurerm_key_vault_secret "idam_service_secret" {
+resource "azurerm_key_vault_secret" "idam_service_secret" {
   name         = "microservicekey-ccd-ps"
   value        = data.azurerm_key_vault_secret.idam_service_key.value
   key_vault_id = data.azurerm_key_vault.ccd_shared_key_vault.id
