@@ -50,7 +50,6 @@
     "nunjucks-numeral-filter": "^0.0.2",
     "otp": "^0.1.3",
     "require-directory": "^2.1.1",
-    "sass": "^1.45.0",
     "serve-favicon": "^2.4.4",
     "ts-node": "^10.7.0",
     "tsconfig-paths": "^3.14.1",
@@ -181,9 +180,7 @@
       "src/main/router",
       "src/main/util",
       "src/main/app.ts",
-      "src/main/server.ts",
-      "src/main/sass/chokidar/fsevents/nan/node-gyp/make-fetch-happen/socks-proxy-agent/socks",
-      "src/main/express-nunjucks/nunjucks-async-loader/chokidar/fsevents/nan/node-gyp/make-fetch-happen/socks-proxy-agent/socks"
+      "src/main/server.ts"
     ],
     "reporter": [
       "lcov",
