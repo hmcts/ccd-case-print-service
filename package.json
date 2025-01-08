@@ -164,7 +164,8 @@
     "cookiejar": "^2.1.4",
     "http-cache-semantics": "4.1.1",
     "jackspeak": "2.1.1",
-    "semver": "7.5.2"
+    "semver": "7.5.2",
+    "socks": "2.8.3"
   },
   "snyk": true,
   "nyc": {
