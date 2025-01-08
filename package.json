@@ -36,7 +36,7 @@
     "config": "^1.26.2",
     "cookie-parser": "^1.4.3",
     "csurf": "^1.9.0",
-    "express": "^5.0.0",
+    "express": "^5.0.1",
     "express-nunjucks": "^2.2.3",
     "govuk-elements-sass": "^3.1.1",
     "govuk_template_jinja": "^0.23.0",
@@ -166,6 +166,7 @@
     "jackspeak": "2.1.1",
     "semver": "7.5.2",
     "socks": "2.8.3"
+    "micromatch": "^4.0.8"
   },
   "snyk": true,
   "nyc": {
