@@ -165,8 +165,7 @@
     "http-cache-semantics": "4.1.1",
     "jackspeak": "2.1.1",
     "semver": "7.5.2",
-    "micromatch": "^4.0.8",
-    "cross-spawn": "^7.0.6"
+    "micromatch": "^4.0.8"
   },
   "snyk": true,
   "nyc": {
