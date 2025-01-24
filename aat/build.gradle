@@ -6,7 +6,7 @@ plugins {
 
 java {
   toolchain {
-    languageVersion = JavaLanguageVersion.of(17)
+    languageVersion = JavaLanguageVersion.of(21)
   }
 }
 
@@ -19,9 +19,9 @@ repositories {
 }
 
 dependencies {
-  testImplementation group: 'com.github.hmcts', name: 'ccd-test-definitions', version: '7.22.2'
-  testImplementation group: 'com.github.hmcts', name: 'befta-fw', version: '9.0.2'
-  testImplementation group: 'com.github.hmcts', name: 'fortify-client', version: '1.4.2'
+  testImplementation group: 'com.github.hmcts', name: 'ccd-test-definitions', version: '7.24.2'
+  testImplementation group: 'com.github.hmcts', name: 'befta-fw', version: '9.2.0'
+  testImplementation group: 'com.github.hmcts', name: 'fortify-client', version: '1.4.5'
 }
 
 sourceSets {
