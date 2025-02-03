@@ -34,6 +34,7 @@
     "assign-deep": "^1.0.1",
     "body-parser": "^1.18.1",
     "config": "^1.26.2",
+    "cookie": "^0.7.0",
     "cookie-parser": "^1.4.3",
     "csurf": "^1.9.0",
     "express": "^5.0.1",
