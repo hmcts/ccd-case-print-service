@@ -166,6 +166,7 @@
     "jackspeak": "2.1.1",
     "semver": "7.5.2",
     "micromatch": "^4.0.8",
+    "express": "^5.0.1",
     "socks": "2.8.3"
   },
   "snyk": true,
