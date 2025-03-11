@@ -15,7 +15,7 @@ RUN apk update \
 #COPY --chown=hmcts:hmcts package.json yarn.lock .snyk ./
 #COPY --chown=hmcts:hmcts .yarn ./.yarn
 COPY --chown=hmcts:hmcts config ./config
-COPY --chown=hmcts:hmcts package.json yarn.lock .snyk .yarnrc.yml tsconfig.json ./
+COPY --chown=hmcts:hmcts package.json yarn.lock .snyk tsconfig.json ./
 
 USER hmcts
 
