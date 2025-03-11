@@ -24,8 +24,10 @@ COPY src/main ./src/main
 COPY config ./config
 COPY gulpfile.js tsconfig.json ./
 USER root
-RUN yarn sass
-RUN sleep 1 && yarn install && yarn cache clean
+RUN yarn sass \
+  && yarn install \
+  && yarn cache clean
+
 USER hmcts
 
 # ---- Runtime Image ----
