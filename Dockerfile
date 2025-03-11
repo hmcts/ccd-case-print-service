@@ -16,7 +16,7 @@ COPY --chown=hmcts:hmcts package.json yarn.lock .snyk ./
 
 USER hmcts
 
-RUN yarn install && yarn cache clean
+RUN yarn install --network-timeout 1200000
 
 # ---- Build Image ----
 FROM base AS build
