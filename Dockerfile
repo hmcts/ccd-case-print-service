@@ -20,7 +20,7 @@ COPY --chown=hmcts:hmcts package.json yarn.lock .snyk ./
 
 USER hmcts
 
-RUN yarn install && yarn cache clean
+RUN yarn install && yarn cache clean 
 
 # ---- Build Image ----
 FROM base AS build
@@ -29,7 +29,11 @@ COPY config ./config
 COPY gulpfile.js tsconfig.json ./
 USER root
 RUN yarn sass
-RUN sleep 1 && yarn install && yarn cache clean
+RUN sleep 1 && yarn install && yarn cache clean 
+
+#FROM base as build
+#RUN yarn sass
+#RUN sleep 1 && yarn cache clean && yarn install 
 
 USER hmcts
 
