@@ -13,10 +13,10 @@ RUN apk update \
   && rm -rf /var/lib/apt/lists/* \
   && export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-#COPY --chown=hmcts:hmcts package.json yarn.lock .snyk ./
+COPY --chown=hmcts:hmcts package.json yarn.lock .snyk ./
 
-COPY . .
-RUN chown -R hmcts:hmcts .
+#COPY . .
+#RUN chown -R hmcts:hmcts .
 
 USER hmcts
 
