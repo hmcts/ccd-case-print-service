@@ -17,14 +17,14 @@ RUN apk update \
   && rm -rf /var/lib/apt/lists/* \
   && export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-#COPY --chown=hmcts:hmcts package.json yarn.lock .snyk ./
+COPY --chown=hmcts:hmcts package.json yarn.lock .snyk ./
 
-COPY . .
+#COPY . .
 RUN chown -R hmcts:hmcts .
 
 USER hmcts
 
-RUN yarn install --network-timeout 1200000
+RUN yarn install && yarn cache clean
 
 # ---- Build Image ----
 FROM base AS build
