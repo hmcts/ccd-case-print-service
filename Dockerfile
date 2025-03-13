@@ -15,9 +15,6 @@ RUN apk update \
 
 COPY --chown=hmcts:hmcts package.json yarn.lock .snyk ./
 
-#COPY . .
-#RUN chown -R hmcts:hmcts .
-
 USER hmcts
 
 RUN yarn install && yarn cache clean 
@@ -31,9 +28,6 @@ USER root
 RUN yarn sass
 RUN sleep 1 && yarn install && yarn cache clean 
 
-#FROM base as build
-#RUN yarn sass
-#RUN sleep 1 && yarn cache clean && yarn install 
 
 USER hmcts
 
