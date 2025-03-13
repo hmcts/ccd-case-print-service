@@ -4,6 +4,10 @@
 
 # exceptions from `exclude all` rule
 
+README.md
+!.yarnrc.yml
+!.yarn/**
+
 !package.json
 !yarn.lock
 !.snyk
@@ -15,3 +19,4 @@
 !config/**
 !acb.yaml
 !Dockerfile
+

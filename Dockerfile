@@ -1,3 +1,12 @@
+RUN corepack enable
+COPY --chown=hmcts:hmcts . .
+
+USER hmcts
+RUN yarn workspaces focus --all --production && rm -rf $(yarn cache clean)
+
+RUN sleep 1 && yarn install && yarn cache clean
+
+
 # ---- Base Image ----
 ARG PLATFORM=""
 FROM hmctspublic.azurecr.io/base/node${PLATFORM}:18-alpine AS base
@@ -6,20 +15,26 @@ ENV PUPPETEER_SKIP_DOWNLOAD=true
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
+FROM base AS build
 
+USER root
 
 USER root
 RUN apk update \
   && apk add bzip2 patch python3 py3-pip make gcc g++ \
   && rm -rf /var/lib/ /lists/*
 
-COPY --chown=hmcts:hmcts package.json yarn.lock .snyk ./
+
 
 USER hmcts
 
-RUN yarn config set yarn-offline-mirror ~/npm-packages-offline-cache && \
-  yarn config set yarn-offline-mirror-pruning true && \
-  yarn install --prefer-offline --ignore-optional --network-timeout 1200000
+
+
+
+# ---- Build Image ----
+FROM base AS build
+
+USER root
 
 # ---- Build Image ----
 FROM base AS build
