@@ -33,7 +33,7 @@ RUN yarn sass \
 USER hmcts
 
 # ---- Runtime Image ----
-FROM hmctspublic.azurecr.io/base/node:20-alpine as basegit add --
+FROM hmctspublic.azurecr.io/base/node:20-alpine as base
 
 COPY --from=build $WORKDIR .
 
