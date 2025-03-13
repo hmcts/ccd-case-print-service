@@ -18,16 +18,10 @@ RUN sleep 1 && yarn install && yarn cache clean
 
 
 COPY --chown=hmcts:hmcts . .
+RUN sleep 1 && yarn install && yarn cache clean
 
-USER hmcts
-RUN yarn workspaces focus --all --production && rm -rf $(yarn cache clean)
 
-USER hmcts
 
-RUN yarn config set httpProxy "$http_proxy" \
-     && yarn config set httpsProxy "$https_proxy" \
-     && yarn workspaces focus --all --production \
-     && rm -rf $(yarn cache clean)
 
 # ---- Build Image ----
 FROM base AS build
