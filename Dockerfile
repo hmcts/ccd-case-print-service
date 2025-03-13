@@ -6,6 +6,8 @@ ENV PUPPETEER_SKIP_DOWNLOAD=true
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
+
+
 USER root
 RUN apk update \
   && apk add bzip2 patch python3 py3-pip make gcc g++ \
