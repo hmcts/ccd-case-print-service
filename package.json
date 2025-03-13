@@ -197,6 +197,5 @@
     "instrument": true,
     "report-dir": "coverage",
     "all": true
-  },
-  "packageManager": "yarn@3.4.1"
+  }
 }
