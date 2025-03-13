@@ -3,6 +3,8 @@
 *
 
 # exceptions from `exclude all` rule
+!.yarnrc.yml
+!.yarn/**
 
 !package.json
 !yarn.lock
