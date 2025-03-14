@@ -5,8 +5,10 @@ FROM hmctspublic.azurecr.io/base/node${PLATFORM}:18-alpine AS base
 ENV PUPPETEER_SKIP_DOWNLOAD=true
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV NODE_OPTIONS=--openssl-legacy-provider
+ENV COREPACK_ENABLE_AUTO_PIN=0
 
 USER root
+corepack enable
 RUN apk update \
   && apk add bzip2 patch python3 py3-pip make gcc g++ \
   && rm -rf /var/lib/ /lists/*
