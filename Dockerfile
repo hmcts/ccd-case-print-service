@@ -7,7 +7,7 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
 USER root
-RUN corepack install -g yarn@1.22.22
+#RUN corepack install -g yarn@1.22.22
 RUN corepack enable
 RUN apk update \
   && apk add bzip2 patch python3 py3-pip make gcc g++ \
