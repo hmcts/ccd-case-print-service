@@ -32,7 +32,8 @@ gulp.task('sass', (done) => {
 // copy js, stylesheets and images from dependencies to frontend's public directory
 gulp.task('copy-files', (done) => {
   gulp.src([
-    './node_modules/jquery/dist/jquery.min.js',
+    //'./node_modules/jquery/dist/jquery.min.js',
+    './node_modules/jquery/dist/*.js',
     './node_modules/govuk_frontend_toolkit/javascripts/**/*.js',
     './node_modules/govuk_template_jinja/assets/javascripts/**/*.js'
   ])
