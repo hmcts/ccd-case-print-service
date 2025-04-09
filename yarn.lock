@@ -7948,8 +7948,8 @@ __metadata:
   linkType: hard
 
 "pa11y@npm:^6.1.1":
-  version: 6.2.3
-  resolution: "pa11y@npm:6.2.3"
+  version: 8.0.0
+  resolution: "pa11y@npm:8.0.0"
   dependencies:
     axe-core: ~4.2.1
     bfj: ~7.0.2
