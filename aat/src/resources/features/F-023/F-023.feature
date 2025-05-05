@@ -8,7 +8,7 @@ Background: Load test data for the scenario
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # RDM-7436 / AC-1
-@S-001 @Smoke @Ignore
+@S-001 @Smoke
 Scenario: Must return a list of documents that can be printed
 
     Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
@@ -24,7 +24,7 @@ Scenario: Must return a list of documents that can be printed
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # RDM-7436 / AC-2
-@S-002 @Ignore
+@S-002
 Scenario: Must return a negative response when invalid URL defined in definition file
 
     Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
@@ -39,7 +39,7 @@ Scenario: Must return a negative response when invalid URL defined in definition
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # RDM-7436 / AC-3
-@S-003 @Ignore
+@S-003
 Scenario: Must return a negative response on callback failure
 
     Given a user with [an active profile in CCD - who wants to see the content of a case as a printable document],
