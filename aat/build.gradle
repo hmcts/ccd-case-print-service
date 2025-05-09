@@ -1,7 +1,7 @@
 plugins {
   id 'java'
   id 'application'
-  id 'com.github.spacialcircumstances.gradle-cucumber-reporting' version '0.1.23'
+  id 'com.github.spacialcircumstances.gradle-cucumber-reporting' version '0.1.25'
 }
 
 java {
@@ -19,9 +19,9 @@ repositories {
 }
 
 dependencies {
-  testImplementation group: 'com.github.hmcts', name: 'ccd-test-definitions', version: '7.24.2'
-  testImplementation group: 'com.github.hmcts', name: 'befta-fw', version: '9.2.0'
-  testImplementation group: 'com.github.hmcts', name: 'fortify-client', version: '1.4.5'
+  testImplementation group: 'com.github.hmcts', name: 'ccd-test-definitions', version: '7.26.2-prerelease-CCD-5329'
+  testImplementation group: 'com.github.hmcts', name: 'befta-fw', version: '9.2.3'
+  testImplementation group: 'com.github.hmcts', name: 'fortify-client', version: '1.4.8'
 }
 
 sourceSets {
