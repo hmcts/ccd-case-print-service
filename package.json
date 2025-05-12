@@ -53,6 +53,7 @@
     "require-directory": "^2.1.1",
     "sass": "^1.45.0",
     "serve-favicon": "^2.4.4",
+    "snyk": "^1.1296.2",
     "ts-node": "^10.7.0",
     "tsconfig-paths": "^3.14.1",
     "typescript": "^3.2.1"
