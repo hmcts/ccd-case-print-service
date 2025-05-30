@@ -21,7 +21,7 @@ repositories {
 dependencies {
   testImplementation group: 'com.github.hmcts', name: 'ccd-test-definitions', version: '7.24.2'
   testImplementation group: 'com.github.hmcts', name: 'befta-fw', version: '9.2.0'
-  testImplementation group: 'com.github.hmcts', name: 'fortify-client', version: '1.4.5'
+  testImplementation 'com.github.hmcts:fortify-client:1.4.8:all'
 }
 
 sourceSets {
@@ -108,7 +108,7 @@ task fortifyScan(type: JavaExec)  {
   classpath += sourceSets.test.runtimeClasspath
   jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
   // The line below prevents the build from failing if the Fortify scan detects issues
-  ignoreExitValue = true
+  //ignoreExitValue = true    **Enabling Fortify
 }
 
 cucumberReports {
