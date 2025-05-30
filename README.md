@@ -95,7 +95,7 @@ The tests can be run using:
 $ yarn test:functional
 ```
 
-or to run using gradle directly:
+or to run using gradle directly: 
 
 ```
 $ cd ./aat/
