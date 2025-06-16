@@ -110,6 +110,18 @@ withPipeline("nodejs", product, component) {
         sh "yarn --check-cache"
     }
 
+    afterAlways('test') {
+      builder.gradle('integration')
+      publishHTML target: [
+            allowMissing         : true,
+            alwaysLinkToLastBuild: true,
+            keepAll              : true,
+            reportDir            : "build/reports/tests/integration",
+            reportFiles          : "index.html",
+            reportName           : "Integration Test Report"
+        ]
+    }
+
     afterAlways('smoketest:preview') {
       steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/BEFTA Report for Smoke Tests/**/*'
       publishHTML target: [
