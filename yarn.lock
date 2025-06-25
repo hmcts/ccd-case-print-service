@@ -2154,6 +2154,7 @@ __metadata:
     istanbul-instrumenter-loader: ^0.2.0
     jasmine-core: ^2.3.4
     jasmine-spec-reporter: ^4.2.1
+    jquery: ^3.5.1
     json-loader: ^0.5.3
     json-server: ^0.17.4
     jsonwebtoken: ^9.0.0
@@ -6200,6 +6201,13 @@ __metadata:
   version: 1.4.0
   resolution: "jju@npm:1.4.0"
   checksum: 3790481bd2b7827dd6336e6e3dc2dcc6d425679ba7ebde7b679f61dceb4457ea0cda330972494de608571f4973c6dfb5f70fab6f3c5037dbab19ac449a60424f
+  languageName: node
+  linkType: hard
+
+"jquery@npm:^3.5.1":
+  version: 3.7.1
+  resolution: "jquery@npm:3.7.1"
+  checksum: 4370b8139d6ae82867eb6f7f21d1edccf1d1bdf41c0840920ea80d366c2cd5dbe1ceebb110ee9772aa839b04400faa1572c5c560b507c688ed7b61cea26c0e27
   languageName: node
   linkType: hard
 
