@@ -2170,7 +2170,7 @@ __metadata:
     karma-mocha-reporter: ^2.0.3
     karma-remap-istanbul: 0.6.0
     karma-sourcemap-loader: ^0.3.7
-    karma-webpack: 4.0.0
+    karma-webpack: 4.0.2
     mime: ^1.4.0
     mocha: ^5.2.0
     mochawesome: ^4.1.0
@@ -6510,9 +6510,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"karma-webpack@npm:4.0.0":
-  version: 4.0.0
-  resolution: "karma-webpack@npm:4.0.0"
+"karma-webpack@npm:4.0.2":
+  version: 4.0.2
+  resolution: "karma-webpack@npm:4.0.2"
   dependencies:
     clone-deep: ^4.0.1
     loader-utils: ^1.1.0
@@ -6522,7 +6522,7 @@ __metadata:
     webpack-dev-middleware: ^3.7.0
   peerDependencies:
     webpack: ^4.0.0
-  checksum: a9085c2a3fbd9bd1fc0287884771c1e7253418bb1e90bd6840c5422ef82b75e0547bfd175b48de4a4ffcc9a4afcb73b53660f9033235bba50db4cfd0399fae25
+  checksum: 75cfb8fa721ed298eccaefb9e2c0b20c1b4d8b450d62cfadb6eb514df661d2965d94ac6bbaeab05cb7dce0ce7eaa1b179952f7c32230bee7d4565ae15a2f0b04
   languageName: node
   linkType: hard
 
