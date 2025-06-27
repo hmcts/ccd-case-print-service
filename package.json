@@ -85,7 +85,7 @@
     "karma-mocha-reporter": "^2.0.3",
     "karma-remap-istanbul": "0.6.0",
     "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "4.0.0",
+    "karma-webpack": "4.0.2",
     "mocha": "^5.2.0",
     "mochawesome": "^4.1.0",
     "moment": "^2.29.4",
