@@ -199,14 +199,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hmcts/nodejs-healthcheck@npm:1.8.5":
-  version: 1.8.5
-  resolution: "@hmcts/nodejs-healthcheck@npm:1.8.5"
+"@hmcts/nodejs-healthcheck@npm:1.8.6":
+  version: 1.8.6
+  resolution: "@hmcts/nodejs-healthcheck@npm:1.8.6"
   dependencies:
     "@hmcts/nodejs-logging": ^4.0.4
     js-yaml: ^4.0.0
-    superagent: 9
-  checksum: 2e3201c1f95cb69aa7e43f72cfa03cea5246e14b18cd52a759968bca126e05fc214ac1269fd706b4d845f4f00abc645e064750e4b4a13b4616345ec168a1a561
+    superagent: ^10.2.2
+  checksum: 11ae01f6890f562a76250b6d73da1ba4d6f0a8a559451a0562edd27e3923c65dddda11f0f39abd7d69cf49e340eee12c3de17a744622242715463649b96c9be4
   languageName: node
   linkType: hard
 
@@ -577,11 +577,11 @@ __metadata:
   linkType: hard
 
 "@snyk/protect@npm:^1.1103.0":
-  version: 1.1297.1
-  resolution: "@snyk/protect@npm:1.1297.1"
+  version: 1.1297.3
+  resolution: "@snyk/protect@npm:1.1297.3"
   bin:
     snyk-protect: bin/snyk-protect
-  checksum: 9e4580065e5082585663c14632a19a53d8f41ca85a399238ee14246ce05e2ac8ed57e9dffac03e95a7adfc0347c2c4dd1494cfa6604799165382683898b4e4a8
+  checksum: f1b2cf206083427b2c43a1b8444e88a50353c1b08d46947c367cda1042fe09cb30d49a1bce48b2b6c6f18bac471eae968494dfbd832e2b5ca02cc39e3b7cdff1
   languageName: node
   linkType: hard
 
@@ -2124,7 +2124,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ccd-case-print-service@workspace:."
   dependencies:
-    "@hmcts/nodejs-healthcheck": 1.8.5
+    "@hmcts/nodejs-healthcheck": 1.8.6
     "@hmcts/nodejs-logging": ^4.0.4
     "@hmcts/properties-volume": ^0.0.14
     "@snyk/protect": ^1.1103.0
@@ -4590,7 +4590,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"formidable@npm:^3.5.1":
+"formidable@npm:^3.5.4":
   version: 3.5.4
   resolution: "formidable@npm:3.5.4"
   dependencies:
@@ -4608,7 +4608,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fresh@npm:0.5.2, fresh@npm:^0.5.2":
+"fresh@npm:0.5.2, fresh@npm:^0.5.2, fresh@npm:~0.5.2":
   version: 0.5.2
   resolution: "fresh@npm:0.5.2"
   checksum: 13ea8b08f91e669a64e3ba3a20eb79d7ca5379a81f1ff7f4310d54e2320645503cc0c78daedc93dfb6191287295f6479544a649c64d8e41a1c0fb0c221552346
@@ -7570,14 +7570,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ms@npm:2.1.1":
-  version: 2.1.1
-  resolution: "ms@npm:2.1.1"
-  checksum: 0078a23cd916a9a7435c413caa14c57d4b4f6e2470e0ab554b6964163c8a4436448ac7ae020e883685475da6b6796cc396b670f579cb275db288a21e3e57721e
-  languageName: node
-  linkType: hard
-
-"ms@npm:2.1.3, ms@npm:^2.1.1, ms@npm:^2.1.3":
+"ms@npm:2.1.3, ms@npm:^2.1.1, ms@npm:^2.1.3, ms@npm:~2.1.3":
   version: 2.1.3
   resolution: "ms@npm:2.1.3"
   checksum: aa92de608021b242401676e35cfa5aa42dd70cbdc082b916da7fb925c542173e36bce97ea3e804923fe92c0ad991434e4a38327e15a1b5b5f945d66df615ae6d
@@ -9538,13 +9531,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"safe-buffer@npm:5.1.1":
-  version: 5.1.1
-  resolution: "safe-buffer@npm:5.1.1"
-  checksum: 7f117b604554c9daca713be76cecc6c52932ed1dd6303638274f21319038bfd760fbfd353e526cc83f11894935bc4beb71f5b7b9478c11bf9718c0e0d94c51cb
-  languageName: node
-  linkType: hard
-
 "safe-buffer@npm:5.1.2, safe-buffer@npm:~5.1.0, safe-buffer@npm:~5.1.1":
   version: 5.1.2
   resolution: "safe-buffer@npm:5.1.2"
@@ -9552,7 +9538,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"safe-buffer@npm:5.2.1, safe-buffer@npm:>=5.1.0, safe-buffer@npm:^5.0.1, safe-buffer@npm:^5.1.0, safe-buffer@npm:^5.1.1, safe-buffer@npm:^5.1.2, safe-buffer@npm:^5.2.1":
+"safe-buffer@npm:5.2.1, safe-buffer@npm:>=5.1.0, safe-buffer@npm:^5.0.1, safe-buffer@npm:^5.1.0, safe-buffer@npm:^5.1.1, safe-buffer@npm:^5.1.2, safe-buffer@npm:^5.2.1, safe-buffer@npm:~5.2.1":
   version: 5.2.1
   resolution: "safe-buffer@npm:5.2.1"
   checksum: b99c4b41fdd67a6aaf280fcd05e9ffb0813654894223afb78a31f14a19ad220bba8aba1cb14eddce1fcfb037155fe6de4e861784eb434f7d11ed58d1e70dd491
@@ -9616,8 +9602,8 @@ __metadata:
   linkType: hard
 
 "sass@npm:^1.45.0":
-  version: 1.89.0
-  resolution: "sass@npm:1.89.0"
+  version: 1.89.2
+  resolution: "sass@npm:1.89.2"
   dependencies:
     "@parcel/watcher": ^2.4.1
     chokidar: ^4.0.0
@@ -9628,7 +9614,7 @@ __metadata:
       optional: true
   bin:
     sass: sass.js
-  checksum: 31d32b922a7327abe0ac2777ee071f87acf4e9ce7ed4693b52ad27fc8595c0a9381cc2efbba97a76fa03bbde03906fe69e9bc44a35a873189514b873f99e7ff6
+  checksum: 192a97ffe801d9377d10c0a8a129befe637438c5aa979a56db18fd95da2aa32b656715fa8a2959bfaf059b490792a783e605a94449d44fbbf44d8155aa981490
   languageName: node
   linkType: hard
 
@@ -9730,15 +9716,15 @@ __metadata:
   linkType: hard
 
 "serve-favicon@npm:^2.4.4":
-  version: 2.5.0
-  resolution: "serve-favicon@npm:2.5.0"
+  version: 2.5.1
+  resolution: "serve-favicon@npm:2.5.1"
   dependencies:
     etag: ~1.8.1
-    fresh: 0.5.2
-    ms: 2.1.1
+    fresh: ~0.5.2
+    ms: ~2.1.3
     parseurl: ~1.3.2
-    safe-buffer: 5.1.1
-  checksum: f4dd0fbee3b7e18d0a27ba6ba01d2f585f23f533010c9e8c74aad74615b19b12d8fbe714f14cb3579803f0bacecd67cdc858714cb56c6e28f8dd07ccc997aea4
+    safe-buffer: ~5.2.1
+  checksum: 8b52657f8f3ce7f381a79ca796a95060a382304aa8f1fb8d4a18339ae111242eb4f43205bf9bdfeac31b315cdcb18eea239c3526f735d1b97a3e21ca6110eb82
   languageName: node
   linkType: hard
 
@@ -10019,13 +10005,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"socks@npm:2.8.3":
-  version: 2.8.3
-  resolution: "socks@npm:2.8.3"
+"socks@npm:2.8.5":
+  version: 2.8.5
+  resolution: "socks@npm:2.8.5"
   dependencies:
     ip-address: ^9.0.5
     smart-buffer: ^4.2.0
-  checksum: 7a6b7f6eedf7482b9e4597d9a20e09505824208006ea8f2c49b71657427f3c137ca2ae662089baa73e1971c62322d535d9d0cf1c9235cf6f55e315c18203eadd
+  checksum: d39a77a8c91cfacafc75c67dba45925eccfd884a8a4a68dcda6fb9ab7f37de6e250bb6db3721e8a16a066a8e1ebe872d4affc26f3eb763f4befedcc7b733b7ed
   languageName: node
   linkType: hard
 
@@ -10440,20 +10426,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"superagent@npm:9":
-  version: 9.0.2
-  resolution: "superagent@npm:9.0.2"
+"superagent@npm:^10.2.2":
+  version: 10.2.2
+  resolution: "superagent@npm:10.2.2"
   dependencies:
     component-emitter: ^1.3.0
     cookiejar: ^2.1.4
     debug: ^4.3.4
     fast-safe-stringify: ^2.1.1
     form-data: ^4.0.0
-    formidable: ^3.5.1
+    formidable: ^3.5.4
     methods: ^1.1.2
     mime: 2.6.0
     qs: ^6.11.0
-  checksum: f471461b21f034d844fd0aca332128d61e3afb75c2ee5950f3339f2a3b5ca8b23e2861224f19ad9b43f21c9184d28b7d9384af5a4fde64fdef479efdb15036db
+  checksum: 47935395b72fe8186b858f58c593d991cd304f7b30c8d4e9937645e4c1a97c22aad4ff9cfd1a9aa9233c518af637435839d8a11a3d7ba0da5da29a7529d7ebf7
   languageName: node
   linkType: hard
 
@@ -11364,9 +11350,9 @@ __metadata:
   linkType: hard
 
 "validator@npm:^13.7.0":
-  version: 13.15.0
-  resolution: "validator@npm:13.15.0"
-  checksum: 0d1faacb802336e69fafde33723b6de8e1833d1a3ec2b5202ffc69b95c8140db6d4728760026d738243d706cd324ea84808deea2ed647f571a3171d03ade8031
+  version: 13.15.15
+  resolution: "validator@npm:13.15.15"
+  checksum: 10c1b9215a25c31497c481cf4a3ee3e17dcf0b8a219445788e7167ed1b93b8597bbf657bd5c8ca22199b699c3ab41df902c23526cc514075c4b71bd19a13d02c
   languageName: node
   linkType: hard
 
