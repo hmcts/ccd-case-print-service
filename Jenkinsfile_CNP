@@ -158,7 +158,7 @@ withPipeline("nodejs", product, component) {
             allowMissing         : true,
             alwaysLinkToLastBuild: true,
             keepAll              : true,
-            reportDir            : 'BEFTA Report for Functional Tests',
+            reportDir            : 'aat/BEFTA Report for Functional Tests',
             reportFiles          : "overview-features.html",
             reportName           : "Functional Test Report"
       ]
@@ -170,7 +170,7 @@ withPipeline("nodejs", product, component) {
             allowMissing         : true,
             alwaysLinkToLastBuild: true,
             keepAll              : true,
-            reportDir            : 'BEFTA Report for Functional Tests',
+            reportDir            : 'aat/BEFTA Report for Functional Tests',
             reportFiles          : "overview-features.html",
             reportName           : "Functional Test Report"
       ]
