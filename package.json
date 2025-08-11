@@ -160,7 +160,7 @@
     "minimatch": "^3.0.5",
     "socket.io-parser": "^4.0.5",
     "json5": "^2.2.2",
-    "decode-uri-component": "^0.2.1",
+    "decode-uri-component": "^0.4.0",
     "cookiejar": "^2.1.4",
     "cookie": "1.0.2",
     "http-cache-semantics": "4.1.1",
