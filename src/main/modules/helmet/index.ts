@@ -31,19 +31,32 @@ export class Helmet {
   }
 
   private setContentSecurityPolicy(app) {
-    app.use(helmet.contentSecurityPolicy(
-      {
-        directives: {
-          connectSrc: [self],
-          defaultSrc: ["'none'"],
-          fontSrc: [self, "data:"],
-          imgSrc: [self, googleAnalyticsDomain, hmctsPiwikDomain],
-          objectSrc: [self],
-          scriptSrc: [self, googleAnalyticsDomain, hmctsPiwikDomain],
-          styleSrc: [self],
+    private setContentSecurityPolicy(app) {
+      const scriptSources = [self, googleAnalyticsDomain, hmctsPiwikDomain];
+
+      // Adding 'unsafe-eval' weakens  CSP protection.
+      // The conditional approach ensures it's only allowed in development
+      // where debugging tools might need it, while maintaining security in production.
+      // Add unsafe-eval only in development
+      if (app.locals.developmentMode) {
+        scriptSources.push("'unsafe-eval'");
+        scriptSources.push("'unsafe-inline'");
+      }
+
+      app.use(helmet.contentSecurityPolicy(
+        {
+          directives: {
+            connectSrc: [self],
+            defaultSrc: ["'none'"],
+            fontSrc: [self, "data:"],
+            imgSrc: scriptSources,
+            objectSrc: [self],
+            scriptSrc: scriptSources,
+            styleSrc: [self],
+          },
         },
-      },
-    ));
+      ));
+    }
   }
 
   private setReferrerPolicy(app, policy) {
