@@ -33,6 +33,7 @@
     "applicationinsights": "^1.0.8",
     "assign-deep": "^1.0.1",
     "body-parser": "^1.18.1",
+    "brace-expansion": "^4.0.1",
     "config": "^1.26.2",
     "cookie": "1.0.2",
     "cookie-parser": "^1.4.7",
@@ -168,7 +169,8 @@
     "semver": "7.5.2",
     "micromatch": "^4.0.8",
     "cross-spawn": "^7.0.6",
-    "socks": "2.8.7"
+    "socks": "2.8.7",
+    "brace-expansion": "^4.0.1"
   },
   "snyk": true,
   "nyc": {
