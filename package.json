@@ -106,7 +106,7 @@
   "resolutions": {
     "nconf": "^0.11.4",
     "async": "^2.6.4",
-    "js-yaml": "3.13.1",
+    "js-yaml": "3.14.1",
     "lodash": "^4.17.21",
     "growl": "^1.10.2",
     "gulp-livereload": "^4.0.2",
