@@ -2169,7 +2169,7 @@ __metadata:
     karma-jasmine: ^1.0.2
     karma-mocha-reporter: ^2.0.3
     karma-remap-istanbul: 0.6.0
-    karma-sourcemap-loader: ^0.3.7
+    karma-sourcemap-loader: ^0.4.0
     karma-webpack: 4.0.2
     mime: ^1.4.0
     mocha: ^5.2.0
@@ -5110,7 +5110,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graceful-fs@npm:^4.0.0, graceful-fs@npm:^4.1.11, graceful-fs@npm:^4.1.15, graceful-fs@npm:^4.1.2, graceful-fs@npm:^4.1.3, graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.6":
+"graceful-fs@npm:^4.0.0, graceful-fs@npm:^4.1.11, graceful-fs@npm:^4.1.15, graceful-fs@npm:^4.1.2, graceful-fs@npm:^4.1.3, graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.10, graceful-fs@npm:^4.2.6":
   version: 4.2.11
   resolution: "graceful-fs@npm:4.2.11"
   checksum: ac85f94da92d8eb6b7f5a8b20ce65e43d66761c55ce85ac96df6865308390da45a8d3f0296dd3a663de65d30ba497bd46c696cc1e248c72b13d6d567138a4fc7
@@ -6491,12 +6491,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"karma-sourcemap-loader@npm:^0.3.7":
-  version: 0.3.8
-  resolution: "karma-sourcemap-loader@npm:0.3.8"
+"karma-sourcemap-loader@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "karma-sourcemap-loader@npm:0.4.0"
   dependencies:
-    graceful-fs: ^4.1.2
-  checksum: 12e21849af695f4aaa012752128b494e8b4b601c8d910212253d153b92153017364ad99f9ed86d58578ce44a7e53e9498ebd329950f1d0f0290bb90f4fea6d2c
+    graceful-fs: ^4.2.10
+  checksum: 9d85efb3e2c1eb5ce66b04195798aa33d97c25add1aa6d2b5f2f1e1056f60bb2cefbd408457dc8e70e85becc92abfe319084c87e02fe643285a20ff64656d9b3
   languageName: node
   linkType: hard
 
