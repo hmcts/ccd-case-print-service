@@ -10623,16 +10623,16 @@ __metadata:
   linkType: hard
 
 "terser@npm:^5.15":
-  version: 5.40.0
-  resolution: "terser@npm:5.40.0"
+  version: 5.44.0
+  resolution: "terser@npm:5.44.0"
   dependencies:
     "@jridgewell/source-map": ^0.3.3
-    acorn: ^8.14.0
+    acorn: ^8.15.0
     commander: ^2.20.0
     source-map-support: ~0.5.20
   bin:
     terser: bin/terser
-  checksum: 2c84b1a06a8417a3443f63b447b276f724221a2b0d5cdbdd642c4753e72c3711f232a87b25b1ecb8a7282a07effe4eba0c1c3d2461c5c92243f0384579a56d11
+  checksum: 4e1868d9662ea280dad7b49cfe61b7693187be2b529b31b1f86782db00833c03ba05f2b82fc513d928e937260f2a5fbf42a93724e86eaf55f069288f934ccdb3
   languageName: node
   linkType: hard
 
