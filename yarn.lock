@@ -577,11 +577,11 @@ __metadata:
   linkType: hard
 
 "@snyk/protect@npm:^1.1103.0":
-  version: 1.1297.3
-  resolution: "@snyk/protect@npm:1.1297.3"
+  version: 1.1299.0
+  resolution: "@snyk/protect@npm:1.1299.0"
   bin:
     snyk-protect: bin/snyk-protect
-  checksum: f1b2cf206083427b2c43a1b8444e88a50353c1b08d46947c367cda1042fe09cb30d49a1bce48b2b6c6f18bac471eae968494dfbd832e2b5ca02cc39e3b7cdff1
+  checksum: 414c1216638f1c54356311eab5e798d4af8d7276333e03066fce929ed8359607793e052a9cce973ba2d3d4acec0d05a6b6a3d5f243e39cbfd7f5a9a485100e13
   languageName: node
   linkType: hard
 
@@ -2170,7 +2170,7 @@ __metadata:
     karma-jasmine: ^1.0.2
     karma-mocha-reporter: ^2.0.3
     karma-remap-istanbul: 0.6.0
-    karma-sourcemap-loader: ^0.3.7
+    karma-sourcemap-loader: ^0.4.0
     karma-webpack: 4.0.2
     mime: ^1.4.0
     mocha: ^5.2.0
@@ -2182,11 +2182,11 @@ __metadata:
     nunjucks: ^3.2.4
     nunjucks-date-filter: ^0.1.1
     nunjucks-numeral-filter: ^0.0.2
-    nyc: 15.0.0
+    nyc: 15.1.0
     otp: ^0.1.3
     pa11y: ^8.0.0
     proxyquire: ^1.8.0
-    remap-istanbul: ^0.9.6
+    remap-istanbul: ^0.13.0
     require-directory: ^2.1.1
     sass: ^1.45.0
     sass-lint: ^1.11.1
@@ -5111,7 +5111,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graceful-fs@npm:^4.0.0, graceful-fs@npm:^4.1.11, graceful-fs@npm:^4.1.15, graceful-fs@npm:^4.1.2, graceful-fs@npm:^4.1.3, graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.6":
+"graceful-fs@npm:^4.0.0, graceful-fs@npm:^4.1.11, graceful-fs@npm:^4.1.15, graceful-fs@npm:^4.1.2, graceful-fs@npm:^4.1.3, graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.10, graceful-fs@npm:^4.2.6":
   version: 4.2.11
   resolution: "graceful-fs@npm:4.2.11"
   checksum: ac85f94da92d8eb6b7f5a8b20ce65e43d66761c55ce85ac96df6865308390da45a8d3f0296dd3a663de65d30ba497bd46c696cc1e248c72b13d6d567138a4fc7
@@ -6135,13 +6135,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"istanbul-reports@npm:^3.0.0":
-  version: 3.1.7
-  resolution: "istanbul-reports@npm:3.1.7"
+"istanbul-reports@npm:^3.0.2":
+  version: 3.2.0
+  resolution: "istanbul-reports@npm:3.2.0"
   dependencies:
     html-escaper: ^2.0.0
     istanbul-lib-report: ^3.0.0
-  checksum: 2072db6e07bfbb4d0eb30e2700250636182398c1af811aea5032acb219d2080f7586923c09fa194029efd6b92361afb3dcbe1ebcc3ee6651d13340f7c6c4ed95
+  checksum: 72b4c8525276147908d28b0917bc675b1019836b638e50875521ca3b8ec63672681aa98dbab88a6f49ef798c08fe041d428abdcf84f4f3fcff5844eee54af65a
   languageName: node
   linkType: hard
 
@@ -6229,15 +6229,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"js-yaml@npm:3.13.1":
-  version: 3.13.1
-  resolution: "js-yaml@npm:3.13.1"
+"js-yaml@npm:3.14.1":
+  version: 3.14.1
+  resolution: "js-yaml@npm:3.14.1"
   dependencies:
     argparse: ^1.0.7
     esprima: ^4.0.0
   bin:
     js-yaml: bin/js-yaml.js
-  checksum: 7511b764abb66d8aa963379f7d2a404f078457d106552d05a7b556d204f7932384e8477513c124749fa2de52eb328961834562bd09924902c6432e40daa408bc
+  checksum: bef146085f472d44dee30ec34e5cf36bf89164f5d585435a3d3da89e52622dff0b188a580e4ad091c3341889e14cb88cac6e4deb16dc5b1e9623bb0601fc255c
   languageName: node
   linkType: hard
 
@@ -6492,12 +6492,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"karma-sourcemap-loader@npm:^0.3.7":
-  version: 0.3.8
-  resolution: "karma-sourcemap-loader@npm:0.3.8"
+"karma-sourcemap-loader@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "karma-sourcemap-loader@npm:0.4.0"
   dependencies:
-    graceful-fs: ^4.1.2
-  checksum: 12e21849af695f4aaa012752128b494e8b4b601c8d910212253d153b92153017364ad99f9ed86d58578ce44a7e53e9498ebd329950f1d0f0290bb90f4fea6d2c
+    graceful-fs: ^4.2.10
+  checksum: 9d85efb3e2c1eb5ce66b04195798aa33d97c25add1aa6d2b5f2f1e1056f60bb2cefbd408457dc8e70e85becc92abfe319084c87e02fe643285a20ff64656d9b3
   languageName: node
   linkType: hard
 
@@ -7798,7 +7798,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-preload@npm:^0.2.0":
+"node-preload@npm:^0.2.1":
   version: 0.2.1
   resolution: "node-preload@npm:0.2.1"
   dependencies:
@@ -7971,9 +7971,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nyc@npm:15.0.0":
-  version: 15.0.0
-  resolution: "nyc@npm:15.0.0"
+"nyc@npm:15.1.0":
+  version: 15.1.0
+  resolution: "nyc@npm:15.1.0"
   dependencies:
     "@istanbuljs/load-nyc-config": ^1.0.0
     "@istanbuljs/schema": ^0.1.2
@@ -7983,6 +7983,7 @@ __metadata:
     find-cache-dir: ^3.2.0
     find-up: ^4.1.0
     foreground-child: ^2.0.0
+    get-package-type: ^0.1.0
     glob: ^7.1.6
     istanbul-lib-coverage: ^3.0.0
     istanbul-lib-hook: ^3.0.0
@@ -7990,10 +7991,9 @@ __metadata:
     istanbul-lib-processinfo: ^2.0.2
     istanbul-lib-report: ^3.0.0
     istanbul-lib-source-maps: ^4.0.0
-    istanbul-reports: ^3.0.0
-    js-yaml: ^3.13.1
+    istanbul-reports: ^3.0.2
     make-dir: ^3.0.0
-    node-preload: ^0.2.0
+    node-preload: ^0.2.1
     p-map: ^3.0.0
     process-on-spawn: ^1.0.0
     resolve-from: ^5.0.0
@@ -8001,11 +8001,10 @@ __metadata:
     signal-exit: ^3.0.2
     spawn-wrap: ^2.0.0
     test-exclude: ^6.0.0
-    uuid: ^3.3.3
     yargs: ^15.0.2
   bin:
     nyc: bin/nyc.js
-  checksum: 2eacd212559b15394ad165f28e35bf0cd0258bf2ce5048994883de8c3edb12dab99a419d8fadcdb4946a42cae593900d770fdd6d233896b55ac2c97492600eff
+  checksum: 82a7031982df2fd6ab185c9f1b5d032b6221846268007b45b5773c6582e776ab33e96cd22b4231520345942fcef69b4339bd967675b8483f3fa255b56326faef
   languageName: node
   linkType: hard
 
@@ -9082,7 +9081,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"readable-stream@npm:^3.0.6":
+"readable-stream@npm:2 || 3, readable-stream@npm:^3.0.6":
   version: 3.6.2
   resolution: "readable-stream@npm:3.6.2"
   dependencies:
@@ -9197,7 +9196,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remap-istanbul@npm:^0.9.0, remap-istanbul@npm:^0.9.6":
+"remap-istanbul@npm:^0.13.0":
+  version: 0.13.0
+  resolution: "remap-istanbul@npm:0.13.0"
+  dependencies:
+    istanbul: 0.4.5
+    minimatch: ^3.0.4
+    plugin-error: ^1.0.1
+    source-map: 0.6.1
+    through2: 3.0.0
+  bin:
+    remap-istanbul: ./bin/remap-istanbul.js
+  checksum: c180b13434fd2dbcfd580fa115eff6131b69635362cbd7bc9897efb3ea34f2ba111a002d4675781915af3f5f789dc0f9e28f35d178d70bc79368d7c07a0e8ad5
+  languageName: node
+  linkType: hard
+
+"remap-istanbul@npm:^0.9.0":
   version: 0.9.6
   resolution: "remap-istanbul@npm:0.9.6"
   dependencies:
@@ -9593,8 +9607,8 @@ __metadata:
   linkType: hard
 
 "sass@npm:^1.45.0":
-  version: 1.89.2
-  resolution: "sass@npm:1.89.2"
+  version: 1.92.0
+  resolution: "sass@npm:1.92.0"
   dependencies:
     "@parcel/watcher": ^2.4.1
     chokidar: ^4.0.0
@@ -9605,7 +9619,7 @@ __metadata:
       optional: true
   bin:
     sass: sass.js
-  checksum: 192a97ffe801d9377d10c0a8a129befe637438c5aa979a56db18fd95da2aa32b656715fa8a2959bfaf059b490792a783e605a94449d44fbbf44d8155aa981490
+  checksum: 122343c7c213e0b4c42c4fde81f1e76a880543d9d20843a0ec5507429682213875db3d1fef1837da1b627e8311fc45a47071740420f3ffe3b7d23c5ee41049c8
   languageName: node
   linkType: hard
 
@@ -9646,14 +9660,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:7.5.2":
-  version: 7.5.2
-  resolution: "semver@npm:7.5.2"
-  dependencies:
-    lru-cache: ^6.0.0
+"semver@npm:7.7.2":
+  version: 7.7.2
+  resolution: "semver@npm:7.7.2"
   bin:
     semver: bin/semver.js
-  checksum: 3fdf5d1e6f170fe8bcc41669e31787649af91af7f54f05c71d0865bb7aa27e8b92f68b3e6b582483e2c1c648008bc84249d2cd86301771fe5cbf7621d1fe5375
+  checksum: dd94ba8f1cbc903d8eeb4dd8bf19f46b3deb14262b6717d0de3c804b594058ae785ef2e4b46c5c3b58733c99c83339068203002f9e37cfe44f7e2cc5e3d2f621
   languageName: node
   linkType: hard
 
@@ -10039,17 +10051,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"source-map@npm:0.6.1, source-map@npm:^0.6.0, source-map@npm:^0.6.1, source-map@npm:~0.6.1":
+  version: 0.6.1
+  resolution: "source-map@npm:0.6.1"
+  checksum: 59ce8640cf3f3124f64ac289012c2b8bd377c238e316fb323ea22fbfe83da07d81e000071d7242cad7a23cd91c7de98e4df8830ec3f133cb6133a5f6e9f67bc2
+  languageName: node
+  linkType: hard
+
 "source-map@npm:^0.5.1, source-map@npm:~0.5.1":
   version: 0.5.7
   resolution: "source-map@npm:0.5.7"
   checksum: 5dc2043b93d2f194142c7f38f74a24670cd7a0063acdaf4bf01d2964b402257ae843c2a8fa822ad5b71013b5fcafa55af7421383da919752f22ff488bc553f4d
-  languageName: node
-  linkType: hard
-
-"source-map@npm:^0.6.0, source-map@npm:^0.6.1, source-map@npm:~0.6.1":
-  version: 0.6.1
-  resolution: "source-map@npm:0.6.1"
-  checksum: 59ce8640cf3f3124f64ac289012c2b8bd377c238e316fb323ea22fbfe83da07d81e000071d7242cad7a23cd91c7de98e4df8830ec3f133cb6133a5f6e9f67bc2
   languageName: node
   linkType: hard
 
@@ -10612,16 +10624,16 @@ __metadata:
   linkType: hard
 
 "terser@npm:^5.15":
-  version: 5.40.0
-  resolution: "terser@npm:5.40.0"
+  version: 5.44.0
+  resolution: "terser@npm:5.44.0"
   dependencies:
     "@jridgewell/source-map": ^0.3.3
-    acorn: ^8.14.0
+    acorn: ^8.15.0
     commander: ^2.20.0
     source-map-support: ~0.5.20
   bin:
     terser: bin/terser
-  checksum: 2c84b1a06a8417a3443f63b447b276f724221a2b0d5cdbdd642c4753e72c3711f232a87b25b1ecb8a7282a07effe4eba0c1c3d2461c5c92243f0384579a56d11
+  checksum: 4e1868d9662ea280dad7b49cfe61b7693187be2b529b31b1f86782db00833c03ba05f2b82fc513d928e937260f2a5fbf42a93724e86eaf55f069288f934ccdb3
   languageName: node
   linkType: hard
 
@@ -10683,6 +10695,16 @@ __metadata:
     readable-stream: ~2.0.0
     xtend: ~4.0.0
   checksum: 7a7d661ed28510d0f4b6f86c129ed7885eeadacb4e1b70aca2f4406176642451521950fa3cf5acda7b67881466d09797f64b2593007097f36a3e30f549a37d87
+  languageName: node
+  linkType: hard
+
+"through2@npm:3.0.0":
+  version: 3.0.0
+  resolution: "through2@npm:3.0.0"
+  dependencies:
+    readable-stream: 2 || 3
+    xtend: ~4.0.1
+  checksum: f9b1923e9dfa8f1860e22fb39aee07d74b9463b39706c0f9c5fc623eb1a7cdb6f726dfb3805fbb7c0870d66e3380589faa9ef8e51a9575cc52dc32e2ed6cffc3
   languageName: node
   linkType: hard
 
@@ -11046,12 +11068,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ua-parser-js@npm:^0.7.31":
-  version: 0.7.40
-  resolution: "ua-parser-js@npm:0.7.40"
-  bin:
-    ua-parser-js: script/cli.js
-  checksum: c8f69573c336cbf0f4341e7fe93a8d7082acf39dba4e135b704f06ad240f585d4b38fb44fd3cad92c97a015128e9fe2e653b39c3b6c0919f8a8af3be02d79cc2
+"ua-parser-js@npm:^0.8.0":
+  version: 0.8.1
+  resolution: "ua-parser-js@npm:0.8.1"
+  checksum: 0f05384823a514ad7b0f7a6ae81775c84ea0ae50ee30ea3c5f8cd6139b5df1f48ee9fe38e41c523619411816b3eb05644f16931ec5d01094972cd1b7611194eb
   languageName: node
   linkType: hard
 
@@ -11289,7 +11309,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:^3.3.2, uuid@npm:^3.3.3":
+"uuid@npm:^3.3.2":
   version: 3.4.0
   resolution: "uuid@npm:3.4.0"
   bin:
