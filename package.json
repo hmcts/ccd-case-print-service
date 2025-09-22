@@ -42,7 +42,7 @@
     "express-nunjucks": "^2.2.3",
     "govuk-elements-sass": "^3.1.1",
     "govuk_template_jinja": "^0.26.0",
-    "helmet": "^3.8.1",
+    "helmet": "^4.0.0",
     "jquery": "^3.5.1",
     "jwt-decode": "^2.2.0",
     "mime": "^1.4.0",
