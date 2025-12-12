@@ -1,6 +1,9 @@
 name: Auto-suppress CVEs
 
 on:
+  push:
+    branches:
+      - fix-yarn-audit-dp
   schedule:
     # At 12 midnight and every 3rd hour from 10am through 11pm
     - cron: "0 0,10-23/3 * * *"
@@ -32,6 +35,17 @@ jobs:
             echo "has_changes=true" >> $GITHUB_OUTPUT
           else
             echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Fail if added lines contain Yarn errors
+        run: |
+          added="$(git diff | grep '^+' | sed 's/^\+//')"
+
+          clean_added="$(echo "$added" | sed 's/\x1b\[[0-9;]*m//g')"
+
+          if echo "$clean_added" | grep -q 'YYN0035: Bad Request'; then
+            echo "Forbidden Yarn error found in added lines."
+            exit 1
           fi
 
       - name: Commit suppressed CVEs if there are changes
