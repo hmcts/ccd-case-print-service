@@ -11,13 +11,11 @@ RUN apk update \
   && apk add bzip2 patch python3 py3-pip make gcc g++ \
   && rm -rf /var/lib/ /lists/*
 
-COPY --chown=hmcts:hmcts package.json yarn.lock .snyk ./
+COPY --chown=hmcts:hmcts package.json yarn.lock .snyk .yarnrc.yml .yarn/ ./
 
 USER hmcts
 
-RUN yarn config set yarn-offline-mirror ~/npm-packages-offline-cache && \
-  yarn config set yarn-offline-mirror-pruning true && \
-  yarn install --prefer-offline --ignore-optional --network-timeout 1200000
+RUN yarn install --immutable --ignore-optional --network-timeout 1200000
 
 # ---- Build Image ----
 FROM base AS build
@@ -26,7 +24,7 @@ COPY config ./config
 COPY gulpfile.js tsconfig.json ./
 USER root
 RUN yarn sass \
-  && yarn install --ignore-optional --production --network-timeout 1200000 \
+  && yarn install --immutable --ignore-optional --network-timeout 1200000 \
   && yarn cache clean
 USER hmcts
 
