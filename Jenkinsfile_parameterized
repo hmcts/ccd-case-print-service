@@ -17,15 +17,14 @@ withParameterizedPipeline(params.TYPE, params.PRODUCT_NAME, params.APP, params.E
 
     enableSlackNotifications('#ccd-param-builds')
 
-    sh """
-      if ! command -v corepack >/dev/null 2>&1; then
-        npm install -g corepack
-      fi
-      corepack enable
-      corepack prepare yarn@4.9.3 --activate
-    """
-
     afterAlways('checkout') {
+        sh """
+          if ! command -v corepack >/dev/null 2>&1; then
+            npm install -g corepack
+          fi
+          corepack enable
+          corepack prepare yarn@4.9.3 --activate
+        """
         sh "yarn cache clean"
     }
 
