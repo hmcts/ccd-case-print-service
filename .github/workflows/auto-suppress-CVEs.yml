@@ -24,6 +24,12 @@ jobs:
           token: ${{ steps.generate-token.outputs.token }}
           ref: master
 
+      - name: Configure NPM auth
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Run yarn audit
         run: yarn npm audit --recursive --environment production --json > yarn-audit-known-issues || true
         # continue-on-error: true

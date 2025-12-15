@@ -101,3 +101,7 @@ or to run using gradle directly:
 $ cd ./aat/
 $ ./gradlew functional
 ```
+
+### Security auditing
+
+The project uses Yarn 4 (`.yarn/releases/yarn-4.9.3.cjs`). To keep `yarn npm audit --recursive --environment production --json` working we pin every registry setting (`npmRegistryServer`, `npmPublishRegistry`, `npmAuditRegistry`) to `https://registry.npmjs.org` in `.yarnrc.yml`, because the default Yarn mirror does not expose the npm security API and was returning HTTP 400 responses. Run the command above from the repository root to produce the JSON report (for example, to refresh `yarn-audit-known-issues`).
