@@ -18,6 +18,12 @@ The output comprises a summary, with some key information such as Case Number an
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/en) version >= 18.17.0
+- [Corepack](https://nodejs.org/api/corepack.html) enabled locally so the repo can automatically use the pinned Yarn version:
+  ```bash
+  corepack enable
+  corepack use yarn@4.9.3
+  ```
+  (If you skip this step and use a globally installed Yarn 1.x you'll see `packageManager` errors like the one above.)
 
 ### Environment variables
 
