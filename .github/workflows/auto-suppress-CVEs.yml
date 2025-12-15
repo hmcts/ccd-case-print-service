@@ -24,6 +24,15 @@ jobs:
           token: ${{ steps.generate-token.outputs.token }}
           ref: master
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Enable Corepack (Yarn 4.9.3)
+        run: |
+          corepack enable
+          corepack prepare yarn@4.9.3 --activate
+
       - name: Configure NPM auth
         run: |
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
