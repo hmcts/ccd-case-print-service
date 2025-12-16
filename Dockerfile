@@ -16,7 +16,7 @@ COPY --chown=hmcts:hmcts .yarn ./.yarn
 
 USER hmcts
 
-RUN yarn install --immutable --ignore-optional --network-timeout 1200000
+RUN yarn install --immutable --network-timeout 1200000
 
 # ---- Build Image ----
 FROM base AS build
@@ -25,7 +25,7 @@ COPY config ./config
 COPY gulpfile.js tsconfig.json ./
 USER root
 RUN yarn sass \
-  && yarn install --immutable --ignore-optional --network-timeout 1200000 \
+  && yarn install --immutable --network-timeout 1200000 \
   && yarn cache clean
 USER hmcts
 
