@@ -11,7 +11,8 @@ RUN apk update \
   && apk add bzip2 patch python3 py3-pip make gcc g++ \
   && rm -rf /var/lib/ /lists/*
 
-COPY --chown=hmcts:hmcts package.json yarn.lock .snyk .yarnrc.yml .yarn/ ./
+COPY --chown=hmcts:hmcts package.json yarn.lock .snyk .yarnrc.yml ./
+COPY --chown=hmcts:hmcts .yarn ./.yarn
 
 USER hmcts
 
