@@ -668,10 +668,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mocha@npm:^2.2.43":
-  version: 2.2.48
-  resolution: "@types/mocha@npm:2.2.48"
-  checksum: fc327012b24b1ee401c76563818c233d9f00a28a9df13f4bab1187af14d7aea9b97ced80f3e71033828459cc0f0616b546a34a3ec27ffa4ba08619aacdebda0f
+"@types/mocha@npm:^10.0.0":
+  version: 10.0.10
+  resolution: "@types/mocha@npm:10.0.10"
+  checksum: 17a56add60a8cc8362d3c62cb6798be3f89f4b6ccd5b9abd12b46e31ff299be21ff2faebf5993de7e0099559f58ca5a3b49a505d302dfa5d65c5a4edfc089195
   languageName: node
   linkType: hard
 
@@ -2197,7 +2197,7 @@ __metadata:
     "@hmcts/properties-volume": ^0.0.14
     "@snyk/protect": ^1.1103.0
     "@types/chai-as-promised": ^7.1.0
-    "@types/mocha": ^2.2.43
+    "@types/mocha": ^10.0.0
     "@types/node": ^10.5.4
     "@types/sinon-chai": ^2.7.29
     applicationinsights: ^1.0.8
