@@ -2207,7 +2207,7 @@ __metadata:
     chai: ^4.1.2
     chai-as-promised: ^7.1.1
     config: ^1.26.2
-    cookie: 1.0.2
+    cookie: 1.1.1
     cookie-parser: ^1.4.7
     csurf: ^1.9.0
     debug: ^3.1.0
@@ -2951,10 +2951,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie@npm:1.0.2":
-  version: 1.0.2
-  resolution: "cookie@npm:1.0.2"
-  checksum: 2c5a6214147ffa7135ce41860c781de17e93128689b0d080d3116468274b3593b607bcd462ac210d3a61f081db3d3b09ae106e18d60b1f529580e95cf2db8a55
+"cookie@npm:1.1.1":
+  version: 1.1.1
+  resolution: "cookie@npm:1.1.1"
+  checksum: e40c4ff817a73ec0a41413654ca9a71e6207bd6e511151bb1d307aef2903eb59771127a85474afe0e12a8982804f7b03cce0bda798b55c306aca9608b4b9acab
   languageName: node
   linkType: hard
 
