@@ -35,7 +35,7 @@
     "body-parser": "^1.18.1",
     "brace-expansion": "^1.1.12",
     "config": "^1.26.2",
-    "cookie": "1.0.2",
+    "cookie": "1.1.1",
     "cookie-parser": "^1.4.7",
     "csurf": "^1.9.0",
     "express": "^5.0.1",
@@ -163,7 +163,7 @@
     "json5": "^2.2.2",
     "decode-uri-component": "^0.4.0",
     "cookiejar": "^2.1.4",
-    "cookie": "1.0.2",
+    "cookie": "1.1.1",
     "http-cache-semantics": "4.2.0",
     "jackspeak": "2.3.6",
     "semver": "7.7.3",
@@ -199,5 +199,5 @@
     "report-dir": "coverage",
     "all": true
   },
-  "packageManager": "yarn@4.9.3+sha512.8295ee814f6b253e16f516416481b481a215ed03ef1ae38524d108084872560a9ed75aeb23b91ab64222062ac4149a594150ae538c2a9536fdbcefd4e49b11cc"
+  "packageManager": "yarn@4.12.0"
 }
