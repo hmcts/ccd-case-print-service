@@ -569,11 +569,11 @@ __metadata:
   linkType: hard
 
 "@snyk/protect@npm:^1.1103.0":
-  version: 1.1301.1
-  resolution: "@snyk/protect@npm:1.1301.1"
+  version: 1.1302.1
+  resolution: "@snyk/protect@npm:1.1302.1"
   bin:
     snyk-protect: bin/snyk-protect
-  checksum: 10c0/5f33f02d5742dfb46a52f99641726b88c91123f62502178d20895b01f7bf3b4cb89e5d1ab60cb8a4c2d21cc0bf8f8532da77065cdcac43c73d7b764137c74f25
+  checksum: 10c0/4e4458f2234b20d09c95a8cc9a92e8eded8291314b491a0afd2b79972480ba654889bccb943f4cbbe0cd38d87b5ef41e596680da1c249d8a87c573d1dc3282a1
   languageName: node
   linkType: hard
 
