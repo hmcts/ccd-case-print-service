@@ -114,7 +114,7 @@
     "assign-deep": "^1.0.1",
     "qs": "^6.3.2",
     "http-proxy": "^1.18.1",
-    "acorn": "^7.1.1",
+    "acorn": "^8.0.0",
     "uglify-js": "^2.6.0",
     "debug": "^3.1.0",
     "minimist": "^1.2.6",
