@@ -96,7 +96,7 @@
     "pa11y": "^8.0.0",
     "proxyquire": "^1.8.0",
     "remap-istanbul": "^0.13.0",
-    "sass-lint": "^1.11.1",
+    "sass-lint": "patch:sass-lint@npm%3A1.13.1#~/.yarn/patches/sass-lint-npm-1.13.1-77a5446607.patch",
     "sinon": "^4.0.0",
     "sinon-chai": "^2.13.0",
     "sonar-scanner": "^3.1.0",
@@ -107,7 +107,7 @@
   "resolutions": {
     "nconf": "^0.13.0",
     "async": "^2.6.4",
-    "js-yaml": "3.14.1",
+    "js-yaml": "4.1.1",
     "lodash": "^4.17.21",
     "growl": "^1.10.2",
     "gulp-livereload": "^4.0.2",

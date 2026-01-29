@@ -1231,12 +1231,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"argparse@npm:^1.0.7":
-  version: 1.0.10
-  resolution: "argparse@npm:1.0.10"
-  dependencies:
-    sprintf-js: "npm:~1.0.2"
-  checksum: 10c0/b2972c5c23c63df66bca144dbc65d180efa74f25f8fd9b7d9a0a6c88ae839db32df3d54770dcb6460cf840d232b60695d1a6b1053f599d84e73f7437087712de
+"argparse@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "argparse@npm:2.0.1"
+  checksum: 10c0/c5640c2d89045371c7cedd6a70212a04e360fd34d6edeae32f6952c63949e3525ea77dbec0289d8213a99bbaeab5abfa860b5c12cf88a2e6cf8106e90dd27a7e
   languageName: node
   linkType: hard
 
@@ -2257,7 +2255,7 @@ __metadata:
     remap-istanbul: "npm:^0.13.0"
     require-directory: "npm:^2.1.1"
     sass: "npm:^1.45.0"
-    sass-lint: "npm:^1.11.1"
+    sass-lint: "patch:sass-lint@npm%3A1.13.1#~/.yarn/patches/sass-lint-npm-1.13.1-77a5446607.patch"
     serve-favicon: "npm:^2.4.4"
     sinon: "npm:^4.0.0"
     sinon-chai: "npm:^2.13.0"
@@ -3993,7 +3991,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esprima@npm:^4.0.0, esprima@npm:^4.0.1":
+"esprima@npm:^4.0.1":
   version: 4.0.1
   resolution: "esprima@npm:4.0.1"
   bin:
@@ -6363,15 +6361,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"js-yaml@npm:3.14.1":
-  version: 3.14.1
-  resolution: "js-yaml@npm:3.14.1"
+"js-yaml@npm:4.1.1":
+  version: 4.1.1
+  resolution: "js-yaml@npm:4.1.1"
   dependencies:
-    argparse: "npm:^1.0.7"
-    esprima: "npm:^4.0.0"
+    argparse: "npm:^2.0.1"
   bin:
     js-yaml: bin/js-yaml.js
-  checksum: 10c0/6746baaaeac312c4db8e75fa22331d9a04cccb7792d126ed8ce6a0bbcfef0cedaddd0c5098fade53db067c09fe00aa1c957674b4765610a8b06a5a189e46433b
+  checksum: 10c0/561c7d7088c40a9bb53cc75becbfb1df6ae49b34b5e6e5a81744b14ae8667ec564ad2527709d1a6e7d5e5fa6d483aa0f373a50ad98d42fde368ec4a190d4fae7
   languageName: node
   linkType: hard
 
@@ -9707,7 +9704,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass-lint@npm:^1.11.1":
+"sass-lint@npm:1.13.1":
   version: 1.13.1
   resolution: "sass-lint@npm:1.13.1"
   dependencies:
@@ -9728,6 +9725,30 @@ __metadata:
   bin:
     sass-lint: ./bin/sass-lint.js
   checksum: 10c0/40c966144799c75ac6b915fda9871b18a3001148c8a08c8debbedffcc325ed16f692fd646bb99ffb9590d6d56728e80d07b59749a19c004c3c5857d85807fdd0
+  languageName: node
+  linkType: hard
+
+"sass-lint@patch:sass-lint@npm%3A1.13.1#~/.yarn/patches/sass-lint-npm-1.13.1-77a5446607.patch":
+  version: 1.13.1
+  resolution: "sass-lint@patch:sass-lint@npm%3A1.13.1#~/.yarn/patches/sass-lint-npm-1.13.1-77a5446607.patch::version=1.13.1&hash=6b48a5"
+  dependencies:
+    commander: "npm:^2.8.1"
+    eslint: "npm:^2.7.0"
+    front-matter: "npm:2.1.2"
+    fs-extra: "npm:^3.0.1"
+    glob: "npm:^7.0.0"
+    globule: "npm:^1.0.0"
+    gonzales-pe-sl: "npm:^4.2.3"
+    js-yaml: "npm:^3.5.4"
+    known-css-properties: "npm:^0.3.0"
+    lodash.capitalize: "npm:^4.1.0"
+    lodash.kebabcase: "npm:^4.0.0"
+    merge: "npm:^1.2.0"
+    path-is-absolute: "npm:^1.0.0"
+    util: "npm:^0.10.3"
+  bin:
+    sass-lint: ./bin/sass-lint.js
+  checksum: 10c0/4270bae966c9b72c77668aed678810b3f943803bb50d0f288cdae8d98f4768857de0de5817bfa45b78c90193ee915468157bf1211d55edfdd9a4abfaa62b78fb
   languageName: node
   linkType: hard
 
@@ -10273,13 +10294,6 @@ __metadata:
   version: 3.0.22
   resolution: "spdx-license-ids@npm:3.0.22"
   checksum: 10c0/4a85e44c2ccfc06eebe63239193f526508ebec1abc7cf7bca8ee43923755636234395447c2c87f40fb672cf580a9c8e684513a676bfb2da3d38a4983684bbb38
-  languageName: node
-  linkType: hard
-
-"sprintf-js@npm:~1.0.2":
-  version: 1.0.3
-  resolution: "sprintf-js@npm:1.0.3"
-  checksum: 10c0/ecadcfe4c771890140da5023d43e190b7566d9cf8b2d238600f31bec0fc653f328da4450eb04bd59a431771a8e9cc0e118f0aa3974b683a4981b4e07abc2a5bb
   languageName: node
   linkType: hard
 

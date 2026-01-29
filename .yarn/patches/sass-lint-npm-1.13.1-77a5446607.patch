@@ -1,0 +1,117 @@
+diff --git a/lib/config-helpers.js b/lib/config-helpers.js
+index 6ef11aab9b5bc79494915b5acbd6daf8fddccbab..8774ad6a48c986974bc59c78c7925449c27793d3 100644
+--- a/lib/config-helpers.js
++++ b/lib/config-helpers.js
+@@ -10,7 +10,7 @@ var yaml = require('js-yaml'),
+  * @returns {Object} The default sass-lint configuration
+  */
+ var loadDefaults = function loadDefaults () {
+-  return yaml.safeLoad(fs.readFileSync(path.join(__dirname, 'config', 'sass-lint.yml'), 'utf8'));
++  return yaml.load(fs.readFileSync(path.join(__dirname, 'config', 'sass-lint.yml'), 'utf8'));
+ };
+ 
+ /**
+@@ -54,7 +54,7 @@ var loadConfig = function (cPath) {
+ 
+   if (configPath) {
+     if (fs.existsSync(configPath)) {
+-      resolvedConfig = yaml.safeLoad(fs.readFileSync(configPath, 'utf8')) || {};
++      resolvedConfig = yaml.load(fs.readFileSync(configPath, 'utf8')) || {};
+     }
+   }
+ 
+diff --git a/lib/helpers.js b/lib/helpers.js
+index 1b63c3314e331939bf7d48535a79e580e1a04d1c..bc4309c2d0f5318e5660403a2f07c3c17bc20eb5 100644
+--- a/lib/helpers.js
++++ b/lib/helpers.js
+@@ -218,7 +218,7 @@ helpers.loadConfigFile = function (configPath) {
+ 
+   if (file) {
+     if (fileExtension === '.yml') {
+-      return yaml.safeLoad(file);
++      return yaml.load(file);
+     }
+   }
+ 
+diff --git a/lib/rules/function-name-format.js b/lib/rules/function-name-format.js
+index 8c2ea35d1a1aa4cc535f2f372a0d958c998160e4..18f42489481de13b3a69e32eded1738c68fe25b2 100644
+--- a/lib/rules/function-name-format.js
++++ b/lib/rules/function-name-format.js
+@@ -6,7 +6,7 @@ var helpers = require('../helpers'),
+     fs = require('fs'),
+     path = require('path');
+ 
+-var whitelist = yaml.safeLoad(fs.readFileSync(path.join(__dirname, '../../data', 'functions.yml'), 'utf8')).split(' ');
++var whitelist = yaml.load(fs.readFileSync(path.join(__dirname, '../../data', 'functions.yml'), 'utf8')).split(' ');
+ 
+ module.exports = {
+   'name': 'function-name-format',
+diff --git a/lib/rules/no-color-keywords.js b/lib/rules/no-color-keywords.js
+index face6db98bc780cf9097b20150d028ce0c55164a..254fadcd3ba66c3afd3da65a98788d45bdc72e62 100644
+--- a/lib/rules/no-color-keywords.js
++++ b/lib/rules/no-color-keywords.js
+@@ -5,7 +5,7 @@ var helpers = require('../helpers'),
+     fs = require('fs'),
+     path = require('path');
+ 
+-var cssColors = yaml.safeLoad(fs.readFileSync(path.join(__dirname, '../../data', 'literals.yml'), 'utf8')).split(' ');
++var cssColors = yaml.load(fs.readFileSync(path.join(__dirname, '../../data', 'literals.yml'), 'utf8')).split(' ');
+ 
+ /**
+  * Checks if a node's parent is a valid type as we dont want to apply
+diff --git a/lib/rules/no-color-literals.js b/lib/rules/no-color-literals.js
+index 0c6642dc1ac9e9689fa6162248786f58d92422b0..395a98c4e33b23a33878ea85ebdcdd157ac8b480 100644
+--- a/lib/rules/no-color-literals.js
++++ b/lib/rules/no-color-literals.js
+@@ -6,7 +6,7 @@ var helpers = require('../helpers'),
+     path = require('path');
+ 
+ var colorFunctions = ['rgb', 'rgba', 'hsl', 'hsla'],
+-    cssColors = yaml.safeLoad(fs.readFileSync(path.join(__dirname, '../../data', 'literals.yml'), 'utf8')).split(' ');
++    cssColors = yaml.load(fs.readFileSync(path.join(__dirname, '../../data', 'literals.yml'), 'utf8')).split(' ');
+ 
+ /**
+  * Returns a copy of the colour functions array
+diff --git a/lib/rules/no-vendor-prefixes.js b/lib/rules/no-vendor-prefixes.js
+index 529d8bb8df36b3ff1f11bfa461fc01eb60e4e2f7..f78ddde3acc0e4ed40ffa8fd5537f4acb5c54ce7 100644
+--- a/lib/rules/no-vendor-prefixes.js
++++ b/lib/rules/no-vendor-prefixes.js
+@@ -5,7 +5,7 @@ var helpers = require('../helpers'),
+     fs = require('fs'),
+     path = require('path');
+ 
+-var properties = yaml.safeLoad(fs.readFileSync(path.join(__dirname, '../../data', 'properties.yml'), 'utf8')).split(' '),
++var properties = yaml.load(fs.readFileSync(path.join(__dirname, '../../data', 'properties.yml'), 'utf8')).split(' '),
+     prefixes = ['webkit', 'moz', 'ms'];
+ 
+ /**
+diff --git a/lib/rules/property-sort-order.js b/lib/rules/property-sort-order.js
+index adbecbf22dc82f8501a4efd70b24041edf60d724..9de51a9e154ac4a8a85e3cd2678cd10f82de2fe0 100644
+--- a/lib/rules/property-sort-order.js
++++ b/lib/rules/property-sort-order.js
+@@ -5,7 +5,7 @@ var helpers = require('../helpers'),
+     fs = require('fs'),
+     path = require('path');
+ 
+-var propertyCheckList = yaml.safeLoad(fs.readFileSync(path.join(__dirname, '../../data', 'properties.yml'), 'utf8')).split(' ');
++var propertyCheckList = yaml.load(fs.readFileSync(path.join(__dirname, '../../data', 'properties.yml'), 'utf8')).split(' ');
+ 
+ var orderPresets = {
+   'recess': 'recess.yml',
+diff --git a/lib/rules/pseudo-element.js b/lib/rules/pseudo-element.js
+index ede81fe8452155809293bcb5b5d9f62530ae294e..536daed4add4c60b894bdd04e4f0bb0d6a094bec 100644
+--- a/lib/rules/pseudo-element.js
++++ b/lib/rules/pseudo-element.js
+@@ -5,10 +5,10 @@ var helpers = require('../helpers'),
+     fs = require('fs'),
+     path = require('path');
+ 
+-var pseudoElements = yaml.safeLoad(
++var pseudoElements = yaml.load(
+       fs.readFileSync(path.join(__dirname, '../../data', 'pseudoElements.yml'), 'utf8')
+     ).split(' '),
+-    pseudoClasses = yaml.safeLoad(
++    pseudoClasses = yaml.load(
+       fs.readFileSync(path.join(__dirname, '../../data', 'pseudoClasses.yml'), 'utf8')
+     ).split(' ');
+ 
