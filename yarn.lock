@@ -2263,6 +2263,7 @@ __metadata:
     sinon-chai: "npm:^2.13.0"
     sonar-scanner: "npm:^3.1.0"
     supertest: "npm:^3.0.0"
+    tar: "npm:^7.5.4"
     ts-node: "npm:^10.7.0"
     tsconfig-paths: "npm:^3.14.1"
     tslint: "npm:^5.7.0"
