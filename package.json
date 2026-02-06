@@ -138,7 +138,7 @@
     "trim-newlines": "^3.0.1",
     "normalize-url": "^4.5.1",
     "@snyk/cli-interface": "2.14.1",
-    "tar": "^7.4.3",
+    "tar": "^7.5.7",
     "terser": "^5.15",
     "jszip": "^3.7.0",
     "path-parse": "^1.0.7",
