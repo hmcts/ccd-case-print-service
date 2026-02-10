@@ -44,6 +44,7 @@
     "govuk_template_jinja": "^0.26.0",
     "helmet": "^3.8.1",
     "jquery": "^3.5.1",
+    "js-yaml": "^4.1.1",
     "jwt-decode": "^2.2.0",
     "mime": "^1.4.0",
     "node-fetch": "^2.6.7",
@@ -60,6 +61,7 @@
   },
   "devDependencies": {
     "@types/chai-as-promised": "^7.1.0",
+    "@types/js-yaml": "^4",
     "@types/mocha": "^2.2.43",
     "@types/sinon-chai": "^2.7.29",
     "chai": "^4.1.2",
