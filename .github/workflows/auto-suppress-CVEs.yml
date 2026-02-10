@@ -34,6 +34,15 @@ jobs:
             echo "has_changes=false" >> $GITHUB_OUTPUT
           fi
 
+      - name: Fail if added lines contain Yarn errors
+        run: |
+          added="$(git diff | grep '^+' | sed 's/^\+//')"
+          clean_added="$(echo "$added" | sed 's/\x1b\[[0-9;]*m//g')"
+          if echo "$clean_added" | grep -q 'YYN0035: Bad Request'; then
+            echo "Forbidden Yarn error found in added lines."
+            exit 1
+          fi
+          
       - name: Commit suppressed CVEs if there are changes
         if: steps.check_git_changes.outputs.has_changes == 'true'
         uses: stefanzweifel/git-auto-commit-action@v4
