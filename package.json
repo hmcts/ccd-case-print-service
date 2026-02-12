@@ -166,7 +166,7 @@
     "cookie": "1.1.1",
     "http-cache-semantics": "4.2.0",
     "jackspeak": "2.3.6",
-    "semver": "7.7.3",
+    "semver": "7.7.4",
     "micromatch": "^4.0.8",
     "cross-spawn": "^7.0.6",
     "socks": "2.8.7",
