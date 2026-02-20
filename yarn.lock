@@ -879,10 +879,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mocha@npm:^2.2.43":
-  version: 2.2.48
-  resolution: "@types/mocha@npm:2.2.48"
-  checksum: 10c0/a45341b3be8d48ef324cc9ce470133b76d168db72f7444944ab25b319df160f4dbcd1e89d467490acae93d4a68ace8e51e29403d41fb5ccd46bef6a044416b68
+"@types/mocha@npm:^10.0.0":
+  version: 10.0.10
+  resolution: "@types/mocha@npm:10.0.10"
+  checksum: 10c0/d2b8c48138cde6923493e42b38e839695eb42edd04629abe480a8f34c0e3f50dd82a55832c2e8d2b6e6f9e4deb492d7d733e600fbbdd5a0ceccbcfc6844ff9d5
   languageName: node
   linkType: hard
 
@@ -2415,7 +2415,7 @@ __metadata:
     "@hmcts/properties-volume": "npm:^1.0.0"
     "@snyk/protect": "npm:^1.1103.0"
     "@types/chai-as-promised": "npm:^7.1.0"
-    "@types/mocha": "npm:^2.2.43"
+    "@types/mocha": "npm:^10.0.0"
     "@types/node": "npm:^10.5.4"
     "@types/sinon-chai": "npm:^2.7.29"
     applicationinsights: "npm:^1.0.8"
