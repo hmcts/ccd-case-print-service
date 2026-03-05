@@ -170,7 +170,8 @@
     "micromatch": "^4.0.8",
     "cross-spawn": "^7.0.6",
     "socks": "2.8.7",
-    "brace-expansion": "^1.1.12"
+    "brace-expansion": "^1.1.12",
+    "immutable@npm:^5.0.2": "npm:5.1.5"
   },
   "snyk": true,
   "nyc": {
