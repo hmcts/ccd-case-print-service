@@ -11373,10 +11373,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ua-parser-js@npm:^0.8.0":
-  version: 0.8.1
-  resolution: "ua-parser-js@npm:0.8.1"
-  checksum: 10c0/aa2f6770d9142b053ef1143ee308c1912700b9964e417e263209b52a1ef2ce8a751807e5b786738a081c88c12ba7fde0d8916c2d580ce3e893b447e595dc0829
+"ua-parser-js@npm:^1.0.0":
+  version: 1.0.41
+  resolution: "ua-parser-js@npm:1.0.41"
+  bin:
+    ua-parser-js: script/cli.js
+  checksum: 10c0/45dc1f7f3ce8248e0e64640d2e29c65c0ea1fc9cb105594de84af80e2a57bba4f718b9376098ca7a5b0ffe240f8995b0fa3714afa9d36861c41370a378f1a274
   languageName: node
   linkType: hard
 
