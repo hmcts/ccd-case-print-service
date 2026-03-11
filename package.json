@@ -133,6 +133,7 @@
     "handlebars": "^4.7.7",
     "xmlhttprequest-ssl": "^1.6.2",
     "ua-parser-js": "^0.8.0",
+    "immutable": "^5.1.5",
     "merge": "^2.1.1",
     "glob-parent": "~6.0.1",
     "trim-newlines": "^3.0.1",
