@@ -106,7 +106,7 @@
   },
   "resolutions": {
     "nconf": "^0.13.0",
-    "async": "^2.6.4",
+    "async": "^3.0.0",
     "js-yaml": "3.14.2",
     "lodash": "^4.17.21",
     "growl": "^1.10.2",
@@ -158,7 +158,7 @@
     "got": "^11.8.5",
     "loader-utils": "^1.4.2",
     "engine.io": "^6.2.1",
-    "minimatch": "^3.0.5",
+    "minimatch": "^3.1.4",
     "socket.io-parser": "^4.0.5",
     "json5": "^2.2.2",
     "decode-uri-component": "^0.4.0",
