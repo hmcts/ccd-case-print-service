@@ -1,2 +1,12 @@
 appInsights:
   enabled: false
+session:
+  cookieName: "SESSION_ID"
+idam:
+  base_url: "http://localhost:9999"
+  s2s_url: "http://localhost:9999"
+  print_service_key: "AAAA"
+
+secrets:
+  ccd: 
+    microservicekey-ccd-ps: "AAAA"
