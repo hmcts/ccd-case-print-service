@@ -1726,11 +1726,11 @@ __metadata:
   linkType: hard
 
 "@snyk/protect@npm:^1.1103.0":
-  version: 1.1303.1
-  resolution: "@snyk/protect@npm:1.1303.1"
+  version: 1.1303.2
+  resolution: "@snyk/protect@npm:1.1303.2"
   bin:
     snyk-protect: bin/snyk-protect
-  checksum: 10c0/fbe68fb717dbe618ddd3523da56c1b2621ad0522e2f42edeab189caa7b556ebf4dd48d1100b2d6a899dcc1e033b7142d8b1fe3a1c6a93081c626528c79018565
+  checksum: 10c0/052777129d5192087f21ad4ef4316f7a4240db6ec47175a3ef79efa4670f139a64e30d20926843b40362d5b605d257f831cec6b99a016f6a57a2f4b6ca5ea01c
   languageName: node
   linkType: hard
 
@@ -4638,9 +4638,9 @@ __metadata:
   linkType: hard
 
 "diff@npm:^8.0.3":
-  version: 8.0.3
-  resolution: "diff@npm:8.0.3"
-  checksum: 10c0/d29321c70d3545fdcb56c5fdd76028c3f04c012462779e062303d4c3c531af80d2c360c26b871e6e2b9a971d2422d47e1779a859106c4cac4b5d2d143df70e20
+  version: 8.0.4
+  resolution: "diff@npm:8.0.4"
+  checksum: 10c0/7ee5d03926db4039be7252ac3b0abaae1bd122a2ca971e5ca7270e444e36ff83dd906fad1a719740ca347e97ed5dc8f458a76a8391dbcd7aff363bdafb348a00
   languageName: node
   linkType: hard
 
@@ -12014,15 +12014,15 @@ __metadata:
   linkType: hard
 
 "tar@npm:^7.4.3":
-  version: 7.5.11
-  resolution: "tar@npm:7.5.11"
+  version: 7.5.13
+  resolution: "tar@npm:7.5.13"
   dependencies:
     "@isaacs/fs-minipass": "npm:^4.0.0"
     chownr: "npm:^3.0.0"
     minipass: "npm:^7.1.2"
     minizlib: "npm:^3.1.0"
     yallist: "npm:^5.0.0"
-  checksum: 10c0/b6bb420550ef50ef23356018155e956cd83282c97b6128d8d5cfe5740c57582d806a244b2ef0bf686a74ce526babe8b8b9061527623e935e850008d86d838929
+  checksum: 10c0/5c65b8084799bde7a791593a1c1a45d3d6ee98182e3700b24c247b7b8f8654df4191642abbdb07ff25043d45dcff35620827c3997b88ae6c12040f64bed5076b
   languageName: node
   linkType: hard
 
