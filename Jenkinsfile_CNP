@@ -107,7 +107,7 @@ withPipeline("nodejs", product, component) {
     }
 
     afterAlways('build') {
-        sh "yarn --check-cache"
+        sh "yarn install --immutable --mode=skip-build"
     }
 
      afterAlways('test') {
