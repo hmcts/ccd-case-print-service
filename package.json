@@ -40,6 +40,7 @@
     "csurf": "^1.9.0",
     "express": "^5.0.1",
     "express-nunjucks": "^2.2.3",
+    "form-data": "^4.0.4",
     "govuk-elements-sass": "^3.1.1",
     "govuk_template_jinja": "^0.26.0",
     "helmet": "^4.0.0",
@@ -107,6 +108,7 @@
     "webpack": "^4"
   },
   "resolutions": {
+    "form-data": "^4.0.4",
     "nconf": "^0.13.0",
     "async": "^3.0.0",
     "js-yaml": "3.14.2",
