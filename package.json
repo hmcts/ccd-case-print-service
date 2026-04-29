@@ -144,6 +144,7 @@
     "normalize-url": "^4.5.1",
     "@snyk/cli-interface": "2.15.0",
     "tar": "7.5.13",
+    "tmp": "0.2.5",
     "terser": "^5.15",
     "jszip": "^3.7.0",
     "path-parse": "^1.0.7",
