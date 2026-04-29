@@ -6,12 +6,12 @@ import * as express from "express";
 import * as expressNunjucks from "express-nunjucks";
 import * as favicon from "serve-favicon";
 import * as healthcheck from "@hmcts/nodejs-healthcheck";
-import * as path from "path";
 import { authCheckerUserOnlyFilter } from "./user/auth-checker-user-only-filter";
 import { Express, Logger } from "@hmcts/nodejs-logging";
 import { Helmet, IConfig as HelmetConfig } from "./modules/helmet";
 import { RouterFinder } from "./router/routerFinder";
 import { serviceFilter } from "./service/service-filter";
+import { assertNoSymlinksInDirectory, resolveAppPath } from "./util/secure-path";
 import { setJwtCookieAndRedirect } from "./util/set-jwt-cookie-and-redirect";
 
 const enableAppInsights = require("./app-insights/app-insights");
@@ -27,12 +27,20 @@ app.locals.ENV = env;
 app.use(Express.accessLogger());
 
 const logger = Logger.getLogger("app");
+const viewsPath = resolveAppPath("views");
+const publicPath = resolveAppPath("public");
+const faviconPath = resolveAppPath("public", "img", "favicon.ico");
+const routesPath = resolveAppPath("routes");
+
+assertNoSymlinksInDirectory(viewsPath);
+assertNoSymlinksInDirectory(publicPath);
+assertNoSymlinksInDirectory(routesPath);
 
 // secure the application by adding various HTTP headers to its responses
 new Helmet(config.get<HelmetConfig>("security")).enableFor(app);
 
 // view engine setup
-app.set("views", path.join(__dirname, "views"));
+app.set("views", viewsPath);
 app.set("view engine", "njk");
 logger.info("****************");
 logger.info("**************** " + JSON.stringify(config.get<HelmetConfig>("security")));
@@ -43,8 +51,8 @@ const healthConfig = {
 healthcheck.addTo(appHealth, healthConfig);
 app.use(appHealth);
 
-app.use(express.static(path.join(__dirname, "public")));
-app.use(favicon(path.join(__dirname, "/public/img/favicon.ico")));
+app.use(express.static(publicPath, { dotfiles: "deny", index: false, redirect: false }));
+app.use(favicon(faviconPath));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
@@ -69,7 +77,7 @@ if (config.useCSRFProtection === true) {
 app.use("/", setJwtCookieAndRedirect);
 app.use("/", authCheckerUserOnlyFilter);
 app.use("/", serviceFilter);
-app.use("/", RouterFinder.findAll(path.join(__dirname, "routes")));
+app.use("/", RouterFinder.findAll(routesPath));
 
 // returning "not found" page for requests with paths not resolved by the router
 app.use((req, res, next) => {
