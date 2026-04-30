@@ -151,7 +151,7 @@
     "set-value": "^4.0.1",
     "ssh2": "^1.4.0",
     "ws": "^1.0.5",
-    "color-string": "^1.5.5",
+    "color-string": "^2.0.0",
     "tmpl": "^1.0.5",
     "validator": "^13.7.0",
     "json-schema": "0.4.0",
