@@ -12,7 +12,7 @@ import { Express, Logger } from "@hmcts/nodejs-logging";
 import { Helmet, IConfig as HelmetConfig } from "./modules/helmet";
 import { RouterFinder } from "./router/routerFinder";
 import { serviceFilter } from "./service/service-filter";
-import { createStaticPathGuard, resolvePathInside } from "./util/path-security";
+import { resolvePathInside } from "./util/path-security";
 import { setJwtCookieAndRedirect } from "./util/set-jwt-cookie-and-redirect";
 
 const enableAppInsights = require("./app-insights/app-insights");
@@ -48,7 +48,6 @@ const healthConfig = {
 healthcheck.addTo(appHealth, healthConfig);
 app.use(appHealth);
 
-app.use(createStaticPathGuard(publicDirectory));
 app.use(express.static(publicDirectory, {
   dotfiles: "deny",
   fallthrough: true,
