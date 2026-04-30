@@ -1,21 +1,16 @@
 import { Router } from "express";
-import * as path from "path";
-import * as requireDirectory from "require-directory";
-import { resolvePathInside } from "../util/path-security";
-
-const options: object = {
-  extensions: ["ts", "js"],
-  recurse: true,
-  visit: (obj: any) => {
-    return (typeof obj === "object" && obj.default !== undefined) ? obj.default : obj;
-  },
-};
+import caseDataRouter from "../routes/case-data";
+import probateCaseDataRouter from "../routes/case-data-probate";
+import homeRouter from "../routes/home";
 
 export class RouterFinder {
 
   public static findAll(): Router[] {
-    const routesDirectory = resolvePathInside(path.resolve(__dirname, ".."), "routes");
-    return Object.values(requireDirectory(module, routesDirectory, options));
+    return [
+      homeRouter,
+      caseDataRouter,
+      probateCaseDataRouter,
+    ];
   }
 
 }

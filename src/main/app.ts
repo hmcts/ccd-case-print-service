@@ -4,15 +4,12 @@ import * as cookieParser from "cookie-parser";
 import * as csrf from "csurf";
 import * as express from "express";
 import * as expressNunjucks from "express-nunjucks";
-import * as favicon from "serve-favicon";
 import * as healthcheck from "@hmcts/nodejs-healthcheck";
-import * as path from "path";
 import { authCheckerUserOnlyFilter } from "./user/auth-checker-user-only-filter";
 import { Express, Logger } from "@hmcts/nodejs-logging";
 import { Helmet, IConfig as HelmetConfig } from "./modules/helmet";
 import { RouterFinder } from "./router/routerFinder";
 import { serviceFilter } from "./service/service-filter";
-import { resolvePathInside } from "./util/path-security";
 import { setJwtCookieAndRedirect } from "./util/set-jwt-cookie-and-redirect";
 
 const enableAppInsights = require("./app-insights/app-insights");
@@ -33,11 +30,7 @@ const logger = Logger.getLogger("app");
 new Helmet(config.get<HelmetConfig>("security")).enableFor(app);
 
 // view engine setup
-const viewsDirectory = path.resolve(__dirname, "views");
-const publicDirectory = path.resolve(__dirname, "public");
-const faviconPath = resolvePathInside(publicDirectory, "img", "favicon.ico");
-
-app.set("views", viewsDirectory);
+app.set("views", "src/main/views");
 app.set("view engine", "njk");
 logger.info("****************");
 logger.info("**************** " + JSON.stringify(config.get<HelmetConfig>("security")));
@@ -48,13 +41,6 @@ const healthConfig = {
 healthcheck.addTo(appHealth, healthConfig);
 app.use(appHealth);
 
-app.use(express.static(publicDirectory, {
-  dotfiles: "deny",
-  fallthrough: true,
-  index: false,
-  redirect: false,
-}));
-app.use(favicon(faviconPath));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
