@@ -1,14 +1,16 @@
 import { get } from "config";
 import { fetch } from "../util/fetch";
-import * as userReqAuth from "../user/user-request-authorizer";
 import * as validate from "../util/validate";
 
 export function getCase(req, jid, ctid, cid) {
   validate.checkCaseId(cid);
-  const userId = req.authentication.user.uid;
-  const url = get("case_data_store_url") + "/caseworkers/" + userId + "/jurisdictions/" + jid + "/case-types/" + ctid +
-    "/cases/" + cid;
-  const authorization = req.get(userReqAuth.AUTHORIZATION);
+  const userId = validate.safeEncodePathSegment(req.authentication.user.uid, "User ID");
+  const jurisdictionId = validate.safeEncodePathSegment(jid, "Jurisdiction ID");
+  const caseTypeId = validate.safeEncodePathSegment(ctid, "Case type ID");
+  const caseId = validate.safeEncodePathSegment(cid, "Case ID");
+  const url = get("case_data_store_url") + "/caseworkers/" + userId + "/jurisdictions/" + jurisdictionId +
+    "/case-types/" + caseTypeId + "/cases/" + caseId;
+  const authorization = req.get("Authorization");
   return fetch(url, {
     headers: {
       "Authorization": authorization,

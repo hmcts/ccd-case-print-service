@@ -12,6 +12,7 @@ import { Express, Logger } from "@hmcts/nodejs-logging";
 import { Helmet, IConfig as HelmetConfig } from "./modules/helmet";
 import { RouterFinder } from "./router/routerFinder";
 import { serviceFilter } from "./service/service-filter";
+import { createStaticPathGuard, resolvePathInside } from "./util/path-security";
 import { setJwtCookieAndRedirect } from "./util/set-jwt-cookie-and-redirect";
 
 const enableAppInsights = require("./app-insights/app-insights");
@@ -32,7 +33,11 @@ const logger = Logger.getLogger("app");
 new Helmet(config.get<HelmetConfig>("security")).enableFor(app);
 
 // view engine setup
-app.set("views", path.join(__dirname, "views"));
+const viewsDirectory = path.resolve(__dirname, "views");
+const publicDirectory = path.resolve(__dirname, "public");
+const faviconPath = resolvePathInside(publicDirectory, "img", "favicon.ico");
+
+app.set("views", viewsDirectory);
 app.set("view engine", "njk");
 logger.info("****************");
 logger.info("**************** " + JSON.stringify(config.get<HelmetConfig>("security")));
@@ -43,8 +48,14 @@ const healthConfig = {
 healthcheck.addTo(appHealth, healthConfig);
 app.use(appHealth);
 
-app.use(express.static(path.join(__dirname, "public")));
-app.use(favicon(path.join(__dirname, "/public/img/favicon.ico")));
+app.use(createStaticPathGuard(publicDirectory));
+app.use(express.static(publicDirectory, {
+  dotfiles: "deny",
+  fallthrough: true,
+  index: false,
+  redirect: false,
+}));
+app.use(favicon(faviconPath));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
@@ -69,7 +80,7 @@ if (config.useCSRFProtection === true) {
 app.use("/", setJwtCookieAndRedirect);
 app.use("/", authCheckerUserOnlyFilter);
 app.use("/", serviceFilter);
-app.use("/", RouterFinder.findAll(path.join(__dirname, "routes")));
+app.use("/", RouterFinder.findAll());
 
 // returning "not found" page for requests with paths not resolved by the router
 app.use((req, res, next) => {
@@ -86,7 +97,7 @@ app.use((err, req, res, next) => {
   res.locals.error = env === "development" ? err : {};
 
   res.status(err.status || 500);
-  if (err.code === "INVALID_CASE_ID") {
+  if (err.code === "INVALID_CASE_ID" || err.code === "INVALID_PATH_SEGMENT") {
     res.send(err);
   } else {
     res.render("error");
