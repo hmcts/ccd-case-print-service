@@ -1,7 +1,7 @@
 
 import * as config from "config";
+import * as http from "http";
 import * as pa11y from "pa11y";
-import * as supertest from "supertest";
 import * as sinon from "sinon";
 import { Logger } from "@hmcts/nodejs-logging";
 import { app } from "../../main/app";
@@ -12,8 +12,9 @@ import * as caseService from "../../main/service/case-service";
 
 app.locals.csrf = "dummy-token";
 const cookieName: string = config.get("session.cookieName");
-const agent = supertest(app);
 const logger = Logger.getLogger("a11y");
+let baseUrl: string;
+let server: http.Server;
 
 export interface IIssue {
   type: string;
@@ -53,14 +54,18 @@ function check(uri: string, ignoreElements?: any[]): void {
         stubS2S = sinon.stub(s2sResolver); // add stub
         stubS2S.serviceTokenGenerator.returns(Promise.resolve("mocked-s2s-token"));
 
-        const url = agent.get(uri).url;
+        const url = baseUrl + uri;
         logger.info(`Running accessibility tests for ${url}`);
         issues = await runPa11y(url, ignoreElements || []);
       });
 
       after(() => {
-        stubIdam.getTokenDetails.restore();  // remove idam stub
-        stubS2S.serviceTokenGenerator.restore();  // remove s2s stub
+        if (stubIdam) {
+          stubIdam.getTokenDetails.restore();  // remove idam stub
+        }
+        if (stubS2S) {
+          stubS2S.serviceTokenGenerator.restore();  // remove s2s stub
+        }
       });
 
       it("should have no accessibility errors", () => {
@@ -81,6 +86,13 @@ function ensureNoAccessibilityAlerts(issueType: string, issues: IIssue[]): void 
 }
 
 describe("Accessibility", () => {
+  before(async () => {
+    await startServer();
+  });
+
+  after(async () => {
+    await stopServer();
+  });
 
   // testing accessibility of the home page
   check("/");
@@ -97,8 +109,46 @@ describe("Accessibility", () => {
         stubCaseService.getCase.returns(Promise.resolve({id: 1234}));
   });
   after(() => {
-        stubCaseService.getCase.restore();  // remove case service stub
+        if (stubCaseService) {
+          stubCaseService.getCase.restore();  // remove case service stub
+        }
   });
   check("/jurisdictions/AAA/case-types/BBB/cases/CCC",
     ["WCAG2AA.Principle1.Guideline1_4.1_4_10.C32,C31,C33,C38,SCR34,G206"]);
 });
+
+function startServer(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    server = http.createServer(app);
+    server.once("error", reject);
+    server.listen(0, "127.0.0.1", () => {
+      const address = server.address();
+
+      if (typeof address === "string" || address === null) {
+        reject(new Error("Unable to determine test server address"));
+        return;
+      }
+
+      baseUrl = `http://127.0.0.1:${address.port}`;
+      resolve();
+    });
+  });
+}
+
+function stopServer(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (!server || !server.listening) {
+      resolve();
+      return;
+    }
+
+    server.close((error) => {
+      if (error) {
+        reject(error);
+        return;
+      }
+
+      resolve();
+    });
+  });
+}
