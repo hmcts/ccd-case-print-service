@@ -180,7 +180,7 @@
     "semver": "7.7.4",
     "micromatch": "^4.0.8",
     "cross-spawn": "^7.0.6",
-    "socks": "2.8.7",
+    "socks": "2.8.8",
     "brace-expansion": "^1.1.12"
   },
   "snyk": true,
