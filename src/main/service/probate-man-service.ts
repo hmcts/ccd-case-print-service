@@ -1,12 +1,13 @@
 import { get } from "config";
 import { fetch } from "../util/fetch";
-import * as userReqAuth from "../user/user-request-authorizer";
 import * as validate from "../util/validate";
 
 export function getProbateManLegacyCase(req, probateManType, id) {
-  const url = get("case_data_probate_template_url") + "/probateManTypes/" + probateManType + "/cases/" + id;
-  const authorization = req.get(userReqAuth.AUTHORIZATION);
   validate.checkCaseId(id);
+  const probateManTypeSegment = validate.safeEncodePathSegment(probateManType, "Probate man type");
+  const caseId = validate.safeEncodePathSegment(id, "Case ID");
+  const url = get("case_data_probate_template_url") + "/probateManTypes/" + probateManTypeSegment + "/cases/" + caseId;
+  const authorization = req.get("Authorization");
   return fetch(url, {
     headers: {
       "Authorization": authorization,

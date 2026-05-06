@@ -6,6 +6,7 @@ import * as sinon from "sinon";
 describe("probate man service", () => {
 
   let getProbateManLegacyCase;
+  const proxyquireNoCallThru = proxyquire.noCallThru();
   const authorization = "Bearer dghdheh47";
   const serviceAuthorization = "Bearer dghdheh48";
 
@@ -14,7 +15,7 @@ describe("probate man service", () => {
       get: sinon.stub(),
     };
     config.get.withArgs("case_data_probate_template_url").returns("http://localhost:4104");
-    getProbateManLegacyCase = proxyquire("../../main/service/probate-man-service", {
+    getProbateManLegacyCase = proxyquireNoCallThru("../../main/service/probate-man-service", {
       config,
     }).getProbateManLegacyCase;
   });
@@ -74,5 +75,23 @@ describe("probate man service", () => {
 
     const result = await getProbateManLegacyCase(req, "CAVEAT", "79927398713");
     expect(result).to.deep.equal(expectedResult);
+  });
+
+  it("should reject path traversal in probate man type", async () => {
+    const req = {
+      get: sinon.stub(),
+      headers: {
+        ServiceAuthorization : serviceAuthorization,
+      },
+    };
+    req.get.withArgs("Authorization").returns(authorization);
+
+    try {
+      await getProbateManLegacyCase(req, "../secret", "79927398713");
+    } catch (error) {
+      expect(error.status).to.deep.equal(400);
+      expect(error.error).to.deep.equal("Bad Request");
+      expect(error.code).to.deep.equal("INVALID_PATH_SEGMENT");
+    }
   });
 });

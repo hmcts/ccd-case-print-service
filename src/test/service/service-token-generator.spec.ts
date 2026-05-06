@@ -8,6 +8,7 @@ import * as sinon from "sinon";
 describe("service token generator", () => {
 
   let serviceTokenGenerator;
+  const proxyquireNoCallThru = proxyquire.noCallThru();
 
   beforeEach(() => {
     const config = {
@@ -17,11 +18,11 @@ describe("service token generator", () => {
     config.get.withArgs("idam.s2s_url").returns("http://localhost:9999");
     config.get.withArgs("appInsights.enabled").returns(false);
 
-    serviceTokenGenerator = proxyquire("../../main/service/service-token-generator", {
+    serviceTokenGenerator = proxyquireNoCallThru("../../main/service/service-token-generator", {
       config,
     }).serviceTokenGenerator;
 
-    proxyquire("../../main/app-insights/app-insights", {
+    proxyquireNoCallThru("../../main/app-insights/app-insights", {
       config,
     });
   });

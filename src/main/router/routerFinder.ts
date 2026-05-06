@@ -1,18 +1,16 @@
 import { Router } from "express";
-import * as requireDirectory from "require-directory";
-
-const options: object = {
-  extensions: ["ts", "js"],
-  recurse: true,
-  visit: (obj: any) => {
-    return (typeof obj === "object" && obj.default !== undefined) ? obj.default : obj;
-  },
-};
+import caseDataRouter from "../routes/case-data";
+import probateCaseDataRouter from "../routes/case-data-probate";
+import homeRouter from "../routes/home";
 
 export class RouterFinder {
 
-  public static findAll(path: string): Router[] {
-    return Object.values(requireDirectory(module, path, options));
+  public static findAll(): Router[] {
+    return [
+      homeRouter,
+      caseDataRouter,
+      probateCaseDataRouter,
+    ];
   }
 
 }
