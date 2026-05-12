@@ -6,6 +6,7 @@ import * as sinon from "sinon";
 describe("case service", () => {
 
   let getCase;
+  const proxyquireNoCallThru = proxyquire.noCallThru();
   const serviceAuthorization = "Bearer dghdheh48";
   const req = {
     authentication: {
@@ -31,7 +32,7 @@ describe("case service", () => {
       get: sinon.stub(),
     };
     config.get.withArgs("case_data_store_url").returns("http://localhost:4104");
-    getCase = proxyquire("../../main/service/case-service", {
+    getCase = proxyquireNoCallThru("../../main/service/case-service", {
       config,
     }).getCase;
   });
@@ -65,6 +66,20 @@ describe("case service", () => {
             expect(error.error).to.deep.equal(expectedError);
             expect(error.message).to.deep.equal(expectedErrorMessage);
         }
+    });
+
+    it("should reject path traversal in jurisdiction ID", async () => {
+
+      const jid = "../secret";
+      const ctid = "caseTemplateId";
+      const cid = "1234";
+      try {
+        await getCase(req, jid, ctid, cid);
+      } catch (error) {
+        expect(error.status).to.deep.equal(expectedErrorStatus);
+        expect(error.error).to.deep.equal(expectedError);
+        expect(error.code).to.deep.equal("INVALID_PATH_SEGMENT");
+      }
     });
   });
 

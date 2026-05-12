@@ -24,4 +24,4 @@ function generateDateTime() {
   return dateTime.toLocaleString();
 }
 
-module.exports = router;
+export default router;

@@ -62,4 +62,4 @@ router.get("/probateManTypes/:probateManType/cases/:caseId", (req, res) => {
     });
 });
 
-module.exports = router;
+export default router;

@@ -6,13 +6,14 @@ import * as sinon from "sinon";
 describe("probate man template service", () => {
 
   let getProbateManLegacyCaseTemplate;
+  const proxyquireNoCallThru = proxyquire.noCallThru();
 
   beforeEach(() => {
     const config = {
       get: sinon.stub(),
     };
     config.get.withArgs("case_data_probate_template_url").returns("http://localhost:4104");
-    getProbateManLegacyCaseTemplate = proxyquire("../../main/service/probate-man-template-service", {
+    getProbateManLegacyCaseTemplate = proxyquireNoCallThru("../../main/service/probate-man-template-service", {
       config,
     }).getProbateManLegacyCaseTemplate;
   });
