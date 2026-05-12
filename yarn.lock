@@ -2,7 +2,7 @@
 # Manual changes might be lost - proceed with caution!
 
 __metadata:
-  version: 8
+  version: 9
   cacheKey: 10c0
 
 "@azure-rest/core-client@npm:^2.3.3":
@@ -1726,11 +1726,11 @@ __metadata:
   linkType: hard
 
 "@snyk/protect@npm:^1.1103.0":
-  version: 1.1303.2
-  resolution: "@snyk/protect@npm:1.1303.2"
+  version: 1.1304.2
+  resolution: "@snyk/protect@npm:1.1304.2"
   bin:
     snyk-protect: bin/snyk-protect
-  checksum: 10c0/052777129d5192087f21ad4ef4316f7a4240db6ec47175a3ef79efa4670f139a64e30d20926843b40362d5b605d257f831cec6b99a016f6a57a2f4b6ca5ea01c
+  checksum: 10c0/fb3525ae00d31849138fe912788b099db3f02b6f83ae4d1cd119d902cbba4449194ee81fdbdc602a3af688692770695fcce8d07919dcbfa1e24881b98efcbf48
   languageName: node
   linkType: hard
 
@@ -3098,7 +3098,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"brace-expansion@npm:^1.1.12":
+"brace-expansion@npm:^1.1.13":
   version: 1.1.14
   resolution: "brace-expansion@npm:1.1.14"
   dependencies:
@@ -3467,7 +3467,7 @@ __metadata:
     applicationinsights: "npm:^3.0.0"
     assign-deep: "npm:^1.0.1"
     body-parser: "npm:^1.18.1"
-    brace-expansion: "npm:^1.1.12"
+    brace-expansion: "npm:^1.1.13"
     chai: "npm:^4.1.2"
     chai-as-promised: "npm:^8.0.0"
     config: "npm:^1.26.2"
@@ -11452,13 +11452,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"socks@npm:2.8.8":
-  version: 2.8.8
-  resolution: "socks@npm:2.8.8"
+"socks@npm:2.8.9":
+  version: 2.8.9
+  resolution: "socks@npm:2.8.9"
   dependencies:
     ip-address: "npm:^10.1.1"
     smart-buffer: "npm:^4.2.0"
-  checksum: 10c0/4777edf8b554182ddf472524a1855c0fc684c7a3778466851dca687ae81cfa19ea9261856765789e51f7cec12e575e2652d5bd69d98fdbbbc947eabd12e9891d
+  checksum: 10c0/2d4350c31142b0931eb1758825b426bcbf4bfb5eed682ca48bc46dc9e7d1930ec366ea574ad49fc6c1fd9e9e17ce243be0ef13e31fc4b0319d9093f1fb19743c
   languageName: node
   linkType: hard
 
