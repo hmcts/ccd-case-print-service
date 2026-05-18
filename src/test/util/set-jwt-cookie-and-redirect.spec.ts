@@ -1,8 +1,7 @@
 import { expect } from "chai";
 import { EventEmitter } from "events";
 import { setJwtCookieAndRedirect } from "../../main/util/set-jwt-cookie-and-redirect";
-
-const httpMocks = require("node-mocks-http");
+import { default as httpMocks } from "node-mocks-http";
 
 const JWT = "jwt";
 
@@ -16,7 +15,7 @@ describe("set JWT from request URL as cookie and perform redirect", () => {
     const token = "eyJhbG.eyJzdW.4pcPyM";
     const req = httpMocks.createRequest({
       method: "GET",
-      url: "/ccd/documents?jwt=" + token,
+      url: "/ccd/documents?jwt=" + token
     });
     const res = buildResponse();
     const next = () => {
@@ -42,7 +41,7 @@ describe("set JWT from request URL as cookie and perform redirect", () => {
     const token = "eyJhbG.eyJzdW.4pcPyM";
     const req = httpMocks.createRequest({
       method: "GET",
-      url: "/ccd/documents?jwt=" + token + "&documentType=default",
+      url: "/ccd/documents?jwt=" + token + "&documentType=default"
     });
     const res = buildResponse();
     const next = () => {
@@ -68,7 +67,7 @@ describe("set JWT from request URL as cookie and perform redirect", () => {
     const token = "eyJhbG.eyJzdW.4pcPyM";
     const req = httpMocks.createRequest({
       method: "GET",
-      url: "/ccd/documents?documentType=default&jwt=" + token,
+      url: "/ccd/documents?documentType=default&jwt=" + token
     });
     const res = buildResponse();
     const next = () => {
@@ -94,7 +93,7 @@ describe("set JWT from request URL as cookie and perform redirect", () => {
     const token = "eyJhbG.eyJzdW.4pcPyM";
     const req = httpMocks.createRequest({
       method: "GET",
-      url: "/ccd/documents?documentType=default&jwt=" + token + "&documentName=caseDetails",
+      url: "/ccd/documents?documentType=default&jwt=" + token + "&documentName=caseDetails"
     });
     const res = buildResponse();
     const next = () => {

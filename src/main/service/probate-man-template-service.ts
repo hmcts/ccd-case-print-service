@@ -1,15 +1,15 @@
-import { get } from "config";
+import { getOrThrow } from "../util/config";
 import { fetch } from "../util/fetch";
 
 export function getProbateManLegacyCaseTemplate(req) {
-  const url = get("case_data_probate_template_url") + "/template/probateManLegacyCase";
+  const url = getOrThrow<string>("case_data_probate_template_url") + "/template/probateManLegacyCase";
   return fetch(url, {
                       headers: {
                         "Authorization": "Bearer " + req.cookies.jwt,
                         "Content-Type": "application/json",
-                        "ServiceAuthorization": req.headers.ServiceAuthorization,
+                        "ServiceAuthorization": req.headers.ServiceAuthorization
                       },
-                      method: "GET",
+                      method: "GET"
                     })
     .then((res) => res.text());
 }

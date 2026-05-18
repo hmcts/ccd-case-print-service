@@ -17,7 +17,7 @@ The output comprises a summary, with some key information such as Case Number an
 ## Getting started
 
 ### Prerequisites
-- [Node.js](https://nodejs.org/en) version >= 18.17.0
+- [Node.js](https://nodejs.org/en) version >= 24.15.0
 
 ### Environment variables
 
@@ -33,20 +33,47 @@ The following environment variables are required:
 
 ### Building
 
-The project uses [npm](https://www.npmjs.com). To build it, execute the following command:
+The project uses [yarn](https://yarnpkg.com/lang/en/). To build it, execute the following command:
 
 ```bash
-npm install
+yarn install
+```
+
+Setup styles:
+```bash
+yarn setup
 ```
 ### Running
 
 Start the application by executing the following command:
 
 ```bash
-npm start
+yarn start
 ```
 
-**Note:** You can also use [yarn](https://yarnpkg.com/lang/en/) in place of npm, in both commands above.
+**Note:** You can also start the application by executing:
+```bash
+yarn tsx server.js
+```
+
+### Developing
+
+To run both the setup and application in watch mode (where it will pick up changes and restart in realtime) then run:
+```bash
+yarn develop
+```
+
+### Managing dependencies:
+To update the versions in package.json use:
+```bash
+$ yarn upgrade-interactive
+```
+and choose the appropriate version for each dependency.
+
+The jenkins pipeline will check dependency versions for vulnerabilities. If you wish to suppress the issues that the pipeline is looking for you can populate the "yarn-audit-known-issues" file by running:
+```bash
+$ yarn suppress-cve
+```
 
 ### Accessing the service
 

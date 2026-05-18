@@ -6,7 +6,7 @@ export function setJwtCookieAndRedirect(req, res, next) {
   if (token) {
     res.cookie("jwt", token, {
       httpOnly: true,
-      secure: true,
+      secure: true
     });
 
     const parsedUrl = parse(req.originalUrl, true);

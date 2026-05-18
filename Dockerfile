@@ -1,6 +1,6 @@
 # ---- Base Image ----
 ARG PLATFORM=""
-FROM hmctsprod.azurecr.io/base/node${PLATFORM}:18-alpine AS base
+FROM hmctsprod.azurecr.io/base/node${PLATFORM}:24-alpine AS base
 
 ENV PUPPETEER_SKIP_DOWNLOAD=true
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
@@ -22,7 +22,7 @@ RUN yarn install --immutable --network-timeout 1200000
 FROM base AS build
 COPY src/main ./src/main
 COPY config ./config
-COPY gulpfile.js tsconfig.json ./
+COPY tsconfig.json ./
 USER root
 RUN yarn sass \
   && yarn install --immutable --network-timeout 1200000 \
@@ -30,7 +30,7 @@ RUN yarn sass \
 USER hmcts
 
 # ---- Runtime Image ----
-FROM hmctsprod.azurecr.io/base/node${PLATFORM}:18-alpine AS runtime
+FROM hmctsprod.azurecr.io/base/node${PLATFORM}:24-alpine AS runtime
 
 COPY --from=build $WORKDIR .
 

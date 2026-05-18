@@ -1,4 +1,7 @@
 import { serviceTokenGenerator } from "./service-token-generator";
+import { Logger } from "@hmcts/nodejs-logging";
+
+const logger = Logger.getLogger("service-filter");
 
 export const serviceFilter = (req, res, next) => {
     serviceTokenGenerator()
@@ -7,9 +10,9 @@ export const serviceFilter = (req, res, next) => {
             next();
         })
         .catch((error) => {
-            // console.warn("Unsuccessful S2S authentication", error);
+            logger.warn("Unsuccessful S2S authentication", error);
             next({
-                status: error.status || 401,
+                status: error.status || 401
             });
         });
 };

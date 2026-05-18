@@ -27,6 +27,8 @@ target/
 
 package-lock.json
 
+config/local.yaml
+
 coverage/
 .scannerwork/
 

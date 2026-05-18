@@ -1,4 +1,4 @@
-import _fetch from "node-fetch";
+import { default as _fetch, RequestInit } from "node-fetch";
 
 export const fetch = (url: string, options?: RequestInit) => {
   return _fetch(url, options)

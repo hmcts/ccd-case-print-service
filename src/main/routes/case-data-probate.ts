@@ -6,8 +6,7 @@ import { getProbateCaseDetailsTemplate } from "../service/template-service";
 import { getProbateManLegacyCase } from "../service/probate-man-service";
 import { getProbateManLegacyCaseTemplate } from "../service/probate-man-template-service";
 import { Logger } from "@hmcts/nodejs-logging";
-
-const nunjucks = require("nunjucks");
+import nunjucks from "nunjucks";
 
 const router = express.Router();
 

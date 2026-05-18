@@ -1,5 +1,5 @@
 import * as express from "express";
-import * as helmet from "helmet";
+import { default as helmet, referrerPolicy, contentSecurityPolicy } from "helmet";
 
 export interface IConfig {
   referrerPolicy: string;
@@ -18,7 +18,10 @@ const self = "'self'";
  */
 export class Helmet {
 
-  constructor(public config: IConfig) {
+  private config: IConfig;
+
+  constructor(config: IConfig) {
+    this.config = config;
   }
 
   public enableFor(app: express.Express) {
@@ -30,8 +33,8 @@ export class Helmet {
     // this.setHttpPublicKeyPinning(app, this.config.hpkp);
   }
 
-  private setContentSecurityPolicy(app) {
-    app.use(helmet.contentSecurityPolicy(
+  private setContentSecurityPolicy(app: express.Express) {
+    app.use(contentSecurityPolicy(
       {
         directives: {
           connectSrc: [self],
@@ -40,18 +43,18 @@ export class Helmet {
           imgSrc: [self, googleAnalyticsDomain, hmctsPiwikDomain],
           objectSrc: [self],
           scriptSrc: [self, googleAnalyticsDomain, hmctsPiwikDomain],
-          styleSrc: [self],
-        },
-      },
+          styleSrc: [self]
+        }
+      }
     ));
   }
 
-  private setReferrerPolicy(app, policy) {
+  private setReferrerPolicy(app: express.Express, policy: any) {
     if (!policy) {
       throw new Error("Referrer policy configuration is required");
     }
 
-    app.use(helmet.referrerPolicy({policy}));
+    app.use(referrerPolicy({"policy": policy}));
   }
 
   // private setHttpPublicKeyPinning(app, hpkpConfig) {

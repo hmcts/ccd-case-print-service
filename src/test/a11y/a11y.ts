@@ -1,5 +1,5 @@
 
-import * as config from "config";
+import { getOrThrow } from "../../main/util/config";
 import * as pa11y from "pa11y";
 import * as supertest from "supertest";
 import * as sinon from "sinon";
@@ -11,7 +11,7 @@ import * as s2sResolver from "../../main/service/service-token-generator";
 import * as caseService from "../../main/service/case-service";
 
 app.locals.csrf = "dummy-token";
-const cookieName: string = config.get("session.cookieName");
+const cookieName: string = getOrThrow<string>("session.cookieName");
 const agent = supertest(app);
 const logger = Logger.getLogger("a11y");
 
@@ -25,17 +25,17 @@ async function runPa11y(url: string, ignoreElements: any[]): Promise<IIssue[]> {
     chromeLaunchConfig: {
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
       headless: true,
-      ignoreHTTPSErrors: false,
+      ignoreHTTPSErrors: false
     },
     headers: {
       Authorization: "abc",
-      Cookie: `${cookieName}=ABC`,
+      Cookie: `${cookieName}=ABC`
     },
     // Ignore GovUK template elements that are outside the team's control from a11y tests
     hideElements: "#logo, .logo, .copyright, link[rel=mask-icon]",
     ignore: ignoreElements,
     includeWarnings: true,
-    threshold: 9,
+    threshold: 9
   });
   return result.issues;
 }

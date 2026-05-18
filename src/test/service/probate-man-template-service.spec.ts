@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import * as nock from "nock";
-import * as proxyquire from "proxyquire";
+import nock from "nock";
+import proxyquire from "proxyquire";
 import * as sinon from "sinon";
 
 describe("probate man template service", () => {
@@ -9,11 +9,11 @@ describe("probate man template service", () => {
 
   beforeEach(() => {
     const config = {
-      get: sinon.stub(),
+      get: sinon.stub()
     };
     config.get.withArgs("case_data_probate_template_url").returns("http://localhost:4104");
     getProbateManLegacyCaseTemplate = proxyquire("../../main/service/probate-man-template-service", {
-      config,
+      config
     }).getProbateManLegacyCaseTemplate;
   });
 
@@ -22,11 +22,11 @@ describe("probate man template service", () => {
       const serviceAuthorization = "Bearer dghdheh48";
       const req = {
         cookies: {
-          jwt: "hfsjkfdhsk",
+          jwt: "hfsjkfdhsk"
         },
         headers: {
-          ServiceAuthorization : serviceAuthorization,
-        },
+          ServiceAuthorization : serviceAuthorization
+        }
       };
       const expectedResult = "Template";
       nock("http://localhost:4104")

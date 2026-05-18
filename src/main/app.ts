@@ -1,20 +1,20 @@
-import * as bodyParser from "body-parser";
-import * as config from "config";
-import * as cookieParser from "cookie-parser";
-import * as csrf from "csurf";
-import * as express from "express";
-import * as expressNunjucks from "express-nunjucks";
-import * as favicon from "serve-favicon";
+import { default as bodyParser } from "body-parser";
+import { getOrThrow, getOrDefault } from "./util/config";
+import { default as cookieParser } from "cookie-parser";
+import { default as csrf } from "@dr.pogodin/csurf";
+import { default as express } from "express";
+import { default as expressNunjucks } from "express-nunjucks";
+import { default as favicon } from "serve-favicon";
 import * as healthcheck from "@hmcts/nodejs-healthcheck";
-import * as path from "path";
+import { default as path } from "node:path";
 import { authCheckerUserOnlyFilter } from "./user/auth-checker-user-only-filter";
 import { Express, Logger } from "@hmcts/nodejs-logging";
 import { Helmet, IConfig as HelmetConfig } from "./modules/helmet";
-import { RouterFinder } from "./router/routerFinder";
+import { importAll } from "./import-all/index";
 import { serviceFilter } from "./service/service-filter";
 import { setJwtCookieAndRedirect } from "./util/set-jwt-cookie-and-redirect";
 
-const enableAppInsights = require("./app-insights/app-insights");
+import { enableAppInsights } from "./app-insights/app-insights";
 
 enableAppInsights();
 
@@ -29,16 +29,16 @@ app.use(Express.accessLogger());
 const logger = Logger.getLogger("app");
 
 // secure the application by adding various HTTP headers to its responses
-new Helmet(config.get<HelmetConfig>("security")).enableFor(app);
+new Helmet(getOrThrow<HelmetConfig>("security")).enableFor(app);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "njk");
 logger.info("****************");
-logger.info("**************** " + JSON.stringify(config.get<HelmetConfig>("security")));
+logger.info("**************** " + JSON.stringify(getOrThrow<HelmetConfig>("security")));
 
 const healthConfig = {
-  checks: {},
+  checks: {}
 };
 healthcheck.addTo(appHealth, healthConfig);
 app.use(appHealth);
@@ -51,13 +51,15 @@ app.use(cookieParser());
 
 expressNunjucks(app);
 
-if (config.useCSRFProtection === true) {
+if (getOrDefault<boolean>("useCSRFProtection", false) === true) {
   const csrfOptions = {
     cookie: {
       httpOnly: true,
-      sameSite: "lax",
-      secure: true,
-    },
+      key: "_csrf",
+      path: "/",
+      sameSite: "lax" as const,
+      secure: true
+    }
   };
 
   app.use(csrf(csrfOptions), (req, res, next) => {
@@ -69,12 +71,13 @@ if (config.useCSRFProtection === true) {
 app.use("/", setJwtCookieAndRedirect);
 app.use("/", authCheckerUserOnlyFilter);
 app.use("/", serviceFilter);
-app.use("/", RouterFinder.findAll(path.join(__dirname, "routes")));
+app.use("/", importAll(path.join(__dirname, "routes")));
 
 // returning "not found" page for requests with paths not resolved by the router
 app.use((req, res, next) => {
   res.status(404);
   res.render("not-found");
+  next = () => null; // avoid "next is declared but its value is never read" eslint warning
 });
 
 // error handler
