@@ -17,7 +17,7 @@
     "test:specific": "NODE_ENV=test LOG_LEVEL=DEBUG mocha --exit --import=tsx",
     "test:coverage": "NODE_ENV=test LOG_LEVEL=OFF nyc mocha --exit --import=tsx 'src/**/*.ts' --ignore '**/a11y/**'",
     "test:routes": "NODE_ENV=test LOG_LEVEL=OFF mocha --import=tsx $(find src/test \\( -name '*.ts' -or -name '*.js' \\) -path '*/routes/*') --reporter mochawesome --reporter-options reportFilename=routes,inlineAssets=true,reportTitle=ccd-case-print-service-routes",
-    "test:a11y": "PUPPETEER_SKIP_DOWNLOAD=false PUPPETEER_SKIP_CHROME_DOWNLOAD=false PUPPETEER_SKIP_CHROME_HEADLESS_SHELL_DOWNLOAD=true node node_modules/puppeteer/install.mjs && NODE_ENV=mocha NODE_PATH=. LOG_LEVEL=INFO mocha --import=tsx 'src/test/a11y/**' --timeout 60000 --exit --reporter mochawesome --reporter-options reportFilename=a11y,inlineAssets=true,reportTitle=ccd-case-print-service-a11y",
+    "test:a11y": "PUPPETEER_SKIP_DOWNLOAD=false PUPPETEER_SKIP_CHROME_DOWNLOAD=false PUPPETEER_SKIP_CHROME_HEADLESS_SHELL_DOWNLOAD=true node node_modules/puppeteer/install.mjs && NODE_ENV=test NODE_PATH=. LOG_LEVEL=INFO mocha --import=tsx 'src/test/a11y/**' --timeout 60000 --exit --reporter mochawesome --reporter-options reportFilename=a11y,inlineAssets=true,reportTitle=ccd-case-print-service-a11y",
     "test:unit": "NODE_ENV=test LOG_LEVEL=OFF mocha --reporter mochawesome --reporter-options reportFilename=unit,inlineAssets=true,reportTitle=ccd-case-print-service-unit --exit --import=tsx",
     "test:acceptance": "echo 'TODO - CALL JAVA INTEGRATION TEST'",
     "test:smoke": "echo 'TODO - Ignore SMOKE tests'",
