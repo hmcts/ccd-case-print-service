@@ -1,17 +1,17 @@
 
 import { getOrThrow } from "../../main/util/config";
-import * as pa11y from "pa11y";
-import * as supertest from "supertest";
-import * as sinon from "sinon";
+import nock from "nock";
+import pa11y from "pa11y";
+import supertest from "supertest";
 import { Logger } from "@hmcts/nodejs-logging";
 import { app } from "../../main/app";
 import { expect } from "chai";
-import * as userResolver from "../../main/user/user-resolver";
-import * as s2sResolver from "../../main/service/service-token-generator";
-import * as caseService from "../../main/service/case-service";
 
 app.locals.csrf = "dummy-token";
 const cookieName: string = getOrThrow<string>("session.cookieName");
+const caseDataStoreUrl: string = getOrThrow<string>("case_data_store_url");
+const idamBaseUrl: string = getOrThrow<string>("idam.base_url");
+const idamS2SUrl: string = getOrThrow<string>("idam.s2s_url");
 const agent = supertest(app);
 const logger = Logger.getLogger("a11y");
 
@@ -44,23 +44,10 @@ function check(uri: string, ignoreElements?: any[]): void {
   describe(`Page ${uri}`, () => {
     describe(`Pa11y tests for ${uri}`, () => {
       let issues: IIssue[];
-      let stubIdam: sinon.SinonStubbedInstance<typeof userResolver>;
-      let stubS2S: sinon.SinonStubbedInstance<typeof s2sResolver>;
       before(async () => {
-        stubIdam = sinon.stub(userResolver); // add stub
-        stubIdam.getTokenDetails.returns(Promise.resolve("mocked-idam-token"));
-
-        stubS2S = sinon.stub(s2sResolver); // add stub
-        stubS2S.serviceTokenGenerator.returns(Promise.resolve("mocked-s2s-token"));
-
         const url = agent.get(uri).url;
         logger.info(`Running accessibility tests for ${url}`);
         issues = await runPa11y(url, ignoreElements || []);
-      });
-
-      after(() => {
-        stubIdam.getTokenDetails.restore();  // remove idam stub
-        stubS2S.serviceTokenGenerator.restore();  // remove s2s stub
       });
 
       it("should have no accessibility errors", () => {
@@ -81,6 +68,26 @@ function ensureNoAccessibilityAlerts(issueType: string, issues: IIssue[]): void 
 }
 
 describe("Accessibility", () => {
+  before(() => {
+    nock(idamBaseUrl)
+      .persist()
+      .get("/o/userinfo")
+      .reply(200, { uid: "1234" });
+
+    nock(idamS2SUrl)
+      .persist()
+      .post("/lease")
+      .reply(200, "faketoken");
+
+    nock(caseDataStoreUrl)
+      .persist()
+      .get("/caseworkers/1234/jurisdictions/AAA/case-types/BBB/cases/1234")
+      .reply(200, { id: 1234 });
+  });
+
+  after(() => {
+    nock.cleanAll();
+  });
 
   // testing accessibility of the home page
   check("/");
@@ -90,15 +97,6 @@ describe("Accessibility", () => {
   check("/?jwt=%4xx");
   check("/not-found");
 
-  // testing accessibility of a case details page with dummy data
-  let stubCaseService: sinon.SinonStubbedInstance<typeof caseService>;
-  before(async () => {
-        stubCaseService = sinon.stub(caseService); // add case service stub
-        stubCaseService.getCase.returns(Promise.resolve({id: 1234}));
-  });
-  after(() => {
-        stubCaseService.getCase.restore();  // remove case service stub
-  });
-  check("/jurisdictions/AAA/case-types/BBB/cases/CCC",
+  check("/jurisdictions/AAA/case-types/BBB/cases/1234",
     ["WCAG2AA.Principle1.Guideline1_4.1_4_10.C32,C31,C33,C38,SCR34,G206"]);
 });
