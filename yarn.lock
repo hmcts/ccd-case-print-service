@@ -1726,11 +1726,11 @@ __metadata:
   linkType: hard
 
 "@snyk/protect@npm:^1.1103.0":
-  version: 1.1304.2
-  resolution: "@snyk/protect@npm:1.1304.2"
+  version: 1.1304.3
+  resolution: "@snyk/protect@npm:1.1304.3"
   bin:
     snyk-protect: bin/snyk-protect
-  checksum: 10c0/fb3525ae00d31849138fe912788b099db3f02b6f83ae4d1cd119d902cbba4449194ee81fdbdc602a3af688692770695fcce8d07919dcbfa1e24881b98efcbf48
+  checksum: 10c0/33b1628a4c4de3ebbb802b7a29d59557b101d4d65eb1e34dec0a9eb82fa0c6a9eb3d293506175ad19f8303f61f0a067f2e8a00f098223f5085e402a59239080d
   languageName: node
   linkType: hard
 
@@ -3049,7 +3049,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"body-parser@npm:^1.18.1, body-parser@npm:^1.19.0, body-parser@npm:~1.20.3":
+"body-parser@npm:^1.19.0, body-parser@npm:~1.20.3":
   version: 1.20.5
   resolution: "body-parser@npm:1.20.5"
   dependencies:
@@ -3069,7 +3069,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"body-parser@npm:^2.2.1":
+"body-parser@npm:^2.0.0, body-parser@npm:^2.2.1":
   version: 2.2.2
   resolution: "body-parser@npm:2.2.2"
   dependencies:
@@ -3466,7 +3466,7 @@ __metadata:
     "@types/sinon-chai": "npm:^2.7.29"
     applicationinsights: "npm:^3.0.0"
     assign-deep: "npm:^1.0.1"
-    body-parser: "npm:^1.18.1"
+    body-parser: "npm:^2.0.0"
     brace-expansion: "npm:^1.1.13"
     chai: "npm:^4.1.2"
     chai-as-promised: "npm:^8.0.0"
@@ -10371,11 +10371,11 @@ __metadata:
   linkType: hard
 
 "qs@npm:^6.3.2":
-  version: 6.15.1
-  resolution: "qs@npm:6.15.1"
+  version: 6.15.2
+  resolution: "qs@npm:6.15.2"
   dependencies:
     side-channel: "npm:^1.1.0"
-  checksum: 10c0/19ee504f0ebff72598503e38cd6d9bd7b52a8ab62ae18b1e6bee3d4db58469bd65871ef1893a881bafb0f80ef2f9ab586e1f255cf25cc8d816c0f5a704721d97
+  checksum: 10c0/e6fd5f6f0aab06d480fe9ab15cebfc4ce4235303e2f91dc69a8f7f4df1e668a61c11d1cfbabacf4295cbbeb7b670ed23db45307480726259761f98e5695e93a7
   languageName: node
   linkType: hard
 
@@ -11117,12 +11117,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:7.7.4":
-  version: 7.7.4
-  resolution: "semver@npm:7.7.4"
+"semver@npm:7.8.0":
+  version: 7.8.0
+  resolution: "semver@npm:7.8.0"
   bin:
     semver: bin/semver.js
-  checksum: 10c0/5215ad0234e2845d4ea5bb9d836d42b03499546ddafb12075566899fc617f68794bb6f146076b6881d755de17d6c6cc73372555879ec7dce2c2feee947866ad2
+  checksum: 10c0/8f096ca9b80ffd47b308d03f9ce8c873e27e2983f36023c559cdc92c51e8433fc23ebbfe57ec9623fc155636a6961ee989501099841ae4bb1babc8d2b3f048cd
   languageName: node
   linkType: hard
 
@@ -12075,8 +12075,8 @@ __metadata:
   linkType: hard
 
 "terser@npm:^5.15":
-  version: 5.46.2
-  resolution: "terser@npm:5.46.2"
+  version: 5.47.1
+  resolution: "terser@npm:5.47.1"
   dependencies:
     "@jridgewell/source-map": "npm:^0.3.3"
     acorn: "npm:^8.15.0"
@@ -12084,7 +12084,7 @@ __metadata:
     source-map-support: "npm:~0.5.20"
   bin:
     terser: bin/terser
-  checksum: 10c0/476f1820160c42e6b2f611410115b00321c4666d421f12db87f13810f8789de45cb254e3ad5178650696d0ba6b706f5a0a239272255d6d1be95816c660f8cbbb
+  checksum: 10c0/e7017001aff657b8eb444edb4c4ad2425b90c141c5329f06b1939161f38884622972ec7b12d197207229c8079d24d20bf44be93852f735fe3bb4b32d80775775
   languageName: node
   linkType: hard
 
