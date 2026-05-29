@@ -32,7 +32,7 @@ const logger = Logger.getLogger("app");
 new Helmet(getOrThrow<HelmetConfig>("security")).enableFor(app);
 
 // view engine setup
-app.set("views", path.join(__dirname, "views"));
+app.set("views", [path.join(__dirname, "views"), "node_modules/govuk-frontend/dist"]);
 app.set("view engine", "njk");
 logger.info("****************");
 logger.info("**************** " + JSON.stringify(getOrThrow<HelmetConfig>("security")));
@@ -43,8 +43,12 @@ const healthConfig = {
 healthcheck.addTo(appHealth, healthConfig);
 app.use(appHealth);
 
-app.use(express.static(path.join(__dirname, "public")));
-app.use(favicon(path.join(__dirname, "/public/img/favicon.ico")));
+
+const caching = {cacheControl: true, setHeaders: (res) => res.setHeader("Cache-Control", "max-age=604800")};
+
+app.use(express.static(path.join(__dirname, "public"), caching));
+app.use("/assets", express.static("node_modules/govuk-frontend/dist/govuk/assets", caching));
+app.use(favicon(path.join("node_modules", "govuk-frontend", "dist", "govuk", "assets", "images", "favicon.ico")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());

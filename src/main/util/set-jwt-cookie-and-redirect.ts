@@ -1,10 +1,11 @@
 import { format, parse } from "url";
+import { COOKIE_ACCESS_TOKEN } from "../user/user-request-authorizer";
 
 export function setJwtCookieAndRedirect(req, res, next) {
   const token = req.query.jwt;
 
   if (token) {
-    res.cookie("jwt", token, {
+    res.cookie(COOKIE_ACCESS_TOKEN, token, {
       httpOnly: true,
       secure: true
     });

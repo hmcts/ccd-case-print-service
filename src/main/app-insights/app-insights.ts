@@ -1,7 +1,8 @@
 import { getOrThrow, getOrDefault } from "../util/config";
-import appInsights from "applicationinsights";
+import { setup, defaultClient, start } from "applicationinsights";
+import { Logger } from "@hmcts/nodejs-logging";
 
-const enabled = getOrDefault<boolean>("appInsights.enabled", false);
+const logger = Logger.getLogger("app-insights");
 
 function fineGrainedSampling(envelope) {
   if (
@@ -15,15 +16,17 @@ function fineGrainedSampling(envelope) {
 }
 
 export function enableAppInsights(): void {
-  if (enabled) {
+  if (getOrDefault<boolean>("appInsights.enabled", false) === true) {
     const appInsightsKey: string = getOrThrow<string>("secrets.ccd.AppInsightsInstrumentationKey");
     const appInsightsRoleName: string = getOrThrow<string>("appInsights.roleName");
-    appInsights.setup(appInsightsKey)
+    setup(appInsightsKey)
       .setAutoDependencyCorrelation(true)
       .setAutoCollectConsole(true, true);
-    appInsights.defaultClient.context.tags[appInsights.defaultClient.context.keys.cloudRole] = appInsightsRoleName;
-    appInsights.defaultClient.addTelemetryProcessor(fineGrainedSampling);
-    appInsights.start();
+    defaultClient.context.tags[defaultClient.context.keys.cloudRole] = appInsightsRoleName;
+    defaultClient.addTelemetryProcessor(fineGrainedSampling);
+    start();
+  } else {
+    logger.warn("Application insights is disabled");
   }
 };
 
