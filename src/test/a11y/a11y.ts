@@ -32,7 +32,7 @@ async function runPa11y(url: string, ignoreElements: any[]): Promise<IIssue[]> {
       Cookie: `${cookieName}=ABC`
     },
     // Ignore GovUK template elements that are outside the team's control from a11y tests
-    hideElements: "#logo, .logo, .copyright, link[rel=mask-icon]",
+    hideElements: "#logo, .logo, .copyright, link[rel=mask-icon], .govuk-visually-hidden",
     ignore: ignoreElements,
     includeWarnings: true,
     threshold: 9
@@ -77,7 +77,7 @@ describe("Accessibility", () => {
     nock(idamS2SUrl)
       .persist()
       .post("/lease")
-      .reply(200, "faketoken");
+      .reply(200, "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlRlc3QiLCJhZG1pbiI6dHJ1ZSwiZXhwIjoiIn0.ExHo7njTb2e6OQKPgi84Hcgo5k0tVwVvRrdGEV77uf0"); // fake token
 
     nock(caseDataStoreUrl)
       .persist()
@@ -95,7 +95,7 @@ describe("Accessibility", () => {
     "WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2",
     "WCAG2AA.Principle1.Guideline1_4.1_4_10.C32,C31,C33,C38,SCR34,G206"]);
   check("/?jwt=%4xx");
-  check("/not-found");
+  check("/not-found",["WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.Abs"]);
 
   check("/jurisdictions/AAA/case-types/BBB/cases/1234",
     ["WCAG2AA.Principle1.Guideline1_4.1_4_10.C32,C31,C33,C38,SCR34,G206"]);

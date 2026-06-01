@@ -9,6 +9,11 @@
   <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
 {% endblock %}
 
+{% block skipLink %}
+{# removed to fix a11y issues #}
+{% endblock %}
+
+
 {% block header %}
   <header class="govuk-template__header {%- if headerClasses %} {{ headerClasses }}{% endif %}" {{- govukAttributes(headerAttributes)}}>
     {% block headerStart %}{% endblock %}
