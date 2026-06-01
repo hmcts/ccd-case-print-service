@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import { EventEmitter } from "events";
 import { setJwtCookieAndRedirect } from "../../main/util/set-jwt-cookie-and-redirect";
-import { default as httpMocks } from "node-mocks-http";
+import httpMocks from "node-mocks-http";
 import { COOKIE_ACCESS_TOKEN } from "../../main/user/user-request-authorizer";
 
 function buildResponse() {

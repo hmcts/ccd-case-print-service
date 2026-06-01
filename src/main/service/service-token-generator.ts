@@ -1,5 +1,5 @@
 import { jwtDecode } from "jwt-decode";
-import { default as otp } from "otp";
+import otp from "otp";
 import { fetch } from "../util/fetch";
 import { getOrThrow } from "../util/config";
 

@@ -1,7 +1,7 @@
 import { expect, use } from "chai";
 import proxyquire from "proxyquire";
 import * as sinon from "sinon";
-import { default as sinonChai } from "sinon-chai";
+import sinonChai from "sinon-chai";
 import {COOKIE_ACCESS_TOKEN, ERROR_TOKEN_MISSING, AUTHORIZATION } from "../../main/user/user-request-authorizer";
 
 use(sinonChai);

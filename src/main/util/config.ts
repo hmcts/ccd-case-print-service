@@ -1,4 +1,4 @@
-import { default as config } from "config";
+import config from "config";
 import { Logger } from "@hmcts/nodejs-logging";
 
 const logger = Logger.getLogger("config");

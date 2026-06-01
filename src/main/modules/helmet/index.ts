@@ -1,5 +1,5 @@
 import * as express from "express";
-import { default as helmet, referrerPolicy, contentSecurityPolicy } from "helmet";
+import helmet, { referrerPolicy, contentSecurityPolicy } from "helmet";
 
 export interface IConfig {
   referrerPolicy: string;
