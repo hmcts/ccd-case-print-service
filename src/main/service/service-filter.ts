@@ -10,7 +10,7 @@ export const serviceFilter = (req, res, next) => {
             next();
         })
         .catch((error) => {
-            logger.warn("Unsuccessful S2S authentication", error);
+            logger.warn("Unsuccessful S2S authentication", error?.status, error?.statusText);
             next({
                 status: error.status || 401
             });

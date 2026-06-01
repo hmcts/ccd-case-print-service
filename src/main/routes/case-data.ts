@@ -38,7 +38,7 @@ router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid", (req: any, res) =>
       });
     })
     .catch((error) => {
-      logger.error("Case data retrieval failed", error);
+      logger.error("Case data retrieval failed", error?.status, error?.statusText);
       res.status(error.status).send(error);
     });
 });

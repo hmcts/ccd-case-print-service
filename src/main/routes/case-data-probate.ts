@@ -30,13 +30,13 @@ router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid/probate/:tid", (req,
           res.send(response);
         })
         .catch((error) => {
-          logger.error("Case data response failed", error);
+          logger.error("Case data response failed", error?.status, error?.statusText);
           res.status(error.status).send(error);
         });
 
       })
     .catch((error) => {
-      logger.error("Case data retrieval failed", error);
+      logger.error("Case data retrieval failed", error?.status, error?.statusText);
       res.status(error.status).send(error);
     });
 });
