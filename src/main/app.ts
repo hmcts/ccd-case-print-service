@@ -81,7 +81,6 @@ app.use("/", importAll(path.join(__dirname, "routes")));
 app.use((req, res, next) => {
   res.status(404);
   res.render("not-found");
-  next = () => null; // avoid "next is declared but its value is never read" eslint warning
 });
 
 // error handler
