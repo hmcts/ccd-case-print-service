@@ -18,7 +18,7 @@ const self = "'self'";
  */
 export class Helmet {
 
-  private config: IConfig;
+  private readonly config: IConfig;
 
   constructor(config: IConfig) {
     this.config = config;

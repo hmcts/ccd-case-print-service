@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 import path from "node:path";
 
 export const importAll = (importPath) => {
@@ -13,7 +13,5 @@ export const importAll = (importPath) => {
     .map((module) => {
       return module.default || module;
     })
-    .filter((module) => {
-      return Boolean(module);
-    });
+    .filter((module) => Boolean(module));
 };

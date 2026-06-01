@@ -19,7 +19,7 @@ export function getOrDefault<T>(key: string, defaultValue: T): T {
     if (config.has(key)) {
       return config.get<T>(key);
     }
-  } catch (error: any) {
+  } finally {
     logger.warn(`Error retrieving config for ${key} - using default value: ${defaultValue}`);
   }
   return defaultValue;
