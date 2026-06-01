@@ -11,7 +11,7 @@
     "sass": "gulp sass copy-files",
     "test": "npx if-env CI=true && exit 0 || yarn test:unit",
     "test:routes": "NODE_ENV=mocha LOG_LEVEL=OFF mocha --compilers ts:ts-node/register -r tsconfig-paths/register $(find src/test \\( -name '*.ts' -or -name '*.js' \\) -path '*/routes/*') --reporter mochawesome --reporter-options reportFilename=routes,inlineAssets=true,reportTitle=expressjs-template-routes",
-    "test:a11y": "NODE_ENV=mocha NODE_PATH=. LOG_LEVEL=INFO mocha --compilers ts:ts-node/register -r tsconfig-paths/register src/test/a11y --timeout 60000 --exit --reporter mochawesome --reporter-options reportFilename=a11y,inlineAssets=true,reportTitle=expressjs-template-a11y",
+    "test:a11y": "PUPPETEER_SKIP_DOWNLOAD=false PUPPETEER_SKIP_CHROME_DOWNLOAD=false PUPPETEER_SKIP_CHROME_HEADLESS_SHELL_DOWNLOAD=true node node_modules/puppeteer/install.mjs && NODE_ENV=mocha NODE_PATH=. LOG_LEVEL=INFO mocha --compilers ts:ts-node/register -r tsconfig-paths/register src/test/a11y --timeout 60000 --exit --reporter mochawesome --reporter-options reportFilename=a11y,inlineAssets=true,reportTitle=expressjs-template-a11y",
     "test:unit": "NODE_ENV=test NODE_PATH=. mocha 'test/**/*.spec.js' --reporter spec --recursive",
     "test:coverage": "NODE_ENV=mocha LOG_LEVEL=OFF nyc mocha --compilers ts:ts-node/register -r tsconfig-paths/register $(find src/test \\( -name '*.ts' -or -name '*.js' \\) ! -path '*a11y*' ! -path '*/routes/*')",
     "test:acceptance": "echo 'TODO - CALL JAVA INTEGRATION TEST'",
@@ -32,7 +32,7 @@
     "@types/node": "^10.5.4",
     "applicationinsights": "^3.0.0",
     "assign-deep": "^1.0.1",
-    "body-parser": "^1.18.1",
+    "body-parser": "^2.0.0",
     "brace-expansion": "^1.1.13",
     "config": "^1.26.2",
     "cookie": "1.1.1",
@@ -143,7 +143,7 @@
     "trim-newlines": "^3.0.1",
     "normalize-url": "^4.5.1",
     "@snyk/cli-interface": "2.15.0",
-    "tar": "7.5.13",
+    "tar": "7.5.15",
     "terser": "^5.15",
     "jszip": "^3.7.0",
     "path-parse": "^1.0.7",
@@ -177,7 +177,7 @@
     "picomatch@^2.2.1": "^2.3.2",
     "picomatch@^2.3.1": "^2.3.2",
     "picomatch@^4.0.3": "^4.0.4",
-    "semver": "7.7.4",
+    "semver": "7.8.1",
     "micromatch": "^4.0.8",
     "cross-spawn": "^7.0.6",
     "socks": "2.8.9",
@@ -210,5 +210,5 @@
     "report-dir": "coverage",
     "all": true
   },
-  "packageManager": "yarn@4.14.1"
+  "packageManager": "yarn@4.15.0"
 }
