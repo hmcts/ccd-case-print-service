@@ -12,6 +12,7 @@
 
 !tsconfig.json
 
+!server.js
 !src/main/**
 !config/**
 !acb.yaml
