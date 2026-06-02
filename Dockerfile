@@ -7,27 +7,24 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
 USER root
+RUN corepack enable
 RUN apk update \
   && apk add bzip2 patch python3 py3-pip make gcc g++ \
-  && rm -rf /var/lib/ /lists/*
+  && rm -rf /var/lib/ /lists/* \
+  && export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-COPY --chown=hmcts:hmcts package.json yarn.lock .snyk .yarnrc.yml ./
-COPY --chown=hmcts:hmcts .yarn ./.yarn
-
+COPY . .
+RUN chown -R hmcts:hmcts .
 USER hmcts
 
 RUN yarn install --immutable --network-timeout 1200000
 
 # ---- Build Image ----
-FROM base AS build
-COPY src/main ./src/main
-COPY config ./config
-COPY tsconfig.json ./
-USER root
-RUN yarn sass \
-  && yarn install --immutable --network-timeout 1200000 \
-  && yarn cache clean
-USER hmcts
+FROM base as build
+
+RUN yarn setup
+
+RUN sleep 1 && yarn install && yarn cache clean
 
 # ---- Runtime Image ----
 FROM hmctsprod.azurecr.io/base/node${PLATFORM}:24-alpine AS runtime
