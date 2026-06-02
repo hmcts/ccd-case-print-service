@@ -13,5 +13,5 @@ export const importAll = (importPath) => {
     .map((module) => {
       return module.default || module;
     })
-    .filter((module) => Boolean(module));
+    .filter(Boolean);
 };
