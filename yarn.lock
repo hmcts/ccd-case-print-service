@@ -2061,7 +2061,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snyk/protect@npm:^1.1305.0":
+"@snyk/protect@npm:^1.1305.1":
   version: 1.1305.1
   resolution: "@snyk/protect@npm:1.1305.1"
   bin:
@@ -3500,7 +3500,7 @@ __metadata:
     "@hmcts/nodejs-healthcheck": "npm:^1.8.6"
     "@hmcts/nodejs-logging": "npm:^4.0.4"
     "@hmcts/properties-volume": "npm:^1.4.0"
-    "@snyk/protect": "npm:^1.1305.0"
+    "@snyk/protect": "npm:^1.1305.1"
     "@tsconfig/recommended": "npm:^1.0.13"
     "@types/body-parser": "npm:^1.19.6"
     "@types/chai-as-promised": "npm:^8.0.2"
@@ -3535,7 +3535,7 @@ __metadata:
     jasmine-core: "npm:^6.2.0"
     jasmine-spec-reporter: "npm:^7.0.0"
     jquery: "npm:^4.0.0"
-    js-yaml: "npm:^4.1.1"
+    js-yaml: "npm:^4.2.0"
     json-loader: "npm:^0.5.7"
     json-server: "npm:^1.0.0-beta.15"
     jsonwebtoken: "npm:^9.0.3"
@@ -3561,10 +3561,10 @@ __metadata:
     sinon-chai: "npm:^4.0.1"
     sonar-scanner: "npm:^3.1.0"
     supertest: "npm:^7.2.2"
-    tar: "npm:^7.5.15"
+    tar: "npm:^7.5.16"
     tsx: "npm:^4.22.4"
     typescript: "npm:^5.9.3"
-    typescript-eslint: "npm:^8.60.0"
+    typescript-eslint: "npm:^8.60.1"
     webpack: "npm:^5.107.2"
   languageName: unknown
   linkType: soft
@@ -5762,7 +5762,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"js-yaml@npm:^4.0.0, js-yaml@npm:^4.1.0, js-yaml@npm:^4.1.1":
+"js-yaml@npm:^4.0.0, js-yaml@npm:^4.1.0, js-yaml@npm:^4.1.1, js-yaml@npm:^4.2.0":
   version: 4.2.0
   resolution: "js-yaml@npm:4.2.0"
   dependencies:
@@ -8008,7 +8008,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tar@npm:^7.5.15, tar@npm:^7.5.4":
+"tar@npm:^7.5.16, tar@npm:^7.5.4":
   version: 7.5.16
   resolution: "tar@npm:7.5.16"
   dependencies:
@@ -8280,7 +8280,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript-eslint@npm:^8.60.0":
+"typescript-eslint@npm:^8.60.1":
   version: 8.60.1
   resolution: "typescript-eslint@npm:8.60.1"
   dependencies:

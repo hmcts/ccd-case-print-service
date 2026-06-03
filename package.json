@@ -32,7 +32,7 @@
     "@hmcts/nodejs-healthcheck": "^1.8.6",
     "@hmcts/nodejs-logging": "^4.0.4",
     "@hmcts/properties-volume": "^1.4.0",
-    "@snyk/protect": "^1.1305.0",
+    "@snyk/protect": "^1.1305.1",
     "@types/node": "^24.12.4",
     "applicationinsights": "^3.15.0",
     "assign-deep": "^1.0.1",
@@ -47,7 +47,7 @@
     "govuk-frontend": "^5.14.0",
     "helmet": "^8.2.0",
     "jquery": "^4.0.0",
-    "js-yaml": "^4.1.1",
+    "js-yaml": "^4.2.0",
     "jwt-decode": "^4.0.0",
     "mime": "^4.1.0",
     "node-fetch": "^3.3.2",
@@ -58,7 +58,7 @@
     "require-directory": "^2.1.1",
     "sass": "^1.100.0",
     "serve-favicon": "^2.5.1",
-    "tar": "^7.5.15"
+    "tar": "^7.5.16"
   },
   "devDependencies": {
     "@eslint/css": "^0.14.1",
@@ -101,7 +101,7 @@
     "supertest": "^7.2.2",
     "tsx": "^4.22.4",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.60.0",
+    "typescript-eslint": "^8.60.1",
     "webpack": "^5.107.2"
   },
   "snyk": true,
