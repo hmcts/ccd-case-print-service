@@ -26,6 +26,9 @@ describe("probate man template service", () => {
         },
         headers: {
           ServiceAuthorization : serviceAuthorization
+        },
+        get: (header) => {
+          return req.headers[header] || req.headers[header.toLowerCase()];
         }
       };
       const expectedResult = "Template";

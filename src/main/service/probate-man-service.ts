@@ -2,6 +2,7 @@ import { getOrThrow } from "../util/config";
 import { fetch } from "../util/fetch";
 import * as userReqAuth from "../user/user-request-authorizer";
 import * as validate from "../util/validate";
+import { SERVICE_AUTHORIZATION } from "../service/service-filter";
 
 export function getProbateManLegacyCase(req, probateManType, id) {
   const url = getOrThrow<string>("case_data_probate_template_url") + "/probateManTypes/" + probateManType + "/cases/" + id;
@@ -11,7 +12,7 @@ export function getProbateManLegacyCase(req, probateManType, id) {
     headers: {
       "Authorization": authorization,
       "Content-Type": "application/json",
-      "ServiceAuthorization": req.headers.ServiceAuthorization
+      "ServiceAuthorization": req.get(SERVICE_AUTHORIZATION)
     },
     method: "GET"
   })

@@ -3,10 +3,12 @@ import { Logger } from "@hmcts/nodejs-logging";
 
 const logger = Logger.getLogger("service-filter");
 
+export const SERVICE_AUTHORIZATION = "ServiceAuthorization";
+
 export const serviceFilter = (req, res, next) => {
     serviceTokenGenerator()
         .then((t) => {
-            req.headers.ServiceAuthorization = t;
+            req.headers[SERVICE_AUTHORIZATION] = t;
             next();
         })
         .catch((error) => {

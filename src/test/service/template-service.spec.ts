@@ -30,6 +30,9 @@ describe("template service", () => {
         },
         headers: {
           ServiceAuthorization: "Bearer serviceAuth"
+        },
+        get: (header) => {
+          return req.headers[header] || req.headers[header.toLowerCase()];
         }
       };
 
@@ -58,6 +61,9 @@ describe("template service", () => {
         },
         headers: {
           ServiceAuthorization: "Bearer serviceAuth"
+        },
+        get: (header) => {
+          return req.headers[header] || req.headers[header.toLowerCase()];
         }
       };
       const expectedError = { status: 500, message: "Internal Server Error" };
