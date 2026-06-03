@@ -12,7 +12,7 @@ export const authCheckerUserOnlyFilter = (req, res, next) => {
     .then(() => next())
     .catch((error) => {
       logger.warn("Unsuccessful user authentication", error?.status, error?.statusText);
-      error = error?.status ? error : { status: 401, message: "Unauthorized" };
+      error["status"] = error.status || 401;
       next(error);
     });
 };
