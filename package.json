@@ -143,7 +143,7 @@
     "trim-newlines": "^3.0.1",
     "normalize-url": "^4.5.1",
     "@snyk/cli-interface": "2.15.0",
-    "tar": "7.5.15",
+    "tar": "7.5.16",
     "terser": "^5.15",
     "jszip": "^3.7.0",
     "path-parse": "^1.0.7",
@@ -177,7 +177,7 @@
     "picomatch@^2.2.1": "^2.3.2",
     "picomatch@^2.3.1": "^2.3.2",
     "picomatch@^4.0.3": "^4.0.4",
-    "semver": "7.8.0",
+    "semver": "7.8.1",
     "micromatch": "^4.0.8",
     "cross-spawn": "^7.0.6",
     "socks": "2.8.9",
@@ -210,5 +210,5 @@
     "report-dir": "coverage",
     "all": true
   },
-  "packageManager": "yarn@4.14.1"
+  "packageManager": "yarn@4.16.0"
 }
