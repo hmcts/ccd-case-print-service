@@ -1741,11 +1741,11 @@ __metadata:
   linkType: hard
 
 "@snyk/protect@npm:^1.1103.0":
-  version: 1.1305.0
-  resolution: "@snyk/protect@npm:1.1305.0"
+  version: 1.1305.1
+  resolution: "@snyk/protect@npm:1.1305.1"
   bin:
     snyk-protect: bin/snyk-protect
-  checksum: 10c0/127b67c609018e9a61050178c544bd9fb8d8a701f90a5ebf47e056b1d57e6bbb6f774180ac4d266ea98b77faa47e2f41b030c2f79f52c48e39741d9494196ddd
+  checksum: 10c0/178ede48dfa40189e819b4bd7bb74d40cc3f5a65e7140b3d375cb10e72a4c6500d4635f6232c325d210a1bfb6ed961cc9bb371183f5305b965a2b50b3cb55539
   languageName: node
   linkType: hard
 
@@ -4247,13 +4247,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"copy-props@npm:^2.0.5":
-  version: 2.0.5
-  resolution: "copy-props@npm:2.0.5"
+"copy-props@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "copy-props@npm:4.0.0"
   dependencies:
-    each-props: "npm:^1.3.2"
+    each-props: "npm:^3.0.0"
     is-plain-object: "npm:^5.0.0"
-  checksum: 10c0/7011a7bff2d8bbf08ae1f2a0e2e3015b57a14fa5ed9bfa393efe1573c2ac92a94caf9d4f93db4329e9da332f7f91aa7b8fa0dbae1c890009ecf602ec34d298c9
+  checksum: 10c0/9b8a4b9bbf70cb262756ebc0b411853937abe297be2776f00ba9414b15fd35f1405d7cf31136a84f81a629786c13da050a26ddb6954b756ff7b884bc87bc3df4
   languageName: node
   linkType: hard
 
@@ -4748,13 +4748,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"each-props@npm:^1.3.2":
-  version: 1.3.2
-  resolution: "each-props@npm:1.3.2"
+"each-props@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "each-props@npm:3.0.0"
   dependencies:
-    is-plain-object: "npm:^2.0.1"
+    is-plain-object: "npm:^5.0.0"
     object.defaults: "npm:^1.1.0"
-  checksum: 10c0/458eacb5703bd3d7a65c13427639980b0e7feb2a171c41af55808a04927394289c520fc0629e2d37a4fcbbb5ab3bb0c45c36ed4a86887e33c276fa823bcdc549
+  checksum: 10c0/6a9f12d84c7918adcd92fa9dadbf952a09b9c1d7800cc25ae601976d955f3dc4d67ddbfa89f62b2624aafe598bf9f1afa0c4c8f895e7da2017c7b98f9dd9cb96
   languageName: node
   linkType: hard
 
@@ -7252,7 +7252,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-plain-object@npm:^2.0.1, is-plain-object@npm:^2.0.3, is-plain-object@npm:^2.0.4":
+"is-plain-object@npm:^2.0.3, is-plain-object@npm:^2.0.4":
   version: 2.0.4
   resolution: "is-plain-object@npm:2.0.4"
   dependencies:
@@ -12064,16 +12064,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tar@npm:7.5.15":
-  version: 7.5.15
-  resolution: "tar@npm:7.5.15"
+"tar@npm:7.5.16":
+  version: 7.5.16
+  resolution: "tar@npm:7.5.16"
   dependencies:
     "@isaacs/fs-minipass": "npm:^4.0.0"
     chownr: "npm:^3.0.0"
     minipass: "npm:^7.1.2"
     minizlib: "npm:^3.1.0"
     yallist: "npm:^5.0.0"
-  checksum: 10c0/8f039edb1d12fdd7df6c6f9877d125afe9f3da3f5f9317df326fdd090d48793d6998cede1506a1471f3e3a250db270a89dace28005eb5e99c5a9132d704ac956
+  checksum: 10c0/4f37f3c4bd2ca2755fd736a5df1d573c1a868ec1b1e893346aeafa95ac510f9e2fd1469420bd866cc7904799e5bd4ac62b5d4f03fe27747d6e1e373b44505c5c
   languageName: node
   linkType: hard
 

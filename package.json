@@ -143,7 +143,7 @@
     "trim-newlines": "^3.0.1",
     "normalize-url": "^4.5.1",
     "@snyk/cli-interface": "2.15.0",
-    "tar": "7.5.15",
+    "tar": "7.5.16",
     "terser": "^5.15",
     "jszip": "^3.7.0",
     "path-parse": "^1.0.7",
@@ -155,7 +155,7 @@
     "tmpl": "^1.0.5",
     "validator": "^13.7.0",
     "json-schema": "0.4.0",
-    "copy-props": "^2.0.5",
+    "copy-props": "^4.0.0",
     "follow-redirects": "^1.15.5",
     "pathval": "^1.1.1",
     "table": "^5.0.0",
@@ -210,5 +210,5 @@
     "report-dir": "coverage",
     "all": true
   },
-  "packageManager": "yarn@4.15.0"
+  "packageManager": "yarn@4.16.0"
 }
