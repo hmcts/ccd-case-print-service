@@ -1,12 +1,11 @@
 import { jwtDecode } from "jwt-decode";
-import { OTP } from "otp";
+import otp from "otp";
 import { fetch } from "../util/fetch";
 import { getOrThrow } from "../util/config";
 
 const idamS2SUrl: string = getOrThrow<string>("idam.s2s_url");
 const serviceName: string = getOrThrow<string>("idam.service_name");
 const secret: string = getOrThrow<string>("secrets.ccd.microservicekey-ccd-ps");
-const otp = new OTP({ secret });
 
 // TODO Caching should be handled by a singleton service
 const cache: { [key: string]: { expiresAt: number; token: string } } = {};
@@ -18,7 +17,7 @@ export const serviceTokenGenerator = () => {
         && currentTime < cache[serviceName].expiresAt) {
       return Promise.resolve(cache[serviceName].token);
     } else {
-      const oneTimePassword = otp.totp(Date.now());
+      const oneTimePassword = new otp({secret}).totp(currentTime);
       const form = {
         microservice: serviceName,
         oneTimePassword
