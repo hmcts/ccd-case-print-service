@@ -3452,7 +3452,7 @@ __metadata:
     cookie-parser: "npm:^1.4.7"
     csurf: "npm:^1.9.0"
     debug: "npm:^4.0.0"
-    es6-promisify: "npm:^5.0.0"
+    es6-promisify: "npm:^7.0.0"
     express: "npm:^5.0.1"
     express-nunjucks: "npm:^2.2.3"
     form-data: "npm:^4.0.4"
@@ -4996,13 +4996,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"es6-promise@npm:^4.0.3":
-  version: 4.2.8
-  resolution: "es6-promise@npm:4.2.8"
-  checksum: 10c0/2373d9c5e9a93bdd9f9ed32ff5cb6dd3dd785368d1c21e9bbbfd07d16345b3774ae260f2bd24c8f836a6903f432b4151e7816a7fa8891ccb4e1a55a028ec42c3
-  languageName: node
-  linkType: hard
-
 "es6-promisify@npm:6.1.0":
   version: 6.1.0
   resolution: "es6-promisify@npm:6.1.0"
@@ -5010,12 +5003,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"es6-promisify@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "es6-promisify@npm:5.0.0"
-  dependencies:
-    es6-promise: "npm:^4.0.3"
-  checksum: 10c0/23284c6a733cbf7842ec98f41eac742c9f288a78753c4fe46652bae826446ced7615b9e8a5c5f121a08812b1cd478ea58630f3e1c3d70835bd5dcd69c7cd75c9
+"es6-promisify@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "es6-promisify@npm:7.0.0"
+  checksum: 10c0/2d71b098a9bff9802cdb5cd9f4079d13d31236a2ed4753230c3099edff2c0f34b280fcf7ce814e0ff30713dfb25dd888d1eb2ac50a8f1e26ceae04d66d51c4f4
   languageName: node
   linkType: hard
 
