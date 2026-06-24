@@ -1,0 +1,30 @@
+diff --git a/index.js b/index.js
+index 0b66b8f2764fa589f30d534bc91d722d0d1b8083..cd83e1674a9ced922d1492fe9c93ea82c8fdbe52 100644
+--- a/index.js
++++ b/index.js
+@@ -3,13 +3,6 @@
+ const loader = require('./lib/loader')
+ const dumper = require('./lib/dumper')
+ 
+-function renamed (from, to) {
+-  return function () {
+-    throw new Error('Function yaml.' + from + ' is removed in js-yaml 4. ' +
+-      'Use yaml.' + to + ' instead, which is now safe by default.')
+-  }
+-}
+-
+ module.exports.Type = require('./lib/type')
+ module.exports.Schema = require('./lib/schema')
+ module.exports.FAILSAFE_SCHEMA = require('./lib/schema/failsafe')
+@@ -38,7 +31,7 @@ module.exports.types = {
+   str: require('./lib/type/str')
+ }
+ 
+-// Removed functions from JS-YAML 3.0.x
+-module.exports.safeLoad = renamed('safeLoad', 'load')
+-module.exports.safeLoadAll = renamed('safeLoadAll', 'loadAll')
+-module.exports.safeDump = renamed('safeDump', 'dump')
++// Backwards-compatible aliases for packages that still call the js-yaml v3 safe API.
++module.exports.safeLoad = module.exports.load
++module.exports.safeLoadAll = module.exports.loadAll
++module.exports.safeDump = module.exports.dump
