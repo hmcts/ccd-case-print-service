@@ -8,5 +8,5 @@ export const ERROR_INVALID_CASE_ID = {
     code: "INVALID_CASE_ID",
     error: "Bad Request",
     message: "Case ID must be a valid number",
-    status: 400,
+    status: 400
   };

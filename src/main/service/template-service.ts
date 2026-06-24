@@ -1,15 +1,16 @@
-import { get } from "config";
+import { getOrThrow } from "../util/config";
 import { fetch } from "../util/fetch";
+import { SERVICE_AUTHORIZATION } from "../service/service-filter";
 
 export function getProbateCaseDetailsTemplate(req, jid, ctid, cid, templateType) {
-  const url = get("case_data_probate_template_url") + "/template/case-details/" + templateType;
+  const url = getOrThrow<string>("case_data_probate_template_url") + "/template/case-details/" + templateType;
   return fetch(url, {
                       headers: {
                         "Authorization": "Bearer " + req.cookies.jwt,
                         "Content-Type": "application/json",
-                        "ServiceAuthorization": req.headers.ServiceAuthorization,
+                        "ServiceAuthorization": req.get(SERVICE_AUTHORIZATION)
                       },
-                      method: "GET",
+                      method: "GET"
                     })
     .then((res) => res.text());
 }

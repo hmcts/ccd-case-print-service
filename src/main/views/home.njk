@@ -1,9 +1,36 @@
-<html lang="en">
-  <head>
-    <title>Express application template</title>
-  </head>
-  <body>
-    <h1>Home page</h1>
-    <p>TODO: replace with a proper template in your application</p>
-  </body>
-</html>
+{% extends "layout_template.njk" %}
+{% from "components/csrf.njk" import csrfProtection %}
+{% block content %}
+<h1 class="govuk-heading-xl">Welcome to CCD Case Print Service</h1>
+<form id="lookup-case-data-form" name="lookup-case-data-form" method="POST" action="/case-data">
+  {{ csrfProtection(csrfToken) }}
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">Look up case data</h1>
+    </legend>
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="jurisdiction">Jurisdiction</label>
+      <input class="govuk-input" id="jurisdiction" name="jurisdiction" type="text" autocomplete="off">
+    </div>
+    <div class="govuk-form-group">
+        <label class="govuk-label" for="case-type">Case Type</label>
+        <input class="govuk-input" id="case-type" name="caseType" type="text" autocomplete="off">
+    </div>
+    <div class="govuk-form-group">
+        <label class="govuk-label" for="case-id">Case ID</label>
+        <input class="govuk-input" id="case-id" name="caseId" type="text" autocomplete="off">
+    </div>
+    <div class="govuk-form-group">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="formatted" name="formatted" type="checkbox" value="formatted">
+        <label class="govuk-label govuk-checkboxes__label" for="formatted">
+          Formatted
+        </label>
+      </div>
+    </div>
+    <div class="govuk-button-group">
+        <button type="submit" class="govuk-button" data-module="govuk-button">View Case</button>
+    </div>
+  </fieldset>
+</form>
+{% endblock %}

@@ -1,20 +1,20 @@
-import * as bodyParser from "body-parser";
-import * as config from "config";
-import * as cookieParser from "cookie-parser";
-import * as csrf from "csurf";
-import * as express from "express";
-import * as expressNunjucks from "express-nunjucks";
-import * as favicon from "serve-favicon";
+import bodyParser from "body-parser";
+import { getOrThrow, getOrDefault } from "./util/config";
+import cookieParser from "cookie-parser";
+import csrf from "@dr.pogodin/csurf";
+import express from "express";
+import expressNunjucks from "express-nunjucks";
+import favicon from "serve-favicon";
 import * as healthcheck from "@hmcts/nodejs-healthcheck";
-import * as path from "path";
+import path from "node:path";
 import { authCheckerUserOnlyFilter } from "./user/auth-checker-user-only-filter";
 import { Express, Logger } from "@hmcts/nodejs-logging";
 import { Helmet, IConfig as HelmetConfig } from "./modules/helmet";
-import { RouterFinder } from "./router/routerFinder";
+import { importAll } from "./import-all/index";
 import { serviceFilter } from "./service/service-filter";
 import { setJwtCookieAndRedirect } from "./util/set-jwt-cookie-and-redirect";
 
-const enableAppInsights = require("./app-insights/app-insights");
+import { enableAppInsights } from "./app-insights/app-insights";
 
 enableAppInsights();
 
@@ -29,35 +29,41 @@ app.use(Express.accessLogger());
 const logger = Logger.getLogger("app");
 
 // secure the application by adding various HTTP headers to its responses
-new Helmet(config.get<HelmetConfig>("security")).enableFor(app);
+new Helmet(getOrThrow<HelmetConfig>("security")).enableFor(app);
 
 // view engine setup
-app.set("views", path.join(__dirname, "views"));
+app.set("views", [path.join(__dirname, "views"), "node_modules/govuk-frontend/dist"]);
 app.set("view engine", "njk");
 logger.info("****************");
-logger.info("**************** " + JSON.stringify(config.get<HelmetConfig>("security")));
+logger.info("**************** " + JSON.stringify(getOrThrow<HelmetConfig>("security")));
 
 const healthConfig = {
-  checks: {},
+  checks: {}
 };
 healthcheck.addTo(appHealth, healthConfig);
 app.use(appHealth);
 
-app.use(express.static(path.join(__dirname, "public")));
-app.use(favicon(path.join(__dirname, "/public/img/favicon.ico")));
+
+const caching = {cacheControl: true, setHeaders: (res) => res.setHeader("Cache-Control", "max-age=604800")};
+
+app.use(express.static(path.join(__dirname, "public"), caching));
+app.use("/assets", express.static("node_modules/govuk-frontend/dist/govuk/assets", caching));
+app.use(favicon(path.join("node_modules", "govuk-frontend", "dist", "govuk", "assets", "images", "favicon.ico")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
 expressNunjucks(app);
 
-if (config.useCSRFProtection === true) {
+if (getOrDefault<boolean>("useCSRFProtection", false) === true) {
   const csrfOptions = {
     cookie: {
       httpOnly: true,
-      sameSite: "lax",
-      secure: true,
-    },
+      key: "_csrf",
+      path: "/",
+      sameSite: "lax" as const,
+      secure: true
+    }
   };
 
   app.use(csrf(csrfOptions), (req, res, next) => {
@@ -69,7 +75,7 @@ if (config.useCSRFProtection === true) {
 app.use("/", setJwtCookieAndRedirect);
 app.use("/", authCheckerUserOnlyFilter);
 app.use("/", serviceFilter);
-app.use("/", RouterFinder.findAll(path.join(__dirname, "routes")));
+app.use("/", importAll(path.join(__dirname, "routes")));
 
 // returning "not found" page for requests with paths not resolved by the router
 app.use((req, res, next) => {

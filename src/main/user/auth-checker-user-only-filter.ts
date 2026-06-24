@@ -1,4 +1,7 @@
 import { authorise } from "./user-request-authorizer";
+import { Logger } from "@hmcts/nodejs-logging";
+
+const logger = Logger.getLogger("auth-checker-user-only-filter");
 
 export const authCheckerUserOnlyFilter = (req, res, next) => {
 
@@ -8,8 +11,8 @@ export const authCheckerUserOnlyFilter = (req, res, next) => {
     .then((user) => req.authentication.user = user)
     .then(() => next())
     .catch((error) => {
-      // console.warn("Unsuccessful user authentication", error);
-      error.status = error.status || 401;
+      logger.warn("Unsuccessful user authentication", error?.status, error?.statusText);
+      error["status"] = error.status || 401;
       next(error);
     });
 };

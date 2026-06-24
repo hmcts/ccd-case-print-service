@@ -6,8 +6,7 @@ import { getProbateCaseDetailsTemplate } from "../service/template-service";
 import { getProbateManLegacyCase } from "../service/probate-man-service";
 import { getProbateManLegacyCaseTemplate } from "../service/probate-man-template-service";
 import { Logger } from "@hmcts/nodejs-logging";
-
-const nunjucks = require("nunjucks");
+import nunjucks from "nunjucks";
 
 const router = express.Router();
 
@@ -31,13 +30,13 @@ router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid/probate/:tid", (req,
           res.send(response);
         })
         .catch((error) => {
-          logger.error("Case data response failed", error);
+          logger.error("Case data response failed", error?.status, error?.statusText);
           res.status(error.status).send(error);
         });
 
       })
     .catch((error) => {
-      logger.error("Case data retrieval failed", error);
+      logger.error("Case data retrieval failed", error?.status, error?.statusText);
       res.status(error.status).send(error);
     });
 });
