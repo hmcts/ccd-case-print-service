@@ -2416,7 +2416,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"anymatch@npm:~3.1.1, anymatch@npm:~3.1.2":
+"anymatch@npm:~3.1.2":
   version: 3.1.3
   resolution: "anymatch@npm:3.1.3"
   dependencies:
@@ -3454,7 +3454,7 @@ __metadata:
     debug: "npm:^4.0.0"
     es6-promisify: "npm:^5.0.0"
     express: "npm:^5.0.1"
-    express-nunjucks: "npm:^2.2.3"
+    express-nunjucks: "npm:^3.0.0"
     form-data: "npm:^4.0.4"
     govuk-elements-sass: "npm:^3.1.1"
     govuk_template_jinja: "npm:^0.26.0"
@@ -3615,25 +3615,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chokidar@npm:3.3.1":
-  version: 3.3.1
-  resolution: "chokidar@npm:3.3.1"
-  dependencies:
-    anymatch: "npm:~3.1.1"
-    braces: "npm:~3.0.2"
-    fsevents: "npm:~2.1.2"
-    glob-parent: "npm:~5.1.0"
-    is-binary-path: "npm:~2.1.0"
-    is-glob: "npm:~4.0.1"
-    normalize-path: "npm:~3.0.0"
-    readdirp: "npm:~3.3.0"
-  dependenciesMeta:
-    fsevents:
-      optional: true
-  checksum: 10c0/d8118a8cc4b78643068a0b87274371932232dd4af2ff969655c9f5fcb28fc1113b35b960738464086a79399624363f63be57d8a0e419f727fa29a3ce48c8d103
-  languageName: node
-  linkType: hard
-
 "chokidar@npm:^2.0.0, chokidar@npm:^2.1.8":
   version: 2.1.8
   resolution: "chokidar@npm:2.1.8"
@@ -3657,7 +3638,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chokidar@npm:^3.4.1, chokidar@npm:^3.5.1, chokidar@npm:^3.5.2":
+"chokidar@npm:^3.4.1, chokidar@npm:^3.5.1, chokidar@npm:^3.5.2, chokidar@npm:^3.6.0":
   version: 3.6.0
   resolution: "chokidar@npm:3.6.0"
   dependencies:
@@ -3880,13 +3861,6 @@ __metadata:
     process-nextick-args: "npm:^2.0.0"
     readable-stream: "npm:^2.3.5"
   checksum: 10c0/52db2904dcfcd117e4e9605b69607167096c954352eff0fcded0a16132c9cfc187b36b5db020bee2dc1b3a968ca354f8b30aef3d8b4ea74e3ea83a81d43e47bb
-  languageName: node
-  linkType: hard
-
-"co@npm:4.6.0":
-  version: 4.6.0
-  resolution: "co@npm:4.6.0"
-  checksum: 10c0/c0e85ea0ca8bf0a50cbdca82efc5af0301240ca88ebe3644a6ffb8ffe911f34d40f8fbcf8f1d52c5ddd66706abd4d3bfcd64259f1e8e2371d4f47573b0dc8c28
   languageName: node
   linkType: hard
 
@@ -5003,13 +4977,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"es6-promisify@npm:6.1.0":
-  version: 6.1.0
-  resolution: "es6-promisify@npm:6.1.0"
-  checksum: 10c0/f83c34ab803f731e53d11b6adf8ba37512399cae20db5c648ef7e99baf4f1a7dc66dd43ad49010cf9b93e98a1ca2eeb4587f3d0794b6dfbb319a62c6b4d090d2
-  languageName: node
-  linkType: hard
-
 "es6-promisify@npm:^5.0.0":
   version: 5.0.0
   resolution: "es6-promisify@npm:5.0.0"
@@ -5337,13 +5304,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express-nunjucks@npm:^2.2.3":
-  version: 2.2.5
-  resolution: "express-nunjucks@npm:2.2.5"
+"express-nunjucks@npm:^3.0.0":
+  version: 3.1.2
+  resolution: "express-nunjucks@npm:3.1.2"
   dependencies:
-    assign-deep: "npm:1.0.1"
-    nunjucks-async-loader: "npm:1.1.5"
-  checksum: 10c0/de6d3e5c0e1abe003f4bc917bceeee23db065a85bf370206cb874513821fb9044a10233a097694f947e5c33e1a32f222f0c70b604f90e342a7db9e4eb97240a6
+    nunjucks-async-loader: "npm:^2.1.3"
+  peerDependencies:
+    express: ^4.19.2
+    nunjucks: ^3.2.4
+  checksum: 10c0/4fe2f75a33e103c03a87c29f02ec072fba80003ea2725aaae49c8cc6296f78f7cc42e853fe7c17e3f401ba50c5108468de97fb07d9ffe8050498813e66aa94c4
   languageName: node
   linkType: hard
 
@@ -6039,16 +6008,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fsevents@npm:~2.1.2":
-  version: 2.1.3
-  resolution: "fsevents@npm:2.1.3"
-  dependencies:
-    node-gyp: "npm:latest"
-  checksum: 10c0/87b5933c5e01d17883f5c6d8c84146dc12c75e7f349b465c9e41fb4efe9992cfc6f527e30ef5f96bc24f19ca36d9e7414c0fe2dcd519f6d7649c0668efe12556
-  conditions: os=darwin
-  languageName: node
-  linkType: hard
-
 "fsevents@npm:~2.3.2":
   version: 2.3.3
   resolution: "fsevents@npm:2.3.3"
@@ -6065,15 +6024,6 @@ __metadata:
   dependencies:
     bindings: "npm:^1.5.0"
     nan: "npm:^2.12.1"
-  conditions: os=darwin
-  languageName: node
-  linkType: hard
-
-"fsevents@patch:fsevents@npm%3A~2.1.2#optional!builtin<compat/fsevents>":
-  version: 2.1.3
-  resolution: "fsevents@patch:fsevents@npm%3A2.1.3#optional!builtin<compat/fsevents>::version=2.1.3&hash=31d12a"
-  dependencies:
-    node-gyp: "npm:latest"
   conditions: os=darwin
   languageName: node
   linkType: hard
@@ -9284,14 +9234,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nunjucks-async-loader@npm:1.1.5":
-  version: 1.1.5
-  resolution: "nunjucks-async-loader@npm:1.1.5"
+"nunjucks-async-loader@npm:^2.1.3":
+  version: 2.1.3
+  resolution: "nunjucks-async-loader@npm:2.1.3"
   dependencies:
-    chokidar: "npm:3.3.1"
-    co: "npm:4.6.0"
-    es6-promisify: "npm:6.1.0"
-  checksum: 10c0/9b0e603f686c60385c336151f595be8d474247e059cd358b609da3ba528df9f48ff0bc774e2f8972b3c5f00ad7e5e4c9e9d413d1ad407c0de592db1d8db00f8c
+    chokidar: "npm:^3.6.0"
+  peerDependencies:
+    nunjucks: ^3.2.4
+  checksum: 10c0/af78bd8d653682e299955f78ecdafdc5c03bc51cbb75833b127d51754c6685c6eb22cea729916693243569d3dbc8157bcc3dda415e8941e42c0a98e7cfb7982e
   languageName: node
   linkType: hard
 
@@ -10581,15 +10531,6 @@ __metadata:
   version: 5.0.0
   resolution: "readdirp@npm:5.0.0"
   checksum: 10c0/faf1ec57cff2020f473128da3f8d2a57813cc3a08a36c38cae1c9af32c1579906cc50ba75578043b35bade77e945c098233665797cf9730ba3613a62d6e79219
-  languageName: node
-  linkType: hard
-
-"readdirp@npm:~3.3.0":
-  version: 3.3.0
-  resolution: "readdirp@npm:3.3.0"
-  dependencies:
-    picomatch: "npm:^2.0.7"
-  checksum: 10c0/5aba38edb43fca70e771bdd606959d18839aedd445041b3aaa886613cf739e1486e64bbc24769b53fe124f0f905a88c8c4b633da166c26a61135ab8ced077c5f
   languageName: node
   linkType: hard
 
