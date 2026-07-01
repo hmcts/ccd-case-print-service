@@ -1,5 +1,6 @@
 
 import * as config from "config";
+import * as http from "http";
 import * as pa11y from "pa11y";
 import * as supertest from "supertest";
 import * as sinon from "sinon";
@@ -9,10 +10,12 @@ import { expect } from "chai";
 import * as userResolver from "../../main/user/user-resolver";
 import * as s2sResolver from "../../main/service/service-token-generator";
 import * as caseService from "../../main/service/case-service";
+import { close, listen } from "../helpers/supertest-server";
 
 app.locals.csrf = "dummy-token";
 const cookieName: string = config.get("session.cookieName");
-const agent = supertest(app);
+let agent;
+let server: http.Server;
 const logger = Logger.getLogger("a11y");
 
 export interface IIssue {
@@ -81,6 +84,14 @@ function ensureNoAccessibilityAlerts(issueType: string, issues: IIssue[]): void 
 }
 
 describe("Accessibility", () => {
+  before(async () => {
+    server = await listen(app);
+    agent = supertest(server);
+  });
+
+  after(async () => {
+    await close(server);
+  });
 
   // testing accessibility of the home page
   check("/");
