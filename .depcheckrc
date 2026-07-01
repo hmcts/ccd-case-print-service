@@ -1,0 +1,9 @@
+{
+  "ignores": [
+    "eslint-plugin-mocha",
+    "govuk-elements-sass",
+    "govuk_template_jinja",
+    "jquery",
+    "js-yaml"
+  ]
+}
