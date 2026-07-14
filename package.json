@@ -147,7 +147,7 @@
     "terser": "^5.15",
     "jszip": "^3.7.0",
     "path-parse": "^1.0.7",
-    "ansi-regex": "^5.0.1",
+    "ansi-regex": "patch:ansi-regex@npm%3A6.2.2#~/.yarn/patches/ansi-regex-npm-6.2.2-f2d6691eb1.patch",
     "set-value": "^4.0.1",
     "ssh2": "^1.4.0",
     "ws": "^1.0.5",
