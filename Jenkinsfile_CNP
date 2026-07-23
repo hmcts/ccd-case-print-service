@@ -100,7 +100,7 @@ withPipeline("nodejs", product, component) {
 
     enableAksStagingDeployment()
     disableLegacyDeployment()
-    enableCveDashboardIngestion()
+    //enableCveDashboardIngestion()
     enableHighLevelDataSetup()
 
     afterAlways('checkout') {
