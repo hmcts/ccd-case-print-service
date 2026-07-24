@@ -34,7 +34,7 @@
     "assign-deep": "^1.0.1",
     "body-parser": "^2.0.0",
     "brace-expansion": "^1.1.13",
-    "config": "^1.26.2",
+    "config": "^4.0.0",
     "cookie": "1.1.1",
     "cookie-parser": "^1.4.7",
     "csurf": "^1.9.0",
