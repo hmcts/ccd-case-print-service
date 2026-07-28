@@ -3466,7 +3466,7 @@ __metadata:
     jasmine-core: "npm:^2.3.4"
     jasmine-spec-reporter: "npm:^4.2.1"
     jquery: "npm:^3.5.1"
-    js-yaml: "patch:js-yaml@npm%3A4.2.0#~/.yarn/patches/js-yaml-npm-4.2.0-0ab78512c1.patch"
+    js-yaml: "patch:js-yaml@npm%3A4.3.0#~/.yarn/patches/js-yaml-npm-4.3.0-0ab78512c1.patch"
     json-loader: "npm:^0.5.3"
     json-server: "npm:^0.17.4"
     jsonwebtoken: "npm:^9.0.0"
@@ -7535,25 +7535,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"js-yaml@npm:4.2.0":
-  version: 4.2.0
-  resolution: "js-yaml@npm:4.2.0"
+"js-yaml@npm:4.3.0":
+  version: 4.3.0
+  resolution: "js-yaml@npm:4.3.0"
   dependencies:
     argparse: "npm:^2.0.1"
   bin:
     js-yaml: bin/js-yaml.js
-  checksum: 10c0/1916456c118746603b067d74bbcbb0445d9a1d5e474ad4ae775e7b20525bed902e01d9d97dd0c81fcd8d4f596162309d0eb057f4aa38f3e9647f14075e9dea45
+  checksum: 10c0/058b30473d6915ca5b4feb11e2f7d4d97242f98d00a798ed48dd90b46b7c640398afe9128c5db22c5300f8c6528fe2a174b9a93f351a70ebc28c6203938d8bff
   languageName: node
   linkType: hard
 
-"js-yaml@patch:js-yaml@npm%3A4.2.0#~/.yarn/patches/js-yaml-npm-4.2.0-0ab78512c1.patch":
-  version: 4.2.0
-  resolution: "js-yaml@patch:js-yaml@npm%3A4.2.0#~/.yarn/patches/js-yaml-npm-4.2.0-0ab78512c1.patch::version=4.2.0&hash=046930"
+"js-yaml@patch:js-yaml@npm%3A4.3.0#~/.yarn/patches/js-yaml-npm-4.3.0-0ab78512c1.patch":
+  version: 4.3.0
+  resolution: "js-yaml@patch:js-yaml@npm%3A4.3.0#~/.yarn/patches/js-yaml-npm-4.3.0-0ab78512c1.patch::version=4.3.0&hash=046930"
   dependencies:
     argparse: "npm:^2.0.1"
   bin:
     js-yaml: bin/js-yaml.js
-  checksum: 10c0/687ded88c26bdbd7fb1c5951f77996fd5fda9427969c25ee7e051c8572b72bd4640fff5af3ce1b6d2d07f90307bb88d62f3e7d0a8083541524ee1465073e34ed
+  checksum: 10c0/d28ff5d5cc1da894dbc8d287806b7a0817cf3d6752c13ce1188718a4bac21a731bc406f4a1d7c9397a5c7f40a7ec99c379165917ab268bed3dfacd0d9fe43356
   languageName: node
   linkType: hard
 
