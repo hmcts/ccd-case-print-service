@@ -40,7 +40,7 @@
 			"Date": "[[ANYTHING_PRESENT]]",
 			"Etag": "[[ANYTHING_PRESENT]]",
 			"Vary": "Accept-Encoding",
-			"Request-Context": "[[ANY_STRING_NOT_NULLABLE]]",
+			"Request-Context": "[[ANY_STRING_NULLABLE]]",
 			"Content-Encoding": "[[ANY_STRING_NULLABLE]]",
 			"Server": "[[ANY_STRING_NULLABLE]]",
 			"X-Content-Security-Policy": "[[ANYTHING_PRESENT]]",
