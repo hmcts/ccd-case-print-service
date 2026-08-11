@@ -51,7 +51,7 @@ app.use(cookieParser());
 
 expressNunjucks(app);
 
-if (config.useCSRFProtection === true) {
+if (config.get<boolean>("useCSRFProtection")) {
   const csrfOptions = {
     cookie: {
       httpOnly: true,
