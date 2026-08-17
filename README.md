@@ -27,9 +27,33 @@ The following environment variables are required:
 |------|---------|-------------|
 | IDAM_BASE_URL | - | Base URL for IdAM's User API service (idam-app). `http://localhost:4501` for the dockerised local instance or tunnelled `dev` instance. |
 | IDAM_S2S_URL | - | Base URL for IdAM's S2S API service (service-auth-provider). `http://localhost:4502` for the dockerised local instance or tunnelled `dev` instance. |
-| IDAM_PRINT_SERVICE_KEY | - | Print Service's IdAM S2S micro-service secret key. This must match the IdAM instance it's being run against. |
+| IDAM_PRINT_SERVICE_KEY | - | Print Service's IdAM S2S micro-service secret key. This must match the IdAM instance it's being run against. The service fails during startup if it is missing or empty. |
 | CASE_DATA_STORE_URL | - | Base URL for the Case Data Store service. `http://localhost:4452` for the dockerised local instance. |
 | APPINSIGHTS_INSTRUMENTATIONKEY | - | Secret for Microsoft Insights logging, can be a dummy string in local. |
+
+The S2S secret is intentionally blank in the checked-in configuration. Provide it at runtime through `IDAM_PRINT_SERVICE_KEY` (for example, via the deployment secret store). Do not add the secret to `config/default.yaml`, `config/mocha.yaml`, or source control. The application reads this value as `secrets.ccd.microservicekey-ccd-ps` and fails during startup if it is missing or empty.
+
+### Local testing
+
+Before starting the service locally, set the runtime secrets in your shell:
+
+```bash
+export IDAM_PRINT_SERVICE_KEY="<the CCD print-service S2S secret>"
+export APPINSIGHTS_INSTRUMENTATIONKEY="local-only-placeholder"
+npm start
+```
+
+For the CCD Docker environment, use its local secret setup script instead of committing values to configuration:
+
+```bash
+ccd-docker/bin/setup-local-secrets.sh
+```
+
+The same variables must be available when running tests that exercise S2S token generation, for example:
+
+```bash
+IDAM_PRINT_SERVICE_KEY="<the CCD print-service S2S secret>" npm run test:coverage
+```
 
 ### Building
 

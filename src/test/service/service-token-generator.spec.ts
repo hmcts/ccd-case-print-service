@@ -13,7 +13,8 @@ describe("service token generator", () => {
     const config = {
       get: sinon.stub(),
     };
-    config.get.withArgs("idam.print_service_key").returns("AAAA");
+    config.get.withArgs("secrets.ccd.microservicekey-ccd-ps")
+      .returns(process.env.IDAM_PRINT_SERVICE_KEY || "test-secret");
     config.get.withArgs("idam.s2s_url").returns("http://localhost:9999");
     config.get.withArgs("appInsights.enabled").returns(false);
 

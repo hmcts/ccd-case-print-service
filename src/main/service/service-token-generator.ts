@@ -7,6 +7,10 @@ const idamS2SUrl = get("idam.s2s_url");
 const serviceName = get("idam.service_name");
 const secret = get("secrets.ccd.microservicekey-ccd-ps");
 
+if (typeof secret !== "string" || secret.trim().length === 0) {
+  throw new Error("IDAM_PRINT_SERVICE_KEY must be configured");
+}
+
 // TODO Caching should be handled by a singleton service
 const cache = {};
 
