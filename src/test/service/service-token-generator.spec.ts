@@ -28,6 +28,26 @@ describe("service token generator", () => {
   });
 
   describe("generate()", () => {
+    it("should reject when the service key is missing", async () => {
+      const config = {
+        get: sinon.stub(),
+      };
+      config.get.withArgs("secrets.ccd.microservicekey-ccd-ps").returns("");
+      config.get.withArgs("idam.s2s_url").returns("http://localhost:9999");
+      config.get.withArgs("idam.service_name").returns("ccd_ps");
+
+      const generator = proxyquire.noPreserveCache()("../../main/service/service-token-generator", {
+        config,
+      }).serviceTokenGenerator;
+
+      try {
+        await generator();
+        expect.fail("expected missing service key to reject");
+      } catch (error) {
+        expect(error.message).to.equal("IDAM_PRINT_SERVICE_KEY must be configured");
+      }
+    });
+
     it("should return token", async () => {
       const expectedResult = jwt.sign({exp: moment().unix()}, "secret");
       nock("http://localhost:9999")

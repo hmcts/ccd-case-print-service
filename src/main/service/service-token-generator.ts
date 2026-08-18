@@ -12,7 +12,7 @@ const cache = {};
 
 export const serviceTokenGenerator = () => {
     if (typeof secret !== "string" || secret.trim().length === 0) {
-      throw new Error("IDAM_PRINT_SERVICE_KEY must be configured");
+      return Promise.reject(new Error("IDAM_PRINT_SERVICE_KEY must be configured"));
     }
 
     const currentTime = Math.floor(Date.now() / 1000);
