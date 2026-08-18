@@ -5,6 +5,19 @@
     "local>hmcts/.github//renovate/automerge-minor"
   ],
   "labels": ["Renovate Dependencies"],
+  "packageRules": [
+    {
+      "matchManagers": [
+        "gradle"
+      ],
+      "matchDepNames": [
+        "ccd-test-definitions",
+        "befta-fw"
+      ],
+      "matchCurrentValue": "!/^[0-9]+\\.[0-9]+\\.[0-9]+$/",
+      "enabled": false
+    }
+  ],
   "schedule": ["* 16-19 * * 1-5"],
   "automergeSchedule": ["* 14-18 * * 1-4"]
 }
