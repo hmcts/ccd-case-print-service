@@ -3649,7 +3649,7 @@ __metadata:
     govuk-elements-sass: "npm:^3.1.1"
     govuk_template_jinja: "npm:^0.26.0"
     gulp: "npm:^4.0.2"
-    gulp-livereload: "npm:^3.8.1"
+    gulp-livereload: "npm:^4.0.0"
     gulp-nodemon: "npm:^2.5.0"
     gulp-plumber: "npm:^1.2.1"
     gulp-replace: "npm:^1.0.0"
@@ -6587,7 +6587,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gulp-livereload@npm:^4.0.2":
+"gulp-livereload@npm:^4.0.0":
   version: 4.0.2
   resolution: "gulp-livereload@npm:4.0.2"
   dependencies:
