@@ -1,5 +1,3 @@
 # SSL key and certificate (development only)
 
-This folder contains a private RSA key and a self-signed certificate. These resources are used for exposing
-the application via HTTPS in development environment. They must not be used in other environments,
-as their purpose is to provide consistency, not security.
+The print service currently runs over HTTP. Private keys must not be stored in source control. TLS must be terminated by the gateway or ingress when required.
