@@ -15,7 +15,7 @@ const stylesheetsDirectory = `${assetsDirectory}/stylesheets`;
 
 // compile scss files
 gulp.task('sass', () => {
-  return gulp.src(stylesheetsDirectory + '/*.scss')
+  return gulp.src(stylesheetsDirectory + '/*.scss', { allowEmpty: true })
     .pipe(sass({
       includePaths: [
         govUkFrontendToolkitRoot,
