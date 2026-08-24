@@ -70,7 +70,7 @@
     "chai-as-promised": "^8.0.0",
     "debug": "^4.0.0",
     "es6-promisify": "^7.0.0",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.0",
     "gulp-livereload": "^3.8.1",
     "gulp-nodemon": "^2.5.0",
     "gulp-plumber": "^1.2.1",
