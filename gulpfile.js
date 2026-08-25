@@ -1,5 +1,4 @@
 let gulp = require('gulp');
-let fs = require('fs');
 let nodemon = require('gulp-nodemon');
 let plumber = require('gulp-plumber');
 let livereload = require('gulp-livereload');
@@ -16,15 +15,14 @@ const stylesheetsDirectory = `${assetsDirectory}/stylesheets`;
 
 // compile scss files
 gulp.task('sass', () => {
-  fs.mkdirSync(stylesheetsDirectory, { recursive: true });
   return gulp.src(stylesheetsDirectory + '/*.scss', { allowEmpty: true })
+    .pipe(plumber())
     .pipe(sass({
       includePaths: [
         govUkFrontendToolkitRoot,
         govUkElementRoot
       ]
     }))
-    .pipe(plumber())
     .pipe(gulp.dest(stylesheetsDirectory))
     .pipe(livereload());
 });
