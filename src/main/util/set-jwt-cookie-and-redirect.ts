@@ -1,4 +1,4 @@
-import { format, parse } from "url";
+import { format, parse } from "node:url";
 
 export function setJwtCookieAndRedirect(req, res, next) {
   const token = req.query.jwt;
