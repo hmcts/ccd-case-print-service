@@ -8,6 +8,7 @@ export const fetch = (url: string, options?: RequestInit) => {
         return res;
       }
       const error = new Error(`HTTP Error: ${res.status}`) as IHttpError;
+      error.status = res.status;
       error.response = res;
       throw error;
     });

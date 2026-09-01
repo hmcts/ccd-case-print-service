@@ -26,6 +26,7 @@ describe("fetch", () => {
       expect.fail("Expected fetch to reject");
     } catch (error) {
       expect(error.message).to.equal("HTTP Error: 404");
+      expect(error.status).to.equal(404);
       expect(error.response.status).to.equal(404);
     }
   });
