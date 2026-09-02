@@ -13,7 +13,7 @@
     "test:routes": "NODE_ENV=mocha LOG_LEVEL=OFF mocha --compilers ts:ts-node/register -r tsconfig-paths/register $(find src/test \\( -name '*.ts' -or -name '*.js' \\) -path '*/routes/*') --reporter mochawesome --reporter-options reportFilename=routes,inlineAssets=true,reportTitle=expressjs-template-routes",
     "test:a11y": "PUPPETEER_SKIP_DOWNLOAD=false PUPPETEER_SKIP_CHROME_DOWNLOAD=false PUPPETEER_SKIP_CHROME_HEADLESS_SHELL_DOWNLOAD=true node node_modules/puppeteer/install.mjs && NODE_ENV=mocha NODE_PATH=. LOG_LEVEL=INFO mocha --compilers ts:ts-node/register -r tsconfig-paths/register src/test/a11y --timeout 60000 --exit --reporter mochawesome --reporter-options reportFilename=a11y,inlineAssets=true,reportTitle=expressjs-template-a11y",
     "test:unit": "NODE_ENV=test NODE_PATH=. mocha --require ts-node/register --require tsconfig-paths/register 'src/test/**/*.spec.ts' --reporter spec",
-    "test:coverage": "NODE_ENV=mocha LOG_LEVEL=OFF nyc mocha --compilers ts:ts-node/register -r tsconfig-paths/register src/test/util/*.spec.ts src/test/service/*.spec.ts src/test/user/*.spec.ts src/test/health/*.spec.ts",
+    "test:coverage": "NODE_ENV=mocha LOG_LEVEL=OFF nyc mocha --compilers ts:ts-node/register -r tsconfig-paths/register src/test/routes/*.spec.ts src/test/util/*.spec.ts src/test/service/*.spec.ts src/test/user/*.spec.ts src/test/health/*.spec.ts",
     "test:acceptance": "echo 'TODO - CALL JAVA INTEGRATION TEST'",
     "test:smoke": "echo 'TODO - Ignore SMOKE tests'",
     "test:functional": "./aat/gradlew -p aat functional",
