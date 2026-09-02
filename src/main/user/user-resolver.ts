@@ -1,4 +1,4 @@
-import config from "config";
+import * as config from "config";
 import { fetch } from "../util/fetch";
 
 export const getTokenDetails = (jwt) => {
