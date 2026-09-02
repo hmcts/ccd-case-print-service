@@ -9,8 +9,8 @@ describe("case data route", () => {
   });
   const handler = router.stack[0].route.stack[0].handle;
   const response = {
-    status: sinon.stub().returnsThis(),
     send: sinon.stub(),
+    status: sinon.stub().returnsThis(),
   };
   const request = {params: {jid: "j", ctid: "t", cid: "123"}};
 
