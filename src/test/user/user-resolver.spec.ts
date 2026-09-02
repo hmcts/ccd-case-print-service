@@ -11,8 +11,8 @@ describe("user resolver", () => {
     const config = {
       get: sinon.stub().withArgs("idam.base_url").returns(idamBaseUrl),
     };
-    getTokenDetails = proxyquire("../../main/user/user-resolver", {
-      config: {default: config},
+    getTokenDetails = proxyquire.noCallThru()("../../main/user/user-resolver", {
+      config,
     }).getTokenDetails;
   });
 
