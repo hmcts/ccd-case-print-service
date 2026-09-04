@@ -1,11 +1,11 @@
 import * as jwtDecode from "jwt-decode";
 import * as otp from "otp";
 import { fetch } from "../util/fetch";
-import { get } from "config";
+import * as config from "config";
 
-const idamS2SUrl = get<string>("idam.s2s_url");
-const serviceName = get<string>("idam.service_name");
-const secret = get<string>("secrets.ccd.microservicekey-ccd-ps");
+const idamS2SUrl: string = config.get("idam.s2s_url");
+const serviceName = config.get("idam.service_name");
+const secret = config.get("secrets.ccd.microservicekey-ccd-ps");
 
 // TODO Caching should be handled by a singleton service
 const cache = {};

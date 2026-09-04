@@ -4,7 +4,8 @@ import { getCase } from "../service/case-service";
 const router = express.Router();
 
 router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid", (req, res) => {
-  getCase(req, req.params.jid, req.params.ctid, req.params.cid)
+  Promise.resolve()
+    .then(() => getCase(req, req.params.jid, req.params.ctid, req.params.cid))
     .then((caseData) => {
       res.render("case-data", {
         caseData,
@@ -14,8 +15,8 @@ router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid", (req, res) => {
       });
     })
     .catch((error) => {
-      // console.error('Case data retrieval failed', error);
-      res.status(error.status).send(error);
+      const response = error.response;
+      res.status(error.status || response?.status || 500).send(response || error);
     });
 });
 

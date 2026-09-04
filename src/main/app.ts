@@ -6,7 +6,7 @@ import * as express from "express";
 import * as expressNunjucks from "express-nunjucks";
 import * as favicon from "serve-favicon";
 import * as healthcheck from "@hmcts/nodejs-healthcheck";
-import * as path from "path";
+import * as path from "node:path";
 import { authCheckerUserOnlyFilter } from "./user/auth-checker-user-only-filter";
 import { Express, Logger } from "@hmcts/nodejs-logging";
 import { Helmet, IConfig as HelmetConfig } from "./modules/helmet";
