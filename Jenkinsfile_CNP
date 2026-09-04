@@ -5,7 +5,7 @@ properties(
          pipelineTriggers([[$class: 'GitHubPushTrigger']])]
 )
 
-@Library("Infrastructure@cve-dashboard")
+@Library("Infrastructure@2.4.9")
 
 def product = "ccd"
 def component = "case-print-service"
@@ -27,7 +27,7 @@ def secrets = [
         secret('ccd-befta-master-caseworker-pwd', 'CCD_BEFTA_MASTER_CASEWORKER_PWD'),
     ],
     's2s-${env}': [
-        secret('microservicekey-ccd-ps', 'IDAM_SERVICE_KEY'),
+        secret('microservicekey-ccd-ps', 'IDAM_PRINT_SERVICE_KEY'),
         secret('microservicekey-ccd-gw', 'BEFTA_S2S_CLIENT_SECRET')
     ]
 ]
@@ -100,7 +100,7 @@ withPipeline("nodejs", product, component) {
 
     enableAksStagingDeployment()
     disableLegacyDeployment()
-    enableCveDashboardIngestion()
+    // enableCveDashboardIngestion()
     enableHighLevelDataSetup()
 
     afterAlways('checkout') {
