@@ -10,9 +10,9 @@
 !.yarnrc.yml
 !.yarn/**
 
-!gulpfile.js
 !tsconfig.json
 
+!server.js
 !src/main/**
 !config/**
 !acb.yaml
