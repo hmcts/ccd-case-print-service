@@ -33,5 +33,6 @@ USER hmcts
 FROM hmctsprod.azurecr.io/base/node${PLATFORM}:20-alpine AS runtime
 
 COPY --from=build $WORKDIR .
+USER hmcts
 
 EXPOSE 3100
