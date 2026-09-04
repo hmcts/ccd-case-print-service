@@ -180,7 +180,7 @@
     "semver": "7.8.5",
     "micromatch": "^4.0.8",
     "cross-spawn": "^7.0.6",
-    "socks": "2.8.9",
+    "socks": "2.8.10",
     "brace-expansion": "^1.1.13",
     "js-yaml@npm:^4.0.0": "patch:js-yaml@npm%3A4.3.0#~/.yarn/patches/js-yaml-npm-4.3.0-0ab78512c1.patch",
     "js-yaml@npm:^4.1.1": "patch:js-yaml@npm%3A4.3.0#~/.yarn/patches/js-yaml-npm-4.3.0-0ab78512c1.patch",
