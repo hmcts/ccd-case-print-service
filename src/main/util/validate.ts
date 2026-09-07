@@ -1,5 +1,5 @@
 export function checkCaseId(id) {
-    if (isNaN(id)) {
+    if (!Number.isInteger(+id)) {
       throw ERROR_INVALID_CASE_ID;
     }
   }

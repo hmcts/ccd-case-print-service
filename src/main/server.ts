@@ -5,7 +5,7 @@ import { app } from "./app";
 
 const logger = Logger.getLogger("server");
 
-// TODO: set the right port for your application
+// Set the right port for your application
 const port = process.env.PORT || "3100";
 
 app.listen(port, () => {

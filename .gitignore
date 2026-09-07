@@ -50,3 +50,6 @@ build/
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+/src/main/resources/localhost-ssl/localhost.crt
+/src/main/resources/localhost-ssl/localhost.key

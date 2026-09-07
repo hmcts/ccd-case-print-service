@@ -40,6 +40,12 @@ npm install
 ```
 ### Running
 
+For local HTTPS, generate locally managed key and certificate files:
+
+```bash
+source ./bin/setup-local-certs.sh
+```
+
 Start the application by executing the following command:
 
 ```bash
@@ -95,7 +101,7 @@ The tests can be run using:
 $ yarn test:functional
 ```
 
-or to run using gradle directly: 
+or to run using gradle directly:
 
 ```
 $ cd ./aat/
