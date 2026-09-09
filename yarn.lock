@@ -3637,7 +3637,7 @@ __metadata:
     brace-expansion: "npm:^1.1.13"
     chai: "npm:^6.0.0"
     chai-as-promised: "npm:^8.0.0"
-    config: "npm:^4.0.0"
+    config: "npm:^4.4.2"
     cookie: "npm:1.1.1"
     cookie-parser: "npm:^1.4.7"
     csurf: "npm:^1.9.0"
@@ -4237,7 +4237,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"config@npm:^4.0.0":
+"config@npm:^4.4.2":
   version: 4.4.2
   resolution: "config@npm:4.4.2"
   dependencies:
