@@ -1898,11 +1898,11 @@ __metadata:
   linkType: hard
 
 "@snyk/protect@npm:^1.1103.0":
-  version: 1.1307.0
-  resolution: "@snyk/protect@npm:1.1307.0"
+  version: 1.1307.1
+  resolution: "@snyk/protect@npm:1.1307.1"
   bin:
     snyk-protect: bin/snyk-protect
-  checksum: 10c0/08074df2d070bdb9cb25f3522948bf1e11ef37afbccbf76a4f3519be5caaa314c3216fc96e964259648b8a051e035f3c790a7f0415ab4cecd5bb1d18914c3797
+  checksum: 10c0/b2cd3d55e07e166feb39abc3e98ceaebdb9a8f347726a13263a4fbb5030e6691de1fdb2f9be100dc58243e84803eca4faabf939f4834c0860890eeede912938c
   languageName: node
   linkType: hard
 
@@ -3649,7 +3649,7 @@ __metadata:
     govuk-elements-sass: "npm:^3.1.1"
     govuk_template_jinja: "npm:^0.26.0"
     gulp: "npm:^4.0.2"
-    gulp-livereload: "npm:^3.8.1"
+    gulp-livereload: "npm:^4.0.0"
     gulp-nodemon: "npm:^2.5.0"
     gulp-plumber: "npm:^1.2.1"
     gulp-replace: "npm:^1.0.0"
@@ -6586,7 +6586,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gulp-livereload@npm:^4.0.2":
+"gulp-livereload@npm:^4.0.0":
   version: 4.0.2
   resolution: "gulp-livereload@npm:4.0.2"
   dependencies:
