@@ -109,6 +109,7 @@
     "webpack": "^4"
   },
   "resolutions": {
+    "@opentelemetry/propagator-jaeger@npm:2.7.1": "2.9.0",
     "form-data": "^4.0.4",
     "nconf": "^0.13.0",
     "async": "^3.0.0",
