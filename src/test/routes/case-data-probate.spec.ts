@@ -19,9 +19,9 @@ describe("Probate case routes", () => {
 
     const routeModule: any = proxyquire.noCallThru()("../../main/routes/case-data-probate", {
       "../service/case-service": { getCase },
-      "../service/template-service": { getProbateCaseDetailsTemplate },
       "../service/probate-man-service": { getProbateManLegacyCase },
       "../service/probate-man-template-service": { getProbateManLegacyCaseTemplate },
+      "../service/template-service": { getProbateCaseDetailsTemplate },
     });
     router = routeModule.default || routeModule;
   });
