@@ -34,15 +34,37 @@ describe("Case data route", () => {
 
   it("returns the rendered case data", async () => {
     getCase.resolves({
+      AddressUKField: {
+        AddressLine1: "102 Petty France",
+      },
       case_type_id: "Grant",
       id: "123",
       jurisdiction: "PROBATE",
+      OrganisationPolicyField1: {
+        OrgPolicyCaseAssignedRole: "[Claimant]",
+      },
     });
 
     await request(appWithRouter())
       .get("/jurisdictions/PROBATE/case-types/Grant/cases/123")
       .expect(200)
-      .expect((res) => expect(res.text).to.contain("Case Number:</strong> 123"));
+      .expect("Content-Type", /text\/html/)
+      .expect((res) => {
+        expect(res.text).to.contain("<h1>Case Data Printout</h1>");
+        expect(res.text).to.contain("Case Number:</strong> 123");
+        expect(res.text).to.contain("Jurisdiction:</strong> PROBATE");
+        expect(res.text).to.contain("Case Type:</strong> Grant");
+        expect(res.text).to.contain("Printed by:</strong> Test User (test)");
+        expect(res.text).to.match(/Printed on:<\/strong> .+/);
+        expect(res.text).to.contain("= START =");
+        expect(res.text).to.contain("= END =");
+        expect(res.text).to.contain("AddressUKField");
+        expect(res.text).to.contain("102 Petty France");
+        expect(res.text).to.contain("OrganisationPolicyField1");
+        expect(res.text).to.not.contain("password");
+        expect(res.text).to.not.contain("ServiceAuthorization");
+        expect(res.text).to.not.contain("Authorization");
+      });
 
     expect(getCase.calledWith(sinon.match.object, "PROBATE", "Grant", "123")).to.equal(true);
   });
