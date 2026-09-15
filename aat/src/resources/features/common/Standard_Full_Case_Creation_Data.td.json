@@ -42,20 +42,7 @@
 					}
 				}
 			},
-			"security_classifications": {
-				"AddressUKField": {
-					"classification": "PUBLIC",
-					"value": {
-						"AddressLine1": "PUBLIC",
-						"AddressLine2": "PUBLIC",
-						"AddressLine3": "PUBLIC",
-						"PostTown": "PUBLIC",
-						"County": "PUBLIC",
-						"PostCode": "PUBLIC",
-						"Country": "PUBLIC"
-					}
-				}
-			}
+			"callback_error_message": null
 		}
 	}
 }
