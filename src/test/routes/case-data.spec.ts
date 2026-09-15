@@ -37,12 +37,12 @@ describe("Case data route", () => {
       AddressUKField: {
         AddressLine1: "102 Petty France",
       },
-      case_type_id: "Grant",
-      id: "123",
-      jurisdiction: "PROBATE",
       OrganisationPolicyField1: {
         OrgPolicyCaseAssignedRole: "[Claimant]",
       },
+      case_type_id: "Grant",
+      id: "123",
+      jurisdiction: "PROBATE",
     });
 
     await request(appWithRouter())
