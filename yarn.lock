@@ -3689,7 +3689,7 @@ __metadata:
     proxyquire: "npm:^1.8.0"
     remap-istanbul: "npm:^0.13.0"
     require-directory: "npm:^2.1.1"
-    sass: "npm:^1.45.0"
+    sass: "npm:^1.104.1"
     sass-lint: "npm:^1.11.1"
     serve-favicon: "npm:^2.4.4"
     sinon: "npm:^4.0.0"
@@ -11187,7 +11187,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.45.0":
+"sass@npm:^1.104.1":
   version: 1.104.1
   resolution: "sass@npm:1.104.1"
   dependencies:
