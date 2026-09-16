@@ -118,7 +118,7 @@
     "growl": "^1.10.2",
     "gulp-livereload": "^4.0.0",
     "assign-deep": "^1.0.1",
-    "qs": "^6.3.2",
+    "qs": "^6.16.0",
     "http-proxy": "^1.18.1",
     "acorn": "^8.0.0",
     "uglify-js": "^2.6.0",
