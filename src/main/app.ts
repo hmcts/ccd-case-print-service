@@ -3,7 +3,6 @@ import * as config from "config";
 import * as cookieParser from "cookie-parser";
 import * as csrf from "csurf";
 import * as express from "express";
-import * as expressNunjucks from "express-nunjucks";
 import * as favicon from "serve-favicon";
 import * as healthcheck from "@hmcts/nodejs-healthcheck";
 import * as path from "path";
@@ -15,6 +14,8 @@ import { serviceFilter } from "./service/service-filter";
 import { setJwtCookieAndRedirect } from "./util/set-jwt-cookie-and-redirect";
 
 const enableAppInsights = require("./app-insights/app-insights");
+const expressNunjucksModule = require("express-nunjucks");
+const expressNunjucks = expressNunjucksModule.default || expressNunjucksModule;
 
 enableAppInsights();
 
