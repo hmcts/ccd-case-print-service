@@ -75,7 +75,7 @@
     "gulp-nodemon": "^2.5.0",
     "gulp-plumber": "^1.2.1",
     "gulp-replace": "^1.0.0",
-    "gulp-sass": "^5.0.0",
+    "gulp-sass": "^6.0.0",
     "istanbul": "^0.4.5",
     "istanbul-instrumenter-loader": "^0.2.0",
     "jasmine-core": "^2.3.4",
