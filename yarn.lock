@@ -7280,12 +7280,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hosted-git-info@npm:^3.0.8":
-  version: 3.0.8
-  resolution: "hosted-git-info@npm:3.0.8"
+"hosted-git-info@npm:^10.0.0":
+  version: 10.1.1
+  resolution: "hosted-git-info@npm:10.1.1"
   dependencies:
-    lru-cache: "npm:^6.0.0"
-  checksum: 10c0/af1392086ab3ab5576aa81af07be2f93ee1588407af18fd9752eb67502558e6ea0ffdd4be35ac6c8bef12fb9017f6e7705757e21b10b5ce7798da9106c9c0d9d
+    lru-cache: "npm:^11.1.0"
+  checksum: 10c0/cabc45fe4b429bbff051899f9f74982e05bcded72ced74ffbad3fceae64b34b643df57f780c896ea8a774188948e9ff1faed33322a7de89c64ac6c3be3efac76
   languageName: node
   linkType: hard
 
@@ -8935,15 +8935,6 @@ __metadata:
   dependencies:
     yallist: "npm:^3.0.2"
   checksum: 10c0/89b2ef2ef45f543011e38737b8a8622a2f8998cddf0e5437174ef8f1f70a8b9d14a918ab3e232cb3ba343b7abddffa667f0b59075b2b80e6b4d63c3de6127482
-  languageName: node
-  linkType: hard
-
-"lru-cache@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "lru-cache@npm:6.0.0"
-  dependencies:
-    yallist: "npm:^4.0.0"
-  checksum: 10c0/cb53e582785c48187d7a188d3379c181b5ca2a9c78d2bce3e7dee36f32761d1c42983da3fe12b55cb74e1779fa94cdc2e5367c028a9b35317184ede0c07a30a9
   languageName: node
   linkType: hard
 
