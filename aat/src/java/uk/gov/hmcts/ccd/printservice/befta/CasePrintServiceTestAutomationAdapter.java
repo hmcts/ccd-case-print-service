@@ -17,6 +17,23 @@ public class CasePrintServiceTestAutomationAdapter extends DefaultTestAutomation
 
     @Override
     public synchronized Object calculateCustomValue(BackEndFunctionalTestScenarioContext scenarioContext, Object key) {
+        if (key.toString().startsWith("largerThan ")) {
+            try {
+                String actualSize = (String) ReflectionUtils.deepGetFieldInObject(scenarioContext,
+                        "testData.actualResponse.body.__fileInBody__.size");
+                int minimumSize = Integer.parseInt(key.toString().replace("largerThan ", ""));
+                int actualValue = Integer.parseInt(actualSize);
+                if (actualValue <= minimumSize) {
+                    throw new FunctionalTestException("Response payload size was " + actualValue
+                            + " bytes; expected more than " + minimumSize + " bytes");
+                }
+                return actualSize;
+            } catch (FunctionalTestException e) {
+                throw e;
+            } catch (Exception e) {
+                throw new FunctionalTestException("Problem checking minimum response payload size: ", e);
+            }
+        }
         if (key.toString().startsWith("approximately ")) {
             try {
                 String actualSize = (String) ReflectionUtils.deepGetFieldInObject(scenarioContext,

@@ -17,11 +17,9 @@
 		"body": {
 			"__fileInBody__": {
 				"fullPath": "file",
-				"size": "${[scenarioContext][customValues][approximately 5647]}",
+				"size": "${[scenarioContext][customValues][largerThan 1000]}",
 				"contentHash": "hash"
 			}
 		}
 	}
 }
-
-

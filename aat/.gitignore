@@ -15,3 +15,8 @@ target/
 out/
 bin/
 build/
+
+# BEFTA reports
+BEFTA Report for Smoke Tests/
+BEFTA Report for Functional Tests/
+befta_recent_executions_info_*.json
