@@ -1,15 +1,7 @@
 {
 	"_guid_": "F-023_Case_Creation_Data_Without_Document",
 	"_extends_": "Standard_Full_Case_Creation_Data",
-
-	"request": {
-		"body": {
-			"data": {
-				"_extends_": "Standard_Full_Case_Data_Without_Document"
-			}
-		}
-	},
-
+	"request": { "body": { "data": { "_extends_": "Standard_Full_Case_Data_Without_Document" } } },
 	"expectedResponse": {
 		"_extends_": "Common_201_Response",
 		"headers": {
@@ -20,132 +12,34 @@
 			"Transfer-Encoding": "[[ANYTHING_PRESENT]]"
 		},
 		"body": {
-				"id": "[[ANYTHING_PRESENT]]",
-				"jurisdiction": "BEFTA_MASTER",
-				"state": "CaseCreated",
-				"version": 0,
-				"case_type_id": "FT_MasterCaseType",
-				"created_date": "[[ANYTHING_PRESENT]]",
-				"last_modified": "[[ANYTHING_PRESENT]]",
-				"last_state_modified_date": "[[ANYTHING_PRESENT]]",
-				"security_classification": "PUBLIC",
-				"case_data": {
-					"AddressUKField": {
-						"AddressLine1": "102 Petty France",
-						"AddressLine2": "CCD",
-						"AddressLine3": "c/o HMCTS Reform",
-						"PostTown": "Westminster",
-						"County": "Greater London",
-						"PostCode": "SW1H 9AJ",
-						"Country": "UK"
-					},
-					"OrganisationPolicyField2": {
-						"OrgPolicyCaseAssignedRole": "[Defendant]",
-						"OrgPolicyReference": "ref",
-						"Organisation": {
-							"OrganisationID": "orgID2",
-							"OrganisationName": "orgName2"
-						}
-					},
-					"OrganisationPolicyField1": {
-						"OrgPolicyCaseAssignedRole": "[Claimant]",
-						"OrgPolicyReference": "ref",
-						"Organisation": {
-							"OrganisationID": "orgID1",
-							"OrganisationName": "orgName1"
-						}
-					}
-				},
-				"data_classification": {
-					"AddressUKField": {
-						"classification": "PUBLIC",
-						"value": {
-							"AddressLine1": "PUBLIC",
-							"AddressLine2": "PUBLIC",
-							"AddressLine3": "PUBLIC",
-							"PostTown": "PUBLIC",
-							"County": "PUBLIC",
-							"PostCode": "PUBLIC",
-							"Country": "PUBLIC"
-						}
-					},
-					"OrganisationPolicyField2": {
-						"classification": "PUBLIC",
-						"value": {
-							"OrgPolicyCaseAssignedRole": "PUBLIC",
-							"OrgPolicyReference": "PUBLIC",
-							"Organisation": {
-								"classification": "PUBLIC",
-								"value": {
-									"OrganisationID": "PUBLIC",
-									"OrganisationName": "PUBLIC"
-								}
-							}
-						}
-					},
-					"OrganisationPolicyField1": {
-						"classification": "PUBLIC",
-						"value": {
-							"OrgPolicyCaseAssignedRole": "PUBLIC",
-							"OrgPolicyReference": "PUBLIC",
-							"Organisation": {
-								"classification": "PUBLIC",
-								"value": {
-									"OrganisationID": "PUBLIC",
-									"OrganisationName": "PUBLIC"
-								}
-							}
-						}
-					}
-				},
-        "supplementary_data" : null,
-				"after_submit_callback_response": null,
-				"callback_response_status_code": null,
-				"callback_response_status": null,
-				"delete_draft_response_status_code": null,
-				"delete_draft_response_status": null,
-				"security_classifications": {
-					"AddressUKField": {
-						"classification": "PUBLIC",
-						"value": {
-							"AddressLine1": "PUBLIC",
-							"AddressLine2": "PUBLIC",
-							"AddressLine3": "PUBLIC",
-							"PostTown": "PUBLIC",
-							"County": "PUBLIC",
-							"PostCode": "PUBLIC",
-							"Country": "PUBLIC"
-						}
-					},
-					"OrganisationPolicyField2": {
-						"classification": "PUBLIC",
-						"value": {
-							"OrgPolicyCaseAssignedRole": "PUBLIC",
-							"OrgPolicyReference": "PUBLIC",
-							"Organisation": {
-								"classification": "PUBLIC",
-								"value": {
-									"OrganisationID": "PUBLIC",
-									"OrganisationName": "PUBLIC"
-								}
-							}
-						}
-					},
-					"OrganisationPolicyField1": {
-						"classification": "PUBLIC",
-						"value": {
-							"OrgPolicyCaseAssignedRole": "PUBLIC",
-							"OrgPolicyReference": "PUBLIC",
-							"Organisation": {
-								"classification": "PUBLIC",
-								"value": {
-									"OrganisationID": "PUBLIC",
-									"OrganisationName": "PUBLIC"
-								}
-							}
-						}
-					}
-				}
-			}
+			"id": "[[ANYTHING_PRESENT]]",
+			"jurisdiction": "BEFTA_MASTER",
+			"state": "CaseCreated",
+			"version": 0,
+			"case_type_id": "FT_MasterCaseType",
+			"created_date": "[[ANYTHING_PRESENT]]",
+			"last_modified": "[[ANYTHING_PRESENT]]",
+			"last_state_modified_date": "[[ANYTHING_PRESENT]]",
+			"security_classification": "PUBLIC",
+			"case_data": {
+				"AddressUKField": { "AddressLine1": "102 Petty France", "AddressLine2": "CCD", "AddressLine3": "c/o HMCTS Reform", "PostTown": "Westminster", "County": "Greater London", "PostCode": "SW1H 9AJ", "Country": "UK" },
+				"OrganisationPolicyField2": { "OrgPolicyCaseAssignedRole": "[Defendant]", "OrgPolicyReference": "ref", "Organisation": { "OrganisationID": "orgID2", "OrganisationName": "orgName2" } },
+				"OrganisationPolicyField1": { "OrgPolicyCaseAssignedRole": "[Claimant]", "OrgPolicyReference": "ref", "Organisation": { "OrganisationID": "orgID1", "OrganisationName": "orgName1" } },
+				"SearchCriteria": {}
+			},
+			"data_classification": {
+				"AddressUKField": { "classification": "PUBLIC", "value": { "AddressLine1": "PUBLIC", "AddressLine2": "PUBLIC", "AddressLine3": "PUBLIC", "PostTown": "PUBLIC", "County": "PUBLIC", "PostCode": "PUBLIC", "Country": "PUBLIC" } },
+				"OrganisationPolicyField2": { "classification": "PUBLIC", "value": { "OrgPolicyCaseAssignedRole": "PUBLIC", "OrgPolicyReference": "PUBLIC", "Organisation": { "classification": "PUBLIC", "value": { "OrganisationID": "PUBLIC", "OrganisationName": "PUBLIC" } } } },
+				"OrganisationPolicyField1": { "classification": "PUBLIC", "value": { "OrgPolicyCaseAssignedRole": "PUBLIC", "OrgPolicyReference": "PUBLIC", "Organisation": { "classification": "PUBLIC", "value": { "OrganisationID": "PUBLIC", "OrganisationName": "PUBLIC" } } } },
+				"SearchCriteria": "[[ANYTHING_PRESENT]]"
+			},
+			"supplementary_data": null,
+			"after_submit_callback_response": null,
+			"callback_response_status_code": null,
+			"callback_response_status": null,
+			"callback_error_message": null,
+			"delete_draft_response_status_code": null,
+			"delete_draft_response_status": null
 		}
+	}
 }

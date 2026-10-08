@@ -1,4 +1,5 @@
 let gulp = require('gulp');
+let fs = require('fs');
 let nodemon = require('gulp-nodemon');
 let plumber = require('gulp-plumber');
 let livereload = require('gulp-livereload');
@@ -14,49 +15,42 @@ const assetsDirectory = './src/main/public';
 const stylesheetsDirectory = `${assetsDirectory}/stylesheets`;
 
 // compile scss files
-gulp.task('sass', (done) => {
-  gulp.src(stylesheetsDirectory + '/*.scss')
+gulp.task('sass', () => {
+  fs.mkdirSync(stylesheetsDirectory, { recursive: true });
+  return gulp.src(stylesheetsDirectory + '/*.scss', { allowEmpty: true })
+    .pipe(plumber())
     .pipe(sass({
       includePaths: [
         govUkFrontendToolkitRoot,
         govUkElementRoot
       ]
     }))
-    .pipe(plumber())
-    .pipe(sass())
     .pipe(gulp.dest(stylesheetsDirectory))
     .pipe(livereload());
-  done();
 });
 
 // copy js, stylesheets and images from dependencies to frontend's public directory
-gulp.task('copy-files', (done) => {
-  gulp.src([
+gulp.task('copy-js', () => gulp.src([
     './node_modules/jquery/dist/jquery.min.js',
     './node_modules/govuk_frontend_toolkit/javascripts/**/*.js',
     './node_modules/govuk_template_jinja/assets/javascripts/**/*.js'
-  ])
-  .pipe(gulp.dest(`${assetsDirectory}/js/lib/`));
+  ]).pipe(gulp.dest(`${assetsDirectory}/js/lib/`)));
 
-  gulp.src([
+gulp.task('copy-images', () => gulp.src([
     './node_modules/govuk_frontend_toolkit/images/**/*',
     './node_modules/govuk_template_jinja/assets/images/*.*'
-  ])
-  .pipe(gulp.dest(`${assetsDirectory}/img/lib/`));
+  ]).pipe(gulp.dest(`${assetsDirectory}/img/lib/`)));
 
-  gulp.src([
+gulp.task('copy-styles', () => gulp.src([
     './node_modules/govuk_template_jinja/assets/stylesheets/**/*'
   ])
   .pipe(replace('images/', '/stylesheets/lib/images/', { skipBinary: true }))
-  .pipe(gulp.dest(`${assetsDirectory}/stylesheets/lib/`));
-  done();
-});
+  .pipe(gulp.dest(`${assetsDirectory}/stylesheets/lib/`)));
+
+gulp.task('copy-files', gulp.parallel('copy-js', 'copy-images', 'copy-styles'));
 
 // compile scss files whenever they're changed
-gulp.task('watch', (done) => {
-  gulp.watch(stylesheetsDirectory + '/**/*.scss', [ 'sass' ]);
-  done();
-});
+gulp.task('watch', () => gulp.watch(stylesheetsDirectory + '/**/*.scss', gulp.series('sass')));
 
 // start the application and watch for file changes (in which case it will be restarted)
 gulp.task('develop', (done) => {
