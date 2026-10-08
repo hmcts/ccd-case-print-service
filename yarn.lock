@@ -7538,10 +7538,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ini@npm:^1.3.7":
-  version: 1.3.8
-  resolution: "ini@npm:1.3.8"
-  checksum: 10c0/ec93838d2328b619532e4f1ff05df7909760b6f66d9c9e2ded11e5c1897d6f2f9980c54dd638f88654b00919ce31e827040631eab0a3969e4d1abefa0719516a
+"ini@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "ini@npm:7.0.0"
+  checksum: 10c0/7520cae38bd5587e1cbca4637bb5fc0e157f38e0816522756456010ef703772d0018f9f4987cb9977bf3b10c1feccaad7800744dd1f5d85fb435e58a1baa9754
   languageName: node
   linkType: hard
 
