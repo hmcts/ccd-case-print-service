@@ -5,8 +5,8 @@ session:
 idam:
   base_url: "http://localhost:9999"
   s2s_url: "http://localhost:9999"
-  print_service_key: "AAAA"
+  print_service_key: ""
 
 secrets:
   ccd: 
-    microservicekey-ccd-ps: "AAAA"
+    microservicekey-ccd-ps: ""
