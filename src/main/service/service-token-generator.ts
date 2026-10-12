@@ -11,6 +11,10 @@ const secret = get<string>("secrets.ccd.microservicekey-ccd-ps");
 const cache = {};
 
 export const serviceTokenGenerator = () => {
+    if (typeof secret !== "string" || secret.trim().length === 0) {
+      return Promise.reject(new Error("IDAM_PRINT_SERVICE_KEY must be configured"));
+    }
+
     const currentTime = Math.floor(Date.now() / 1000);
 
     if (cache[serviceName]
