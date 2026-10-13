@@ -50,3 +50,11 @@ build/
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+!.yarn/
+!src/
+!src/main/
+!config/
+!webpack/
+.yarn/cache
+.yarn/install-state.gz
