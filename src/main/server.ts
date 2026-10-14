@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 require("@hmcts/properties-volume").addTo(require("config"));
-import { Logger } from "@hmcts/nodejs-logging";
-import { app } from "./app";
+
+require("./app-insights/app-insights")();
+
+const { Logger } = require("@hmcts/nodejs-logging");
+const { app } = require("./app");
 
 const logger = Logger.getLogger("server");
 

@@ -19,4 +19,4 @@ appInsights:
 secrets:
   ccd:
     microservicekey-ccd-ps: AAAAAAAAAAAAAAAA
-    AppInsightsInstrumentationKey: "some-key"
+    app-insights-connection-string: ""
