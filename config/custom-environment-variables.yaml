@@ -13,4 +13,4 @@ case_data_probate_template_url: CASE_DATA_PROBATE_TEMPLATE_URL
 secrets:
   ccd:
     microservicekey-ccd-ps: IDAM_PRINT_SERVICE_KEY
-    AppInsightsInstrumentationKey: APPINSIGHTS_INSTRUMENTATIONKEY
+    app-insights-connection-string: APPINSIGHTS_CONNECTION_STRING

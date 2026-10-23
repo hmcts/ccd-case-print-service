@@ -37,4 +37,4 @@ nodejs:
     ccd:
       secrets:
         - microservicekey-ccd-ps
-        - AppInsightsInstrumentationKey
+        - name: app-insights-connection-string
