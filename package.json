@@ -22,7 +22,8 @@
     "highLevelDataSetup": "echo './aat/gradlew -p aat highLevelDataSetup --args=$1' > ./temp.sh && sh ./temp.sh",
     "setup": "echo 'No setup required'",
     "snyk-protect": "snyk-protect",
-    "prepare": "npm run snyk-protect"
+    "prepare": "npm run snyk-protect",
+    "test:security": "mocha src/test/security/*.spec.js"
   },
   "dependencies": {
     "@hmcts/nodejs-healthcheck": "1.8.6",
@@ -125,7 +126,7 @@
     "debug": "^4.0.0",
     "minimist": "^1.2.6",
     "yargs-parser": "^20.2.2",
-    "braces": "^3.0.3",
+    "braces": "patch:braces@npm%3A3.0.3#~/.yarn/patches/braces-npm-3.0.3-582c14023c.patch",
     "lodash.template": "^4.5.0",
     "eslint": "^10.0.0",
     "bl": "^6.0.0",

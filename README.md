@@ -33,10 +33,10 @@ The following environment variables are required:
 
 ### Building
 
-The project uses [npm](https://www.npmjs.com). To build it, execute the following command:
+The project uses Yarn, including checked-in security patches for transitive dependencies. Install with:
 
 ```bash
-npm install
+yarn install --immutable
 ```
 ### Running
 
@@ -46,7 +46,7 @@ Start the application by executing the following command:
 npm start
 ```
 
-**Note:** You can also use [yarn](https://yarnpkg.com/lang/en/) in place of npm, in both commands above.
+Use Yarn for dependency installation so the security patches in `.yarn/patches` are applied.
 
 ### Accessing the service
 
@@ -84,6 +84,16 @@ In addition, if the Nunjucks template to be rendered contains any "special" char
 
 If, for whatever reason, this is not possible then these characters must be replaced with the regular ASCII versions where appropriate (e.g. straight quote marks), or (ideally) the corresponding HTML entities (e.g. `&pound;`, `&lsquo;`, `&rsquo;`).
 
+
+## Dependency security tests
+
+Run `yarn test:security` to verify the local `braces` patch for
+[CVE-2026-93687](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm).
+There is currently no upstream fixed release. The Yarn resolution applies a
+128-level nesting limit to parsing (braces and parentheses) and AST walkers,
+including caller-supplied ASTs. Deeper patterns throw a controlled `SyntaxError`.
+Replace the patch with an upstream fixed release when available. Version-based
+scanners may still flag 3.0.3; the regression tests verify the patched behaviour.
 
 ## Functional Tests
 The functional tests are located in `aat` folder. The tests are written using
