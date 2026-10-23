@@ -3532,12 +3532,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"braces@npm:^3.0.3":
+"braces@npm:3.0.3":
   version: 3.0.3
   resolution: "braces@npm:3.0.3"
   dependencies:
     fill-range: "npm:^7.1.1"
   checksum: 10c0/7c6dfd30c338d2997ba77500539227b9d1f85e388a5f43220865201e407e076783d0881f2d297b9f80951b4c957fcf0b51c1d2d24227631643c3f7c284b0aa04
+  languageName: node
+  linkType: hard
+
+"braces@patch:braces@npm%3A3.0.3#~/.yarn/patches/braces-npm-3.0.3-582c14023c.patch":
+  version: 3.0.3
+  resolution: "braces@patch:braces@npm%3A3.0.3#~/.yarn/patches/braces-npm-3.0.3-582c14023c.patch::version=3.0.3&hash=c443be"
+  dependencies:
+    fill-range: "npm:^7.1.1"
+  checksum: 10c0/3f4ec9dbfa83edb49766b1071eef954b55e8df7d939e00b02916e3006de9efc20ce4fb04ed970f1f9a3f4765003f06773b7ff161bae9522174c9045219ac3e9a
   languageName: node
   linkType: hard
 
