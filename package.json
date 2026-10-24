@@ -57,7 +57,7 @@
     "nunjucks-numeral-filter": "^0.0.2",
     "otp": "^0.1.3",
     "require-directory": "^2.1.1",
-    "sass": "^1.103.1",
+    "sass": "^1.104.1",
     "serve-favicon": "^2.5.1",
     "tar": "^7.5.22"
   },
@@ -90,7 +90,7 @@
     "jsonwebtoken": "^9.0.3",
     "mocha": "^11.8.0",
     "mochawesome": "^7.1.4",
-    "moment": "^2.30.1",
+    "moment": "2.31.0",
     "nock": "^14.0.17",
     "node-mocks-http": "^1.18.1",
     "nyc": "^18.0.0",
@@ -130,5 +130,11 @@
     "report-dir": "coverage",
     "all": true
   },
-  "packageManager": "yarn@4.18.0"
+  "packageManager": "yarn@4.18.0",
+  "resolutions": {
+    "js-yaml": "patch:js-yaml@npm%3A4.3.2#~/.yarn/patches/js-yaml-npm-4.3.2-0ab78512c1.patch",
+    "uuid": "^14.0.0",
+    "@opentelemetry/instrumentation-mysql@npm:^0.66.0": "0.67.0",
+    "@opentelemetry/instrumentation-pg@npm:^0.72.0": "0.73.0"
+  }
 }
