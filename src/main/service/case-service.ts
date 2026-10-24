@@ -1,21 +1,25 @@
-import { get } from "config";
+import { getOrThrow } from "../util/config";
 import { fetch } from "../util/fetch";
-import * as userReqAuth from "../user/user-request-authorizer";
-import * as validate from "../util/validate";
+import { AUTHORIZATION } from "../user/user-request-authorizer";
+import { checkCaseId } from "../util/validate";
+
+const SERVICE_AUTHORIZATION = "ServiceAuthorization";
 
 export function getCase(req, jid, ctid, cid) {
-  validate.checkCaseId(cid);
+  checkCaseId(cid);
   const userId = req.authentication.user.uid;
-  const url = get("case_data_store_url") + "/caseworkers/" + userId + "/jurisdictions/" + jid + "/case-types/" + ctid +
+  const url = getOrThrow<string>("case_data_store_url") + "/caseworkers/" + userId + "/jurisdictions/" + jid + "/case-types/" + ctid +
     "/cases/" + cid;
-  const authorization = req.get(userReqAuth.AUTHORIZATION);
+  const authorization = req.get(AUTHORIZATION);
+  const serviceAuthorization = req.get(SERVICE_AUTHORIZATION);
+
   return fetch(url, {
     headers: {
       "Authorization": authorization,
       "Content-Type": "application/json",
-      "ServiceAuthorization": req.headers.ServiceAuthorization,
+      "ServiceAuthorization": serviceAuthorization
     },
-    method: "GET",
+    method: "GET"
   })
     .then((res) => res.json());
 }
