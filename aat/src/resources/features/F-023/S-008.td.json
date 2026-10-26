@@ -23,8 +23,7 @@
 			"error": "[[ANY_NULLABLE]]",
 			"timestamp": "[[ANY_NULLABLE]]",
 			"path":"[[ANY_NULLABLE]]",
-			"size" : 0,
-			"timeout" : 0
+			"size" : 0
 		}
 	}
 }
