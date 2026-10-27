@@ -1,0 +1,52 @@
+{% extends "layout_template.njk" %}
+{% block content %}
+<h1 class="govuk-heading-xl">Case Data Printout</h1>
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Case Number
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ caseData.id }}
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Jurisdiction
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ caseData.jurisdiction }}
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Case Type
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ caseData.case_type_id }}
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Printed by
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ user.given_name }} {{ user.family_name }} ({{ user.sub }})
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Printed on
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ generatedDateTime }}
+    </dd>
+  </div>
+</dl>
+
+    <pre>
+= START =
+{{ caseData | dump(2) }}
+= END =
+    </pre>
+{% endblock %}

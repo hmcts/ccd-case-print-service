@@ -1,11 +1,10 @@
-import * as chai from "chai";
-import * as proxyquire from "proxyquire";
+import { expect, use } from "chai";
+import proxyquire from "proxyquire";
 import * as sinon from "sinon";
-import * as sinonChai from "sinon-chai";
-import * as userReqAuth from "./user-request-authorizer";
+import sinonChai from "sinon-chai";
+import {COOKIE_ACCESS_TOKEN, ERROR_TOKEN_MISSING, AUTHORIZATION } from "../../main/user/user-request-authorizer";
 
-const expect = chai.expect;
-chai.use(sinonChai);
+use(sinonChai);
 
 describe("UserRequestAuthorizer", () => {
   describe("authorize", () => {
@@ -15,10 +14,10 @@ describe("UserRequestAuthorizer", () => {
     const ROLE_1 = "role1";
     const DETAILS = {
       roles: [ROLE_1],
-      uid: USER_ID,
+      uid: USER_ID
     };
     const COOKIES = {
-      [userReqAuth.COOKIE_ACCESS_TOKEN]: "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxNW91NWFi",
+      [COOKIE_ACCESS_TOKEN]: "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxNW91NWFi"
     };
     const X_CUSTOM_HEADER = "CCD";
 
@@ -30,14 +29,14 @@ describe("UserRequestAuthorizer", () => {
     beforeEach(() => {
       request = {
         cookies: COOKIES,
-        get: sinon.stub().returns(AUTHZ_HEADER),
+        get: sinon.stub().returns(AUTHZ_HEADER)
       };
       userResolver = {
-        getTokenDetails: sinon.stub().returns(Promise.resolve(DETAILS)),
+        getTokenDetails: sinon.stub().returns(Promise.resolve(DETAILS))
       };
 
-      userRequestAuthorizer = proxyquire("./user-request-authorizer", {
-      "./user-resolver": userResolver,
+      userRequestAuthorizer = proxyquire("../../main/user/user-request-authorizer", {
+      "../../main/user/user-resolver": userResolver
       });
     });
 
@@ -48,7 +47,7 @@ describe("UserRequestAuthorizer", () => {
       userRequestAuthorizer.authorise(request)
         .then(() => done(new Error("Promise should have been rejected")))
         .catch((error) => {
-          expect(error).to.equal(userRequestAuthorizer.ERROR_TOKEN_MISSING);
+          expect(error).to.deep.equal(ERROR_TOKEN_MISSING);
           done();
         });
     });
@@ -60,7 +59,7 @@ describe("UserRequestAuthorizer", () => {
       userRequestAuthorizer.authorise(request)
         .then(() => done(new Error("Promise should have been rejected")))
         .catch((error) => {
-          expect(error).to.equal(ERROR);
+          expect(error).to.deep.equal(ERROR);
           done();
         });
     });
@@ -81,7 +80,7 @@ describe("UserRequestAuthorizer", () => {
 
       userRequestAuthorizer.authorise(request)
         .then(() => {
-          expect(userResolver.getTokenDetails).to.have.been.calledWith(COOKIES[userReqAuth.COOKIE_ACCESS_TOKEN]);
+          expect(userResolver.getTokenDetails).to.have.been.calledWith(`Bearer ${COOKIES[COOKIE_ACCESS_TOKEN]}`);
           done();
         })
         .catch(() => done(new Error("Promise should have been resolved")));
@@ -89,13 +88,13 @@ describe("UserRequestAuthorizer", () => {
 
     it("should use the AccessToken cookie to set the Authorization header, when the header is missing", (done) => {
       request.get.returns(null);
-      request.headers = {X_CUSTOM_HEADER};
+      request.headers = {X_CUSTOM_HEADER: X_CUSTOM_HEADER};
 
       userRequestAuthorizer.authorise(request)
         .then(() => {
           expect(request.headers).not.to.be.undefined;
-          expect(request.headers[userReqAuth.AUTHORIZATION]).to.equal(
-            `Bearer ${COOKIES[userReqAuth.COOKIE_ACCESS_TOKEN]}`);
+          expect(request.headers[AUTHORIZATION]).to.equal(
+            `Bearer ${COOKIES[COOKIE_ACCESS_TOKEN]}`);
           expect(request.headers.X_CUSTOM_HEADER).to.equal(X_CUSTOM_HEADER);
           done();
         })
