@@ -45,8 +45,8 @@ router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid/probate/:tid", (req,
 });
 
 router.get("/probateManTypes/:probateManType/cases/:caseId", (req, res) => {
-  let probateManCaseType = req.params.probateManType;
-  let probateManCaseId = req.params.caseId;
+  const probateManCaseType = req.params.probateManType;
+  const probateManCaseId = req.params.caseId;
 
   try {
     validate.checkCaseId(probateManCaseId);
@@ -71,16 +71,16 @@ router.get("/probateManTypes/:probateManType/cases/:caseId", (req, res) => {
           });
       })
       .catch((error) => {
-        if (error?.code && error.code == "ENUMERATION_ATTEMPT") {
+        if (error?.code && error.code === "ENUMERATION_ATTEMPT") {
           res.status(error.status).send();
         } else {
           logger.error("Unexpected error occurred", error);
           res.status(error.status).send(error);
         }
       });
-    } catch(error) {
+    } catch (error) {
       res.status(error.status).send(error);
-    };
+    }
 });
 
 module.exports = router;

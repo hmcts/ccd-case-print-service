@@ -6,8 +6,8 @@ import * as validate from "../util/validate";
 export function getCase(req, jid, ctid, cid) {
   validate.checkCaseId(cid);
   const userId = req.authentication.user.uid;
-  const url = config.get("case_data_store_url") + "/caseworkers/" + userId + "/jurisdictions/" + jid + "/case-types/" + ctid +
-    "/cases/" + cid;
+  const url = config.get("case_data_store_url") + "/caseworkers/" + userId + "/jurisdictions/" + jid + "/case-types/" +
+    ctid + "/cases/" + cid;
   const authorization = req.get(userReqAuth.AUTHORIZATION);
   return fetch(url, {
     headers: {

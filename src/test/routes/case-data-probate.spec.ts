@@ -21,11 +21,11 @@ describe("Probate case routes", () => {
     checkForEnumerationAttempt = sinon.stub();
 
     const routeModule: any = proxyquire.noCallThru()("../../main/routes/case-data-probate", {
+      "../security/enumeration-check-probate-man-type": { checkForEnumerationAttempt },
       "../service/case-service": { getCase },
       "../service/probate-man-service": { getProbateManLegacyCase },
       "../service/probate-man-template-service": { getProbateManLegacyCaseTemplate },
       "../service/template-service": { getProbateCaseDetailsTemplate },
-      "../security/enumeration-check-probate-man-type": { checkForEnumerationAttempt }
     });
     router = routeModule.default || routeModule;
   });
@@ -108,15 +108,16 @@ describe("Probate case routes", () => {
       await request(appWithRouter())
         .get("/probateManTypes/CAVEAT/cases/124")
         .expect(404);
-      
+
       expect(checkForEnumerationAttempt.calledWith("testuid", "CAVEAT", "124")).to.be.true;
       expect(getProbateManLegacyCase.notCalled).to.be.true;
       expect(getProbateManLegacyCaseTemplate.notCalled).to.be.true;
     });
 
     it("returns expected failure if enumeration check fails with error without an error code", async () => {
-      checkForEnumerationAttempt.rejects({ message : "No error code error message", error : "No error code error", status : 400 });
-      
+      checkForEnumerationAttempt
+        .rejects({ message : "No error code error message", error : "No error code error", status : 400 });
+
       await request(appWithRouter())
         .get("/probateManTypes/CAVEAT/cases/124")
         .expect(400)
@@ -128,7 +129,8 @@ describe("Probate case routes", () => {
     });
 
     it("returns expected failure if enumeration check fails with error with other error code", async () => {
-      checkForEnumerationAttempt.rejects({ code: "OTHER_ERROR", message : "Other error message", error : "Other error", status : 401 });
+      checkForEnumerationAttempt
+        .rejects({ code: "OTHER_ERROR", message : "Other error message", error : "Other error", status : 401 });
 
       await request(appWithRouter())
         .get("/probateManTypes/CAVEAT/cases/124")
@@ -148,7 +150,7 @@ describe("Probate case routes", () => {
         .get("/probateManTypes/CAVEAT/cases/123")
         .expect(404)
         .expect((res) => expect(res.body.message).to.equal("Legacy case not found"));
-      
+
       expect(checkForEnumerationAttempt.calledWith("testuid", "CAVEAT", "123")).to.equal(true);
       expect(getProbateManLegacyCase.calledWith(sinon.match.object, "CAVEAT", "123")).to.equal(true);
     });
