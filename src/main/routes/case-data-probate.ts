@@ -1,6 +1,8 @@
 import * as express from "express";
 import * as dateFilter from "nunjucks-date-filter";
 import * as numeralFilter from "nunjucks-numeral-filter";
+import * as validate from "../util/validate";
+import { checkForEnumerationAttempt } from "../security/enumeration-check-probate-man-type";
 import { getCase } from "../service/case-service";
 import { getProbateCaseDetailsTemplate } from "../service/template-service";
 import { getProbateManLegacyCase } from "../service/probate-man-service";
@@ -11,7 +13,7 @@ const nunjucks = require("nunjucks");
 
 const router = express.Router();
 
-const logger = Logger.getLogger("app");
+const logger = Logger.getLogger("case-data-probate");
 
 dateFilter.setDefaultFormat("YYYY-MM-DD");
 const env = nunjucks.configure({ autoescape: true });
@@ -43,23 +45,42 @@ router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid/probate/:tid", (req,
 });
 
 router.get("/probateManTypes/:probateManType/cases/:caseId", (req, res) => {
-  getProbateManLegacyCase(req, req.params.probateManType, req.params.caseId)
-    .then((probateManCase) => {
-      getProbateManLegacyCaseTemplate(req)
-        .then((template) => {
-          nunjucks.compile(template, env);
-          const response = nunjucks.renderString(template, probateManCase);
-          res.set("charset", "utf-8");
-          res.send(response);
-        })
-        .catch((error) => {
-          res.status(error.status).send(error);
-        });
+  let probateManCaseType = req.params.probateManType;
+  let probateManCaseId = req.params.caseId;
 
-    })
-    .catch((error) => {
+  try {
+    validate.checkCaseId(probateManCaseId);
+
+    checkForEnumerationAttempt(req.authentication.user.uid, probateManCaseType, probateManCaseId)
+      .then(() => {
+        getProbateManLegacyCase(req, probateManCaseType, probateManCaseId)
+          .then((probateManCase) => {
+            getProbateManLegacyCaseTemplate(req)
+              .then((template) => {
+                nunjucks.compile(template, env);
+                const response = nunjucks.renderString(template, probateManCase);
+                res.set("charset", "utf-8");
+                res.send(response);
+              })
+              .catch((error) => {
+                res.status(error.status).send(error);
+              });
+          })
+          .catch((error) => {
+            res.status(error.status).send(error);
+          });
+      })
+      .catch((error) => {
+        if (error?.code && error.code == "ENUMERATION_ATTEMPT") {
+          res.status(error.status).send();
+        } else {
+          logger.error("Unexpected error occurred", error);
+          res.status(error.status).send(error);
+        }
+      });
+    } catch(error) {
       res.status(error.status).send(error);
-    });
+    };
 });
 
 module.exports = router;

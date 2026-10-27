@@ -44,6 +44,7 @@
     "govuk-elements-sass": "^3.1.1",
     "govuk_template_jinja": "^0.26.0",
     "helmet": "^4.0.0",
+    "ioredis": "6.0.0",
     "jquery": "^3.5.1",
     "js-yaml": "patch:js-yaml@npm%3A4.3.0#~/.yarn/patches/js-yaml-npm-4.3.0-0ab78512c1.patch",
     "jwt-decode": "^2.2.0",
@@ -59,7 +60,7 @@
     "tar": "^7.5.13",
     "ts-node": "^10.7.0",
     "tsconfig-paths": "^3.14.1",
-    "typescript": "^3.2.1"
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
     "@types/chai-as-promised": "^8.0.0",

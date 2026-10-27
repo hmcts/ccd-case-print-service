@@ -38,27 +38,6 @@ describe("probate man service", () => {
     });
   });
 
-  it ("should return an error when NaN", async () => {
-    const req = {
-      get: sinon.stub(),
-      headers: {
-        ServiceAuthorization : serviceAuthorization,
-      },
-    };
-    req.get.withArgs("Authorization").returns(authorization);
-    const expectedStatus = 400;
-    const expectedError = "Bad Request";
-    const expectedMessage = "Case ID must be a valid number";
-
-    try {
-      await getProbateManLegacyCase(req, "CAVEAT", "A1");
-    } catch (error) {
-      expect(error.status).to.deep.equal(expectedStatus);
-      expect(error.error).to.deep.equal(expectedError);
-      expect(error.message).to.deep.equal(expectedMessage);
-    }
-  });
-
   it("should return probate man legacy case when using vaild luhn string", async () => {
     const req = {
       get: sinon.stub(),

@@ -20,3 +20,11 @@ secrets:
   ccd:
     microservicekey-ccd-ps: AAAAAAAAAAAAAAAA
     AppInsightsInstrumentationKey: "some-key"
+redis:
+  enabled: false
+  host: localhost
+  port: 6379
+enumerationCheck:
+  enabled: true
+  limit: 2
+  ttl: 3600

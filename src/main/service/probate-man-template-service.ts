@@ -1,8 +1,8 @@
-import { get } from "config";
+import * as config from "config";
 import { fetch } from "../util/fetch";
 
 export function getProbateManLegacyCaseTemplate(req) {
-  const url = get("case_data_probate_template_url") + "/template/probateManLegacyCase";
+  const url = config.get("case_data_probate_template_url") + "/template/probateManLegacyCase";
   return fetch(url, {
                       headers: {
                         "Authorization": "Bearer " + req.cookies.jwt,
