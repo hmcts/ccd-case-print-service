@@ -8,6 +8,7 @@ import { expect } from "chai";
 import request from "supertest";
 import nock from "nock";
 import { app } from "../../main/app";
+import { trackUnhandledRejections } from "../util/unhandled-rejections";
 
 const cookieName: string = getOrThrow<string>("session.cookieName");
 const caseDataStoreUrl: string = getOrThrow<string>("case_data_store_url");
@@ -141,12 +142,15 @@ describe("Case data page", () => {
 
 describe("Case data route", () => {
   let getCase: sinon.SinonStub;
+  let logger: { error: sinon.SinonStub };
   let router: express.Router;
 
   beforeEach(() => {
     getCase = sinon.stub();
+    logger = { error: sinon.stub() };
 
     const routeModule: any = proxyquire.noCallThru()("../../main/routes/case-data", {
+      "@hmcts/nodejs-logging": { Logger: { getLogger: () => logger } },
       "../service/case-service": { getCase }
     });
     router = routeModule.default || routeModule;
@@ -209,5 +213,24 @@ describe("Case data route", () => {
       .get("/jurisdictions/PROBATE/case-types/Grant/cases/123")
       .expect(404)
       .expect((res) => expect(res.body.message).to.equal("Case not found"));
+  });
+
+  it("responds 500 when the case service rejects with a plain Error", async () => {
+    const rejections = trackUnhandledRejections();
+    const error = new Error("socket hang up");
+    getCase.rejects(error);
+
+    try {
+      await request(appWithRouter())
+        .get("/jurisdictions/PROBATE/case-types/Grant/cases/123")
+        .timeout(1000)
+        .expect(500);
+
+      await rejections.settle();
+      expect(rejections.reasons).to.be.empty;
+      expect(logger.error.calledWith(sinon.match.string, error)).to.equal(true);
+    } finally {
+      rejections.stop();
+    }
   });
 });
