@@ -6,7 +6,7 @@ const logger = Logger.getLogger("redis-store");
 
 export class RedisStore implements IKeyValueStore {
 
-    private redisClient;
+    private readonly redisClient;
 
     constructor(redisHost: string, redisPort: number ) {
         logger.debug("Connecting to Redis");

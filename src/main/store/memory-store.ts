@@ -5,7 +5,7 @@ const logger = Logger.getLogger("memory-store");
 
 export class MemoryStore implements IKeyValueStore {
 
-    private caseIdData = new Map<string, { value: string, expiresAt: number | null }>();
+    private readonly caseIdData = new Map<string, { value: string, expiresAt: number | null }>();
 
     public get(key: string): Promise<string | null> {
         logger.debug("Getting entry from memory store - key: %s", key);

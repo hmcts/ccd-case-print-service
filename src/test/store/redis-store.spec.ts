@@ -74,4 +74,20 @@ describe("redis-store", () => {
 
         expect(redisClientSetStub.calledWith(STORE_KEY, CASE_ID, "EX", TTL_ONE_SECOND)).to.be.true;
     });
+
+    it("Should reject when Redis set method without TTL fails", async () => {
+        redisClientSetStub.withArgs(STORE_KEY, CASE_ID).rejects(new Error("Redis error"));
+
+        expect(redisStore.set(STORE_KEY, CASE_ID, null)).to.be.rejectedWith("Redis error");
+
+        expect(redisClientSetStub.calledWith(STORE_KEY, CASE_ID)).to.be.true;
+    });
+
+    it("Should reject when Redis set method with TTL fails", async () => {
+        redisClientSetStub.withArgs(STORE_KEY, CASE_ID, "EX", TTL_ONE_SECOND).rejects(new Error("Redis error"));
+
+        expect(redisStore.set(STORE_KEY, CASE_ID, TTL_ONE_SECOND)).to.be.rejectedWith("Redis error");
+
+        expect(redisClientSetStub.calledWith(STORE_KEY, CASE_ID, "EX", TTL_ONE_SECOND)).to.be.true;
+    });
 });
