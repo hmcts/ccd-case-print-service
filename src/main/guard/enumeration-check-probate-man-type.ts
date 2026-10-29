@@ -5,9 +5,9 @@ import { Logger } from "@hmcts/nodejs-logging";
 
 const KEY_PREFIX: string = "probate-man-type";
 
-const PROPERTY_ENUMERATION_CHECK_ENABLED: string = "enumerationCheck.enabled";
-const PROPERTY_ENUMERATION_LIMIT: string = "enumerationCheck.limit";
-const PROPERTY_ENUMERATION_TTL: string = "enumerationCheck.ttl";
+const PROPERTY_ENUMERATION_CHECK_ENABLED: string = "guard.enumerationCheck.enabled";
+const PROPERTY_ENUMERATION_LIMIT: string = "guard.enumerationCheck.limit";
+const PROPERTY_ENUMERATION_TTL: string = "guard.enumerationCheck.ttl";
 
 const DEFAULT_ENUMERATION_LIMIT: number = 1;
 

@@ -18,7 +18,8 @@ redis:
   enabled: REDIS_ENABLED
   host: REDIS_HOST
   port: REDIS_PORT
-enumerationCheck:
-  enabled: ENUMERATION_CHECK_ENABLED
-  limit: ENUMERATION_LIMIT
-  ttl: ENUMERATION_TTL
+guard:
+  enumerationCheck:
+    enabled: ENUMERATION_CHECK_ENABLED
+    limit: ENUMERATION_LIMIT
+    ttl: ENUMERATION_TTL

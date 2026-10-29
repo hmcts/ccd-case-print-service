@@ -4,9 +4,9 @@ import * as sinon from "sinon";
 
 describe("Enumeration check probateManType", () => {
 
-    const PROPERTY_ENUMERATION_CHECK_ENABLED: string = "enumerationCheck.enabled";
-    const PROPERTY_ENUMERATION_CHECK_LIMIT: string = "enumerationCheck.limit";
-    const PROPERTY_ENUMERATION_CHECK_TTL: string = "enumerationCheck.ttl";
+    const PROPERTY_ENUMERATION_CHECK_ENABLED: string = "guard.enumerationCheck.enabled";
+    const PROPERTY_ENUMERATION_CHECK_LIMIT: string = "guard.enumerationCheck.limit";
+    const PROPERTY_ENUMERATION_CHECK_TTL: string = "guard.enumerationCheck.ttl";
 
     const ENUMERATION_LIMIT: number = 10;
     const ENUMERATION_TTL: number = 60;
@@ -40,7 +40,7 @@ describe("Enumeration check probateManType", () => {
             configGetStub.withArgs(PROPERTY_ENUMERATION_CHECK_LIMIT).returns(ENUMERATION_LIMIT);
             configGetStub.withArgs(PROPERTY_ENUMERATION_CHECK_TTL).returns(ENUMERATION_TTL);
 
-            enumerationCheckProbateManType = proxyquire("../../main/security/enumeration-check-probate-man-type", {
+            enumerationCheckProbateManType = proxyquire("../../main/guard/enumeration-check-probate-man-type", {
                 "../store/case-id-store" : { get : storeGetStub, set : storeSetStub },
                 "config" : { has : configHasStub, get : configGetStub },
             });
@@ -233,7 +233,7 @@ describe("Enumeration check probateManType", () => {
             configHasStub = sinon.stub();
             configGetStub = sinon.stub();
 
-            enumerationCheckProbateManType = proxyquire("../../main/security/enumeration-check-probate-man-type", {
+            enumerationCheckProbateManType = proxyquire("../../main/guard/enumeration-check-probate-man-type", {
                 "../store/case-id-store" : { get : storeGetStub, set : storeSetStub },
                 "config" : { has : configHasStub, get : configGetStub },
             });

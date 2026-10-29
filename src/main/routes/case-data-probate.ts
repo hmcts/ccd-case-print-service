@@ -2,7 +2,7 @@ import * as express from "express";
 import * as dateFilter from "nunjucks-date-filter";
 import * as numeralFilter from "nunjucks-numeral-filter";
 import * as validate from "../util/validate";
-import { checkForEnumerationAttempt } from "../security/enumeration-check-probate-man-type";
+import { checkForEnumerationAttempt } from "../guard/enumeration-check-probate-man-type";
 import { getCase } from "../service/case-service";
 import { getProbateCaseDetailsTemplate } from "../service/template-service";
 import { getProbateManLegacyCase } from "../service/probate-man-service";

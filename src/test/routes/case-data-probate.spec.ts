@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { EnumerationAttemptError } from "security/enumeration-attempt-error";
+import { EnumerationAttemptError } from "guard/enumeration-attempt-error";
 import * as express from "express";
 import * as proxyquire from "proxyquire";
 import * as request from "supertest";
@@ -21,7 +21,7 @@ describe("Probate case routes", () => {
     checkForEnumerationAttempt = sinon.stub();
 
     const routeModule: any = proxyquire.noCallThru()("../../main/routes/case-data-probate", {
-      "../security/enumeration-check-probate-man-type": { checkForEnumerationAttempt },
+      "../guard/enumeration-check-probate-man-type": { checkForEnumerationAttempt },
       "../service/case-service": { getCase },
       "../service/probate-man-service": { getProbateManLegacyCase },
       "../service/probate-man-template-service": { getProbateManLegacyCaseTemplate },
