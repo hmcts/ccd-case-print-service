@@ -25,14 +25,13 @@ describe("probate man template service", () => {
           jwt: "hfsjkfdhsk"
         },
         headers: {
-          ServiceAuthorization : serviceAuthorization
+          serviceauthorization: serviceAuthorization
         },
-        get: (header) => {
-          return req.headers[header] || req.headers[header.toLowerCase()];
-        }
+        get: (header) => req.headers[header.toLowerCase()]
       };
       const expectedResult = "Template";
       nock("http://localhost:4104")
+        .matchHeader("serviceauthorization", serviceAuthorization)
         .get("/template/probateManLegacyCase")
         .reply(200, expectedResult);
       const result = await getProbateManLegacyCaseTemplate(req);
