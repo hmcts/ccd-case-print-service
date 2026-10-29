@@ -2,6 +2,7 @@ import bodyParser from "body-parser";
 import { getOrThrow, getOrDefault } from "./util/config";
 import cookieParser from "cookie-parser";
 import csrf from "@dr.pogodin/csurf";
+import { enableAppInsights } from "./app-insights/app-insights";
 import express from "express";
 import expressNunjucks from "express-nunjucks";
 import favicon from "serve-favicon";
@@ -14,9 +15,6 @@ import { importAll } from "./import-all/index";
 import { serviceFilter } from "./service/service-filter";
 import { setJwtCookieAndRedirect } from "./util/set-jwt-cookie-and-redirect";
 
-const enableAppInsights = require("./app-insights/app-insights");
-const expressNunjucksModule = require("express-nunjucks");
-const expressNunjucks = expressNunjucksModule.default || expressNunjucksModule;
 
 enableAppInsights();
 
