@@ -8,8 +8,9 @@ const SERVICE_AUTHORIZATION = "ServiceAuthorization";
 export function getCase(req, jid, ctid, cid) {
   checkCaseId(cid);
   const userId = req.authentication.user.uid;
-  const url = getOrThrow<string>("case_data_store_url") + "/caseworkers/" + userId + "/jurisdictions/" + jid + "/case-types/" + ctid +
-    "/cases/" + cid;
+  const url = getOrThrow<string>("case_data_store_url") + "/caseworkers/" + encodeURIComponent(userId) +
+    "/jurisdictions/" + encodeURIComponent(jid) + "/case-types/" + encodeURIComponent(ctid) +
+    "/cases/" + encodeURIComponent(cid);
   const authorization = req.get(AUTHORIZATION);
   const serviceAuthorization = req.get(SERVICE_AUTHORIZATION);
 

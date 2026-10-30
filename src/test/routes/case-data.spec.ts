@@ -135,6 +135,21 @@ describe("Case data page", () => {
         .get("/jurisdictions/SSCS/case-types/Appeal/cases/12345")
         .expect((res) => expect(res.statusCode).to.equal(401));
     });
+
+    it("should preserve malformed case type characters when forwarding to the datastore", async () => {
+      const caseType = encodeURIComponent("$%£@^&*()_+");
+      const datastore = nock(caseDataStoreUrl)
+        .get(`/caseworkers/1234/jurisdictions/BEFTA_MASTER/case-types/${caseType}/cases/1111222233334444`)
+        .reply(400);
+
+      await request(app)
+        .get(`/jurisdictions/BEFTA_MASTER/case-types/${caseType}/cases/1111222233334444`)
+        .set("Authorization", "abc")
+        .expect(400)
+        .expect((res) => expect(res.body).to.deep.equal({ size: 0 }));
+
+      expect(datastore.isDone()).to.equal(true);
+    });
   });
 
 });
