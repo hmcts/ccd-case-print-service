@@ -1,8 +1,8 @@
 import { expect } from "chai";
 import * as jwt from "jsonwebtoken";
-import * as moment from "moment";
-import * as nock from "nock";
-import * as proxyquire from "proxyquire";
+import moment from "moment";
+import nock from "nock";
+import proxyquire from "proxyquire";
 import * as sinon from "sinon";
 
 describe("service token generator", () => {
@@ -11,18 +11,18 @@ describe("service token generator", () => {
 
   beforeEach(() => {
     const config = {
-      get: sinon.stub(),
+      get: sinon.stub()
     };
     config.get.withArgs("idam.print_service_key").returns("AAAA");
     config.get.withArgs("idam.s2s_url").returns("http://localhost:9999");
     config.get.withArgs("appInsights.enabled").returns(false);
 
     serviceTokenGenerator = proxyquire("../../main/service/service-token-generator", {
-      config,
+      config
     }).serviceTokenGenerator;
 
     proxyquire("../../main/app-insights/app-insights", {
-      config,
+      config
     });
   });
 
