@@ -29,11 +29,9 @@ describe("template service", () => {
           jwt: "hfsjkfdhsk"
         },
         headers: {
-          ServiceAuthorization: "Bearer serviceAuth"
+          serviceauthorization: "Bearer serviceAuth"
         },
-        get: (header) => {
-          return req.headers[header] || req.headers[header.toLowerCase()];
-        }
+        get: (header) => req.headers[header.toLowerCase()]
       };
 
       const result = await getProbateCaseDetailsTemplate(req, "jid", "ctid", "cid", "grant");
@@ -60,11 +58,9 @@ describe("template service", () => {
           jwt: "hfsjkfdhsk"
         },
         headers: {
-          ServiceAuthorization: "Bearer serviceAuth"
+          serviceauthorization: "Bearer serviceAuth"
         },
-        get: (header) => {
-          return req.headers[header] || req.headers[header.toLowerCase()];
-        }
+        get: (header) => req.headers[header.toLowerCase()]
       };
       const expectedError = { status: 500, message: "Internal Server Error" };
       fetch.rejects(expectedError);
