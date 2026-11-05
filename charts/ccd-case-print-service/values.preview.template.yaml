@@ -4,9 +4,6 @@ nodejs:
   ingressAnnotations:
     external-dns.alpha.kubernetes.io/hostname: ${SERVICE_FQDN}
   environment:
-    IDAM_API_URL: https://idam-api.aat.platform.hmcts.net
-    IDAM_AUTHENTICATION_WEB_URL: https://idam-web-public.aat.platform.hmcts.net
-    IDAM_S2S_AUTH: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
-    IDAM_BASE_URL: https://idam-api.aat.platform.hmcts.net
+    IDAM_BASE_URL: https://idam-web-public.aat.platform.hmcts.net
     IDAM_S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
     CASE_DATA_STORE_URL: http://ccd-data-store-api-pr-1260-java
