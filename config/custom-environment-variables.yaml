@@ -23,3 +23,7 @@ guard:
     enabled: ENUMERATION_CHECK_ENABLED
     limit: ENUMERATION_LIMIT
     ttl: ENUMERATION_TTL
+  rateLimit:
+    enabled: RATE_LIMIT_ENABLED
+    requestLimit: RATE_LIMIT_REQUEST_LIMIT
+    windowPeriod: RATE_LIMIT_WINDOW_PERIOD

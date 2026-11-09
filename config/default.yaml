@@ -26,6 +26,10 @@ redis:
   port: 6379
 guard:
   enumerationCheck:
-    enabled: true
-    limit: 2
-    ttl: 3600
+    enabled: false
+    limit: 10
+    ttl: 1800
+  rateLimit:
+    enabled: false
+    requestLimit: 10
+    windowPeriod: 1800

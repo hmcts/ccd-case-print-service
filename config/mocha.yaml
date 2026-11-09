@@ -10,3 +10,13 @@ idam:
 secrets:
   ccd: 
     microservicekey-ccd-ps: "AAAA"
+
+redis:
+  enabled: false
+guard:
+  enumerationCheck:
+    enabled: false
+  rateLimit:
+    enabled: false
+    requestLimit: 1
+    windowPeriod: 1
