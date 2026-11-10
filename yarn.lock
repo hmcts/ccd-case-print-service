@@ -462,13 +462,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.29.7":
-  version: 7.29.7
-  resolution: "@babel/runtime@npm:7.29.7"
-  checksum: 10c0/ca11572f7146b21e0bde6a9ed4bb6a89eafbee5f0944c7eb54d0d8a2dac962c33638a1d611e14faa71dfbb92b4b5f9236232208568a6b7d5c6f3f39ddb91771e
-  languageName: node
-  linkType: hard
-
 "@babel/template@npm:^7.29.7":
   version: 7.29.7
   resolution: "@babel/template@npm:7.29.7"
@@ -513,14 +506,13 @@ __metadata:
   linkType: hard
 
 "@dr.pogodin/csurf@npm:^1.17.1":
-  version: 1.17.1
-  resolution: "@dr.pogodin/csurf@npm:1.17.1"
+  version: 1.18.2
+  resolution: "@dr.pogodin/csurf@npm:1.18.2"
   dependencies:
-    "@babel/runtime": "npm:^7.29.7"
-    cookie: "npm:^1.1.1"
+    cookie: "npm:^2.0.1"
     cookie-signature: "npm:^1.2.2"
     http-errors: "npm:^2.0.1"
-  checksum: 10c0/a2bb0a79961483c9e2e39193fe3bb8fa7784cd2128ded68ab8b67a9e10ea869e0a3156c52e4a0d5c16a4a11de823b313c2361f3f87cf0716c0e0c0bc6ce748e3
+  checksum: 10c0/a16665c00773d2023d0485b53189cd4c89aee2e1862aca45ff51385d680229b5ef68e24674b397cf99db6d835f8102654d77ad4bad3747e4b433c5173eb54803
   languageName: node
   linkType: hard
 
@@ -3841,17 +3833,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie@npm:2.0.2":
+"cookie@npm:2.0.2, cookie@npm:^2.0.1":
   version: 2.0.2
   resolution: "cookie@npm:2.0.2"
   checksum: 10c0/66d33eaa2371c25ead26065d8f753d5e0a87e6cfcd7cc975c86dcd83b6ac961608be49302874d9c95b353275d4c289e32842770e4feb6ac5a7fdad0a65e2816e
-  languageName: node
-  linkType: hard
-
-"cookie@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "cookie@npm:1.1.1"
-  checksum: 10c0/79c4ddc0fcad9c4f045f826f42edf54bcc921a29586a4558b0898277fa89fb47be95bc384c2253f493af7b29500c830da28341274527328f18eba9f58afa112c
   languageName: node
   linkType: hard
 
