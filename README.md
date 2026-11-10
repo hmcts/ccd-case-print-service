@@ -79,7 +79,7 @@ $ yarn suppress-cve
 
 The application uses HTTP, port 3100 by default.
 
-Access to any case data requires an authorised user that is already authenticated via IdAM (and thus, has been granted a Java Web Token (JWT) for the session).
+Access to any case data requires an authorised user that is already authenticated via IdAM (and thus, has been granted a JSON Web Token (JWT) for the session).
 
 Point your browser at http://localhost:3100/jurisdictions/{jid}/case-types/{ctid}/cases/{cid}?jwt={token}, where:
 
