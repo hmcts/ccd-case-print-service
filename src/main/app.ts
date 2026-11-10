@@ -44,13 +44,19 @@ const healthConfig = {
 healthcheck.addTo(appHealth, healthConfig);
 app.use(appHealth);
 
+logger.info("TEMP: After health check config");
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "/public/img/favicon.ico")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
+logger.info("TEMP: After cookie parser config");
+
 expressNunjucks(app);
+
+logger.info("TEMP: After expressNunjucks config");
 
 if (config.get<boolean>("useCSRFProtection")) {
   const csrfOptions = {
@@ -67,6 +73,8 @@ if (config.get<boolean>("useCSRFProtection")) {
   });
 }
 
+logger.info("TEMP: After csrf config");
+
 app.use("/", setJwtCookieAndRedirect);
 app.use("/", authCheckerUserOnlyFilter);
 app.use("/", serviceFilter);
@@ -78,11 +86,15 @@ if (config.get("guard.rateLimit.enabled")) {
 */
 app.use("/", RouterFinder.findAll(path.join(__dirname, "routes")));
 
+logger.info("TEMP: After filters and routes config");
+
 // returning "not found" page for requests with paths not resolved by the router
 app.use((req, res, next) => {
   res.status(404);
   res.render("not-found");
 });
+
+logger.info("TEMP: After not-found config");
 
 // error handler
 app.use((err, req, res, next) => {
@@ -99,3 +111,5 @@ app.use((err, req, res, next) => {
     res.render("error");
   }
 });
+
+logger.info("TEMP: After error handler config");
