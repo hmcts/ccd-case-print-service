@@ -1,7 +1,14 @@
 {% extends "govuk/template.njk" %}
 
+{% set themeColor = "#0b0c0c" %}
+
 {% block pageTitle %}
   CCD Case Print Service
+{% endblock %}
+
+{% block headIcons %}
+  <link rel="icon" sizes="48x48" href="/favicon.ico">
+  <link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="{{ themeColor }}">
 {% endblock %}
 
 {% block head %}
