@@ -44,19 +44,13 @@ const healthConfig = {
 healthcheck.addTo(appHealth, healthConfig);
 app.use(appHealth);
 
-logger.info("TEMP: After health check config");
-
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "/public/img/favicon.ico")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
-logger.info("TEMP: After cookie parser config");
-
 expressNunjucks(app);
-
-logger.info("TEMP: After expressNunjucks config");
 
 if (config.get<boolean>("useCSRFProtection")) {
   const csrfOptions = {
@@ -73,18 +67,23 @@ if (config.get<boolean>("useCSRFProtection")) {
   });
 }
 
-logger.info("TEMP: After csrf config");
+logger.info("TEMP: Before filters and routes config");
 
 app.use("/", setJwtCookieAndRedirect);
+logger.info("TEMP: After setJwtCookieAndRedirect");
 app.use("/", authCheckerUserOnlyFilter);
+logger.info("TEMP: After authCheckerUserOnlyFilter");
 app.use("/", serviceFilter);
+logger.info("TEMP: After serviceFilter");
 /*
 if (config.get("guard.rateLimit.enabled")) {
   logger.debug("Rate limiter enabled");
   app.use("/probateManTypes", createRateLimiter());
 }
 */
+logger.info("TEMP: Before routerfineder");
 app.use("/", RouterFinder.findAll(path.join(__dirname, "routes")));
+logger.info("TEMP: After routerfineder");
 
 logger.info("TEMP: After filters and routes config");
 
@@ -93,8 +92,6 @@ app.use((req, res, next) => {
   res.status(404);
   res.render("not-found");
 });
-
-logger.info("TEMP: After not-found config");
 
 // error handler
 app.use((err, req, res, next) => {
@@ -111,5 +108,3 @@ app.use((err, req, res, next) => {
     res.render("error");
   }
 });
-
-logger.info("TEMP: After error handler config");
