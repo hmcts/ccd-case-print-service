@@ -15,10 +15,14 @@ const router = express.Router();
 
 const logger = Logger.getLogger("case-data-probate");
 
+logger.info("Before filters");
+
 dateFilter.setDefaultFormat("YYYY-MM-DD");
 const env = nunjucks.configure({ autoescape: true });
 env.addFilter("date", dateFilter);
 env.addFilter("money", numeralFilter);
+
+logger.info("Before jurisdictions");
 
 router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid/probate/:tid", (req, res) => {
   logger.warn("GETTING CASE");
@@ -43,6 +47,9 @@ router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid/probate/:tid", (req,
       res.status(error.status).send(error);
     });
 });
+
+logger.info("After jurisdictions");
+logger.info("Before probateManTypes");
 
 router.get("/probateManTypes/:probateManType/cases/:caseId", (req, res) => {
   const probateManCaseType = req.params.probateManType;
@@ -82,5 +89,7 @@ router.get("/probateManTypes/:probateManType/cases/:caseId", (req, res) => {
       res.status(error.status).send(error);
     }
 });
+
+logger.info("After probateManTypes");
 
 module.exports = router;

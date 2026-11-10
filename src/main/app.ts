@@ -67,14 +67,9 @@ if (config.get<boolean>("useCSRFProtection")) {
   });
 }
 
-logger.info("TEMP: Before filters and routes config");
-
 app.use("/", setJwtCookieAndRedirect);
-logger.info("TEMP: After setJwtCookieAndRedirect");
 app.use("/", authCheckerUserOnlyFilter);
-logger.info("TEMP: After authCheckerUserOnlyFilter");
 app.use("/", serviceFilter);
-logger.info("TEMP: After serviceFilter");
 /*
 if (config.get("guard.rateLimit.enabled")) {
   logger.debug("Rate limiter enabled");
@@ -84,8 +79,6 @@ if (config.get("guard.rateLimit.enabled")) {
 logger.info("TEMP: Before routerfineder");
 app.use("/", RouterFinder.findAll(path.join(__dirname, "routes")));
 logger.info("TEMP: After routerfineder");
-
-logger.info("TEMP: After filters and routes config");
 
 // returning "not found" page for requests with paths not resolved by the router
 app.use((req, res, next) => {
