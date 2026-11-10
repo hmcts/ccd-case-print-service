@@ -13,3 +13,4 @@ nodejs:
     REDIS_ENABLED: false
     ENUMERATION_CHECK_ENABLED: false
     RATE_LIMIT_ENABLED: false
+    LOG_LEVEL: debug
