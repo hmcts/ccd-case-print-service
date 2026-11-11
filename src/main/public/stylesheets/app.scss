@@ -10,8 +10,10 @@
 $fa-font-path: './node_modules/font-awesome/fonts';
 $nta-font-path: './node_modules/govuk-frontend/dist/govuk/assets/fonts';
 
-.app-generic-header .govuk-generic-header__homepage-link:not(:focus) {
-  color: var(--govuk-inverse-text-colour, #ffffff);
+@media screen {
+  .app-generic-header .govuk-generic-header__homepage-link:not(:focus) {
+    color: var(--govuk-inverse-text-colour, #ffffff);
+  }
 }
 
 .govuk-template__footer.app-footer {
