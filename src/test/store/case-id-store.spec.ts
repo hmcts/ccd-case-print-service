@@ -54,7 +54,7 @@ describe("case-store-id", () => {
                     };
                 }),
             },
-            "redis/redis-client": { getRedisClient : getRedisClientStub },
+            "../redis/redis-client": { getRedisClient : getRedisClientStub },
         });
     });
 
