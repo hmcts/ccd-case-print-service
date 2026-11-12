@@ -1,31 +1,30 @@
-console.log("case-data-probate: importing express");
-import * as express from "express";
-console.log("case-data-probate: importing dateFilter");
-import * as dateFilter from "nunjucks-date-filter";
-console.log("case-data-probate: importing numeralFilter");
-import * as numeralFilter from "nunjucks-numeral-filter";
-console.log("case-data-probate: importing validate");
-import * as validate from "../util/validate";
-console.log("case-data-probate: importing checkForEnumerationAttempt");
-import { checkForEnumerationAttempt } from "../guard/enumeration-check-probate-man-type";
-console.log("case-data-probate: importing getCase");
-import { getCase } from "../service/case-service";
-console.log("case-data-probate: importing getProbateCaseDetailsTemplate");
-import { getProbateCaseDetailsTemplate } from "../service/template-service";
-console.log("case-data-probate: importing getProbateManLegacyCase");
-import { getProbateManLegacyCase } from "../service/probate-man-service";
-console.log("case-data-probate: importing getProbateManLegacyCaseTemplate");
-import { getProbateManLegacyCaseTemplate } from "../service/probate-man-template-service";
-console.log("case-data-probate: importing Logger");
 import { Logger } from "@hmcts/nodejs-logging";
+const logger = Logger.getLogger("case-data-probate");
 
-console.log("case-data-probate: Setup nunjucks");
+logger.info("case-data-probate: importing express");
+import * as express from "express";
+logger.info("case-data-probate: importing dateFilter");
+import * as dateFilter from "nunjucks-date-filter";
+logger.info("case-data-probate: importing numeralFilter");
+import * as numeralFilter from "nunjucks-numeral-filter";
+logger.info("case-data-probate: importing validate");
+import * as validate from "../util/validate";
+logger.info("case-data-probate: importing checkForEnumerationAttempt");
+import { checkForEnumerationAttempt } from "../guard/enumeration-check-probate-man-type";
+logger.info("case-data-probate: importing getCase");
+import { getCase } from "../service/case-service";
+logger.info("case-data-probate: importing getProbateCaseDetailsTemplate");
+import { getProbateCaseDetailsTemplate } from "../service/template-service";
+logger.info("case-data-probate: importing getProbateManLegacyCase");
+import { getProbateManLegacyCase } from "../service/probate-man-service";
+logger.info("case-data-probate: importing getProbateManLegacyCaseTemplate");
+import { getProbateManLegacyCaseTemplate } from "../service/probate-man-template-service";
+
+logger.info("case-data-probate: Setup nunjucks");
 const nunjucks = require("nunjucks");
 
-console.log("case-data-probate: Setup router");
+logger.info("case-data-probate: Setup router");
 const router = express.Router();
-
-const logger = Logger.getLogger("case-data-probate");
 
 logger.info("Before filters");
 
