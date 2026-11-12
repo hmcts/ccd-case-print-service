@@ -8,6 +8,7 @@ const options: object = {
   extensions: ["ts", "js"],
   recurse: true,
   visit: (obj: any) => {
+    logger.info("Visit: " + obj);
     return (typeof obj === "object" && obj.default !== undefined) ? obj.default : obj;
   },
 };

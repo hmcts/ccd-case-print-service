@@ -11,7 +11,7 @@ import { authCheckerUserOnlyFilter } from "./user/auth-checker-user-only-filter"
 // import { createRateLimiter } from "guard/rate-limit";
 import { Express, Logger } from "@hmcts/nodejs-logging";
 import { Helmet, IConfig as HelmetConfig } from "./modules/helmet";
-import { importAll } from "./import-all/index";
+import { RouterFinder } from "./router/routerFinder";
 import { serviceFilter } from "./service/service-filter";
 import { setJwtCookieAndRedirect } from "./util/set-jwt-cookie-and-redirect";
 
@@ -77,7 +77,7 @@ if (config.get("guard.rateLimit.enabled")) {
 }
 */
 logger.info("TEMP: Before routerfineder");
-app.use("/", importAll(path.join(__dirname, "routes")));
+app.use("/", RouterFinder.findAll(path.join(__dirname, "routes")));
 logger.info("TEMP: After routerfineder");
 
 // returning "not found" page for requests with paths not resolved by the router
