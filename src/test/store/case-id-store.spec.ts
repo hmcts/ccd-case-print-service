@@ -38,6 +38,7 @@ describe("case-store-id", () => {
         redisStoreSetStub = sinon.stub();
 
         caseIdStore = proxyquire("../../main/store/case-id-store", {
+            "../redis/redis-client": { getRedisClient : getRedisClientStub },
             "./memory-store" : {
                 MemoryStore : memoryStoreStub.callsFake(() => {
                     return {
@@ -54,7 +55,6 @@ describe("case-store-id", () => {
                     };
                 }),
             },
-            "../redis/redis-client": { getRedisClient : getRedisClientStub },
         });
     });
 
