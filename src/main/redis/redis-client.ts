@@ -37,7 +37,6 @@ export function getRedisClient(): Redis | null {
 }
 
 function isRedisEnabled(): boolean {
-    logger.info("Redis enabled: %s", config.get(PROPERTY_REDIS_ENABLED));
     return config.get(PROPERTY_REDIS_ENABLED);
 }
 
