@@ -1,9 +1,10 @@
 import { Logger } from "@hmcts/nodejs-logging";
 const logger = Logger.getLogger("redis-client");
 
-/*
-logger.info("Import conifg");
+logger.info("Import config");
+// @ts-ignore
 import * as config from "config";
+/*
 logger.info("Import Redis");
 import { Redis } from "ioredis";
 
