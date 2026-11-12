@@ -1,7 +1,12 @@
-import * as config from "config";
-import * as store from "../store/case-id-store";
-import { EnumerationAttemptError } from "./enumeration-attempt-error";
 import { Logger } from "@hmcts/nodejs-logging";
+const logger = Logger.getLogger("enumeration-check-probate-man-type");
+
+logger.info("Importing config");
+import * as config from "config";
+logger.info("Importing store");
+import * as store from "../store/case-id-store";
+logger.info("Importing EnumerationAttemptError");
+import { EnumerationAttemptError } from "./enumeration-attempt-error";
 
 const KEY_PREFIX: string = "probate-man-type";
 
@@ -11,8 +16,7 @@ const PROPERTY_ENUMERATION_TTL: string = "guard.enumerationCheck.ttl";
 
 const DEFAULT_ENUMERATION_LIMIT: number = 1;
 
-const logger = Logger.getLogger("enumeration-check-probate-man-type");
-
+logger.info("Before functions");
 export function checkForEnumerationAttempt(userId: string, caseType: string, caseId: number): Promise<string> {
     if (isEnumerationCheckEnabled()) {
         return getPreviousCaseId(userId, caseType)
@@ -108,3 +112,5 @@ function logEnumerationAttempt(userId: string, caseType: string, caseId: number,
     logger.error("ENUMERATION ATTEMPT DETECTED - userId: %s, caseType: %s, caseId: %s, previousCaseId: %s, diff: %s",
         userId, caseType, caseId, previousCaseId, diff);
 }
+
+logger.info("After functions");
