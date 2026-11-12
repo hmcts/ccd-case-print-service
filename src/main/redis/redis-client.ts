@@ -4,10 +4,10 @@ const logger = Logger.getLogger("redis-client");
 logger.info("Import config");
 // @ts-ignore
 import * as config from "config";
-/*
 logger.info("Import Redis");
+// @ts-ignore
 import { Redis } from "ioredis";
-
+/*
 const PROPERTY_REDIS_ENABLED = "redis.enabled";
 const PROPERTY_REDIS_HOST = "redis.host";
 const PROPERTY_REDIS_PORT = "redis.port";
