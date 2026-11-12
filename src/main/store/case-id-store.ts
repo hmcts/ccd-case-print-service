@@ -3,12 +3,12 @@ const logger = Logger.getLogger("case-id-store");
 
 logger.info("Import IKeyValueStore");
 import { IKeyValueStore } from "./key-value-store-interface";
-logger.info("Import getRedisClient");
-import { getRedisClient } from "../redis/redis-client";
 logger.info("Import MemoryStore");
 import { MemoryStore } from "./memory-store";
 logger.info("Import Redis");
 import { Redis } from "ioredis";
+logger.info("Import getRedisClient");
+import { getRedisClient } from "../redis/redis-client";
 logger.info("Import RedisStore");
 import { RedisStore } from "./redis-store";
 
