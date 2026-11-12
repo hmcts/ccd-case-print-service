@@ -10,7 +10,7 @@ const PROPERTY_REDIS_ENABLED = "redis.enabled";
 const PROPERTY_REDIS_HOST = "redis.host";
 const PROPERTY_REDIS_PORT = "redis.port";
 
-let redisClient: Redis;
+let redisClient: Redis | null = null;
 
 logger.info("Before functions");
 export function getRedisClient(): Redis | null {
