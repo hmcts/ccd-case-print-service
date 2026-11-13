@@ -1,6 +1,7 @@
 nodejs:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  devmemoryLimits: 1Gi
   ingressAnnotations:
     external-dns.alpha.kubernetes.io/hostname: ${SERVICE_FQDN}
   environment:
