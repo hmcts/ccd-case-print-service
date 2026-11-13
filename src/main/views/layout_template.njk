@@ -1,7 +1,14 @@
 {% extends "govuk/template.njk" %}
 
+{% set themeColor = "#0b0c0c" %}
+
 {% block pageTitle %}
   CCD Case Print Service
+{% endblock %}
+
+{% block headIcons %}
+  <link rel="icon" sizes="48x48" href="/favicon.ico">
+  <link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="{{ themeColor }}">
 {% endblock %}
 
 {% block head %}
@@ -17,9 +24,19 @@
 {% block header %}
   <header class="govuk-template__header {%- if headerClasses %} {{ headerClasses }}{% endif %}" {{- govukAttributes(headerAttributes)}}>
     {% block headerStart %}{% endblock %}
-    {% block govukHeader %}
-      {{ govukHeader() }}
-    {% endblock %}
+    {% set params = {
+      url: "/",
+      logoText: "CCD Case Print Service",
+      classes: "app-generic-header"
+    } %}
+    {% include "govuk/components/generic-header/template.njk" %}
     {% block headerEnd %}{% endblock %}
   </header>
+{% endblock %}
+
+{% block footer %}
+  <footer class="govuk-template__footer app-footer">
+    {% set params = {} %}
+    {% include "govuk/components/footer/template.njk" %}
+  </footer>
 {% endblock %}

@@ -48,7 +48,7 @@ const caching = {cacheControl: true, setHeaders: (res) => res.setHeader("Cache-C
 
 app.use(express.static(path.join(__dirname, "public"), caching));
 app.use("/assets", express.static("node_modules/govuk-frontend/dist/govuk/assets", caching));
-app.use(favicon(path.join("node_modules", "govuk-frontend", "dist", "govuk", "assets", "images", "favicon.ico")));
+app.use(favicon(path.join("src", "favicon.ico")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
