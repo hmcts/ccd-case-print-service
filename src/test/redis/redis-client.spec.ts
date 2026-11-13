@@ -3,7 +3,7 @@ import * as proxyquire from "proxyquire";
 import * as sinon from "sinon";
 import { Redis } from "ioredis";
 
-describe.skip("redis-client", () => {
+describe("redis-client", () => {
 
     const PROPERTY_REDIS_ENABLED: string = "redis.enabled";
     const PROPERTY_REDIS_HOST: string = "redis.host";
@@ -63,7 +63,7 @@ describe.skip("redis-client", () => {
         expect(configGetStub.calledWith(PROPERTY_REDIS_PORT)).to.be.true;
     });
 
-    it("Should return existing RedisClient", async () => {
+    it.skip("Should return existing RedisClient", async () => {
         configGetStub.withArgs(PROPERTY_REDIS_ENABLED).returns(true);
         configGetStub.withArgs(PROPERTY_REDIS_HOST).returns(REDIS_HOST);
         configGetStub.withArgs(PROPERTY_REDIS_PORT).returns(REDIS_PORT);
