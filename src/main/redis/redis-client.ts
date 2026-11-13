@@ -23,16 +23,9 @@ export function getRedisClient(): Redis | null {
         const redisHost: string = getRedisHost();
         const redisPort: number = getRedisPort();
 
-        const redisClient: Redis = new Redis({
-            host: redisHost,
-            port: redisPort,
-        });
+        const redisClient: RedisClient = new RedisClient();
 
-        redisClient
-            .on("error", (err) => logger.error("Redis error: %s", err))
-            .on("connect", () => logger.info("Connected to Redis"));
-
-        return redisClient;
+        return redisClient.getRedis(redisHost, redisPort);
     }
 
     /*
@@ -69,3 +62,23 @@ function getRedisPort(): number {
 }
 
 logger.info("After functions");
+
+class RedisClient {
+
+    public getRedis(redisHost: string, redisPort: number): Redis {
+        logger.info("getRedis");
+
+        const redis: Redis = new Redis({
+            host: redisHost,
+            port: redisPort,
+        });
+
+        redis
+            .on("error", (err) => logger.error("Redis error: %s", err))
+            .on("connect", () => logger.info("Connected to Redis"));
+
+        return redis;
+    }
+}
+
+logger.info("After class");
