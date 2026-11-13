@@ -30,5 +30,6 @@ RUN sleep 1 && yarn install && yarn cache clean
 FROM hmctsprod.azurecr.io/base/node${PLATFORM}:24-alpine AS runtime
 
 COPY --from=build $WORKDIR .
+USER hmcts
 
 EXPOSE 3100
