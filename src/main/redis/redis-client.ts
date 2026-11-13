@@ -20,18 +20,12 @@ export function getRedisClient(): Redis | null {
         return null;
     } else {
         logger.info("Initialising Redis client");
-        // @ts-ignore
         const redisHost: string = getRedisHost();
-        // @ts-ignore
         const redisPort: number = getRedisPort();
 
-        /*
         const redisClient: RedisClient = new RedisClient(redisHost, redisPort);
 
         return redisClient.getRedis();
-        */
-
-        return null;
     }
 
     /*
@@ -52,7 +46,7 @@ export function getRedisClient(): Redis | null {
 function isRedisEnabled(): boolean {
     const isEnabled: boolean = config.get<boolean>(PROPERTY_REDIS_ENABLED);
     logger.info("Redis enabled: %s", isEnabled);
-    return isEnabled;
+    return isEnabled == null ? false : isEnabled;
 }
 
 function getRedisHost(): string {
@@ -69,14 +63,14 @@ function getRedisPort(): number {
 
 logger.info("After functions");
 
-// @ts-ignore
 class RedisClient {
 
-    private readonly redisConnection: Redis;
+    private readonly redisConnection: Redis | null;
 
     constructor(redisHost: string, redisPort: number) {
         logger.info("constructor");
 
+        /*
         this.redisConnection = new Redis({
             host: redisHost,
             port: redisPort,
@@ -85,9 +79,11 @@ class RedisClient {
         this.redisConnection
             .on("error", (err) => logger.error("Redis error: %s", err))
             .on("connect", () => logger.info("Connected to Redis"));
+        */
+        this.redisConnection = null;
     }
 
-    public getRedis(): Redis {
+    public getRedis(): Redis | null {
         return this.redisConnection;
     }
 }
