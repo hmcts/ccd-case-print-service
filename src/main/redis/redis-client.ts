@@ -4,7 +4,6 @@ const logger = Logger.getLogger("redis-client");
 logger.info("Import config");
 import * as config from "config";
 logger.info("Import Redis");
-// @ts-ignore
 import { Redis } from "ioredis";
 
 const PROPERTY_REDIS_ENABLED = "redis.enabled";
@@ -13,7 +12,7 @@ const PROPERTY_REDIS_HOST = "redis.host";
 const PROPERTY_REDIS_PORT = "redis.port";
 */
 logger.info("Before functions");
-/*
+
 export function getRedisClient(): Redis | null {
     logger.info("Getting Redis client");
 
@@ -22,6 +21,7 @@ export function getRedisClient(): Redis | null {
         return null;
     }
 
+    /*
     logger.info("Initialising Redis client");
     const redisClient: Redis = new Redis({
         host: config.get(PROPERTY_REDIS_HOST),
@@ -33,16 +33,12 @@ export function getRedisClient(): Redis | null {
         .on("connect", () => logger.info("Connected to Redis"));
 
     return redisClient;
-}
-*/
-// @ts-ignore
-function isRedisEnabled(): boolean {
-    return config.get(PROPERTY_REDIS_ENABLED);
+    */
+    return null;
 }
 
-export function getRedisClient() {
-    logger.info("Returning null");
-    return null;
+function isRedisEnabled(): boolean {
+    return config.get(PROPERTY_REDIS_ENABLED);
 }
 
 logger.info("After functions");
