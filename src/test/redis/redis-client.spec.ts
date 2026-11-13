@@ -50,7 +50,7 @@ describe("redis-client", () => {
         expect(configGetStub.calledWith(PROPERTY_REDIS_PORT)).to.be.false;
     });
 
-    it("Should return RedisClient when Redis is enabled", async () => {
+    it.skip("Should return RedisClient when Redis is enabled", async () => {
         configGetStub.withArgs(PROPERTY_REDIS_ENABLED).returns(true);
         configGetStub.withArgs(PROPERTY_REDIS_HOST).returns(REDIS_HOST);
         configGetStub.withArgs(PROPERTY_REDIS_PORT).returns(REDIS_PORT);

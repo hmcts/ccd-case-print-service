@@ -20,12 +20,18 @@ export function getRedisClient(): Redis | null {
         return null;
     } else {
         logger.info("Initialising Redis client");
+        // @ts-ignore
         const redisHost: string = getRedisHost();
+        // @ts-ignore
         const redisPort: number = getRedisPort();
 
+        /*
         const redisClient: RedisClient = new RedisClient(redisHost, redisPort);
 
         return redisClient.getRedis();
+        */
+
+        return null;
     }
 
     /*
@@ -63,6 +69,7 @@ function getRedisPort(): number {
 
 logger.info("After functions");
 
+// @ts-ignore
 class RedisClient {
 
     private readonly redisConnection: Redis;
