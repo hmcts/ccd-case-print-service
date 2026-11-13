@@ -25,9 +25,11 @@ export function getRedisClient(): Redis | null {
             port: config.get(PROPERTY_REDIS_PORT),
         });
 
+        /*
         redisClient
             .on("error", (err) => logger.error("Redis error: %s", err))
             .on("connect", () => logger.info("Connected to Redis"));
+        */
 
         return redisClient;
     }
