@@ -2,13 +2,13 @@ import { Logger } from "@hmcts/nodejs-logging";
 const logger = Logger.getLogger("redis-client");
 
 logger.info("Import config");
-// @ts-ignore
 import * as config from "config";
 logger.info("Import Redis");
 // @ts-ignore
 import { Redis } from "ioredis";
-/*
+
 const PROPERTY_REDIS_ENABLED = "redis.enabled";
+/*
 const PROPERTY_REDIS_HOST = "redis.host";
 const PROPERTY_REDIS_PORT = "redis.port";
 */
@@ -34,11 +34,12 @@ export function getRedisClient(): Redis | null {
 
     return redisClient;
 }
-
+*/
+// @ts-ignore
 function isRedisEnabled(): boolean {
     return config.get(PROPERTY_REDIS_ENABLED);
 }
-*/
+
 export function getRedisClient() {
     logger.info("Returning null");
     return null;
