@@ -70,7 +70,6 @@ class RedisClient {
     constructor(redisHost: string, redisPort: number) {
         logger.info("constructor");
 
-        /*
         this.redisConnection = new Redis({
             host: redisHost,
             port: redisPort,
@@ -79,8 +78,6 @@ class RedisClient {
         this.redisConnection
             .on("error", (err) => logger.error("Redis error: %s", err))
             .on("connect", () => logger.info("Connected to Redis"));
-        */
-        this.redisConnection = null;
     }
 
     public getRedis(): Redis | null {
