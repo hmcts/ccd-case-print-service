@@ -7,7 +7,7 @@ import * as request from "supertest";
 import * as sinon from "sinon";
 import { Express } from "express";
 
-describe.skip("rate-limit-app", () => {
+describe("rate-limit-app", () => {
 
     const URL_IDAM_BASE: string = config.get("idam.base_url");
     const URL_IDAM_S2S: string = config.get("idam.s2s_url");

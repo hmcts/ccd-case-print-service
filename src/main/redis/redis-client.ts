@@ -1,88 +1,52 @@
-import { Logger } from "@hmcts/nodejs-logging";
-const logger = Logger.getLogger("redis-client");
-
-logger.info("Import config");
 import * as config from "config";
-logger.info("Import Redis");
+import { Logger } from "@hmcts/nodejs-logging";
 import { Redis } from "ioredis";
 
 const PROPERTY_REDIS_ENABLED: string = "redis.enabled";
 const PROPERTY_REDIS_HOST: string = "redis.host";
 const PROPERTY_REDIS_PORT: string = "redis.port";
 
-logger.info("Before functions");
+const logger = Logger.getLogger("redis-client");
+
+let redisClient: Redis | null = null;
 
 export function getRedisClient(): Redis | null {
-    logger.info("Getting Redis client");
+    logger.debug("Getting Redis client");
 
     if (!isRedisEnabled()) {
-        logger.info("Redis is not enabled");
+        logger.debug("Redis is not enabled");
         return null;
-    } else {
-        logger.info("Initialising Redis client");
-        const redisHost: string = getRedisHost();
-        const redisPort: number = getRedisPort();
-
-        const redisClient: RedisClient = new RedisClient(redisHost, redisPort);
-
-        return redisClient.getRedis();
     }
 
-    /*
-    logger.info("Initialising Redis client");
-    const redisClient: Redis = new Redis({
-        host: config.get(PROPERTY_REDIS_HOST),
-        port: config.get(PROPERTY_REDIS_PORT),
-    });
+    if (redisClient == null) {
+        logger.debug("Initialising Redis client");
+        redisClient = new Redis({
+            host: getRedisHost(),
+            port: getRedisPort(),
+        });
 
-    redisClient
-        .on("error", (err) => logger.error("Redis error: %s", err))
-        .on("connect", () => logger.info("Connected to Redis"));
+        redisClient
+            .on("error", (err) => logger.error("Redis error: %s", err))
+            .on("connect", () => logger.info("Connected to Redis"));
+    }
 
     return redisClient;
-    */
 }
 
 function isRedisEnabled(): boolean {
     const isEnabled: boolean = config.get<boolean>(PROPERTY_REDIS_ENABLED);
-    logger.info("Redis enabled: %s", isEnabled);
+    logger.debug("Redis enabled: %s", isEnabled);
     return isEnabled == null ? false : isEnabled;
 }
 
 function getRedisHost(): string {
     const host: string = config.get<string>(PROPERTY_REDIS_HOST);
-    logger.info("Redis host: %s", host);
+    logger.debug("Redis host: %s", host);
     return host;
 }
 
 function getRedisPort(): number {
     const port: number = config.get<number>(PROPERTY_REDIS_PORT);
-    logger.info("Redis port: %s", port);
+    logger.debug("Redis port: %s", port);
     return port;
 }
-
-logger.info("After functions");
-
-class RedisClient {
-
-    private readonly redisConnection: Redis | null;
-
-    constructor(redisHost: string, redisPort: number) {
-        logger.info("constructor");
-
-        this.redisConnection = new Redis({
-            host: redisHost,
-            port: redisPort,
-        });
-
-        this.redisConnection
-            .on("error", (err) => logger.error("Redis error: %s", err))
-            .on("connect", () => logger.info("Connected to Redis"));
-    }
-
-    public getRedis(): Redis | null {
-        return this.redisConnection;
-    }
-}
-
-logger.info("After class");

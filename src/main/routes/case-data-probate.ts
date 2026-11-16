@@ -1,39 +1,24 @@
-import { Logger } from "@hmcts/nodejs-logging";
-const logger = Logger.getLogger("case-data-probate");
-
-logger.info("case-data-probate: importing express");
 import * as express from "express";
-logger.info("case-data-probate: importing dateFilter");
 import * as dateFilter from "nunjucks-date-filter";
-logger.info("case-data-probate: importing numeralFilter");
 import * as numeralFilter from "nunjucks-numeral-filter";
-logger.info("case-data-probate: importing validate");
 import * as validate from "../util/validate";
-logger.info("case-data-probate: importing checkForEnumerationAttempt");
 import { checkForEnumerationAttempt } from "../guard/enumeration-check-probate-man-type";
-logger.info("case-data-probate: importing getCase");
 import { getCase } from "../service/case-service";
-logger.info("case-data-probate: importing getProbateCaseDetailsTemplate");
 import { getProbateCaseDetailsTemplate } from "../service/template-service";
-logger.info("case-data-probate: importing getProbateManLegacyCase");
 import { getProbateManLegacyCase } from "../service/probate-man-service";
-logger.info("case-data-probate: importing getProbateManLegacyCaseTemplate");
 import { getProbateManLegacyCaseTemplate } from "../service/probate-man-template-service";
+import { Logger } from "@hmcts/nodejs-logging";
 
-logger.info("case-data-probate: Setup nunjucks");
 const nunjucks = require("nunjucks");
 
-logger.info("case-data-probate: Setup router");
 const router = express.Router();
 
-logger.info("Before filters");
+const logger = Logger.getLogger("case-data-probate");
 
 dateFilter.setDefaultFormat("YYYY-MM-DD");
 const env = nunjucks.configure({ autoescape: true });
 env.addFilter("date", dateFilter);
 env.addFilter("money", numeralFilter);
-
-logger.info("Before jurisdictions");
 
 router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid/probate/:tid", (req, res) => {
   logger.warn("GETTING CASE");
@@ -58,9 +43,6 @@ router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid/probate/:tid", (req,
       res.status(error.status).send(error);
     });
 });
-
-logger.info("After jurisdictions");
-logger.info("Before probateManTypes");
 
 router.get("/probateManTypes/:probateManType/cases/:caseId", (req, res) => {
   const probateManCaseType = req.params.probateManType;
@@ -100,7 +82,5 @@ router.get("/probateManTypes/:probateManType/cases/:caseId", (req, res) => {
       res.status(error.status).send(error);
     }
 });
-
-logger.info("After probateManTypes");
 
 module.exports = router;
