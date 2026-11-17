@@ -8,36 +8,25 @@ import * as sinon from "sinon";
 describe("service token generator", () => {
 
   let serviceTokenGenerator;
+  let getOrThrow;
 
   beforeEach(() => {
-    const config = {
-      get: sinon.stub()
-    };
-    config.get.withArgs("secrets.ccd.microservicekey-ccd-ps")
-      .returns(process.env.IDAM_PRINT_SERVICE_KEY || "test-secret");
-    config.get.withArgs("idam.s2s_url").returns("http://localhost:9999");
-    config.get.withArgs("appInsights.enabled").returns(false);
+    getOrThrow = sinon.stub();
+    getOrThrow.withArgs("secrets.ccd.microservicekey-ccd-ps").returns("test-secret");
+    getOrThrow.withArgs("idam.s2s_url").returns("http://localhost:9999");
+    getOrThrow.withArgs("idam.service_name").returns("ccd_ps");
 
     serviceTokenGenerator = proxyquire("../../main/service/service-token-generator", {
-      config
+      "../util/config": { getOrThrow }
     }).serviceTokenGenerator;
-
-    proxyquire("../../main/app-insights/app-insights", {
-      config
-    });
   });
 
   describe("generate()", () => {
     it("should reject when the service key is missing", async () => {
-      const config = {
-        get: sinon.stub()
-      };
-      config.get.withArgs("secrets.ccd.microservicekey-ccd-ps").returns("");
-      config.get.withArgs("idam.s2s_url").returns("http://localhost:9999");
-      config.get.withArgs("idam.service_name").returns("ccd_ps");
+      getOrThrow.withArgs("secrets.ccd.microservicekey-ccd-ps").returns("");
 
       const generator = proxyquire.noPreserveCache()("../../main/service/service-token-generator", {
-        config
+        "../util/config": { getOrThrow }
       }).serviceTokenGenerator;
 
       try {
