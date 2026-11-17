@@ -30,14 +30,14 @@ describe("service token generator", () => {
   describe("generate()", () => {
     it("should reject when the service key is missing", async () => {
       const config = {
-        get: sinon.stub(),
+        get: sinon.stub()
       };
       config.get.withArgs("secrets.ccd.microservicekey-ccd-ps").returns("");
       config.get.withArgs("idam.s2s_url").returns("http://localhost:9999");
       config.get.withArgs("idam.service_name").returns("ccd_ps");
 
       const generator = proxyquire.noPreserveCache()("../../main/service/service-token-generator", {
-        config,
+        config
       }).serviceTokenGenerator;
 
       try {
