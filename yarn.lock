@@ -462,13 +462,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.29.7":
-  version: 7.29.7
-  resolution: "@babel/runtime@npm:7.29.7"
-  checksum: 10c0/ca11572f7146b21e0bde6a9ed4bb6a89eafbee5f0944c7eb54d0d8a2dac962c33638a1d611e14faa71dfbb92b4b5f9236232208568a6b7d5c6f3f39ddb91771e
-  languageName: node
-  linkType: hard
-
 "@babel/template@npm:^7.29.7":
   version: 7.29.7
   resolution: "@babel/template@npm:7.29.7"
@@ -513,14 +506,13 @@ __metadata:
   linkType: hard
 
 "@dr.pogodin/csurf@npm:^1.17.1":
-  version: 1.17.1
-  resolution: "@dr.pogodin/csurf@npm:1.17.1"
+  version: 1.18.2
+  resolution: "@dr.pogodin/csurf@npm:1.18.2"
   dependencies:
-    "@babel/runtime": "npm:^7.29.7"
-    cookie: "npm:^1.1.1"
+    cookie: "npm:^2.0.1"
     cookie-signature: "npm:^1.2.2"
     http-errors: "npm:^2.0.1"
-  checksum: 10c0/a2bb0a79961483c9e2e39193fe3bb8fa7784cd2128ded68ab8b67a9e10ea869e0a3156c52e4a0d5c16a4a11de823b313c2361f3f87cf0716c0e0c0bc6ce748e3
+  checksum: 10c0/a16665c00773d2023d0485b53189cd4c89aee2e1862aca45ff51385d680229b5ef68e24674b397cf99db6d835f8102654d77ad4bad3747e4b433c5173eb54803
   languageName: node
   linkType: hard
 
@@ -2243,9 +2235,9 @@ __metadata:
   linkType: hard
 
 "@tsconfig/recommended@npm:^1.0.13":
-  version: 1.0.13
-  resolution: "@tsconfig/recommended@npm:1.0.13"
-  checksum: 10c0/b0fae7ff8243621da68cd7a259499e1fd536e1aa3b3e3be233d30ab8d5bf046ec3dcc4ff68fc640435f421575e41e56bc735f61a1fe8a47b4475f3f2bf5ed882
+  version: 1.0.14
+  resolution: "@tsconfig/recommended@npm:1.0.14"
+  checksum: 10c0/cc0c19807b5a11d5de7a42ba400274a34d372f9ac3e012e0b48aa1fd6a0aa51834bb918795794d5cfd7fc1700d42e3268fd5799752812af7f59983e8da606993
   languageName: node
   linkType: hard
 
@@ -3279,30 +3271,30 @@ __metadata:
   linkType: hard
 
 "brace-expansion@npm:^1.1.7":
-  version: 1.1.21
-  resolution: "brace-expansion@npm:1.1.21"
+  version: 1.1.22
+  resolution: "brace-expansion@npm:1.1.22"
   dependencies:
     balanced-match: "npm:^1.0.0"
     concat-map: "npm:0.0.1"
-  checksum: 10c0/8f0a68a720f9cb28c2ecaea5cdaf15fafd686d6b6e4e722a81c9d4bd2f68c1fd0619731cac05875d842221eaf4d97d564d329a12eb3c4c22137502fb3c65be8b
+  checksum: 10c0/79efabb798348e385f3ec6a0b1cb86811bd164db7b1a25501067de5c436781c2c74cb3cdcf7f9c0f497a6219e7e0d9ee327341c74aa1eb1f178ba690e7202dea
   languageName: node
   linkType: hard
 
 "brace-expansion@npm:^2.0.2":
-  version: 2.1.7
-  resolution: "brace-expansion@npm:2.1.7"
+  version: 2.1.8
+  resolution: "brace-expansion@npm:2.1.8"
   dependencies:
     balanced-match: "npm:^1.0.0"
-  checksum: 10c0/17ee4194c85b05cde0a7b7c068eeef664440c027116ef42c3d35c13ebabdc9fd3eaf05c5c8a06dd0ca20ae012d652561d8ac2a699daa5cbee1f0510e5134ab4d
+  checksum: 10c0/72e79fbb273a10ec3d01f45a09a4fb08344f1bac88477a1664401cd1b7730887e755a094b012a2487e3007ad73bef5fa54efb25aef389d7f41268cb137b857d8
   languageName: node
   linkType: hard
 
 "brace-expansion@npm:^5.0.8, brace-expansion@npm:^5.0.9":
-  version: 5.0.12
-  resolution: "brace-expansion@npm:5.0.12"
+  version: 5.0.13
+  resolution: "brace-expansion@npm:5.0.13"
   dependencies:
     balanced-match: "npm:^4.0.2"
-  checksum: 10c0/a40ac64d3bdb5bb222456514d3633c1f627f03b844f509c69e70f98b78be0ce85e21b44bbfecdd0ddd4cc0855ca4242b41ea96ddccf88c7c3c7a84405474bb3a
+  checksum: 10c0/80420a1d567db7fa3214e2d49cd28ff8aa89dbb9a889bf3e449372dd72cdcec5267b451a5ff6fcaec1dd8819a88fb3d682e01c63812a8220881e305852b07f60
   languageName: node
   linkType: hard
 
@@ -3465,7 +3457,7 @@ __metadata:
     chai-as-promised: "npm:^8.0.2"
     code-point-at: "npm:^2.0.0"
     config: "npm:^4.4.2"
-    cookie: "npm:2.0.1"
+    cookie: "npm:2.0.2"
     cookie-parser: "npm:^1.4.7"
     debug: "npm:^4.4.3"
     es6-promisify: "npm:^7.0.0"
@@ -3841,17 +3833,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie@npm:2.0.1":
-  version: 2.0.1
-  resolution: "cookie@npm:2.0.1"
-  checksum: 10c0/dcf3bd6ec9d0f4f32be7575e23242866cb53be55fc3d4cf36215638596661cec1327a3b4ca286ba15eba8f2abd443e422b8c5f708af4ea9f75b4d3dedc67ee4c
-  languageName: node
-  linkType: hard
-
-"cookie@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "cookie@npm:1.1.1"
-  checksum: 10c0/79c4ddc0fcad9c4f045f826f42edf54bcc921a29586a4558b0898277fa89fb47be95bc384c2253f493af7b29500c830da28341274527328f18eba9f58afa112c
+"cookie@npm:2.0.2, cookie@npm:^2.0.1":
+  version: 2.0.2
+  resolution: "cookie@npm:2.0.2"
+  checksum: 10c0/66d33eaa2371c25ead26065d8f753d5e0a87e6cfcd7cc975c86dcd83b6ac961608be49302874d9c95b353275d4c289e32842770e4feb6ac5a7fdad0a65e2816e
   languageName: node
   linkType: hard
 
@@ -7166,17 +7151,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qs@npm:^6.14.0, qs@npm:^6.14.1":
-  version: 6.16.0
-  resolution: "qs@npm:6.16.0"
-  dependencies:
-    es-define-property: "npm:^1.0.1"
-    side-channel: "npm:^1.1.1"
-  checksum: 10c0/eb3e31992fbd70e31a1791e571ed817d70975de7d3bfcbbbec93d77d1dd305877e9e8fdbcc62303c228ee5c3606685622cd6231c042dbc4790bb4e7c65fcbe18
-  languageName: node
-  linkType: hard
-
-"qs@npm:^6.16.1":
+"qs@npm:^6.14.0, qs@npm:^6.14.1, qs@npm:^6.16.1":
   version: 6.17.1
   resolution: "qs@npm:6.17.1"
   dependencies:
