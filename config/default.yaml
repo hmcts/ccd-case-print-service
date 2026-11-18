@@ -20,10 +20,12 @@ secrets:
   ccd:
     microservicekey-ccd-ps: AAAAAAAAAAAAAAAA
     AppInsightsInstrumentationKey: "some-key"
+    case-print-service-managed-redis-host: localhost
+    case-print-service-managed-redis-port: 6379
+    case-print-service-managed-redis-primary-access-key:
 redis:
   enabled: false
-  host: localhost
-  port: 6379
+  tlsEnabled: false
 guard:
   enumerationCheck:
     enabled: false

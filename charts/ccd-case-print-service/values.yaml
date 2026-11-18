@@ -38,3 +38,6 @@ nodejs:
       secrets:
         - microservicekey-ccd-ps
         - AppInsightsInstrumentationKey
+        - case-print-service-managed-redis-host
+        - case-print-service-managed-redis-port
+        - case-print-service-managed-redis-primary-access-key
