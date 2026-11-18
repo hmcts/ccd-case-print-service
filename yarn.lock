@@ -269,13 +269,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@azure/msal-common@npm:16.13.0":
-  version: 16.13.0
-  resolution: "@azure/msal-common@npm:16.13.0"
-  checksum: 10c0/cc2857f24bae5ac9693760a9b23c5c6f19a86ae5df16d236e85616a545e6bb15a8b7a587df9c024b43a5386485a84b662574c42cffafef9746e56135f61f654c
-  languageName: node
-  linkType: hard
-
 "@azure/msal-common@npm:16.14.0":
   version: 16.14.0
   resolution: "@azure/msal-common@npm:16.14.0"
@@ -283,13 +276,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@azure/msal-common@npm:16.15.0":
+  version: 16.15.0
+  resolution: "@azure/msal-common@npm:16.15.0"
+  checksum: 10c0/591323eb7c169252744b8c955438903f06ca271cc2b1f3f3c63948a4d0f3bb17ef3b214197ca8883125a6ab3a5e527652c5d1190332412ede48a76db97563dc4
+  languageName: node
+  linkType: hard
+
 "@azure/msal-node@npm:^5.1.5":
-  version: 5.6.0
-  resolution: "@azure/msal-node@npm:5.6.0"
+  version: 7.1.2
+  resolution: "@azure/msal-node@npm:7.1.2"
   dependencies:
-    "@azure/msal-common": "npm:16.13.0"
+    "@azure/msal-common": "npm:16.15.0"
     jsonwebtoken: "npm:^9.0.0"
-  checksum: 10c0/57e788bb884aa032b66ecfa339c4660b20e63ec91f25774db47b2e043ba6d5f969d66cd80c24bd4f2735388cef6acc2aba79a9b86da18aed2dbe856c88f49df2
+  checksum: 10c0/fa554cdce9fa9b5993311492a23cd807f4a0a2aa28559720d6277a80d1f2778a1bac75fddf3ef8367256a143c0a805f524bfb64e9a5e752086cc710f3f87160b
   languageName: node
   linkType: hard
 
@@ -2235,9 +2235,9 @@ __metadata:
   linkType: hard
 
 "@tsconfig/recommended@npm:^1.0.13":
-  version: 1.0.13
-  resolution: "@tsconfig/recommended@npm:1.0.13"
-  checksum: 10c0/b0fae7ff8243621da68cd7a259499e1fd536e1aa3b3e3be233d30ab8d5bf046ec3dcc4ff68fc640435f421575e41e56bc735f61a1fe8a47b4475f3f2bf5ed882
+  version: 1.0.14
+  resolution: "@tsconfig/recommended@npm:1.0.14"
+  checksum: 10c0/cc0c19807b5a11d5de7a42ba400274a34d372f9ac3e012e0b48aa1fd6a0aa51834bb918795794d5cfd7fc1700d42e3268fd5799752812af7f59983e8da606993
   languageName: node
   linkType: hard
 
@@ -3271,30 +3271,30 @@ __metadata:
   linkType: hard
 
 "brace-expansion@npm:^1.1.7":
-  version: 1.1.21
-  resolution: "brace-expansion@npm:1.1.21"
+  version: 1.1.22
+  resolution: "brace-expansion@npm:1.1.22"
   dependencies:
     balanced-match: "npm:^1.0.0"
     concat-map: "npm:0.0.1"
-  checksum: 10c0/8f0a68a720f9cb28c2ecaea5cdaf15fafd686d6b6e4e722a81c9d4bd2f68c1fd0619731cac05875d842221eaf4d97d564d329a12eb3c4c22137502fb3c65be8b
+  checksum: 10c0/79efabb798348e385f3ec6a0b1cb86811bd164db7b1a25501067de5c436781c2c74cb3cdcf7f9c0f497a6219e7e0d9ee327341c74aa1eb1f178ba690e7202dea
   languageName: node
   linkType: hard
 
 "brace-expansion@npm:^2.0.2":
-  version: 2.1.7
-  resolution: "brace-expansion@npm:2.1.7"
+  version: 2.1.8
+  resolution: "brace-expansion@npm:2.1.8"
   dependencies:
     balanced-match: "npm:^1.0.0"
-  checksum: 10c0/17ee4194c85b05cde0a7b7c068eeef664440c027116ef42c3d35c13ebabdc9fd3eaf05c5c8a06dd0ca20ae012d652561d8ac2a699daa5cbee1f0510e5134ab4d
+  checksum: 10c0/72e79fbb273a10ec3d01f45a09a4fb08344f1bac88477a1664401cd1b7730887e755a094b012a2487e3007ad73bef5fa54efb25aef389d7f41268cb137b857d8
   languageName: node
   linkType: hard
 
 "brace-expansion@npm:^5.0.8, brace-expansion@npm:^5.0.9":
-  version: 5.0.12
-  resolution: "brace-expansion@npm:5.0.12"
+  version: 5.0.13
+  resolution: "brace-expansion@npm:5.0.13"
   dependencies:
     balanced-match: "npm:^4.0.2"
-  checksum: 10c0/a40ac64d3bdb5bb222456514d3633c1f627f03b844f509c69e70f98b78be0ce85e21b44bbfecdd0ddd4cc0855ca4242b41ea96ddccf88c7c3c7a84405474bb3a
+  checksum: 10c0/80420a1d567db7fa3214e2d49cd28ff8aa89dbb9a889bf3e449372dd72cdcec5267b451a5ff6fcaec1dd8819a88fb3d682e01c63812a8220881e305852b07f60
   languageName: node
   linkType: hard
 
@@ -7151,17 +7151,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qs@npm:^6.14.0, qs@npm:^6.14.1":
-  version: 6.16.0
-  resolution: "qs@npm:6.16.0"
-  dependencies:
-    es-define-property: "npm:^1.0.1"
-    side-channel: "npm:^1.1.1"
-  checksum: 10c0/eb3e31992fbd70e31a1791e571ed817d70975de7d3bfcbbbec93d77d1dd305877e9e8fdbcc62303c228ee5c3606685622cd6231c042dbc4790bb4e7c65fcbe18
-  languageName: node
-  linkType: hard
-
-"qs@npm:^6.16.1":
+"qs@npm:^6.14.0, qs@npm:^6.14.1, qs@npm:^6.16.1":
   version: 6.17.1
   resolution: "qs@npm:6.17.1"
   dependencies:
