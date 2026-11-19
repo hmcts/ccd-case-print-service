@@ -38,6 +38,7 @@ nodejs:
       secrets:
         - microservicekey-ccd-ps
         - AppInsightsInstrumentationKey
-        - case-print-service-managed-redis-host
-        - case-print-service-managed-redis-port
-        - case-print-service-managed-redis-primary-access-key
+        # The following redis secrets will be uncommented once the redis infrastructure has been created
+        # - case-print-service-managed-redis-host
+        # - case-print-service-managed-redis-port
+        # - case-print-service-managed-redis-primary-access-key
