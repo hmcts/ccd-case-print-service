@@ -25,7 +25,7 @@ The following environment variables are required:
 
 | Name | Default | Description |
 |------|---------|-------------|
-| IDAM_BASE_URL | - | Base URL for IdAM's User API service (idam-app). `http://localhost:4501` for the dockerised local instance or tunnelled `dev` instance. |
+| IDAM_BASE_URL | - | Base URL for IdAM's User web public (idam-web-public). `http://localhost:9002` for the dockerised local instance or tunnelled `dev` instance. |
 | IDAM_S2S_URL | - | Base URL for IdAM's S2S API service (service-auth-provider). `http://localhost:4502` for the dockerised local instance or tunnelled `dev` instance. |
 | IDAM_PRINT_SERVICE_KEY | - | Print Service's IdAM S2S micro-service secret key. This must match the IdAM instance it's being run against. |
 | CASE_DATA_STORE_URL | - | Base URL for the Case Data Store service. `http://localhost:4452` for the dockerised local instance. |
