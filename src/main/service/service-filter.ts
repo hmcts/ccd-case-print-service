@@ -8,7 +8,8 @@ export const SERVICE_AUTHORIZATION = "ServiceAuthorization";
 export const serviceFilter = (req, res, next) => {
     serviceTokenGenerator()
         .then((t) => {
-            req.headers[SERVICE_AUTHORIZATION] = t;
+            // req.get() only reads lower-case keys, where Node also puts the caller's own header; overwrite it.
+            req.headers[SERVICE_AUTHORIZATION.toLowerCase()] = t;
             next();
         })
         .catch((error) => {

@@ -44,10 +44,25 @@ describe("serviceFilter", () => {
       });
     });
 
-    it("should set service auth token in request", (done) => {
+    // Express's req.get("ServiceAuthorization") only reads the lower-case key, as Node stores incoming headers.
+    it("should set service auth token under the lower-case header key read by req.get", (done) => {
       filter(req, res, () => {
         try {
-          expect(req.headers.ServiceAuthorization).to.equal(serviceAuthToken);
+          expect(req.headers.serviceauthorization).to.equal(serviceAuthToken);
+          expect(req.headers).to.not.have.property("ServiceAuthorization");
+          done();
+        } catch (e) {
+          done(e);
+        }
+      });
+    });
+
+    it("should overwrite the caller's incoming service auth header", (done) => {
+      req.headers.serviceauthorization = "callerServiceToken";
+
+      filter(req, res, () => {
+        try {
+          expect(req.headers.serviceauthorization).to.equal(serviceAuthToken);
           done();
         } catch (e) {
           done(e);
