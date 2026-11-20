@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import * as nock from "nock";
-import * as proxyquire from "proxyquire";
+import nock from "nock";
+import proxyquire from "proxyquire";
 import * as sinon from "sinon";
 
 describe("probate man service", () => {
@@ -11,11 +11,11 @@ describe("probate man service", () => {
 
   beforeEach(() => {
     const config = {
-      get: sinon.stub(),
+      get: sinon.stub()
     };
     config.get.withArgs("case_data_probate_template_url").returns("http://localhost:4104");
     getProbateManLegacyCase = proxyquire("../../main/service/probate-man-service", {
-      config,
+      config
     }).getProbateManLegacyCase;
   });
 
@@ -24,8 +24,8 @@ describe("probate man service", () => {
       const req = {
         get: sinon.stub(),
         headers: {
-          ServiceAuthorization : serviceAuthorization,
-        },
+          ServiceAuthorization : serviceAuthorization
+        }
       };
       req.get.withArgs("Authorization").returns(authorization);
       const expectedResult = {id: 1};
@@ -42,8 +42,8 @@ describe("probate man service", () => {
     const req = {
       get: sinon.stub(),
       headers: {
-        ServiceAuthorization : serviceAuthorization,
-      },
+        ServiceAuthorization : serviceAuthorization
+      }
     };
     req.get.withArgs("Authorization").returns(authorization);
     const expectedStatus = 400;
@@ -52,7 +52,7 @@ describe("probate man service", () => {
 
     try {
       await getProbateManLegacyCase(req, "CAVEAT", "A1");
-    } catch (error) {
+    } catch (error: any) {
       expect(error.status).to.deep.equal(expectedStatus);
       expect(error.error).to.deep.equal(expectedError);
       expect(error.message).to.deep.equal(expectedMessage);
@@ -63,8 +63,8 @@ describe("probate man service", () => {
     const req = {
       get: sinon.stub(),
       headers: {
-        ServiceAuthorization : serviceAuthorization,
-      },
+        ServiceAuthorization : serviceAuthorization
+      }
     };
     req.get.withArgs("Authorization").returns(authorization);
     const expectedResult = {id: 79927398713};
