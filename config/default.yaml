@@ -20,3 +20,18 @@ secrets:
   ccd:
     microservicekey-ccd-ps: AAAAAAAAAAAAAAAA
     AppInsightsInstrumentationKey: "some-key"
+    case-print-service-managed-redis-host: localhost
+    case-print-service-managed-redis-port: 6379
+    case-print-service-managed-redis-primary-access-key:
+redis:
+  enabled: false
+  tlsEnabled: false
+guard:
+  enumerationCheck:
+    enabled: false
+    limit: 10
+    ttl: 1800
+  rateLimit:
+    enabled: false
+    requestLimit: 10
+    windowPeriod: 1800

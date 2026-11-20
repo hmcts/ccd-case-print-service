@@ -7,7 +7,6 @@ import { SERVICE_AUTHORIZATION } from "../service/service-filter";
 export function getProbateManLegacyCase(req, probateManType, id) {
   const url = getOrThrow<string>("case_data_probate_template_url") + "/probateManTypes/" + probateManType + "/cases/" + id;
   const authorization = req.get(userReqAuth.AUTHORIZATION);
-  validate.checkCaseId(id);
   return fetch(url, {
     headers: {
       "Authorization": authorization,

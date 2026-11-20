@@ -8,6 +8,7 @@ import favicon from "serve-favicon";
 import * as healthcheck from "@hmcts/nodejs-healthcheck";
 import path from "node:path";
 import { authCheckerUserOnlyFilter } from "./user/auth-checker-user-only-filter";
+import { createRateLimiter } from "guard/rate-limit";
 import { Express, Logger } from "@hmcts/nodejs-logging";
 import { Helmet, IConfig as HelmetConfig } from "./modules/helmet";
 import { importAll } from "./import-all/index";
@@ -75,6 +76,10 @@ if (getOrDefault<boolean>("useCSRFProtection", false) === true) {
 app.use("/", setJwtCookieAndRedirect);
 app.use("/", authCheckerUserOnlyFilter);
 app.use("/", serviceFilter);
+if (getOrDefault<boolean>("guard.rateLimit.enabled", false)) {
+  logger.debug("Rate limiter enabled");
+  app.use("/probateManTypes", createRateLimiter());
+}
 app.use("/", importAll(path.join(__dirname, "routes")));
 
 // returning "not found" page for requests with paths not resolved by the router
