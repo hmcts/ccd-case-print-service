@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import * as nock from "nock";
-import * as proxyquire from "proxyquire";
+import nock from "nock";
+import proxyquire from "proxyquire";
 import * as sinon from "sinon";
 
 describe("case service", () => {
@@ -10,16 +10,16 @@ describe("case service", () => {
   const req = {
     authentication: {
         user: {
-            uid : "1234",
-        },
+            uid : "1234"
+        }
     },
     cookies: {
-      jwt: "hfsjkfdhsk",
+      jwt: "hfsjkfdhsk"
     },
     get: sinon.stub(),
     headers: {
-      ServiceAuthorization : serviceAuthorization,
-    },
+      ServiceAuthorization : serviceAuthorization
+    }
   };
 
   const expectedErrorStatus = 400;
@@ -27,12 +27,13 @@ describe("case service", () => {
   const expectedErrorMessage = "Case ID must be a valid number";
 
   beforeEach(() => {
-    const config = {
-      get: sinon.stub(),
+    const appConfig = {
+      getOrThrow: sinon.stub()
     };
-    config.get.withArgs("case_data_store_url").returns("http://localhost:4104");
+    appConfig.getOrThrow.withArgs("case_data_store_url").returns("http://localhost:4104");
+
     getCase = proxyquire("../../main/service/case-service", {
-      config,
+      "../util/config": appConfig
     }).getCase;
   });
 
@@ -60,7 +61,7 @@ describe("case service", () => {
         const cid = "1A";
         try {
             await getCase(req, jid, ctid, cid);
-        } catch (error) {
+        } catch (error: any) {
             expect(error.status).to.deep.equal(expectedErrorStatus);
             expect(error.error).to.deep.equal(expectedError);
             expect(error.message).to.deep.equal(expectedErrorMessage);

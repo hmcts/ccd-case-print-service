@@ -1,9 +1,9 @@
 import { expect } from "chai";
 import { EnumerationAttemptError } from "guard/enumeration-attempt-error";
-import * as express from "express";
-import * as proxyquire from "proxyquire";
-import * as request from "supertest";
-import * as sinon from "sinon";
+import express from "express";
+import proxyquire from "proxyquire";
+import request from "supertest";
+import sinon from "sinon";
 
 describe("Probate case routes", () => {
   let getCase: sinon.SinonStub;
@@ -25,7 +25,7 @@ describe("Probate case routes", () => {
       "../service/case-service": { getCase },
       "../service/probate-man-service": { getProbateManLegacyCase },
       "../service/probate-man-template-service": { getProbateManLegacyCaseTemplate },
-      "../service/template-service": { getProbateCaseDetailsTemplate },
+      "../service/template-service": { getProbateCaseDetailsTemplate }
     });
     router = routeModule.default || routeModule;
   });
