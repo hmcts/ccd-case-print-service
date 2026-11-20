@@ -43,18 +43,18 @@ describe("case-store-id", () => {
                 MemoryStore : memoryStoreStub.callsFake(() => {
                     return {
                         get : memoryStoreGetStub,
-                        set : memoryStoreSetStub,
+                        set : memoryStoreSetStub
                     };
-                }),
+                })
             },
             "./redis-store" : {
                 RedisStore : redisStoreStub.callsFake(() => {
                     return {
                         get : redisStoreGetStub,
-                        set : redisStoreSetStub,
+                        set : redisStoreSetStub
                     };
-                }),
-            },
+                })
+            }
         });
     });
 

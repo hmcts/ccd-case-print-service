@@ -12,11 +12,11 @@ let store: IKeyValueStore | null = null;
 function getStore(): IKeyValueStore {
     logger.debug("Getting store");
 
-    if (store == null) {
+    if (store === null) {
         logger.debug("Initialising store");
         const redisClient: Redis | null = getRedisClient();
 
-        if (redisClient == null) {
+        if (redisClient === null) {
             logger.debug("Using memory store");
             store = new MemoryStore();
         } else {

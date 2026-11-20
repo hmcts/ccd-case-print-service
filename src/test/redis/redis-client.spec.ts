@@ -39,10 +39,10 @@ describe("redis-client", () => {
             ioredis: {
                 Redis : redisClientStub.callsFake(() => {
                     return {
-                        on : redisClientOnStub,
+                        on : redisClientOnStub
                     };
-                }),
-            },
+                })
+            }
         });
     });
 
@@ -183,7 +183,7 @@ describe("redis-client", () => {
             host: REDIS_HOST,
             password: expectedKey,
             port: REDIS_PORT,
-            tls: expectedTlsSettings,
+            tls: expectedTlsSettings
         };
     }
 });

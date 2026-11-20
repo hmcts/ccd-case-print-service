@@ -17,7 +17,7 @@ export class MemoryStore implements IKeyValueStore {
         }
 
         logger.debug("Entry found in memory store - key: %s", key);
-        if (result.expiresAt != null && result.expiresAt < Date.now()) {
+        if (result.expiresAt !== null && result.expiresAt < Date.now()) {
             logger.debug("Entry in memory store has expired - key: %s", key);
             this.caseIdData.delete(key);
             return Promise.resolve(null);
@@ -28,10 +28,10 @@ export class MemoryStore implements IKeyValueStore {
 
     public set(key: string, value: number, ttl: number | null): Promise<string> {
         const valueStr: string = value.toString();
-        const expiresDateTime: number | null = ttl == null ? null : Date.now() + ttl * 1000;
+        const expiresDateTime: number | null = ttl === null ? null : Date.now() + ttl * 1000;
 
         logger.debug("Adding/updating entry in memory store - key: %s, value: %s, ttl: %s",
-            key, valueStr, expiresDateTime == null ? "null" : expiresDateTime);
+            key, valueStr, expiresDateTime === null ? "null" : expiresDateTime);
         this.caseIdData.set(key, { value: valueStr, expiresAt: expiresDateTime});
 
         return Promise.resolve("OK");

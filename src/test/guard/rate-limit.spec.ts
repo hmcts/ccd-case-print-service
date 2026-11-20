@@ -26,7 +26,7 @@ describe("rate-limit", () => {
         rateLimit = proxyquire("../../main/guard/rate-limit", {
             "config": { get: configGetStub },
             "express-rate-limit": { rateLimit: rateLimitStub },
-            "redis/redis-client": { getRedisClient: getRedisClientStub },
+            "redis/redis-client": { getRedisClient: getRedisClientStub }
         });
     });
 

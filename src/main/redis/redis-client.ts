@@ -21,14 +21,14 @@ export function getRedisClient(): Redis | null {
         return null;
     }
 
-    if (redisClient == null) {
+    if (redisClient === null) {
         logger.debug("Initialising Redis client");
 
         redisClient = new Redis({
             host: getRedisHost(),
             password: getRedisKey(),
             port: getRedisPort(),
-            tls: getRedisTlsSettings(),
+            tls: getRedisTlsSettings()
         });
 
         redisClient
@@ -42,7 +42,7 @@ export function getRedisClient(): Redis | null {
 function isRedisEnabled(): boolean {
     const isEnabled: boolean = config.get<boolean>(PROPERTY_REDIS_ENABLED);
     logger.debug("Redis enabled: %s", isEnabled);
-    return isEnabled == null ? false : isEnabled;
+    return isEnabled === null ? false : isEnabled;
 }
 
 function getRedisHost(): string {
@@ -59,14 +59,14 @@ function getRedisPort(): number {
 
 function getRedisKey(): string | undefined {
     const key: string | null = config.get<string>(PROPERTY_REDIS_KEY);
-    logger.debug("Redis key: %s", key == null ? "<null>" : "<redacted>");
-    return key == null ? undefined : key;
+    logger.debug("Redis key: %s", key === null ? "<null>" : "<redacted>");
+    return key === null ? undefined : key;
 }
 
 function isRedisTlsEnabled(): boolean {
     const isTlsEnabled: boolean = config.get<boolean>(PROPERTY_REDIS_TLS_ENABLED);
     logger.debug("Redis TLS enabled: %s", isTlsEnabled);
-    return isTlsEnabled == null ? false : isTlsEnabled;
+    return isTlsEnabled === null ? false : isTlsEnabled;
 }
 
 function getRedisTlsSettings(): ConnectionOptions | undefined {

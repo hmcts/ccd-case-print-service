@@ -18,10 +18,10 @@ export const createRateLimiter = (): RequestHandler => {
         limit: getRequestLimit(),
         logger: {
             error: (error, message?: string) => logger.error(message || "Rate limit error", error),
-            warn: (error, message?: string) => logger.warn(message || error),
+            warn: (error, message?: string) => logger.warn(message || error)
         },
         store: getStore(),
-        windowMs: getWindowPeriod(),
+        windowMs: getWindowPeriod()
     });
 };
 
@@ -50,7 +50,7 @@ function createKey(request: AppRequest): string {
 function getStore(): RedisStore | undefined {
     const redisClient = getRedisClient();
 
-    if (redisClient == null) {
+    if (redisClient === null) {
         logger.debug("Rate limit using memory store");
         return undefined;
     }
@@ -58,6 +58,6 @@ function getStore(): RedisStore | undefined {
     logger.debug("Rate limit using Redis store");
     return new RedisStore({
         prefix: "",
-        sendCommand: (command: string, ...args: string[]) => redisClient.call(command, ...args) as Promise<RedisReply>,
+        sendCommand: (command: string, ...args: string[]) => redisClient.call(command, ...args) as Promise<RedisReply>
     });
 }

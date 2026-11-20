@@ -20,7 +20,7 @@ export function checkForEnumerationAttempt(userId: string, caseType: string, cas
             logger.debug("Checking for enumeration attempt - userId: %s, caseType: %s, caseId: %s",
                 userId, caseType, caseId);
 
-            if (previousCaseId == null) {
+            if (previousCaseId === null) {
                 logger.debug("No previous caseId found, store current caseId - userId: %s, caseType: %s, caseId: %s",
                     userId, caseType, caseId);
                 return updatePreviousCaseId(userId, caseType, caseId);

@@ -42,7 +42,7 @@ describe("Enumeration check probateManType", () => {
 
             enumerationCheckProbateManType = proxyquire("../../main/guard/enumeration-check-probate-man-type", {
                 "../store/case-id-store" : { get : storeGetStub, set : storeSetStub },
-                "config" : { has : configHasStub, get : configGetStub },
+                "config" : { has : configHasStub, get : configGetStub }
             });
         });
 
@@ -235,7 +235,7 @@ describe("Enumeration check probateManType", () => {
 
             enumerationCheckProbateManType = proxyquire("../../main/guard/enumeration-check-probate-man-type", {
                 "../store/case-id-store" : { get : storeGetStub, set : storeSetStub },
-                "config" : { has : configHasStub, get : configGetStub },
+                "config" : { has : configHasStub, get : configGetStub }
             });
         });
 

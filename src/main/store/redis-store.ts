@@ -18,7 +18,7 @@ export class RedisStore implements IKeyValueStore {
     }
 
     public set(key: string, value: number, ttl: number | null): Promise<string> {
-        if (ttl == null) {
+        if (ttl === null) {
             logger.debug("Adding/updating redis entry - key: %s, value: %s", key, value);
             return this.redisClient.set(key, value)
                 .catch((error) => {

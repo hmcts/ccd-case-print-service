@@ -50,7 +50,7 @@ describe("rate-limit-app", () => {
             configGetStub.withArgs(PROPERTY_RATE_LIMIT_ENABLED).returns(true);
 
             app = proxyquire("../../main/app.ts", {
-                config: { get: configGetStub },
+                config: { get: configGetStub }
             }).app;
         });
 
@@ -155,7 +155,7 @@ describe("rate-limit-app", () => {
             configGetStub.withArgs(PROPERTY_RATE_LIMIT_ENABLED).returns(false);
 
             app = proxyquire("../../main/app.ts", {
-                config: { get: configGetStub },
+                config: { get: configGetStub }
             }).app;
         });
 
