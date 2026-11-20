@@ -9,7 +9,7 @@ security:
 idam:
   base_url: http://localhost:5000
   s2s_url: http://localhost:4502
-  print_service_key: AAAAAAAAAAAAAAAA
+  print_service_key: ""
   service_name: ccd_ps
 case_data_store_url: http://localhost:4452
 case_data_probate_template_url: http://localhost:4104
@@ -18,5 +18,5 @@ appInsights:
   roleName: "ccd-case-print-service"
 secrets:
   ccd:
-    microservicekey-ccd-ps: AAAAAAAAAAAAAAAA
+    microservicekey-ccd-ps: ""
     AppInsightsInstrumentationKey: "some-key"
