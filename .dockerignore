@@ -14,6 +14,7 @@
 
 !server.js
 !src/main/**
+!src/favicon.ico
 !config/**
 !acb.yaml
 !Dockerfile
