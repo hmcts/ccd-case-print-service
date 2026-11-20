@@ -1,7 +1,5 @@
 {% extends "govuk/template.njk" %}
 
-{% set themeColor = "#0b0c0c" %}
-
 {% block pageTitle %}
   CCD Case Print Service
 {% endblock %}
@@ -27,7 +25,7 @@
     {% set params = {
       url: "/",
       logoText: "CCD Case Print Service",
-      classes: "app-generic-header"
+      classes: "app-generic-header govuk-!-font-weight-bold"
     } %}
     {% include "govuk/components/generic-header/template.njk" %}
     {% block headerEnd %}{% endblock %}
