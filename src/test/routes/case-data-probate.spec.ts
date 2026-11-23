@@ -3,12 +3,14 @@ import express from "express";
 import proxyquire from "proxyquire";
 import request from "supertest";
 import sinon from "sinon";
+import { trackUnhandledRejections } from "../util/unhandled-rejections";
 
 describe("Probate case routes", () => {
   let getCase: sinon.SinonStub;
   let getProbateCaseDetailsTemplate: sinon.SinonStub;
   let getProbateManLegacyCase: sinon.SinonStub;
   let getProbateManLegacyCaseTemplate: sinon.SinonStub;
+  let logger: { error: sinon.SinonStub; warn: sinon.SinonStub };
   let router: express.Router;
 
   beforeEach(() => {
@@ -16,8 +18,10 @@ describe("Probate case routes", () => {
     getProbateCaseDetailsTemplate = sinon.stub();
     getProbateManLegacyCase = sinon.stub();
     getProbateManLegacyCaseTemplate = sinon.stub();
+    logger = { error: sinon.stub(), warn: sinon.stub() };
 
     const routeModule: any = proxyquire.noCallThru()("../../main/routes/case-data-probate", {
+      "@hmcts/nodejs-logging": { Logger: { getLogger: () => logger } },
       "../service/case-service": { getCase },
       "../service/probate-man-service": { getProbateManLegacyCase },
       "../service/probate-man-template-service": { getProbateManLegacyCaseTemplate },
@@ -107,6 +111,69 @@ describe("Probate case routes", () => {
         .get("/probateManTypes/CAVEAT/cases/123")
         .expect(502)
         .expect((res) => expect(res.body.message).to.equal("Template service unavailable"));
+    });
+  });
+
+  // Express 5 throws on res.status(undefined); unhandled, that rejection crashed the pod in PROD.
+  describe("when a step fails without an HTTP status", () => {
+    const SOL_PATH = "/jurisdictions/PROBATE/case-types/Grant/cases/123/probate/sol";
+    const PROBATE_MAN_PATH = "/probateManTypes/CAVEAT/cases/123";
+    let rejections: ReturnType<typeof trackUnhandledRejections>;
+
+    beforeEach(() => {
+      rejections = trackUnhandledRejections();
+    });
+
+    afterEach(() => {
+      rejections.stop();
+    });
+
+    async function expect500AndErrorLogged(path: string, error?: Error) {
+      await request(appWithRouter())
+        .get(path)
+        .timeout(1000)
+        .expect(500);
+
+      await rejections.settle();
+      expect(rejections.reasons).to.be.empty;
+      expect(logger.error.calledWith(sinon.match.string, error || sinon.match.instanceOf(Error))).to.equal(true);
+    }
+
+    it("responds 500 when the case lookup rejects with a plain Error", async () => {
+      const error = new Error("socket hang up");
+      getCase.rejects(error);
+
+      await expect500AndErrorLogged(SOL_PATH, error);
+    });
+
+    it("responds 500 when the case details template lookup rejects with a plain Error", async () => {
+      const error = new Error("socket hang up");
+      getCase.resolves({ caseId: "123" });
+      getProbateCaseDetailsTemplate.rejects(error);
+
+      await expect500AndErrorLogged(SOL_PATH, error);
+    });
+
+    it("responds 500 when the case details template fails to render", async () => {
+      getCase.resolves({ caseId: "123" });
+      getProbateCaseDetailsTemplate.resolves("{{ caseId | noSuchFilter }}");
+
+      await expect500AndErrorLogged(SOL_PATH);
+    });
+
+    it("responds 500 when the legacy case lookup rejects with a plain Error", async () => {
+      const error = new Error("socket hang up");
+      getProbateManLegacyCase.rejects(error);
+
+      await expect500AndErrorLogged(PROBATE_MAN_PATH, error);
+    });
+
+    it("responds 500 when the legacy case template lookup rejects with a plain Error", async () => {
+      const error = new Error("socket hang up");
+      getProbateManLegacyCase.resolves({ caseId: "123" });
+      getProbateManLegacyCaseTemplate.rejects(error);
+
+      await expect500AndErrorLogged(PROBATE_MAN_PATH, error);
     });
   });
 });

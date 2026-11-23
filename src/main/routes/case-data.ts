@@ -19,7 +19,7 @@ router.post("/case-data", (req: any, res) => {
 });
 
 router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid", (req: any, res) => {
-  getCase(req, req.params.jid, req.params.ctid, req.params.cid)
+  return getCase(req, req.params.jid, req.params.ctid, req.params.cid)
     .then((caseData) => {
       if (req?.query?.formatted === "true") {
         res.render("case-data-formatted", {
@@ -38,8 +38,8 @@ router.get("/jurisdictions/:jid/case-types/:ctid/cases/:cid", (req: any, res) =>
       });
     })
     .catch((error) => {
-      logger.error("Case data retrieval failed", error?.status, error?.statusText);
-      res.status(error.status).send(error);
+      logger.error("Case data retrieval failed", error);
+      res.status(error?.status || 500).send(error);
     });
 });
 
