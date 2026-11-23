@@ -1,4 +1,4 @@
-import * as config from "config";
+import config from "config";
 import * as store from "../store/case-id-store";
 import { EnumerationAttemptError } from "./enumeration-attempt-error";
 import { Logger } from "@hmcts/nodejs-logging";

@@ -1,7 +1,7 @@
 import * as chai from "chai";
 import { expect } from "chai";
 import chaiAsPromised from "chai-as-promised";
-import { MemoryStore } from "store/memory-store";
+import { MemoryStore } from "../../main/store/memory-store";
 
 chai.use(chaiAsPromised);
 

@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import * as proxyquire from "proxyquire";
+import proxyquire from "proxyquire";
 import * as sinon from "sinon";
 
 describe("rate-limit", () => {
@@ -26,7 +26,7 @@ describe("rate-limit", () => {
         rateLimit = proxyquire("../../main/guard/rate-limit", {
             "config": { get: configGetStub },
             "express-rate-limit": { rateLimit: rateLimitStub },
-            "redis/redis-client": { getRedisClient: getRedisClientStub }
+            "../redis/redis-client": { getRedisClient: getRedisClientStub }
         });
     });
 

@@ -3,7 +3,7 @@ import { expect } from "chai";
 import chaiAsPromised from "chai-as-promised";
 import { instance, mock, verify, when } from "ts-mockito";
 import { Redis } from "ioredis";
-import { RedisStore } from "store/redis-store";
+import { RedisStore } from "../../main/store/redis-store";
 
 chai.use(chaiAsPromised);
 

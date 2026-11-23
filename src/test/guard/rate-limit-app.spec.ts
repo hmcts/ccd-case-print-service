@@ -1,17 +1,17 @@
-import * as config from "config";
+import { getOrThrow } from "../../main/util/config";
 import * as jwt from "jsonwebtoken";
-import * as moment from "moment";
-import * as nock from "nock";
-import * as proxyquire from "proxyquire";
-import * as request from "supertest";
+import moment from "moment";
+import nock from "nock";
+import proxyquire from "proxyquire";
+import request from "supertest";
 import * as sinon from "sinon";
 import { Express } from "express";
 
 describe("rate-limit-app", () => {
 
-    const URL_IDAM_BASE: string = config.get("idam.base_url");
-    const URL_IDAM_S2S: string = config.get("idam.s2s_url");
-    const URL_CASE_DATA_PROBATE_TEMPLATE: string = config.get("case_data_probate_template_url");
+    const URL_IDAM_BASE: string = getOrThrow<string>("idam.base_url");
+    const URL_IDAM_S2S: string = getOrThrow<string>("idam.s2s_url");
+    const URL_CASE_DATA_PROBATE_TEMPLATE: string = getOrThrow<string>("case_data_probate_template_url");
 
     const PROPERTY_SECURITY: string = "security";
     const PROPERTY_RATE_LIMIT_ENABLED: string = "guard.rateLimit.enabled";
@@ -37,7 +37,8 @@ describe("rate-limit-app", () => {
 
     const TWO_TIMES: number = 2;
 
-    let configGetStub: sinon.SinonStub;
+    let configGetOrThrowStub: sinon.SinonStub;
+    let configGetOrDefaultStub: sinon.SinonStub;
     let app: Express;
 
     describe("Rate limit enabled", () => {
@@ -45,12 +46,17 @@ describe("rate-limit-app", () => {
         beforeEach(function() {
             this.timeout(10000);
 
-            configGetStub = sinon.stub();
-            configGetStub.withArgs(PROPERTY_SECURITY).returns({ referrerPolicy: "origin" });
-            configGetStub.withArgs(PROPERTY_RATE_LIMIT_ENABLED).returns(true);
+            configGetOrThrowStub = sinon.stub();
+            configGetOrThrowStub.withArgs(PROPERTY_SECURITY).returns({ referrerPolicy: "origin" });
+
+            configGetOrDefaultStub = sinon.stub();
+            configGetOrDefaultStub.withArgs(PROPERTY_RATE_LIMIT_ENABLED).returns(true);
 
             app = proxyquire("../../main/app.ts", {
-                config: { get: configGetStub }
+                "./util/config": {
+                    getOrThrow: configGetOrThrowStub,
+                    getOrDefault: configGetOrDefaultStub
+                }
             }).app;
         });
 
@@ -150,12 +156,17 @@ describe("rate-limit-app", () => {
         beforeEach(function() {
             this.timeout(10000);
 
-            configGetStub = sinon.stub();
-            configGetStub.withArgs(PROPERTY_SECURITY).returns({ referrerPolicy: "origin" });
-            configGetStub.withArgs(PROPERTY_RATE_LIMIT_ENABLED).returns(false);
+            configGetOrThrowStub = sinon.stub();
+            configGetOrThrowStub.withArgs(PROPERTY_SECURITY).returns({ referrerPolicy: "origin" });
+
+            configGetOrDefaultStub = sinon.stub();
+            configGetOrDefaultStub.withArgs(PROPERTY_RATE_LIMIT_ENABLED).returns(false);
 
             app = proxyquire("../../main/app.ts", {
-                config: { get: configGetStub }
+                "./util/config": {
+                    getOrThrow: configGetOrThrowStub,
+                    getOrDefault: configGetOrDefaultStub
+                }
             }).app;
         });
 

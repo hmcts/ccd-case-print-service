@@ -8,7 +8,7 @@ import favicon from "serve-favicon";
 import * as healthcheck from "@hmcts/nodejs-healthcheck";
 import path from "node:path";
 import { authCheckerUserOnlyFilter } from "./user/auth-checker-user-only-filter";
-import { createRateLimiter } from "guard/rate-limit";
+import { createRateLimiter } from "./guard/rate-limit";
 import { Express, Logger } from "@hmcts/nodejs-logging";
 import { Helmet, IConfig as HelmetConfig } from "./modules/helmet";
 import { importAll } from "./import-all/index";

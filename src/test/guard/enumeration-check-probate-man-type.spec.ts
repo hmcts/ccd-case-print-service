@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import * as proxyquire from "proxyquire";
+import proxyquire from "proxyquire";
 import * as sinon from "sinon";
 
 describe("Enumeration check probateManType", () => {

@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { EnumerationAttemptError } from "guard/enumeration-attempt-error";
+import { EnumerationAttemptError } from "../../main/guard/enumeration-attempt-error";
 import express from "express";
 import proxyquire from "proxyquire";
 import request from "supertest";

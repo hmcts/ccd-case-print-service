@@ -1,7 +1,7 @@
-import * as config from "config";
+import config from "config";
 import { AppRequest, RequestHandler } from "express";
 import { Logger } from "@hmcts/nodejs-logging";
-import { getRedisClient } from "redis/redis-client";
+import { getRedisClient } from "../redis/redis-client";
 import { rateLimit } from "express-rate-limit";
 import { RedisStore, type RedisReply } from "rate-limit-redis";
 

@@ -1,4 +1,4 @@
-import * as config from "config";
+import config from "config";
 import { ConnectionOptions } from "tls";
 import { Logger } from "@hmcts/nodejs-logging";
 import { Redis } from "ioredis";

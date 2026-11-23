@@ -1,7 +1,7 @@
 import * as chai from "chai";
 import { expect } from "chai";
 import chaiAsPromised from "chai-as-promised";
-import * as proxyquire from "proxyquire";
+import proxyquire from "proxyquire";
 import * as sinon from "sinon";
 
 chai.use(chaiAsPromised);
