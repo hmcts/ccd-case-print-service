@@ -17,9 +17,12 @@
 {% block header %}
   <header class="govuk-template__header {%- if headerClasses %} {{ headerClasses }}{% endif %}" {{- govukAttributes(headerAttributes)}}>
     {% block headerStart %}{% endblock %}
-    {% block govukHeader %}
-      {{ govukHeader() }}
-    {% endblock %}
+    {% set params = {
+      url: "/",
+      logoText: "CCD Case Print Service",
+      classes: "app-generic-header govuk-!-font-weight-bold"
+    } %}
+    {% include "govuk/components/generic-header/template.njk" %}
     {% block headerEnd %}{% endblock %}
   </header>
 {% endblock %}
