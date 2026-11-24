@@ -1,5 +1,5 @@
 import { getOrDefault, getOrThrow } from "../util/config";
-import { ConnectionOptions } from "tls";
+import { ConnectionOptions } from "node:tls";
 import { Logger } from "@hmcts/nodejs-logging";
 import { Redis } from "ioredis";
 
@@ -66,7 +66,7 @@ function getRedisPort(): number {
 function getRedisKey(): string | undefined {
     const key: string | null = getOrThrow<string | null>(PROPERTY_REDIS_KEY);
     logger.debug("Redis key: %s", key === null ? "<null>" : "<redacted>");
-    return key === null ? undefined : key;
+    return key ?? undefined;
 }
 
 function isRedisTlsEnabled(): boolean {

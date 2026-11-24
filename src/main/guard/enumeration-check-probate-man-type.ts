@@ -93,7 +93,7 @@ function getEnumerationLimit(): number {
 function getEnumerationTTL(): number | null {
     const enumerationTtl: number | null = getOrDefault<number | null>(PROPERTY_ENUMERATION_TTL, null);
 
-    logger.debug("Enumeration TTL value: %s", enumerationTtl === null ? "<null>" : enumerationTtl);
+    logger.debug("Enumeration TTL value: %s", enumerationTtl ?? "<null>");
     return enumerationTtl;
 }
 

@@ -9,6 +9,7 @@ chai.use(chaiAsPromised);
 describe("case-store-id", () => {
 
     const STORE_KEY: string = "test-key";
+    const STORE_TTL: number = 30;
     const CASE_ID: number = 123;
 
     let getRedisClientStub: sinon.SinonStub;
@@ -39,19 +40,19 @@ describe("case-store-id", () => {
 
         caseIdStore = proxyquire("../../main/store/case-id-store", {
             "../redis/redis-client": { getRedisClient : getRedisClientStub },
-            "./memory-store" : {
-                MemoryStore : memoryStoreStub.callsFake(() => {
+            "./memory-store": {
+                MemoryStore: memoryStoreStub.callsFake(() => {
                     return {
-                        get : memoryStoreGetStub,
-                        set : memoryStoreSetStub
+                        get: memoryStoreGetStub,
+                        set: memoryStoreSetStub
                     };
                 })
             },
-            "./redis-store" : {
-                RedisStore : redisStoreStub.callsFake(() => {
+            "./redis-store": {
+                RedisStore: redisStoreStub.callsFake(() => {
                     return {
-                        get : redisStoreGetStub,
-                        set : redisStoreSetStub
+                        get: redisStoreGetStub,
+                        set: redisStoreSetStub
                     };
                 })
             }
@@ -132,5 +133,19 @@ describe("case-store-id", () => {
 
         expect(memoryStoreGetStub.calledWith(STORE_KEY)).to.be.false;
         expect(redisStoreGetStub.calledWith(STORE_KEY)).to.be.true;
+    });
+
+    it("Should call store set method using specified TTL value", async () => {
+        getRedisClientStub.returns(null);
+
+        memoryStoreSetStub.withArgs(STORE_KEY, CASE_ID, STORE_TTL).resolves("OK");
+
+        const result: Promise<string | null> = caseIdStore.set(STORE_KEY, CASE_ID, STORE_TTL);
+        expect(result).to.eventually.equal("OK");
+
+        expect(getRedisClientStub.calledOnce).to.be.true;
+
+        expect(memoryStoreSetStub.calledWith(STORE_KEY, CASE_ID, STORE_TTL)).to.be.true;
+        expect(redisStoreSetStub.calledWith(STORE_KEY, CASE_ID, STORE_TTL)).to.be.false;
     });
 });

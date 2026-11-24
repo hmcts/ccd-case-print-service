@@ -42,6 +42,8 @@ describe("rate-limit", () => {
         const rateLimitConfig: any = rateLimitStub.getCall(0).args[0];
         expect(rateLimitConfig.windowMs).to.equal(30000);
         expect(rateLimitConfig.limit).to.equal(2);
+        expect(rateLimitConfig.logger.error).not.to.be.undefined.and.not.to.be.null;
+        expect(rateLimitConfig.logger.warn).not.to.be.undefined.and.not.to.be.null;
         expect(rateLimitConfig.store).to.be.undefined;
     });
 
@@ -58,7 +60,10 @@ describe("rate-limit", () => {
         const rateLimitConfig: any = rateLimitStub.getCall(0).args[0];
         expect(rateLimitConfig.windowMs).to.equal(30000);
         expect(rateLimitConfig.limit).to.equal(2);
+        expect(rateLimitConfig.logger.error).not.to.be.undefined.and.not.to.be.null;
+        expect(rateLimitConfig.logger.warn).not.to.be.undefined.and.not.to.be.null;
         expect(rateLimitConfig.store).not.to.be.undefined.and.not.to.be.null;
         expect(rateLimitConfig.store.prefix).to.be.empty;
+        expect(rateLimitConfig.store.sendCommand).not.to.be.undefined.and.not.to.be.null;
     });
 });

@@ -31,7 +31,7 @@ export class MemoryStore implements IKeyValueStore {
         const expiresDateTime: number | null = ttl === null ? null : Date.now() + ttl * 1000;
 
         logger.debug("Adding/updating entry in memory store - key: %s, value: %s, ttl: %s",
-            key, valueStr, expiresDateTime === null ? "null" : expiresDateTime);
+            key, valueStr, expiresDateTime ?? "<null>");
         this.caseIdData.set(key, { value: valueStr, expiresAt: expiresDateTime});
 
         return Promise.resolve("OK");
