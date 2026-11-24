@@ -1,5 +1,5 @@
-import config from "config";
-import { AppRequest, RequestHandler } from "express";
+import { getOrThrow } from "../util/config";
+import { Request, RequestHandler } from "express";
 import { Logger } from "@hmcts/nodejs-logging";
 import { getRedisClient } from "../redis/redis-client";
 import { rateLimit } from "express-rate-limit";
@@ -26,7 +26,7 @@ export const createRateLimiter = (): RequestHandler => {
 };
 
 function getWindowPeriod(): number {
-    const windowPeriodSeconds: number = config.get(PROPERTY_RATE_LIMIT_WINDOW_PERIOD);
+    const windowPeriodSeconds: number = getOrThrow<number>(PROPERTY_RATE_LIMIT_WINDOW_PERIOD);
     logger.debug("Rate limit window period: %s seconds", windowPeriodSeconds);
 
     return convertToMilliseconds(windowPeriodSeconds);
@@ -37,13 +37,13 @@ function convertToMilliseconds(seconds: number): number {
 }
 
 function getRequestLimit(): number {
-    const requestLimit: number = config.get(PROPERTY_RATE_LIMIT_REQUEST_LIMIT);
+    const requestLimit: number = getOrThrow<number>(PROPERTY_RATE_LIMIT_REQUEST_LIMIT);
     logger.debug("Rate limit request limit: %s request(s)", requestLimit);
 
     return requestLimit;
 }
 
-function createKey(request: AppRequest): string {
+function createKey(request: Request): string {
     return KEY_PREFIX + request.authentication.user.uid;
 }
 

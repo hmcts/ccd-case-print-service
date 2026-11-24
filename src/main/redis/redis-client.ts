@@ -1,4 +1,4 @@
-import config from "config";
+import { getOrDefault, getOrThrow } from "../util/config";
 import { ConnectionOptions } from "tls";
 import { Logger } from "@hmcts/nodejs-logging";
 import { Redis } from "ioredis";
@@ -40,33 +40,45 @@ export function getRedisClient(): Redis | null {
 }
 
 function isRedisEnabled(): boolean {
-    const isEnabled: boolean = config.get<boolean>(PROPERTY_REDIS_ENABLED);
+    let isEnabled: boolean | null = getOrDefault<boolean | null>(PROPERTY_REDIS_ENABLED, false);
+
+    if (isEnabled === null) {
+        logger.debug("Redis enabled property has no value, defaulting to false");
+        isEnabled = false;
+    }
+
     logger.debug("Redis enabled: %s", isEnabled);
-    return isEnabled === null ? false : isEnabled;
+    return isEnabled;
 }
 
 function getRedisHost(): string {
-    const host: string = config.get<string>(PROPERTY_REDIS_HOST);
+    const host: string = getOrThrow<string>(PROPERTY_REDIS_HOST);
     logger.debug("Redis host: %s", host);
     return host;
 }
 
 function getRedisPort(): number {
-    const port: number = config.get<number>(PROPERTY_REDIS_PORT);
+    const port: number = getOrThrow<number>(PROPERTY_REDIS_PORT);
     logger.debug("Redis port: %s", port);
     return port;
 }
 
 function getRedisKey(): string | undefined {
-    const key: string | null = config.get<string>(PROPERTY_REDIS_KEY);
+    const key: string | null = getOrThrow<string | null>(PROPERTY_REDIS_KEY);
     logger.debug("Redis key: %s", key === null ? "<null>" : "<redacted>");
     return key === null ? undefined : key;
 }
 
 function isRedisTlsEnabled(): boolean {
-    const isTlsEnabled: boolean = config.get<boolean>(PROPERTY_REDIS_TLS_ENABLED);
+    let isTlsEnabled: boolean | null = getOrDefault<boolean | null>(PROPERTY_REDIS_TLS_ENABLED, false);
+
+    if (isTlsEnabled === null) {
+        logger.debug("Redis TLS enabled property has no value, defaulting to false");
+        isTlsEnabled = false;
+    }
+
     logger.debug("Redis TLS enabled: %s", isTlsEnabled);
-    return isTlsEnabled === null ? false : isTlsEnabled;
+    return isTlsEnabled;
 }
 
 function getRedisTlsSettings(): ConnectionOptions | undefined {

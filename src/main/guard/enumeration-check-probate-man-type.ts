@@ -1,4 +1,4 @@
-import config from "config";
+import { getOrDefault } from "../util/config";
 import * as store from "../store/case-id-store";
 import { EnumerationAttemptError } from "./enumeration-attempt-error";
 import { Logger } from "@hmcts/nodejs-logging";
@@ -66,42 +66,35 @@ function updatePreviousCaseId(userId: string, caseType: string, caseId: number):
 }
 
 function isEnumerationCheckEnabled(): boolean {
-    if (config.has(PROPERTY_ENUMERATION_CHECK_ENABLED)) {
-        logger.debug("Enumeration check enabled property exists in config");
+    let isCheckEnabled: boolean | null = getOrDefault<boolean | null>(PROPERTY_ENUMERATION_CHECK_ENABLED, false);
 
-        const checkEnabled: boolean = config.get(PROPERTY_ENUMERATION_CHECK_ENABLED) || false;
-        logger.debug("Enumeration check enabled: %s", checkEnabled);
-
-        return checkEnabled;
+    if (isCheckEnabled === null) {
+        logger.debug("Enumeration check enabled property has no value, defaulting to false");
+        isCheckEnabled = false;
     }
 
-    logger.debug("Enumeration check enabled property does not exist in config, defaulting to false");
-    return false;
+    logger.debug("Enumeration check enabled: %s", isCheckEnabled);
+    return isCheckEnabled;
 }
 
 function getEnumerationLimit(): number {
-    if (config.has(PROPERTY_ENUMERATION_LIMIT)) {
-        logger.debug("Enumeration limit property exists in config");
+    let enumerationLimit: number | null =
+        getOrDefault<number | null>(PROPERTY_ENUMERATION_LIMIT, DEFAULT_ENUMERATION_LIMIT);
 
-        const enumerationLimit: number = config.get(PROPERTY_ENUMERATION_LIMIT) || DEFAULT_ENUMERATION_LIMIT;
-        logger.debug("Enumeration limit value: %s", enumerationLimit);
-
-        return enumerationLimit;
+    if (enumerationLimit === null) {
+        logger.debug("Enumeration limit property has no value, setting to default");
+        enumerationLimit = DEFAULT_ENUMERATION_LIMIT;
     }
 
-    logger.debug("Enumeration limit property does not exist in config, using default value");
-    return DEFAULT_ENUMERATION_LIMIT;
+    logger.debug("Enumeration limit value: %s", enumerationLimit);
+    return enumerationLimit;
 }
 
 function getEnumerationTTL(): number | null {
-    if (config.has(PROPERTY_ENUMERATION_TTL)) {
-        logger.debug("Enumeration TTL property exists in config");
+    const enumerationTtl: number | null = getOrDefault<number | null>(PROPERTY_ENUMERATION_TTL, null);
 
-        return config.get(PROPERTY_ENUMERATION_TTL);
-    }
-
-    logger.debug("Enumeration TTL property does not exist in config");
-    return null;
+    logger.debug("Enumeration TTL value: %s", enumerationTtl === null ? "<null>" : enumerationTtl);
+    return enumerationTtl;
 }
 
 function logEnumerationAttempt(userId: string, caseType: string, caseId: number, previousCaseId: string, diff: number) {
