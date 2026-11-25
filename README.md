@@ -31,6 +31,52 @@ The following environment variables are required:
 | CASE_DATA_STORE_URL | - | Base URL for the Case Data Store service. `http://localhost:4452` for the dockerised local instance. |
 | APPINSIGHTS_INSTRUMENTATIONKEY | - | Secret for Microsoft Insights logging, can be a dummy string in local. |
 
+### Redis
+
+ccd-case-print-service uses Redis to support rate limiting and enumeration checks for the `/probateManTypes` endpoint.  Redis can be enabled for these checks by setting the value of the `REDIS_ENABLED` environment variable to `true`.
+
+To setup Redis for local testing, first run the following command to pull the latest Redis Docker image from Docker store.
+```bash
+docker pull redis
+```
+
+Next, create and start the container by running the following command:
+```bash
+docker run --name ccd-redis -p 6379:6379 -d redis
+```
+
+After creating the container it can subsequently be stopped and started as required in Docker desktop.
+
+When the container is running, you can connect to it to run Redis commands using `redis-cli`.  To do this, first find the id of the container by running `docker ps`.  An example of the output of this command is shown below:
+```bash
+CONTAINER ID   IMAGE     COMMAND                  CREATED        STATUS         PORTS                                         NAMES
+3c478d283cd6   redis     "docker-entrypoint.s…"   27 hours ago   Up 8 seconds   0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp   ccd-redis
+```
+
+The container id is the value under the CONTAINER ID heading for the redis image.
+
+Next, connect to the container and start a bash shell session by running the following, replacing `<container_id>` with the Redis container id.
+```bash
+docker exec -it <container_id> /bin/bash
+```
+
+For example:
+```bash
+docker exec -it 3c478d283cd6 /bin/bash
+```
+
+Once connected, run `redis-cli` to access the Redis Command Line interface.  See [Redis commands documentation](https://redis.io/docs/latest/commands) for commands that can be run.
+
+Some commands that are useful during development:
+|Command|Description|
+|-------|-----------|
+|`keys *`|List all keys|
+|`get <key_name>`|Get the value of <key_name>|
+|`del <key_name>`|Delete <key_name>|
+|`flushall`|Delete all keys|
+
+Type `exit` to exit redis-cli.  To exit the bash session type `exit` again.
+
 ### Building
 
 The project uses [yarn](https://yarnpkg.com/lang/en/). To build it, execute the following command:
@@ -122,7 +168,7 @@ The tests can be run using:
 $ yarn test:functional
 ```
 
-or to run using gradle directly: 
+or to run using gradle directly:
 
 ```
 $ cd ./aat/
