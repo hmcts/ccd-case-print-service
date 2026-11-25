@@ -1,0 +1,46 @@
+data "azurerm_subnet" "redis_private_endpoint" {
+  name                 = "core-infra-subnet-1-${var.env}"
+  virtual_network_name = "core-infra-vnet-${var.env}"
+  resource_group_name  = "core-infra-${var.env}"
+}
+
+module "case_print_service_managed_redis" {
+  source = "git@github.com:hmcts/terraform-module-azure-managed-redis?ref=main"
+
+  product     = var.product
+  component   = var.component
+  env         = var.env
+  common_tags = var.common_tags
+
+  sku_name                  = var.managed_redis_sku_name
+  clustering_policy         = "NoCluster"
+  high_availability_enabled = var.managed_redis_high_availability_enabled
+
+  public_network_access   = "Disabled"
+  create_private_endpoint = true
+  subnet_id               = data.azurerm_subnet.redis_private_endpoint.id
+  private_dns_zone_ids    = [
+    "/subscriptions/${var.private_dns_subscription_id}/resourceGroups/core-infra-intsvc-rg/providers/Microsoft.Network/privateDnsZones/privatelink.redis.azure.net"
+  ]
+
+  access_keys_authentication_enabled = true
+  persistence_rdb_backup_frequency   = var.managed_redis_rdb_backup_frequency
+}
+
+resource "azurerm_key_vault_secret" "managed_redis_host" {
+  name         = "${var.component}-managed-redis-host"
+  value        = "${module.case_print_service_managed_redis.hostname}"
+  key_vault_id = data.azurerm_key_vault.ccd_shared_key_vault.id
+}
+
+resource "azurerm_key_vault_secret" "managed_redis_port" {
+  name         = "${var.component}-managed-redis-port"
+  value        = "${module.case_print_service_managed_redis.port}"
+  key_vault_id = data.azurerm_key_vault.ccd_shared_key_vault.id
+}
+
+resource "azurerm_key_vault_secret" "managed_redis_primary_access_key" {
+  name         = "${var.component}-managed-redis-primary-access-key"
+  value        = "${module.case_print_service_managed_redis.primary_access_key}"
+  key_vault_id = data.azurerm_key_vault.ccd_shared_key_vault.id
+}
